@@ -6,6 +6,12 @@ import { LanguageProvider } from './context/LanguageContext'
 import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
 import Home from './pages/Home'
+import Calculator from './pages/Calculator'
+import Results from './pages/Results'
+import Courses from './pages/Courses'
+import Colleges from './pages/Colleges'
+import Counselling from './pages/Counselling'
+import About from './pages/About'
 import NotFound from './pages/NotFound'
 
 const queryClient = new QueryClient()
@@ -19,6 +25,12 @@ export default function App() {
             <Header />
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/calculator" element={<Calculator />} />
+              <Route path="/results" element={<Results />} />
+              <Route path="/courses" element={<Courses />} />
+              <Route path="/colleges" element={<Colleges />} />
+              <Route path="/counselling" element={<Counselling />} />
+              <Route path="/about" element={<About />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
             <Footer />
