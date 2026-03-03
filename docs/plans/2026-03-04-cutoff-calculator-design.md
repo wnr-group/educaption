@@ -8,23 +8,28 @@
 
 ## Overview
 
-A mobile-first web application to help Tamil Nadu 12th standard students calculate their cutoff marks and explore higher education options. The platform provides cutoff calculations, eligible courses, college listings, and counselling guidance—all admin-editable via a custom panel.
+A mobile-first web application to help Tamil Nadu 12th standard students calculate their cutoff marks and discover eligible higher education paths. The platform includes a custom admin panel for Educaption staff to manage all data.
+
+### Target Users
+
+- **Primary:** Underprivileged 12th standard students in Tamil Nadu
+- **Secondary:** Parents, teachers, career counselors
+- **Admin:** Educaption NGO staff
 
 ---
 
 ## Requirements Summary
 
-| Aspect | Decision |
-|--------|----------|
-| **Target Users** | 12th standard students in Tamil Nadu (underprivileged focus) |
-| **Device Focus** | Mobile-first |
-| **Languages** | English + Tamil |
-| **Features** | Full guidance (calculator + courses + colleges + counselling) |
-| **Admin** | Custom admin panel |
-| **Backend** | Supabase |
-| **Frontend** | React + Vite |
-| **Community Filter** | Yes (OC, BC, MBC, SC, ST, etc.) |
-| **Branding** | Fresh design |
+| Requirement | Decision |
+|-------------|----------|
+| Device Focus | Mobile-first |
+| Languages | English + Tamil |
+| Features | Full guidance (calculator + courses + colleges + counselling) |
+| Admin | Custom admin panel |
+| Backend | Supabase |
+| Frontend | React + Vite |
+| Community Categories | Yes (OC, BC, MBC, SC, ST filtering) |
+| Branding | Fresh design |
 
 ---
 
@@ -34,25 +39,25 @@ A mobile-first web application to help Tamil Nadu 12th standard students calcula
 
 | Page | Purpose |
 |------|---------|
-| **Home** | Hero section, quick calculator access, about Educaption |
-| **Calculator** | Multi-step form: Personal info → Subject marks → Results |
-| **Results** | Cutoff scores, eligible courses, recommended paths |
-| **Courses** | Browse all courses by stream (Engineering, Medical, etc.) |
-| **Colleges** | College directory with filters (govt/private, district, stream) |
-| **Counselling Guide** | Step-by-step counselling process, dates, documents |
-| **About** | About Educaption, mission, contact |
+| Home | Hero section, quick calculator access, about Educaption |
+| Calculator | Multi-step form: Personal info → Subject marks → Results |
+| Results | Cutoff scores, eligible courses, recommended paths |
+| Courses | Browse all courses by stream |
+| Colleges | College directory with filters |
+| Counselling Guide | Step-by-step process, dates, documents |
+| About | About Educaption, mission, contact |
 
 ### Admin Panel Pages
 
 | Page | Purpose |
 |------|---------|
-| **Dashboard** | Overview stats (visitors, calculations, popular streams) |
-| **Groups** | Manage 106 subject group combinations |
-| **Formulas** | Manage cutoff formulas for each stream |
-| **Courses** | Manage course listings and eligibility mappings |
-| **Colleges** | Manage college directory |
-| **Counselling** | Manage counselling info, dates, documents |
-| **Settings** | Site settings, language strings, announcements |
+| Dashboard | Overview stats |
+| Groups | Manage 106 subject group combinations |
+| Formulas | Manage cutoff formulas per stream |
+| Courses | Manage course listings and eligibility |
+| Colleges | Manage college directory |
+| Counselling | Manage counselling info, dates, documents |
+| Settings | Site settings, language strings |
 
 ### User Flow
 
@@ -68,7 +73,7 @@ Step 2: Enter marks for each subject in that group
 Step 3: Select Community Category
     ↓
 Results Page:
-  - Cutoff scores for each stream
+  - Cutoff scores for each eligible stream
   - Eligible courses (matched by group)
   - "Explore Colleges" / "View Counselling Guide" CTAs
 ```
@@ -77,40 +82,36 @@ Results Page:
 
 ## Database Schema (Supabase)
 
-### `groups` - The 106 subject combinations
-
+### `groups`
 | Column | Type | Description |
 |--------|------|-------------|
 | id | uuid | Primary key |
-| code | text | Group code (e.g., "1", "2", "106") |
-| name | text | Display name (e.g., "Physics-Chemistry-Maths") |
+| code | text | Group code (e.g., "1", "2") |
+| name | text | Display name |
 | subjects | jsonb | Array of 6 subjects |
 | name_ta | text | Tamil name |
 
-### `streams` - Education streams
-
+### `streams`
 | Column | Type | Description |
 |--------|------|-------------|
 | id | uuid | Primary key |
 | name | text | Stream name |
 | name_ta | text | Tamil name |
 | formula | text | Cutoff formula (e.g., "M/2 + P/4 + C/4") |
-| max_cutoff | integer | Maximum cutoff score (e.g., 200) |
-| eligible_groups | uuid[] | Array of group IDs eligible for this stream |
+| max_cutoff | integer | Maximum cutoff score |
+| eligible_groups | uuid[] | Array of eligible group IDs |
 
-### `courses` - Individual courses/degrees
-
+### `courses`
 | Column | Type | Description |
 |--------|------|-------------|
 | id | uuid | Primary key |
 | stream_id | uuid | FK to streams |
-| name | text | Course name (e.g., "B.E. Computer Science") |
+| name | text | Course name |
 | name_ta | text | Tamil name |
-| duration | text | Duration (e.g., "4 years") |
+| duration | text | Duration |
 | description | text | Course details |
 
-### `colleges` - College directory
-
+### `colleges`
 | Column | Type | Description |
 |--------|------|-------------|
 | id | uuid | Primary key |
@@ -122,12 +123,11 @@ Results Page:
 | website | text | College website |
 | seats | jsonb | Seat matrix by category |
 
-### `counselling` - Counselling processes
-
+### `counselling`
 | Column | Type | Description |
 |--------|------|-------------|
 | id | uuid | Primary key |
-| name | text | Name (e.g., "TNEA", "NEET Counselling") |
+| name | text | Name (e.g., "TNEA") |
 | stream_id | uuid | FK to streams |
 | description | text | Process description |
 | documents | jsonb | Required documents list |
@@ -135,33 +135,29 @@ Results Page:
 | fees | jsonb | Fee structure |
 | website | text | Official website |
 
-### `categories` - Community categories
-
+### `categories`
 | Column | Type | Description |
 |--------|------|-------------|
 | id | uuid | Primary key |
-| code | text | Category code (OC, BC, MBC, SC, ST, etc.) |
+| code | text | Category code (OC, BC, etc.) |
 | name | text | Full name |
 | name_ta | text | Tamil name |
 
-### `admins` - Admin users
-
+### `admins`
 | Column | Type | Description |
 |--------|------|-------------|
 | id | uuid | FK to auth.users |
 | name | text | Admin name |
 | role | text | "super_admin" or "editor" |
 
-### `site_settings` - Configurable settings
-
+### `site_settings`
 | Column | Type | Description |
 |--------|------|-------------|
 | key | text | Setting key |
 | value | jsonb | Setting value |
 | updated_at | timestamp | Last updated |
 
-### `audit_logs` - Admin action logs
-
+### `audit_logs`
 | Column | Type | Description |
 |--------|------|-------------|
 | id | uuid | Primary key |
@@ -169,8 +165,8 @@ Results Page:
 | action | text | Action performed |
 | table_name | text | Affected table |
 | record_id | uuid | Affected record |
-| changes | jsonb | Before/after values |
-| created_at | timestamp | When action occurred |
+| changes | jsonb | Before/after data |
+| created_at | timestamp | Timestamp |
 
 ---
 
@@ -180,32 +176,46 @@ Results Page:
 
 | Element | Value | Rationale |
 |---------|-------|-----------|
-| **Primary Color** | `#2563EB` (Blue) | Trust, education, professionalism |
-| **Secondary Color** | `#10B981` (Green) | Growth, success, hope |
-| **Accent** | `#F59E0B` (Amber) | Warmth, highlights, CTAs |
-| **Background** | `#F8FAFC` (Light gray) | Easy on eyes, clean |
-| **Text** | `#1E293B` (Dark slate) | High readability |
+| Primary Color | #2563EB (Blue) | Trust, education |
+| Secondary Color | #10B981 (Green) | Growth, success |
+| Accent | #F59E0B (Amber) | Warmth, CTAs |
+| Background | #F8FAFC (Light gray) | Clean, easy on eyes |
+| Text | #1E293B (Dark slate) | High readability |
 
 ### Typography
 
 | Use | Font |
 |-----|------|
-| **Headings** | Inter (Bold) |
-| **Body** | Inter (Regular) |
-| **Tamil** | Noto Sans Tamil |
+| Headings | Inter (Bold) |
+| Body | Inter (Regular) |
+| Tamil | Noto Sans Tamil |
 
 ### Key UI Patterns
 
-- **Multi-step wizard** for calculator (progress bar, back/next)
-- **Card-based layout** for results and listings
-- **Floating language toggle** in header (EN | தமிழ்)
-- **Bottom navigation** on mobile for main sections
-- **Minimum touch target**: 44x44px
-- **High contrast** (WCAG AA compliant)
+- Multi-step wizard for calculator (progress bar)
+- Card-based results display
+- Floating language toggle (EN | தமிழ்)
+- Bottom navigation on mobile
+- Minimum 44x44px touch targets
+- WCAG AA contrast compliance
 
 ---
 
 ## Technical Architecture
+
+### Tech Stack
+
+| Layer | Technology |
+|-------|------------|
+| Frontend | React 18 + Vite |
+| Styling | Tailwind CSS |
+| Routing | React Router v6 |
+| State/Data | TanStack React Query |
+| Forms | React Hook Form + Zod |
+| i18n | i18next + react-i18next |
+| Backend | Supabase (DB + Auth) |
+| Icons | Lucide React |
+| Deployment | Vercel |
 
 ### Project Structure
 
@@ -233,59 +243,46 @@ educaption-cutoff/
 │   ├── lib/
 │   ├── context/
 │   ├── App.jsx
-│   ├── main.jsx
-│   └── index.css
+│   └── main.jsx
 ├── index.html
 ├── package.json
 ├── vite.config.js
-├── tailwind.config.js
-└── .env
+└── tailwind.config.js
 ```
 
-### Key Dependencies
+### Cutoff Calculation
 
-| Package | Purpose |
-|---------|---------|
-| `react`, `react-dom` | UI framework |
-| `react-router-dom` | Routing |
-| `@supabase/supabase-js` | Database & auth |
-| `tailwindcss` | Styling |
-| `i18next`, `react-i18next` | Internationalization |
-| `react-hook-form` | Form handling |
-| `zod` | Validation |
-| `@tanstack/react-query` | Data fetching & caching |
-| `lucide-react` | Icons |
+Formulas stored in DB, parsed and evaluated at runtime:
+- Engineering: M/2 + P/4 + C/4
+- Medical: P/4 + C/4 + B/2
+- Agriculture: M/4 + P/4 + C/4 + B/4
+- etc.
 
-### Cutoff Formulas
+### Authentication
 
-| Stream | Formula |
-|--------|---------|
-| Engineering | M/2 + P/4 + C/4 = Cutoff/200 |
-| Medical/Allied | P/4 + C/4 + B/2 = Cutoff/200 |
-| Agriculture | M/4 + P/4 + C/4 + B/4 = Cutoff/200 |
-| Law | Total marks of all subjects except language |
-
-Formulas are stored in database and parsed dynamically.
+- Supabase Auth for admin login (email/password)
+- Role-based access (super_admin, editor)
+- Protected routes with redirect
 
 ---
 
-## Admin Panel
+## Admin Panel Features
 
-### Features
+### Capabilities
 
-- **Dashboard**: Usage stats, popular searches
-- **Data Tables**: View, add, edit, delete with search/filter
-- **Bulk Import**: CSV upload for groups, colleges, etc.
-- **Export**: Download data as CSV/Excel
-- **Rich Text Editor**: For counselling descriptions
-- **Audit Trail**: Log all admin actions
+- CRUD operations for all data tables
+- CSV import/export
+- Formula preview with test marks
+- Rich text editor for descriptions
+- Seat matrix editor
+- Audit trail logging
 
 ### Roles
 
 | Role | Permissions |
 |------|-------------|
-| **Super Admin** | Full CRUD + manage admins + settings |
-| **Editor** | Add/Edit only, no delete or admin management |
+| Super Admin | Full CRUD + manage admins + settings |
+| Editor | Add/Edit only, no delete or admin management |
 
 ---
 
@@ -293,10 +290,10 @@ Formulas are stored in database and parsed dynamically.
 
 | Aspect | Choice |
 |--------|--------|
-| **Hosting** | Vercel |
-| **Database** | Supabase |
-| **Domain** | Custom (e.g., cutoff.educaption.org) |
-| **SSL** | Automatic via Vercel |
+| Hosting | Vercel |
+| Database | Supabase |
+| Domain | Custom (e.g., cutoff.educaption.org) |
+| SSL | Automatic via Vercel |
 
 ### Environment Variables
 
@@ -307,35 +304,21 @@ VITE_SUPABASE_ANON_KEY=xxx
 
 ---
 
-## Future Enhancements (Not in V1)
+## Future Enhancements (Post-V1)
 
-- Student accounts to save results
+- Student accounts (save results)
 - Email/SMS notifications for counselling dates
 - College comparison tool
-- Predictive seat allocation analysis
+- Predictive seat analysis
 - Mobile app (React Native)
 
 ---
 
-## Appendix: Reference Data
+## Success Criteria
 
-### Cutoff Calculation Example
-
-**Student**: SAKTHIVEL M (Register: 1000060552)
-**Group**: PCMC (Physics-Chemistry-Maths-Computer Science)
-
-| Subject | Marks |
-|---------|-------|
-| Tamil | 89 |
-| English | 66 |
-| Physics | 55 |
-| Chemistry | 58 |
-| Mathematics | 60 |
-| Computer Science | 82 |
-| **Total** | **410/600** |
-
-**Engineering Cutoff**: 60/2 + 55/4 + 58/4 = 30 + 13.75 + 14.5 = **58.25/200**
-
----
-
-*Document created: 2026-03-04*
+1. Student can calculate cutoff in under 2 minutes
+2. All 106 groups supported with correct formulas
+3. Bilingual support (EN/Tamil) works seamlessly
+4. Admin can update any data without developer help
+5. Mobile experience is smooth and accessible
+6. Page load under 3 seconds on 3G connection
