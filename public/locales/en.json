@@ -50,5 +50,27 @@
     "district": "District",
     "type": "Type",
     "noColleges": "No colleges found"
+  },
+  "counselling": {
+    "title": "Counselling Guide",
+    "subtitle": "Complete information about the TNEA counselling process for engineering admissions",
+    "infoTitle": "Important Information",
+    "infoText": "TNEA counselling is conducted annually by Anna University. Make sure to keep all required documents ready before the counselling dates."
+  },
+  "about": {
+    "title": "About Educaption",
+    "subtitle": "Helping Tamil Nadu students make informed decisions about their engineering education",
+    "aboutTitle": "About Educaption",
+    "aboutText": "Educaption is a comprehensive platform designed to help students in Tamil Nadu navigate the complex engineering admission process. Our tools help you calculate your cutoff marks, explore available courses and colleges, and prepare for the counselling process.",
+    "missionTitle": "Our Mission",
+    "missionText": "We are committed to making engineering education accessible and transparent for all students:",
+    "mission1": "Provide accurate cutoff calculations based on official formulas",
+    "mission2": "Offer comprehensive information about courses and colleges",
+    "mission3": "Guide students through the counselling process step by step",
+    "mission4": "Support both English and Tamil speaking students",
+    "contactTitle": "Contact Us",
+    "contactText": "Have questions or feedback? We would love to hear from you.",
+    "email": "Email",
+    "location": "Location"
   }
 }
