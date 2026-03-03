@@ -1,0 +1,39 @@
+{
+  "nav": {
+    "home": "Home",
+    "calculator": "Calculator",
+    "courses": "Courses",
+    "colleges": "Colleges",
+    "counselling": "Counselling",
+    "about": "About"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "next": "Next",
+    "back": "Back",
+    "submit": "Submit",
+    "cancel": "Cancel"
+  },
+  "home": {
+    "title": "Find Your Path",
+    "subtitle": "Calculate your cutoff and discover your future",
+    "cta": "Calculate My Cutoff"
+  },
+  "calculator": {
+    "title": "Cutoff Calculator",
+    "step1": "Select Your Group",
+    "step2": "Enter Your Marks",
+    "step3": "Select Category",
+    "selectGroup": "Choose a subject group...",
+    "enterMarks": "Enter marks for each subject (0-100)",
+    "selectCategory": "Choose your community category"
+  },
+  "results": {
+    "title": "Your Results",
+    "cutoffScores": "Cutoff Scores",
+    "eligibleCourses": "Eligible Courses",
+    "exploreCourses": "Explore All Courses",
+    "viewColleges": "View Colleges"
+  }
+}
