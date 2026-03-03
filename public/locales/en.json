@@ -35,5 +35,20 @@
     "eligibleCourses": "Eligible Courses",
     "exploreCourses": "Explore All Courses",
     "viewColleges": "View Colleges"
+  },
+  "courses": {
+    "title": "Courses",
+    "filterByStream": "Filter by Stream",
+    "stream": "Stream",
+    "code": "Code",
+    "noCourses": "No courses found"
+  },
+  "colleges": {
+    "title": "Colleges",
+    "searchPlaceholder": "Search colleges by name, code, or district...",
+    "code": "Code",
+    "district": "District",
+    "type": "Type",
+    "noColleges": "No colleges found"
   }
 }

@@ -35,5 +35,20 @@
     "eligibleCourses": "தகுதியுள்ள படிப்புகள்",
     "exploreCourses": "அனைத்து படிப்புகளைப் பார்க்கவும்",
     "viewColleges": "கல்லூரிகளைக் காணவும்"
+  },
+  "courses": {
+    "title": "படிப்புகள்",
+    "filterByStream": "வகை மூலம் வடிகட்டு",
+    "stream": "வகை",
+    "code": "குறியீடு",
+    "noCourses": "படிப்புகள் இல்லை"
+  },
+  "colleges": {
+    "title": "கல்லூரிகள்",
+    "searchPlaceholder": "பெயர், குறியீடு அல்லது மாவட்டம் மூலம் தேடு...",
+    "code": "குறியீடு",
+    "district": "மாவட்டம்",
+    "type": "வகை",
+    "noColleges": "கல்லூரிகள் இல்லை"
   }
 }
