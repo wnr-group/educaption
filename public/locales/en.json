@@ -13,57 +13,144 @@
     "next": "Next",
     "back": "Back",
     "submit": "Submit",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "search": "Search",
+    "filter": "Filter",
+    "all": "All",
+    "none": "None",
+    "select": "Select",
+    "save": "Save",
+    "reset": "Reset",
+    "close": "Close",
+    "viewMore": "View More",
+    "viewLess": "View Less"
   },
   "home": {
     "title": "Find Your Path",
     "subtitle": "Calculate your cutoff and discover your future",
-    "cta": "Calculate My Cutoff"
+    "cta": "Calculate My Cutoff",
+    "features": {
+      "title": "How It Works",
+      "calculate": {
+        "title": "Calculate Cutoff",
+        "description": "Enter your marks and instantly see your cutoff scores"
+      },
+      "courses": {
+        "title": "Discover Courses",
+        "description": "Explore all eligible courses based on your stream"
+      },
+      "colleges": {
+        "title": "Find Colleges",
+        "description": "Browse government and private colleges near you"
+      },
+      "counselling": {
+        "title": "Counselling Guide",
+        "description": "Complete step-by-step guidance for TNEA counselling"
+      }
+    }
   },
   "calculator": {
     "title": "Cutoff Calculator",
+    "subtitle": "Calculate your engineering cutoff marks",
     "step1": "Select Your Group",
     "step2": "Enter Your Marks",
     "step3": "Select Category",
     "selectGroup": "Choose a subject group...",
     "enterMarks": "Enter marks for each subject (0-100)",
-    "selectCategory": "Choose your community category"
+    "selectCategory": "Choose your community category",
+    "calculate": "Calculate Cutoff",
+    "calculating": "Calculating...",
+    "steps": {
+      "group": "Group",
+      "marks": "Marks",
+      "category": "Category",
+      "results": "Results",
+      "completed": "Completed"
+    },
+    "validation": {
+      "selectGroup": "Please select a group",
+      "enterAllMarks": "Please enter marks for all subjects",
+      "invalidMarks": "Marks must be between 0 and 100",
+      "selectCategory": "Please select a category"
+    },
+    "progress": {
+      "step1of3": "Step 1 of 3",
+      "step2of3": "Step 2 of 3",
+      "step3of3": "Step 3 of 3"
+    }
   },
   "results": {
     "title": "Your Results",
+    "subtitle": "Based on your marks and category",
     "cutoffScores": "Cutoff Scores",
     "eligibleCourses": "Eligible Courses",
+    "eligibleColleges": "Eligible Colleges",
     "exploreCourses": "Explore All Courses",
-    "viewColleges": "View Colleges"
+    "viewColleges": "View Colleges",
+    "viewCounselling": "View Counselling Guide",
+    "calculateAgain": "Calculate Again",
+    "yourCutoff": "Your Cutoff",
+    "maxCutoff": "Maximum",
+    "eligible": "Eligible",
+    "notEligible": "Not Eligible",
+    "group": "Group",
+    "category": "Category",
+    "noResults": "No results to display",
+    "goToCalculator": "Go to Calculator"
   },
   "courses": {
     "title": "Courses",
+    "subtitle": "Explore courses across different streams",
     "filterByStream": "Filter by Stream",
+    "allStreams": "All Streams",
     "stream": "Stream",
     "code": "Code",
-    "noCourses": "No courses found"
+    "duration": "Duration",
+    "description": "Description",
+    "eligibility": "Eligibility",
+    "careers": "Career Prospects",
+    "noCourses": "No courses found",
+    "searchPlaceholder": "Search courses..."
   },
   "colleges": {
     "title": "Colleges",
-    "searchPlaceholder": "Search colleges by name, code, or district...",
+    "subtitle": "Find the right college for you",
+    "searchPlaceholder": "Search colleges by name or district...",
     "code": "Code",
     "district": "District",
     "type": "Type",
-    "noColleges": "No colleges found"
+    "government": "Government",
+    "private": "Private",
+    "aided": "Aided",
+    "website": "Website",
+    "visitWebsite": "Visit Website",
+    "noColleges": "No colleges found",
+    "filterByDistrict": "Filter by District",
+    "filterByType": "Filter by Type",
+    "allDistricts": "All Districts",
+    "allTypes": "All Types"
   },
   "counselling": {
     "title": "Counselling Guide",
-    "subtitle": "Complete information about the TNEA counselling process for engineering admissions",
+    "subtitle": "Complete information about the admission counselling process",
     "infoTitle": "Important Information",
-    "infoText": "TNEA counselling is conducted annually by Anna University. Make sure to keep all required documents ready before the counselling dates."
+    "infoText": "TNEA counselling is conducted annually by Anna University. Make sure to keep all required documents ready before the counselling dates.",
+    "documents": "Required Documents",
+    "dates": "Important Dates",
+    "fees": "Fee Structure",
+    "steps": "Steps",
+    "website": "Official Website",
+    "visitWebsite": "Visit Official Website",
+    "eligibility": "Eligibility",
+    "noInfo": "No counselling information available"
   },
   "about": {
     "title": "About Educaption",
-    "subtitle": "Helping Tamil Nadu students make informed decisions about their engineering education",
+    "subtitle": "Helping Tamil Nadu students make informed decisions about their higher education",
     "aboutTitle": "About Educaption",
-    "aboutText": "Educaption is a comprehensive platform designed to help students in Tamil Nadu navigate the complex engineering admission process. Our tools help you calculate your cutoff marks, explore available courses and colleges, and prepare for the counselling process.",
+    "aboutText": "Educaption is a comprehensive platform designed to help students in Tamil Nadu navigate the complex admission process. Our tools help you calculate your cutoff marks, explore available courses and colleges, and prepare for the counselling process.",
     "missionTitle": "Our Mission",
-    "missionText": "We are committed to making engineering education accessible and transparent for all students:",
+    "missionText": "We are committed to making higher education accessible and transparent for all students:",
     "mission1": "Provide accurate cutoff calculations based on official formulas",
     "mission2": "Offer comprehensive information about courses and colleges",
     "mission3": "Guide students through the counselling process step by step",
@@ -71,6 +158,8 @@
     "contactTitle": "Contact Us",
     "contactText": "Have questions or feedback? We would love to hear from you.",
     "email": "Email",
-    "location": "Location"
+    "phone": "Phone",
+    "location": "Location",
+    "address": "Tamil Nadu, India"
   }
 }
