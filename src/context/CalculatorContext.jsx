@@ -4,16 +4,14 @@ import { createContext, useContext, useReducer, useCallback } from 'react'
 const initialState = {
   group: null,        // Selected group ID
   marks: {},          // Subject marks { subjectName: mark }
-  category: null,     // Selected category ID
   results: null,      // Calculation results
-  step: 1             // Current step (1, 2, or 3)
+  step: 1             // Current step (1 or 2)
 }
 
 // Action types
 const ACTIONS = {
   UPDATE_GROUP: 'UPDATE_GROUP',
   UPDATE_MARKS: 'UPDATE_MARKS',
-  UPDATE_CATEGORY: 'UPDATE_CATEGORY',
   SET_RESULTS: 'SET_RESULTS',
   MOVE_TO_STEP: 'MOVE_TO_STEP',
   RESET: 'RESET'
@@ -34,12 +32,6 @@ function calculatorReducer(state, action) {
       return {
         ...state,
         marks: action.payload
-      }
-
-    case ACTIONS.UPDATE_CATEGORY:
-      return {
-        ...state,
-        category: action.payload
       }
 
     case ACTIONS.SET_RESULTS:
@@ -90,11 +82,6 @@ export function CalculatorProvider({ children }) {
     })
   }, [state.marks])
 
-  // Update selected category
-  const updateCategory = useCallback((categoryId) => {
-    dispatch({ type: ACTIONS.UPDATE_CATEGORY, payload: categoryId })
-  }, [])
-
   // Set calculation results
   const setResults = useCallback((results) => {
     dispatch({ type: ACTIONS.SET_RESULTS, payload: results })
@@ -107,7 +94,7 @@ export function CalculatorProvider({ children }) {
 
   // Go to next step
   const nextStep = useCallback(() => {
-    if (state.step < 3) {
+    if (state.step < 2) {
       dispatch({ type: ACTIONS.MOVE_TO_STEP, payload: state.step + 1 })
     }
   }, [state.step])
@@ -132,7 +119,6 @@ export function CalculatorProvider({ children }) {
     updateGroup,
     updateMarks,
     updateSingleMark,
-    updateCategory,
     setResults,
     moveToStep,
     nextStep,

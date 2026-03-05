@@ -32,11 +32,27 @@ export function useCalculator() {
   }, [groups])
 
   /**
-   * Get subjects for a selected group
+   * Get subjects for a selected group (English - used as keys)
    */
   const getSubjectsForGroup = useCallback((groupId) => {
     const group = getGroupById(groupId)
     return group?.subjects || []
+  }, [getGroupById])
+
+  /**
+   * Get translated subjects for a selected group
+   * @param {string} groupId - Group ID
+   * @param {string} language - Current language ('en' or 'ta')
+   * @returns {Array} Array of subject names in requested language
+   */
+  const getTranslatedSubjectsForGroup = useCallback((groupId, language) => {
+    const group = getGroupById(groupId)
+    if (!group) return []
+
+    if (language === 'ta' && group.subjects_ta?.length) {
+      return group.subjects_ta
+    }
+    return group.subjects || []
   }, [getGroupById])
 
   /**
@@ -103,6 +119,7 @@ export function useCalculator() {
     // Utility functions
     getGroupById,
     getSubjectsForGroup,
+    getTranslatedSubjectsForGroup,
     calculateCutoffs,
     getEligibleCourses,
     validateGroupMarks

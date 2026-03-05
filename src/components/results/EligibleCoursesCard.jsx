@@ -1,82 +1,129 @@
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
+import { BookOpen, CheckCircle, AlertCircle, ArrowRight } from 'lucide-react'
 import Card from '../ui/Card'
 
 export default function EligibleCoursesCard({ courses = [], cutoffScores = {} }) {
   const { t, i18n } = useTranslation()
 
-  if (!courses || courses.length === 0) {
-    return (
-      <Card>
-        <h3 className="text-lg font-semibold text-slate-800 mb-4">
-          {t('results.eligibleCourses')}
-        </h3>
-        <p className="text-slate-500 text-center py-4">
-          No courses match your criteria. Try adjusting your marks or category.
-        </p>
-      </Card>
-    )
-  }
-
   return (
-    <Card>
-      <h3 className="text-lg font-semibold text-slate-800 mb-4">
-        {t('results.eligibleCourses')}
-      </h3>
-
-      <div className="space-y-3">
-        {courses.map((course) => {
-          const courseName = i18n.language === 'ta' && course.name_ta ? course.name_ta : course.name
-          const streamName = course.stream
-            ? (i18n.language === 'ta' && course.stream.name_ta ? course.stream.name_ta : course.stream.name)
-            : null
-          const userCutoff = cutoffScores[course.stream_id] || cutoffScores.default || 0
-
-          return (
-            <div
-              key={course.id}
-              className="flex items-center justify-between p-3 bg-slate-50 rounded-lg hover:bg-slate-100 transition-colors"
-            >
-              <div className="flex-1">
-                <h4 className="font-medium text-slate-800">{courseName}</h4>
-                {streamName && (
-                  <p className="text-sm text-slate-500">{streamName}</p>
-                )}
-              </div>
-              <div className="flex items-center gap-3">
-                {course.min_cutoff && (
-                  <div className="text-right">
-                    <span className={`text-sm font-medium ${userCutoff >= course.min_cutoff ? 'text-green-600' : 'text-amber-600'}`}>
-                      {userCutoff >= course.min_cutoff ? 'Eligible' : 'Below cutoff'}
-                    </span>
-                    <p className="text-xs text-slate-500">
-                      Min: {course.min_cutoff}
-                    </p>
-                  </div>
-                )}
-                <svg
-                  className="w-5 h-5 text-slate-400"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </div>
-            </div>
-          )
-        })}
+    <Card variant="elevated" padding="default">
+      <div className="flex items-center gap-3 mb-6">
+        <div className="
+          w-12 h-12
+          bg-emerald-100
+          rounded-xl
+          flex items-center justify-center
+        ">
+          <BookOpen className="w-6 h-6 text-emerald-600" />
+        </div>
+        <div>
+          <h3 className="font-display text-lg font-bold text-navy-900">
+            {t('results.eligibleCourses')}
+          </h3>
+          <p className="font-body text-sm text-navy-500">
+            {courses.length} courses available
+          </p>
+        </div>
       </div>
 
-      <div className="mt-4 pt-4 border-t border-slate-200">
+      {!courses || courses.length === 0 ? (
+        <div className="
+          text-center py-8
+          bg-cream-100 rounded-xl
+        ">
+          <div className="w-12 h-12 mx-auto mb-3 bg-navy-100 rounded-xl flex items-center justify-center">
+            <span className="text-xl">📚</span>
+          </div>
+          <p className="font-body text-navy-500 text-sm">
+            {t('results.noCoursesTip')}
+          </p>
+        </div>
+      ) : (
+        <div className="space-y-3">
+          {courses.slice(0, 5).map((course) => {
+            const courseName = i18n.language === 'ta' && course.name_ta ? course.name_ta : course.name
+            const streamName = course.stream
+              ? (i18n.language === 'ta' && course.stream.name_ta ? course.stream.name_ta : course.stream.name)
+              : null
+            const userCutoff = cutoffScores[course.stream_id] || cutoffScores.default || 0
+            const isEligible = !course.min_cutoff || userCutoff >= course.min_cutoff
+
+            return (
+              <div
+                key={course.id}
+                className="
+                  flex items-center gap-4
+                  p-4
+                  bg-cream-50
+                  border border-navy-100
+                  rounded-xl
+                  transition-all duration-200
+                  hover:border-emerald-200
+                "
+              >
+                <div className="flex-1 min-w-0">
+                  <h4 className="font-body font-medium text-navy-900 truncate">
+                    {courseName}
+                  </h4>
+                  {streamName && (
+                    <p className="font-body text-sm text-navy-400 truncate">
+                      {streamName}
+                    </p>
+                  )}
+                </div>
+                <div className="flex items-center gap-2">
+                  {isEligible ? (
+                    <span className="
+                      inline-flex items-center gap-1
+                      px-2 py-1
+                      bg-emerald-100
+                      text-emerald-700
+                      rounded-lg
+                      font-body font-semibold text-xs
+                    ">
+                      <CheckCircle className="w-3 h-3" />
+                      {t('results.eligible')}
+                    </span>
+                  ) : (
+                    <span className="
+                      inline-flex items-center gap-1
+                      px-2 py-1
+                      bg-saffron-100
+                      text-saffron-700
+                      rounded-lg
+                      font-body font-semibold text-xs
+                    ">
+                      <AlertCircle className="w-3 h-3" />
+                      {t('results.belowCutoff')}
+                    </span>
+                  )}
+                </div>
+              </div>
+            )
+          })}
+
+          {courses.length > 5 && (
+            <p className="text-center font-body text-navy-400 text-sm pt-2">
+              +{courses.length - 5} more courses
+            </p>
+          )}
+        </div>
+      )}
+
+      <div className="mt-6 pt-4 border-t border-navy-100">
         <Link
           to="/courses"
-          className="text-primary hover:text-primary-dark font-medium text-sm flex items-center justify-center"
+          className="
+            flex items-center justify-center gap-2
+            text-saffron-600
+            font-body font-semibold
+            hover:text-saffron-700
+            transition-colors duration-200
+          "
         >
           {t('results.exploreCourses')}
-          <svg className="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-          </svg>
+          <ArrowRight className="w-4 h-4" />
         </Link>
       </div>
     </Card>

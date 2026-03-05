@@ -18,19 +18,31 @@
     "filter": "Filter",
     "all": "All",
     "none": "None",
-    "select": "Select",
+    "select": "-- Select --",
     "save": "Save",
     "reset": "Reset",
     "close": "Close",
     "viewMore": "View More",
-    "viewLess": "View Less"
+    "viewLess": "View Less",
+    "appName": "Educaption"
   },
   "home": {
     "title": "Find Your Path",
+    "titleFind": "Find",
+    "titleYourPath": "Your Path",
     "subtitle": "Calculate your cutoff and discover your future",
     "cta": "Calculate My Cutoff",
+    "exploreCourses": "Explore Courses",
+    "badge": "TNEA 2026 Admissions Open",
+    "stats": {
+      "courses": "Courses",
+      "colleges": "Colleges",
+      "students": "Students"
+    },
     "features": {
       "title": "How It Works",
+      "subtitle": "Everything you need to navigate Tamil Nadu engineering admissions, all in one place",
+      "learnMore": "Learn more",
       "calculate": {
         "title": "Calculate Cutoff",
         "description": "Enter your marks and instantly see your cutoff scores"
@@ -47,25 +59,73 @@
         "title": "Counselling Guide",
         "description": "Complete step-by-step guidance for TNEA counselling"
       }
+    },
+    "testimonials": {
+      "title": "Trusted by",
+      "titleHighlight": "Students",
+      "subtitle": "Join thousands of Tamil Nadu students who found their path with Educaption",
+      "roles": {
+        "parent": "Parent"
+      },
+      "quotes": {
+        "quote1": "Educaption helped me understand my options when I was confused about which engineering branch to choose. The cutoff calculator was accurate!",
+        "quote2": "The counselling guide was a lifesaver during TNEA. I could track all important dates and documents in one place.",
+        "quote3": "As a parent, I found this website very helpful to understand the admission process and guide my daughter."
+      }
+    },
+    "ctaSection": {
+      "badge": "Start Your Journey Today",
+      "title": "Ready to Find Your",
+      "titleHighlight": "Perfect College?",
+      "subtitle": "Calculate your cutoff score, explore courses, and get personalized college recommendations in minutes",
+      "viewCounselling": "View Counselling Guide",
+      "trustText": "Trusted by 100,000+ students across Tamil Nadu"
     }
   },
   "calculator": {
     "title": "Cutoff Calculator",
     "subtitle": "Calculate your engineering cutoff marks",
-    "step1": "Select Your Group",
-    "step2": "Enter Your Marks",
-    "step3": "Select Category",
-    "selectGroup": "Choose a subject group...",
-    "enterMarks": "Enter marks for each subject (0-100)",
-    "selectCategory": "Choose your community category",
-    "calculate": "Calculate Cutoff",
-    "calculating": "Calculating...",
     "steps": {
       "group": "Group",
       "marks": "Marks",
       "category": "Category",
       "results": "Results",
-      "completed": "Completed"
+      "completed": "Calculation Complete!"
+    },
+    "step1": {
+      "title": "Select Your Group",
+      "description": "Choose your 12th standard subject group to get started",
+      "selectGroup": "Choose a subject group...",
+      "selectedSubjects": "Subjects in this group"
+    },
+    "step2": {
+      "title": "Enter Your Marks",
+      "description": "Enter marks for each subject (0-100)",
+      "totalMarks": "Total Marks"
+    },
+    "step3": {
+      "title": "Select Category",
+      "description": "Choose your community category for accurate cutoff calculation",
+      "selectCategory": "Choose your community category",
+      "readyToCalculate": "Ready to Calculate",
+      "calculationInfo": "Your cutoff will be calculated based on the Tamil Nadu Engineering Admissions formula",
+      "calculate": "Calculate My Cutoff"
+    },
+    "results": {
+      "title": "Your Cutoff Results",
+      "totalMarks": "Total Marks",
+      "category": "Category",
+      "cutoffScores": "Cutoff Scores by Stream",
+      "noEligibleStreams": "No eligible streams found for your group",
+      "formula": "Formula",
+      "eligibleCourses": "Eligible Courses",
+      "noEligibleCourses": "No eligible courses found",
+      "andMore": "and {{count}} more courses",
+      "viewAllCourses": "View All Courses",
+      "nextSteps": "Next Steps",
+      "exploreColleges": "Explore Colleges",
+      "viewCounselling": "View Counselling Guide",
+      "startOver": "Calculate Again"
     },
     "validation": {
       "selectGroup": "Please select a group",
@@ -82,21 +142,42 @@
   "results": {
     "title": "Your Results",
     "subtitle": "Based on your marks and category",
+    "basedOnCutoff": "Based on your cutoff",
+    "basedOnFormula": "Based on TNEA formula",
+    "marks": "marks",
     "cutoffScores": "Cutoff Scores",
+    "cutoffScore": "Cutoff Score",
     "eligibleCourses": "Eligible Courses",
     "eligibleColleges": "Eligible Colleges",
     "exploreCourses": "Explore All Courses",
     "viewColleges": "View Colleges",
     "viewCounselling": "View Counselling Guide",
     "calculateAgain": "Calculate Again",
+    "recalculate": "Recalculate",
     "yourCutoff": "Your Cutoff",
     "maxCutoff": "Maximum",
     "eligible": "Eligible",
     "notEligible": "Not Eligible",
+    "belowCutoff": "Below cutoff",
     "group": "Group",
     "category": "Category",
+    "marksEntered": "Marks Entered",
     "noResults": "No results to display",
-    "goToCalculator": "Go to Calculator"
+    "goToCalculator": "Go to Calculator",
+    "noCoursesTip": "No courses match your criteria. Try adjusting your marks or category.",
+    "noCollegeTip": "No college recommendations available. Explore all colleges to find options.",
+    "recommendedColleges": "Recommended Colleges",
+    "moreColleges": "+{{count}} more colleges",
+    "min": "Min:",
+    "avg": "Avg:",
+    "coursesAvailable": "{{count}} courses available",
+    "matchLevel": {
+      "unknown": "Unknown",
+      "safe": "Safe",
+      "goodMatch": "Good Match",
+      "reach": "Reach",
+      "ambitious": "Ambitious"
+    }
   },
   "courses": {
     "title": "Courses",
@@ -161,5 +242,18 @@
     "phone": "Phone",
     "location": "Location",
     "address": "Tamil Nadu, India"
+  },
+  "footer": {
+    "tagline": "Helping Tamil Nadu students find their path to higher education.",
+    "quickLinks": "Quick Links",
+    "officialResources": "Official Resources",
+    "contact": "Contact",
+    "copyright": "© 2026 Educaption. All rights reserved.",
+    "madeWith": "Made with",
+    "forStudents": "for Tamil Nadu Students"
+  },
+  "errors": {
+    "pageNotFound": "Page not found",
+    "goHome": "Go Home"
   }
 }

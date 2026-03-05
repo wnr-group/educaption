@@ -1,37 +1,97 @@
 import { useTranslation } from 'react-i18next'
+import { FileText, Info, ExternalLink } from 'lucide-react'
+import Card from '../components/ui/Card'
 import CounsellingSteps from '../components/counselling/CounsellingSteps'
 
 export default function Counselling() {
   const { t } = useTranslation()
 
   return (
-    <div className="min-h-screen bg-bg py-8">
-      <div className="max-w-3xl mx-auto px-4">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-slate-800 mb-2">{t('counselling.title')}</h1>
-          <p className="text-slate-600">
+    <main className="min-h-screen bg-gradient-hero py-12 lg:py-16">
+      {/* Background decoration */}
+      <div className="fixed inset-0 pattern-kolam opacity-30 pointer-events-none" />
+
+      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Page Header */}
+        <div className="text-center mb-12">
+          <div className="
+            inline-flex items-center gap-2
+            px-4 py-2 mb-6
+            bg-white/80 backdrop-blur-sm
+            border border-navy-200
+            rounded-full
+            shadow-soft
+          ">
+            <FileText className="w-4 h-4 text-saffron-500" />
+            <span className="font-body text-sm font-medium text-navy-700">
+              TNEA Counselling
+            </span>
+          </div>
+
+          <h1 className="
+            font-display text-4xl sm:text-5xl lg:text-6xl
+            font-bold
+            text-navy-900
+            tracking-tighter
+            mb-4
+          ">
+            {t('counselling.title')}
+          </h1>
+          <p className="
+            font-body text-lg
+            text-navy-500
+            max-w-2xl mx-auto
+          ">
             {t('counselling.subtitle')}
           </p>
         </div>
 
-        <div className="mb-8">
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
-            <div className="flex items-start">
-              <svg className="w-5 h-5 text-blue-600 mt-0.5 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <div>
-                <h3 className="font-semibold text-blue-800 mb-1">{t('counselling.infoTitle')}</h3>
-                <p className="text-sm text-blue-700">
-                  {t('counselling.infoText')}
-                </p>
-              </div>
+        {/* Important Info Banner */}
+        <Card
+          variant="gradient"
+          padding="lg"
+          hover={false}
+          className="mb-10 border-l-4 border-saffron-500"
+        >
+          <div className="flex items-start gap-4">
+            <div className="
+              w-12 h-12 flex-shrink-0
+              bg-saffron-100
+              rounded-xl
+              flex items-center justify-center
+            ">
+              <Info className="w-6 h-6 text-saffron-600" />
+            </div>
+            <div>
+              <h3 className="font-display font-bold text-lg text-navy-900 mb-2">
+                {t('counselling.infoTitle')}
+              </h3>
+              <p className="font-body text-navy-600 leading-relaxed">
+                {t('counselling.infoText')}
+              </p>
+              <a
+                href="https://tneaonline.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="
+                  inline-flex items-center gap-2
+                  mt-4
+                  text-saffron-600
+                  font-body font-semibold
+                  hover:text-saffron-700
+                  transition-colors duration-200
+                "
+              >
+                <span>Visit TNEA Official Website</span>
+                <ExternalLink className="w-4 h-4" />
+              </a>
             </div>
           </div>
-        </div>
+        </Card>
 
+        {/* Counselling Steps */}
         <CounsellingSteps />
       </div>
-    </div>
+    </main>
   )
 }

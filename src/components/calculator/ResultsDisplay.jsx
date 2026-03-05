@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
+import { Trophy, BookOpen, School, FileText, RotateCcw, ArrowRight, Sparkles } from 'lucide-react'
 import Button from '../ui/Button'
 import Card from '../ui/Card'
 import { useCalculatorContext } from '../../context/CalculatorContext'
@@ -10,85 +11,140 @@ export default function ResultsDisplay() {
   const { language } = useLanguage()
   const { results, reset } = useCalculatorContext()
 
-  if (!results) {
-    return null
-  }
+  if (!results) return null
 
-  const { streamCutoffs, eligibleCourses, category, totalMarks } = results
+  const { streamCutoffs, eligibleCourses, totalMarks } = results
 
   const handleStartOver = () => {
     reset()
   }
 
+  // Get the highest cutoff for celebration display
+  const highestCutoff = streamCutoffs.length > 0
+    ? Math.max(...streamCutoffs.map(s => s.cutoff))
+    : 0
+
   return (
     <div className="space-y-6">
-      {/* Summary Card */}
-      <Card className="bg-gradient-to-r from-primary to-blue-700 text-white">
-        <h2 className="text-2xl font-bold mb-4">
-          {t('calculator.results.title')}
-        </h2>
-        <div className="grid grid-cols-2 gap-4">
-          <div>
-            <p className="text-blue-100 text-sm">{t('calculator.results.totalMarks')}</p>
-            <p className="text-3xl font-bold">{totalMarks.toFixed(0)}</p>
+      {/* Hero Summary Card */}
+      <Card
+        variant="dark"
+        padding="lg"
+        hover={false}
+        className="relative overflow-hidden text-center"
+      >
+        {/* Decorative elements */}
+        <div className="absolute top-0 left-0 w-full h-full pattern-kolam opacity-5" />
+        <div className="absolute -top-10 -right-10 w-40 h-40 bg-saffron-500/20 rounded-full blur-3xl" />
+        <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-saffron-500/10 rounded-full blur-2xl" />
+
+        <div className="relative">
+          {/* Trophy Icon */}
+          <div className="
+            w-20 h-20 mx-auto mb-6
+            bg-gradient-to-br from-saffron-400 to-saffron-500
+            rounded-3xl
+            flex items-center justify-center
+            shadow-glow-saffron
+          ">
+            <Trophy className="w-10 h-10 text-white" />
           </div>
-          <div>
-            <p className="text-blue-100 text-sm">{t('calculator.results.category')}</p>
-            <p className="text-xl font-semibold">
-              {language === 'ta' && category?.name_ta
-                ? category.name_ta
-                : category?.name || category?.code}
-            </p>
+
+          <h2 className="font-display text-3xl font-bold text-white mb-2">
+            {t('calculator.results.title')}
+          </h2>
+
+          <p className="font-body text-navy-300 mb-8">
+            {t('calculator.results.totalMarks')}
+          </p>
+
+          <div className="
+            inline-flex items-baseline gap-3
+            bg-white/10 backdrop-blur-sm
+            px-8 py-4
+            rounded-2xl
+          ">
+            <span className="font-display text-6xl font-bold text-white">
+              {totalMarks.toFixed(0)}
+            </span>
+            <span className="font-body text-2xl text-navy-300">
+              {t('results.marks')}
+            </span>
           </div>
         </div>
       </Card>
 
       {/* Stream Cutoffs */}
-      <Card>
-        <h3 className="text-xl font-semibold mb-4">
-          {t('calculator.results.cutoffScores')}
-        </h3>
+      <Card variant="elevated" padding="lg">
+        <div className="flex items-center gap-3 mb-6">
+          <div className="
+            w-12 h-12
+            bg-saffron-100
+            rounded-xl
+            flex items-center justify-center
+          ">
+            <Sparkles className="w-6 h-6 text-saffron-600" />
+          </div>
+          <div>
+            <h3 className="font-display text-xl font-bold text-navy-900">
+              {t('calculator.results.cutoffScores')}
+            </h3>
+            <p className="font-body text-sm text-navy-500">
+              {t('results.basedOnFormula')}
+            </p>
+          </div>
+        </div>
 
         {streamCutoffs.length === 0 ? (
-          <div className="text-slate-500 py-4">
-            {t('calculator.results.noEligibleStreams')}
+          <div className="
+            text-center py-8
+            bg-cream-100 rounded-xl
+          ">
+            <p className="font-body text-navy-500">
+              {t('calculator.results.noEligibleStreams')}
+            </p>
           </div>
         ) : (
           <div className="space-y-4">
-            {streamCutoffs.map((stream, index) => (
+            {streamCutoffs.map((stream) => (
               <div
                 key={stream.streamId}
-                className="border-b border-slate-200 pb-4 last:border-b-0 last:pb-0"
+                className="
+                  p-5
+                  bg-gradient-to-br from-cream-50 to-white
+                  border border-navy-100
+                  rounded-xl
+                "
               >
-                <div className="flex justify-between items-start mb-2">
+                <div className="flex justify-between items-start mb-3">
                   <div>
-                    <h4 className="font-medium text-text">
+                    <h4 className="font-display font-bold text-navy-900 mb-1">
                       {language === 'ta' && stream.streamNameTa
                         ? stream.streamNameTa
                         : stream.streamName}
                     </h4>
-                    <p className="text-sm text-slate-500">
+                    <p className="font-body text-sm text-navy-400">
                       {t('calculator.results.formula')}: {stream.formula}
                     </p>
                   </div>
                   <div className="text-right">
-                    <p className="text-2xl font-bold text-primary">
+                    <p className="font-display text-3xl font-bold text-saffron-600">
                       {stream.cutoff.toFixed(2)}
                     </p>
-                    <p className="text-sm text-slate-500">
+                    <p className="font-body text-sm text-navy-400">
                       / {stream.maxCutoff}
                     </p>
                   </div>
                 </div>
 
                 {/* Progress bar */}
-                <div className="w-full bg-slate-200 rounded-full h-2">
+                <div className="h-2 bg-navy-100 rounded-full overflow-hidden">
                   <div
-                    className="bg-primary h-2 rounded-full transition-all duration-500"
+                    className="h-full bg-gradient-to-r from-saffron-400 to-saffron-500 rounded-full transition-all duration-700"
                     style={{
                       width: `${Math.min((stream.cutoff / stream.maxCutoff) * 100, 100)}%`
                     }}
-                  ></div>
+                  />
                 </div>
               </div>
             ))}
@@ -97,82 +153,129 @@ export default function ResultsDisplay() {
       </Card>
 
       {/* Eligible Courses */}
-      <Card>
-        <h3 className="text-xl font-semibold mb-4">
-          {t('calculator.results.eligibleCourses')}
-          <span className="text-slate-500 text-base font-normal ml-2">
-            ({eligibleCourses.length})
+      <Card variant="elevated" padding="lg">
+        <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center gap-3">
+            <div className="
+              w-12 h-12
+              bg-emerald-100
+              rounded-xl
+              flex items-center justify-center
+            ">
+              <BookOpen className="w-6 h-6 text-emerald-600" />
+            </div>
+            <div>
+              <h3 className="font-display text-xl font-bold text-navy-900">
+                {t('calculator.results.eligibleCourses')}
+              </h3>
+              <p className="font-body text-sm text-navy-500">
+                {t('results.coursesAvailable', { count: eligibleCourses.length })}
+              </p>
+            </div>
+          </div>
+          <span className="
+            px-3 py-1
+            bg-emerald-100
+            text-emerald-700
+            rounded-full
+            font-body font-semibold text-sm
+          ">
+            {eligibleCourses.length}
           </span>
-        </h3>
+        </div>
 
         {eligibleCourses.length === 0 ? (
-          <div className="text-slate-500 py-4">
-            {t('calculator.results.noEligibleCourses')}
+          <div className="
+            text-center py-8
+            bg-cream-100 rounded-xl
+          ">
+            <p className="font-body text-navy-500">
+              {t('calculator.results.noEligibleCourses')}
+            </p>
           </div>
         ) : (
-          <div className="grid gap-3">
-            {eligibleCourses.slice(0, 10).map((course) => (
+          <div className="space-y-3">
+            {eligibleCourses.slice(0, 8).map((course) => (
               <div
                 key={course.id}
-                className="flex items-center justify-between p-3 bg-slate-50 rounded-lg"
+                className="
+                  flex items-center gap-4
+                  p-4
+                  bg-cream-50
+                  border border-navy-100
+                  rounded-xl
+                  transition-all duration-200
+                  hover:border-emerald-200 hover:bg-emerald-50/30
+                "
               >
-                <div>
-                  <h4 className="font-medium">
+                <div className="
+                  w-10 h-10 flex-shrink-0
+                  bg-white
+                  rounded-lg
+                  flex items-center justify-center
+                  border border-navy-100
+                ">
+                  <span className="font-body font-bold text-sm text-navy-500">
+                    {course.code?.slice(0, 2) || '📚'}
+                  </span>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h4 className="font-body font-medium text-navy-900 truncate">
                     {language === 'ta' && course.name_ta
                       ? course.name_ta
                       : course.name}
                   </h4>
-                  <p className="text-sm text-slate-500">
-                    {course.duration} | {course.stream?.name}
+                  <p className="font-body text-sm text-navy-400">
+                    {course.duration} | {language === 'ta' && course.stream?.name_ta ? course.stream.name_ta : course.stream?.name}
                   </p>
                 </div>
               </div>
             ))}
 
-            {eligibleCourses.length > 10 && (
-              <p className="text-center text-slate-500 text-sm mt-2">
-                {t('calculator.results.andMore', { count: eligibleCourses.length - 10 })}
+            {eligibleCourses.length > 8 && (
+              <p className="text-center font-body text-navy-400 text-sm pt-2">
+                {t('calculator.results.andMore', { count: eligibleCourses.length - 8 })}
               </p>
             )}
           </div>
         )}
 
         {eligibleCourses.length > 0 && (
-          <Link to="/courses" className="block mt-4">
-            <Button variant="outline" className="w-full">
+          <Link to="/courses" className="block mt-6">
+            <Button variant="outline" className="w-full" icon={ArrowRight} iconPosition="right">
               {t('calculator.results.viewAllCourses')}
             </Button>
           </Link>
         )}
       </Card>
 
-      {/* Action Buttons */}
-      <Card>
-        <h3 className="text-lg font-semibold mb-4">
+      {/* Next Steps */}
+      <Card variant="gradient" padding="lg">
+        <h3 className="font-display text-xl font-bold text-navy-900 mb-6">
           {t('calculator.results.nextSteps')}
         </h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
           <Link to="/colleges">
-            <Button className="w-full">
+            <Button variant="primary" className="w-full" size="lg" icon={School} iconPosition="left">
               {t('calculator.results.exploreColleges')}
             </Button>
           </Link>
           <Link to="/counselling">
-            <Button variant="secondary" className="w-full">
+            <Button variant="secondary" className="w-full" size="lg" icon={FileText} iconPosition="left">
               {t('calculator.results.viewCounselling')}
             </Button>
           </Link>
         </div>
 
-        <div className="mt-4 pt-4 border-t border-slate-200">
-          <Button
-            variant="outline"
-            onClick={handleStartOver}
-            className="w-full"
-          >
-            {t('calculator.results.startOver')}
-          </Button>
-        </div>
+        <Button
+          variant="ghost"
+          onClick={handleStartOver}
+          className="w-full"
+          icon={RotateCcw}
+          iconPosition="left"
+        >
+          {t('calculator.results.startOver')}
+        </Button>
       </Card>
     </div>
   )

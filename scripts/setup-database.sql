@@ -1,28 +1,16 @@
 -- ============================================
 -- EDUCAPTION CUTOFF CALCULATOR
--- RESET AND SETUP DATABASE
--- This will DROP all existing tables and recreate them
+-- Complete Database Setup Script
+-- Run this in Supabase SQL Editor
 -- ============================================
 
--- Drop existing tables (in correct order due to foreign keys)
-DROP TABLE IF EXISTS counselling CASCADE;
-DROP TABLE IF EXISTS courses CASCADE;
-DROP TABLE IF EXISTS colleges CASCADE;
-DROP TABLE IF EXISTS site_settings CASCADE;
-DROP TABLE IF EXISTS streams CASCADE;
-DROP TABLE IF EXISTS groups CASCADE;
-DROP TABLE IF EXISTS categories CASCADE;
-
--- Drop triggers and functions
-DROP FUNCTION IF EXISTS update_updated_at_column CASCADE;
-
--- ============================================
--- CREATE TABLES
+-- STEP 1: SCHEMA
 -- ============================================
 
+-- Enable UUID extension
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
--- CATEGORIES
+-- CATEGORIES TABLE
 CREATE TABLE categories (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     code TEXT NOT NULL UNIQUE,
@@ -32,7 +20,9 @@ CREATE TABLE categories (
     updated_at TIMESTAMPTZ DEFAULT NOW()
 );
 
--- GROUPS
+CREATE INDEX idx_categories_code ON categories(code);
+
+-- GROUPS TABLE
 CREATE TABLE groups (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     code TEXT NOT NULL UNIQUE,
@@ -46,7 +36,10 @@ CREATE TABLE groups (
     updated_at TIMESTAMPTZ DEFAULT NOW()
 );
 
--- STREAMS
+CREATE INDEX idx_groups_code ON groups(code);
+CREATE INDEX idx_groups_subjects ON groups USING GIN (subjects);
+
+-- STREAMS TABLE
 CREATE TABLE streams (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     name TEXT NOT NULL,
@@ -59,7 +52,9 @@ CREATE TABLE streams (
     updated_at TIMESTAMPTZ DEFAULT NOW()
 );
 
--- COURSES
+CREATE INDEX idx_streams_name ON streams(name);
+
+-- COURSES TABLE
 CREATE TABLE courses (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     stream_id UUID NOT NULL REFERENCES streams(id) ON DELETE CASCADE,
@@ -73,7 +68,10 @@ CREATE TABLE courses (
     updated_at TIMESTAMPTZ DEFAULT NOW()
 );
 
--- COLLEGES
+CREATE INDEX idx_courses_stream_id ON courses(stream_id);
+CREATE INDEX idx_courses_name ON courses(name);
+
+-- COLLEGES TABLE
 CREATE TABLE colleges (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     name TEXT NOT NULL,
@@ -92,7 +90,11 @@ CREATE TABLE colleges (
     updated_at TIMESTAMPTZ DEFAULT NOW()
 );
 
--- COUNSELLING
+CREATE INDEX idx_colleges_type ON colleges(type);
+CREATE INDEX idx_colleges_district ON colleges(district);
+CREATE INDEX idx_colleges_streams ON colleges USING GIN (streams);
+
+-- COUNSELLING TABLE
 CREATE TABLE counselling (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     name TEXT NOT NULL,
@@ -110,22 +112,15 @@ CREATE TABLE counselling (
     updated_at TIMESTAMPTZ DEFAULT NOW()
 );
 
--- SITE SETTINGS
+CREATE INDEX idx_counselling_stream_id ON counselling(stream_id);
+
+-- SITE SETTINGS TABLE
 CREATE TABLE site_settings (
     key TEXT PRIMARY KEY,
     value JSONB NOT NULL DEFAULT '{}',
     description TEXT,
     updated_at TIMESTAMPTZ DEFAULT NOW()
 );
-
--- INDEXES
-CREATE INDEX idx_categories_code ON categories(code);
-CREATE INDEX idx_groups_code ON groups(code);
-CREATE INDEX idx_streams_name ON streams(name);
-CREATE INDEX idx_courses_stream_id ON courses(stream_id);
-CREATE INDEX idx_colleges_type ON colleges(type);
-CREATE INDEX idx_colleges_district ON colleges(district);
-CREATE INDEX idx_counselling_stream_id ON counselling(stream_id);
 
 -- UPDATED_AT TRIGGER
 CREATE OR REPLACE FUNCTION update_updated_at_column()
@@ -153,6 +148,7 @@ ALTER TABLE colleges ENABLE ROW LEVEL SECURITY;
 ALTER TABLE counselling ENABLE ROW LEVEL SECURITY;
 ALTER TABLE site_settings ENABLE ROW LEVEL SECURITY;
 
+-- Public read policies
 CREATE POLICY "Public read categories" ON categories FOR SELECT USING (true);
 CREATE POLICY "Public read groups" ON groups FOR SELECT USING (true);
 CREATE POLICY "Public read streams" ON streams FOR SELECT USING (true);
@@ -162,7 +158,7 @@ CREATE POLICY "Public read counselling" ON counselling FOR SELECT USING (true);
 CREATE POLICY "Public read site_settings" ON site_settings FOR SELECT USING (true);
 
 -- ============================================
--- SEED DATA
+-- STEP 2: SEED DATA
 -- ============================================
 
 -- Categories
@@ -254,24 +250,37 @@ UPDATE streams SET eligible_groups = (SELECT ARRAY_AGG(id) FROM groups) WHERE na
 UPDATE streams SET eligible_groups = (SELECT ARRAY_AGG(id) FROM groups) WHERE name = 'Law';
 UPDATE streams SET eligible_groups = (SELECT ARRAY_AGG(id) FROM groups WHERE code IN ('1', '2', '4')) WHERE name = 'Architecture';
 
--- Courses
-INSERT INTO courses (stream_id, name, name_ta, duration, description, career_prospects) VALUES
+-- Engineering Courses (using explicit stream_id lookup)
+INSERT INTO courses (stream_id, name, name_ta, duration, description, career_prospects)
+VALUES
     ((SELECT id FROM streams WHERE name = 'Engineering'), 'B.E. Computer Science', 'கணினி அறிவியல் பொறியியல்', '4 years', 'Computer hardware, software, algorithms', 'Software Engineer, Data Scientist'),
     ((SELECT id FROM streams WHERE name = 'Engineering'), 'B.E. Electronics & Communication', 'மின்னணு தகவல் தொடர்பு', '4 years', 'Electronic devices, circuits, communication', 'Electronics Engineer, VLSI Designer'),
     ((SELECT id FROM streams WHERE name = 'Engineering'), 'B.E. Mechanical', 'இயந்திர பொறியியல்', '4 years', 'Mechanics, thermodynamics, manufacturing', 'Design Engineer, Automotive Engineer'),
     ((SELECT id FROM streams WHERE name = 'Engineering'), 'B.E. Civil', 'குடிசார் பொறியியல்', '4 years', 'Construction, structural design', 'Structural Engineer, Urban Planner'),
-    ((SELECT id FROM streams WHERE name = 'Engineering'), 'B.E. Electrical', 'மின் பொறியியல்', '4 years', 'Electrical systems, power generation', 'Power Systems Engineer'),
+    ((SELECT id FROM streams WHERE name = 'Engineering'), 'B.E. Electrical', 'மின் பொறியியல்', '4 years', 'Electrical systems, power generation', 'Power Systems Engineer');
+
+-- Medical Courses
+INSERT INTO courses (stream_id, name, name_ta, duration, description, career_prospects)
+VALUES
     ((SELECT id FROM streams WHERE name = 'Medical'), 'MBBS', 'எம்.பி.பி.எஸ்', '5.5 years', 'Bachelor of Medicine and Surgery', 'Doctor, Surgeon, Specialist'),
     ((SELECT id FROM streams WHERE name = 'Medical'), 'BDS', 'பி.டி.எஸ்', '5 years', 'Bachelor of Dental Surgery', 'Dentist, Oral Surgeon'),
-    ((SELECT id FROM streams WHERE name = 'Medical'), 'B.Sc Nursing', 'பி.எஸ்சி நர்சிங்', '4 years', 'Bachelor of Science in Nursing', 'Registered Nurse'),
+    ((SELECT id FROM streams WHERE name = 'Medical'), 'B.Sc Nursing', 'பி.எஸ்சி நர்சிங்', '4 years', 'Bachelor of Science in Nursing', 'Registered Nurse');
+
+-- Agriculture Courses
+INSERT INTO courses (stream_id, name, name_ta, duration, description, career_prospects)
+VALUES
     ((SELECT id FROM streams WHERE name = 'Agriculture'), 'B.Sc Agriculture', 'பி.எஸ்சி வேளாண்மை', '4 years', 'Agricultural sciences, crop production', 'Agricultural Officer'),
-    ((SELECT id FROM streams WHERE name = 'Agriculture'), 'B.Sc Horticulture', 'பி.எஸ்சி தோட்டக்கலை', '4 years', 'Fruit, vegetable cultivation', 'Horticulturist'),
+    ((SELECT id FROM streams WHERE name = 'Agriculture'), 'B.Sc Horticulture', 'பி.எஸ்சி தோட்டக்கலை', '4 years', 'Fruit, vegetable cultivation', 'Horticulturist');
+
+-- Arts & Science Courses
+INSERT INTO courses (stream_id, name, name_ta, duration, description, career_prospects)
+VALUES
     ((SELECT id FROM streams WHERE name = 'Arts & Science'), 'B.Sc Computer Science', 'பி.எஸ்சி கணினி அறிவியல்', '3 years', 'Programming, software development', 'Software Developer'),
     ((SELECT id FROM streams WHERE name = 'Arts & Science'), 'B.Com', 'பி.காம்', '3 years', 'Commerce, accounting, business', 'Accountant, Financial Analyst'),
     ((SELECT id FROM streams WHERE name = 'Arts & Science'), 'BA English', 'பி.ஏ ஆங்கிலம்', '3 years', 'English language and literature', 'Writer, Teacher'),
     ((SELECT id FROM streams WHERE name = 'Arts & Science'), 'BBA', 'பி.பி.ஏ', '3 years', 'Business Administration', 'Business Manager');
 
--- Colleges
+-- Sample Colleges
 INSERT INTO colleges (name, name_ta, type, district, website) VALUES
     ('Anna University', 'அண்ணா பல்கலைக்கழகம்', 'government', 'Chennai', 'https://annauniv.edu'),
     ('PSG College of Technology', 'பி.எஸ்.ஜி தொழில்நுட்பக் கல்லூரி', 'aided', 'Coimbatore', 'https://psgtech.edu'),
@@ -280,8 +289,9 @@ INSERT INTO colleges (name, name_ta, type, district, website) VALUES
     ('SRM Institute of Technology', 'எஸ்.ஆர்.எம் தொழில்நுட்ப நிறுவனம்', 'private', 'Chennai', 'https://srmist.edu.in'),
     ('VIT University', 'வி.ஐ.டி பல்கலைக்கழகம்', 'private', 'Vellore', 'https://vit.ac.in');
 
--- Counselling
-INSERT INTO counselling (name, name_ta, stream_id, description, documents, important_dates, website) VALUES
+-- Counselling Data
+INSERT INTO counselling (name, name_ta, stream_id, description, documents, important_dates, website)
+VALUES
     ('TNEA (Tamil Nadu Engineering Admissions)', 'தமிழ்நாடு பொறியியல் சேர்க்கை',
      (SELECT id FROM streams WHERE name = 'Engineering'),
      'Centralized counselling for engineering admissions in Tamil Nadu',
@@ -302,4 +312,4 @@ INSERT INTO site_settings (key, value, description) VALUES
     ('contact_email', '"contact@educaption.org"', 'Contact email');
 
 -- Done!
-SELECT 'Database reset and setup complete!' AS status;
+SELECT 'Database setup complete!' AS status;

@@ -1,103 +1,208 @@
 import { useTranslation } from 'react-i18next'
+import { Target, CheckCircle, Mail, MapPin, Users, Heart, Sparkles } from 'lucide-react'
 import Card from '../components/ui/Card'
 
 export default function About() {
   const { t } = useTranslation()
 
+  const missionItems = [
+    t('about.mission1'),
+    t('about.mission2'),
+    t('about.mission3'),
+    t('about.mission4')
+  ]
+
   return (
-    <div className="min-h-screen bg-bg py-8">
-      <div className="max-w-3xl mx-auto px-4">
-        {/* Hero Section */}
-        <div className="text-center mb-10">
-          <h1 className="text-3xl font-bold text-slate-800 mb-3">{t('about.title')}</h1>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+    <main className="min-h-screen bg-gradient-hero py-12 lg:py-16">
+      {/* Background decoration */}
+      <div className="fixed inset-0 pattern-kolam opacity-30 pointer-events-none" />
+
+      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Page Header */}
+        <div className="text-center mb-16">
+          <div className="
+            inline-flex items-center gap-2
+            px-4 py-2 mb-6
+            bg-white/80 backdrop-blur-sm
+            border border-saffron-200
+            rounded-full
+            shadow-soft
+          ">
+            <Sparkles className="w-4 h-4 text-saffron-500" />
+            <span className="font-body text-sm font-medium text-navy-700">
+              About Us
+            </span>
+          </div>
+
+          <h1 className="
+            font-display text-4xl sm:text-5xl lg:text-6xl
+            font-bold
+            text-navy-900
+            tracking-tighter
+            mb-6
+          ">
+            {t('about.title')}
+          </h1>
+          <p className="
+            font-body text-lg sm:text-xl
+            text-navy-500
+            max-w-2xl mx-auto
+            leading-relaxed
+          ">
             {t('about.subtitle')}
           </p>
         </div>
 
         {/* About Section */}
-        <Card className="mb-6">
-          <h2 className="text-xl font-semibold text-slate-800 mb-4">
-            {t('about.aboutTitle')}
-          </h2>
-          <p className="text-slate-600 leading-relaxed">
+        <Card variant="elevated" padding="lg" className="mb-8">
+          <div className="flex items-start gap-4 mb-6">
+            <div className="
+              w-14 h-14 flex-shrink-0
+              bg-gradient-to-br from-saffron-100 to-saffron-50
+              rounded-2xl
+              flex items-center justify-center
+            ">
+              <Users className="w-7 h-7 text-saffron-600" />
+            </div>
+            <div>
+              <h2 className="font-display text-2xl font-bold text-navy-900 mb-2">
+                {t('about.aboutTitle')}
+              </h2>
+            </div>
+          </div>
+          <p className="font-body text-navy-600 leading-relaxed text-lg">
             {t('about.aboutText')}
           </p>
         </Card>
 
         {/* Mission Section */}
-        <Card className="mb-6">
-          <h2 className="text-xl font-semibold text-slate-800 mb-4">
-            {t('about.missionTitle')}
-          </h2>
-          <p className="text-slate-600 mb-4">
-            {t('about.missionText')}
-          </p>
-          <ul className="space-y-3">
-            <li className="flex items-start">
-              <svg className="w-5 h-5 text-primary mt-0.5 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
-              <span className="text-slate-600">{t('about.mission1')}</span>
-            </li>
-            <li className="flex items-start">
-              <svg className="w-5 h-5 text-primary mt-0.5 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
-              <span className="text-slate-600">{t('about.mission2')}</span>
-            </li>
-            <li className="flex items-start">
-              <svg className="w-5 h-5 text-primary mt-0.5 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
-              <span className="text-slate-600">{t('about.mission3')}</span>
-            </li>
-            <li className="flex items-start">
-              <svg className="w-5 h-5 text-primary mt-0.5 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
-              <span className="text-slate-600">{t('about.mission4')}</span>
-            </li>
-          </ul>
+        <Card variant="gradient" padding="lg" className="mb-8">
+          <div className="flex items-start gap-4 mb-6">
+            <div className="
+              w-14 h-14 flex-shrink-0
+              bg-gradient-to-br from-navy-100 to-navy-50
+              rounded-2xl
+              flex items-center justify-center
+            ">
+              <Target className="w-7 h-7 text-navy-600" />
+            </div>
+            <div>
+              <h2 className="font-display text-2xl font-bold text-navy-900 mb-2">
+                {t('about.missionTitle')}
+              </h2>
+              <p className="font-body text-navy-500">
+                {t('about.missionText')}
+              </p>
+            </div>
+          </div>
+
+          <div className="space-y-4 mt-8">
+            {missionItems.map((item, index) => (
+              <div
+                key={index}
+                className="
+                  flex items-start gap-4
+                  p-4
+                  bg-white
+                  rounded-xl
+                  border border-navy-100
+                  shadow-soft
+                "
+              >
+                <div className="
+                  w-8 h-8 flex-shrink-0
+                  bg-emerald-100
+                  rounded-lg
+                  flex items-center justify-center
+                ">
+                  <CheckCircle className="w-5 h-5 text-emerald-600" />
+                </div>
+                <span className="font-body text-navy-700 leading-relaxed">
+                  {item}
+                </span>
+              </div>
+            ))}
+          </div>
         </Card>
 
         {/* Contact Section */}
-        <Card>
-          <h2 className="text-xl font-semibold text-slate-800 mb-4">
-            {t('about.contactTitle')}
-          </h2>
-          <p className="text-slate-600 mb-6">
-            {t('about.contactText')}
-          </p>
-          <div className="space-y-4">
-            <div className="flex items-center">
-              <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
-                <svg className="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <div>
-                <p className="text-sm text-slate-500">{t('about.email')}</p>
-                <a href="mailto:support@educaption.com" className="text-primary hover:text-primary-dark font-medium">
-                  support@educaption.com
-                </a>
-              </div>
+        <Card variant="elevated" padding="lg">
+          <div className="flex items-start gap-4 mb-6">
+            <div className="
+              w-14 h-14 flex-shrink-0
+              bg-gradient-to-br from-emerald-100 to-emerald-50
+              rounded-2xl
+              flex items-center justify-center
+            ">
+              <Heart className="w-7 h-7 text-emerald-600" />
             </div>
-            <div className="flex items-center">
-              <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
-                <svg className="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
+            <div>
+              <h2 className="font-display text-2xl font-bold text-navy-900 mb-2">
+                {t('about.contactTitle')}
+              </h2>
+              <p className="font-body text-navy-500">
+                {t('about.contactText')}
+              </p>
+            </div>
+          </div>
+
+          <div className="grid sm:grid-cols-2 gap-4 mt-8">
+            <a
+              href="mailto:support@educaption.com"
+              className="
+                flex items-center gap-4
+                p-5
+                bg-cream-50
+                border border-navy-100
+                rounded-xl
+                transition-all duration-200
+                hover:border-saffron-200 hover:shadow-soft
+                group
+              "
+            >
+              <div className="
+                w-12 h-12
+                bg-saffron-100
+                rounded-xl
+                flex items-center justify-center
+                group-hover:bg-saffron-200
+                transition-colors duration-200
+              ">
+                <Mail className="w-6 h-6 text-saffron-600" />
               </div>
               <div>
-                <p className="text-sm text-slate-500">{t('about.location')}</p>
-                <p className="text-slate-700 font-medium">Tamil Nadu, India</p>
+                <p className="font-body text-sm text-navy-400 mb-1">{t('about.email')}</p>
+                <p className="font-body font-medium text-navy-900">
+                  support@educaption.com
+                </p>
+              </div>
+            </a>
+
+            <div className="
+              flex items-center gap-4
+              p-5
+              bg-cream-50
+              border border-navy-100
+              rounded-xl
+            ">
+              <div className="
+                w-12 h-12
+                bg-navy-100
+                rounded-xl
+                flex items-center justify-center
+              ">
+                <MapPin className="w-6 h-6 text-navy-600" />
+              </div>
+              <div>
+                <p className="font-body text-sm text-navy-400 mb-1">{t('about.location')}</p>
+                <p className="font-body font-medium text-navy-900">
+                  {t('about.address')}
+                </p>
               </div>
             </div>
           </div>
         </Card>
       </div>
-    </div>
+    </main>
   )
 }
