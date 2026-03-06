@@ -13,15 +13,18 @@ export default function ResultsDisplay() {
 
   if (!results) return null
 
-  const { streamCutoffs, eligibleCourses, totalMarks } = results
+  // Support both old (streamCutoffs) and new (cutoffResults) format
+  const cutoffResults = results.cutoffResults || results.streamCutoffs || []
+  const eligibleCourses = results.eligibleCourses || []
+  const totalMarks = results.totalMarks || 0
 
   const handleStartOver = () => {
     reset()
   }
 
   // Get the highest cutoff for celebration display
-  const highestCutoff = streamCutoffs.length > 0
-    ? Math.max(...streamCutoffs.map(s => s.cutoff))
+  const highestCutoff = cutoffResults.length > 0
+    ? Math.max(...cutoffResults.map(r => r.cutoff))
     : 0
 
   return (
@@ -95,7 +98,7 @@ export default function ResultsDisplay() {
           </div>
         </div>
 
-        {streamCutoffs.length === 0 ? (
+        {cutoffResults.length === 0 ? (
           <div className="
             text-center py-8
             bg-cream-100 rounded-xl
@@ -106,9 +109,9 @@ export default function ResultsDisplay() {
           </div>
         ) : (
           <div className="space-y-4">
-            {streamCutoffs.map((stream) => (
+            {cutoffResults.map((result) => (
               <div
-                key={stream.streamId}
+                key={result.admissionBodyId || result.streamId}
                 className="
                   p-5
                   bg-gradient-to-br from-cream-50 to-white
@@ -119,20 +122,25 @@ export default function ResultsDisplay() {
                 <div className="flex justify-between items-start mb-3">
                   <div>
                     <h4 className="font-display font-bold text-navy-900 mb-1">
-                      {language === 'ta' && stream.streamNameTa
-                        ? stream.streamNameTa
-                        : stream.streamName}
+                      {language === 'ta' && (result.admissionBodyNameTa || result.streamNameTa)
+                        ? (result.admissionBodyNameTa || result.streamNameTa)
+                        : (result.admissionBodyName || result.streamName)}
                     </h4>
                     <p className="font-body text-sm text-navy-400">
-                      {t('calculator.results.formula')}: {stream.formula}
+                      {t('calculator.results.formula')}: {result.formula}
                     </p>
+                    {result.courses && result.courses.length > 0 && (
+                      <p className="font-body text-xs text-navy-300 mt-1">
+                        {result.courses.length} courses available
+                      </p>
+                    )}
                   </div>
                   <div className="text-right">
                     <p className="font-display text-3xl font-bold text-saffron-600">
-                      {stream.cutoff.toFixed(2)}
+                      {result.cutoff.toFixed(2)}
                     </p>
                     <p className="font-body text-sm text-navy-400">
-                      / {stream.maxCutoff}
+                      / {result.maxCutoff}
                     </p>
                   </div>
                 </div>
@@ -142,7 +150,7 @@ export default function ResultsDisplay() {
                   <div
                     className="h-full bg-gradient-to-r from-saffron-400 to-saffron-500 rounded-full transition-all duration-700"
                     style={{
-                      width: `${Math.min((stream.cutoff / stream.maxCutoff) * 100, 100)}%`
+                      width: `${Math.min((result.cutoff / result.maxCutoff) * 100, 100)}%`
                     }}
                   />
                 </div>
