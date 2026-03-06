@@ -1,0 +1,51 @@
+Name,Name_Tamil,Admission_Body,Duration,Eligible_Groups,Formula_Override,Subject_List
+B.E. Computer Science and Engineering,கணினி அறிவியல் மற்றும் பொறியியல்,TNEA,4 years,"1, 2, 4",,
+B.E. Electronics and Communication Engineering,மின்னணு மற்றும் தகவல் தொடர்பு பொறியியல்,TNEA,4 years,"1, 2, 4",,
+B.E. Mechanical Engineering,இயந்திர பொறியியல்,TNEA,4 years,"1, 2, 4",,
+B.E. Civil Engineering,குடிசார் பொறியியல்,TNEA,4 years,"1, 2, 4",,
+B.E. Electrical and Electronics Engineering,மின் மற்றும் மின்னணு பொறியியல்,TNEA,4 years,"1, 2, 4",,
+B.E. Information Technology,தகவல் தொழில்நுட்பம்,TNEA,4 years,"1, 2, 4",,
+B.E. Artificial Intelligence and Data Science,செயற்கை நுண்ணறிவு மற்றும் தரவு அறிவியல்,TNEA,4 years,"1, 2, 4",,
+BA LLB (Hons),பி.ஏ எல்.எல்.பி (ஹானர்ஸ்),TNDALU,5 years,"1, 2, 3, 4, 5, 6, 7, 8, 9, 10",,
+BBA LLB (Hons),பி.பி.ஏ எல்.எல்.பி (ஹானர்ஸ்),TNDALU,5 years,"1, 2, 3, 4, 5, 6, 7, 8, 9, 10",,
+B.Com LLB (Hons),பி.காம் எல்.எல்.பி (ஹானர்ஸ்),TNDALU,5 years,"1, 2, 3, 4, 5, 6, 7, 8, 9, 10",,
+LLB (3 Year),எல்.எல்.பி (3 வருடம்),TNDALU,3 years,"1, 2, 3, 4, 5, 6, 7, 8, 9, 10",,
+B.V.Sc & A.H.,கால்நடை மருத்துவம் மற்றும் விலங்கு பண்ணை,TANUVAS - BVSC,5.5 years,"1, 3, 5",,
+B.Tech Food Technology (TANUVAS),உணவு தொழில்நுட்பம் (TANUVAS),TANUVAS - B.Tech,4 years,"1, 2, 3, 4, 5",,
+B.Tech Poultry Technology,கோழி வளர்ப்பு தொழில்நுட்பம்,TANUVAS - B.Tech,4 years,"1, 2, 3, 4, 5",,
+B.Tech Dairy Technology,பால் பண்ணை தொழில்நுட்பம்,TANUVAS - B.Tech,4 years,"1, 2, 3, 4, 5",,
+B.Sc (Hons.) Agriculture,பி.எஸ்சி (ஹானர்ஸ்) வேளாண்மை,TNAU - Agriculture,4 years,"1, 3, 5",,LIST_A
+B.Sc (Hons.) Horticulture,பி.எஸ்சி (ஹானர்ஸ்) தோட்டக்கலை,TNAU - Agriculture,4 years,"1, 3, 5",,LIST_A
+B.Sc (Hons.) Forestry,பி.எஸ்சி (ஹானர்ஸ்) வனவியல்,TNAU - Agriculture,4 years,"1, 3, 5",,LIST_A
+B.Sc (Hons.) Sericulture,பி.எஸ்சி (ஹானர்ஸ்) பட்டு வளர்ப்பு,TNAU - Agriculture,4 years,"1, 3, 5",,LIST_A
+B.Sc (Hons.) Food Nutrition and Dietetics,பி.எஸ்சி (ஹானர்ஸ்) உணவு ஊட்டச்சத்து,TNAU - Food Nutrition,4 years,"1, 3, 5",,LIST_B
+B.Tech Agricultural Engineering,பி.டெக் வேளாண் பொறியியல்,TNAU - Agri Engineering,4 years,"1, 2, 4",,
+B.Tech Food Technology (TNAU),பி.டெக் உணவு தொழில்நுட்பம் (TNAU),TNAU - Agri Engineering,4 years,"1, 2, 4",,
+B.Tech Energy and Environmental Engineering,பி.டெக் ஆற்றல் மற்றும் சுற்றுச்சூழல் பொறியியல்,TNAU - Agri Engineering,4 years,"1, 2, 4",,
+B.Tech Agricultural Information Technology,பி.டெக் வேளாண் தகவல் தொழில்நுட்பம்,TNAU - Agri Engineering,4 years,"1, 2, 4",,
+B.Tech Biotechnology,பி.டெக் உயிரி தொழில்நுட்பம்,TNAU - Biotechnology,4 years,"1, 2, 3, 5",,LIST_C
+B.Tech Bioinformatics,பி.டெக் உயிர் தகவலியல்,TNAU - Biotechnology,4 years,"1, 2, 3, 5",,LIST_C
+B.Sc (Hons.) Agribusiness Management,பி.எஸ்சி (ஹானர்ஸ்) வேளாண் வணிக மேலாண்மை,TNAU - Agribusiness,4 years,"1, 3, 5",,LIST_D
+B.F.Sc (Bachelor of Fisheries Science),பி.எஃப்.எஸ்சி (மீன்வள அறிவியல்),TNJFU - Fisheries,4 years,"1, 3, 5",,
+B.Tech Fisheries Engineering,பி.டெக் மீன்வளப் பொறியியல்,TNJFU - B.Tech,4 years,"1, 2, 3, 5",,LIST_E
+B.Tech Food Technology (TNJFU),பி.டெக் உணவு தொழில்நுட்பம் (TNJFU),TNJFU - B.Tech,4 years,"1, 2, 3, 5",,LIST_E
+B.Voc Industrial Fish Processing,பி.வோக் தொழில்துறை மீன் பதப்படுத்துதல்,TNJFU - B.Voc,3 years,"1, 2, 3, 4, 5, 6, 7, 8, 9, 10",,
+B.Voc Industrial Aquaculture,பி.வோக் தொழில்துறை நீர்வாழ் வளர்ப்பு,TNJFU - B.Voc,3 years,"1, 2, 3, 4, 5, 6, 7, 8, 9, 10",,
+B.Sc Nursing,பி.எஸ்சி நர்சிங்,TN Paramedical - Bio,4 years,"1, 3, 5",,
+B.P.T (Physiotherapy),பி.பி.டி (இயன்முறை மருத்துவம்),TN Paramedical - Bio,4.5 years,"1, 3, 5",,
+B.Sc Radiography and Imaging Technology,பி.எஸ்சி கதிரியக்க தொழில்நுட்பம்,TN Paramedical - Bio,3 years,"1, 3, 5",,
+B.Sc Radio Therapy Technology,பி.எஸ்சி கதிர் சிகிச்சை தொழில்நுட்பம்,TN Paramedical - Bio,3 years,"1, 3, 5",,
+B.Sc Medical Laboratory Technology,பி.எஸ்சி மருத்துவ ஆய்வக தொழில்நுட்பம்,TN Paramedical - Bio,3 years,"1, 3, 5",,
+B.Sc Operation Theatre Technology,பி.எஸ்சி அறுவை சிகிச்சை அரங்க தொழில்நுட்பம்,TN Paramedical - Bio,3 years,"1, 3, 5",,
+B.Sc Cardiac Technology,பி.எஸ்சி இதய தொழில்நுட்பம்,TN Paramedical - Bio,3 years,"1, 3, 5",,
+B.Sc Critical Care Technology,பி.எஸ்சி தீவிர சிகிச்சை தொழில்நுட்பம்,TN Paramedical - Bio,3 years,"1, 3, 5",,
+B.Sc Dialysis Technology,பி.எஸ்சி சிறுநீரக சுத்திகரிப்பு தொழில்நுட்பம்,TN Paramedical - Bio,3 years,"1, 3, 5",,
+B.Sc Physician Assistant,பி.எஸ்சி மருத்துவர் உதவியாளர்,TN Paramedical - Bio,3 years,"1, 3, 5",,
+B.Sc Emergency Care Technology,பி.எஸ்சி அவசர சிகிச்சை தொழில்நுட்பம்,TN Paramedical - Bio,3 years,"1, 3, 5",,
+B.Sc Respiratory Therapy,பி.எஸ்சி சுவாச சிகிச்சை,TN Paramedical - Bio,3 years,"1, 3, 5",,
+B.O.T (Occupational Therapy),பி.ஓ.டி (தொழில் சிகிச்சை),TN Paramedical - Bio,4.5 years,"1, 3, 5",,
+B.Sc Neuro Electro Physiology,பி.எஸ்சி நரம்பு மின் இயற்பியல்,TN Paramedical - Bio,3 years,"1, 3, 5",,
+B.Sc Clinical Nutrition,பி.எஸ்சி மருத்துவ ஊட்டச்சத்து,TN Paramedical - Bio,3 years,"1, 3, 5",,
+B.Sc Optometry,பி.எஸ்சி ஒளியியல்,TN Paramedical - Bio,4 years,"1, 3, 5",,
+BASLP (Audiology Speech Language Pathology),BASLP (செவித்திறன் பேச்சு மொழி நோயியல்),TN Paramedical - Bio,4 years,"1, 3, 5",,
+B.Pharm (Bachelor of Pharmacy),பி.பார்ம் (மருந்தியல் இளங்கலை),TN Pharmacy,4 years,"1, 3, 5",,

@@ -1,0 +1,16 @@
+Name,Name_Tamil,Description,Website,Max_Cutoff,Default_Formula
+TNEA,தமிழ்நாடு பொறியியல் சேர்க்கை,Tamil Nadu Engineering Admissions - All engineering courses,https://tneaonline.org,200,M + P/2 + C/2
+TNDALU,தமிழ்நாடு அம்பேத்கர் சட்டப் பல்கலைக்கழகம்,Tamil Nadu Dr. Ambedkar Law University - All law courses,https://tndalu.ac.in,100,(S3 + S4 + S5 + S6) / 4
+TANUVAS - BVSC,தமிழ்நாடு கால்நடை மருத்துவ அறிவியல் பல்கலைக்கழகம் - BVSC,BVSC - Bachelor of Veterinary Science,https://tanuvas.ac.in,200,B + P/2 + C/2
+TANUVAS - B.Tech,தமிழ்நாடு கால்நடை மருத்துவ அறிவியல் பல்கலைக்கழகம் - B.Tech,B.Tech Food/Poultry/Dairy Technology,https://tanuvas.ac.in,200,B/2 + P/2 + C/2 + M/2
+TNAU - Agriculture,தமிழ்நாடு வேளாண் பல்கலைக்கழகம் - வேளாண்மை,B.Sc Agriculture/Horticulture/Forestry/Sericulture,https://tnau.ac.in,200,B/2 + P/2 + C/2 + LIST_A/2
+TNAU - Food Nutrition,தமிழ்நாடு வேளாண் பல்கலைக்கழகம் - உணவு ஊட்டச்சத்து,B.Sc Food Nutrition and Dietetics,https://tnau.ac.in,200,B/2 + P/2 + C/2 + LIST_B/2
+TNAU - Agri Engineering,தமிழ்நாடு வேளாண் பல்கலைக்கழகம் - வேளாண் பொறியியல்,B.Tech Agricultural Engineering/Food Tech/Energy,https://tnau.ac.in,200,M + P/2 + C/2
+TNAU - Biotechnology,தமிழ்நாடு வேளாண் பல்கலைக்கழகம் - உயிரி தொழில்நுட்பம்,B.Tech Biotechnology/Bioinformatics,https://tnau.ac.in,200,B/2 + P/2 + C/2 + LIST_C/2
+TNAU - Agribusiness,தமிழ்நாடு வேளாண் பல்கலைக்கழகம் - வேளாண் வணிகம்,B.Sc Agribusiness Management,https://tnau.ac.in,200,B/2 + P/2 + C/2 + LIST_D/2
+TNJFU - Fisheries,தமிழ்நாடு மீன்வளப் பல்கலைக்கழகம் - மீன்வளவியல்,B.F.Sc - Bachelor of Fisheries Science,https://tnjfu.ac.in,200,B + P/2 + C/2
+TNJFU - B.Tech,தமிழ்நாடு மீன்வளப் பல்கலைக்கழகம் - B.Tech,B.Tech Fisheries Engineering/Food Tech,https://tnjfu.ac.in,200,B/2 + P/2 + C/2 + LIST_E/2
+TNJFU - B.Voc,தமிழ்நாடு மீன்வளப் பல்கலைக்கழகம் - B.Voc,B.Voc Industrial Fish Processing/Aquaculture,https://tnjfu.ac.in,100,AVG
+TN Paramedical - Bio,தமிழ்நாடு துணைமருத்துவம் - உயிரியல்,Nursing/Physio/Radiology/MLT and other paramedical (Biology group),https://tnhealth.tn.gov.in,200,B + P/2 + C/2
+TN Paramedical - BotZoo,தமிழ்நாடு துணைமருத்துவம் - தாவர விலங்கியல்,Paramedical courses for Botany+Zoology group,https://tnhealth.tn.gov.in,200,P/2 + C/2 + BOT/2 + ZOO/2
+TN Pharmacy,தமிழ்நாடு மருந்தியல்,B.Pharm - Bachelor of Pharmacy,https://tnhealth.tn.gov.in,200,B + P/2 + C/2

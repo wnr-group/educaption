@@ -1,0 +1,11 @@
+Code,Name,Name_Tamil,Subjects
+1,"Physics, Chemistry, Mathematics, Biology","இயற்பியல், வேதியியல், கணிதம், உயிரியல்","[""Physics"", ""Chemistry"", ""Mathematics"", ""Biology"", ""English"", ""Tamil""]"
+2,"Physics, Chemistry, Mathematics, Computer Science","இயற்பியல், வேதியியல், கணிதம், கணினி அறிவியல்","[""Physics"", ""Chemistry"", ""Mathematics"", ""Computer Science"", ""English"", ""Tamil""]"
+3,"Physics, Chemistry, Biology, Zoology","இயற்பியல், வேதியியல், உயிரியல், விலங்கியல்","[""Physics"", ""Chemistry"", ""Biology"", ""Zoology"", ""English"", ""Tamil""]"
+4,"Physics, Chemistry, Mathematics, Statistics","இயற்பியல், வேதியியல், கணிதம், புள்ளியியல்","[""Physics"", ""Chemistry"", ""Mathematics"", ""Statistics"", ""English"", ""Tamil""]"
+5,"Physics, Chemistry, Botany, Zoology","இயற்பியல், வேதியியல், தாவரவியல், விலங்கியல்","[""Physics"", ""Chemistry"", ""Botany"", ""Zoology"", ""English"", ""Tamil""]"
+6,"Accountancy, Commerce, Economics, Business Mathematics","கணக்கியல், வணிகவியல், பொருளியல், வணிக கணிதம்","[""Accountancy"", ""Commerce"", ""Economics"", ""Business Mathematics"", ""English"", ""Tamil""]"
+7,"Accountancy, Commerce, Economics, Computer Applications","கணக்கியல், வணிகவியல், பொருளியல், கணினி பயன்பாடுகள்","[""Accountancy"", ""Commerce"", ""Economics"", ""Computer Applications"", ""English"", ""Tamil""]"
+8,"History, Geography, Economics, Political Science","வரலாறு, புவியியல், பொருளியல், அரசியல் அறிவியல்","[""History"", ""Geography"", ""Economics"", ""Political Science"", ""English"", ""Tamil""]"
+9,"History, Geography, Economics, Sociology","வரலாறு, புவியியல், பொருளியல், சமூகவியல்","[""History"", ""Geography"", ""Economics"", ""Sociology"", ""English"", ""Tamil""]"
+10,"Tamil Literature, English Literature, History, Economics","தமிழ் இலக்கியம், ஆங்கில இலக்கியம், வரலாறு, பொருளியல்","[""Tamil Literature"", ""English Literature"", ""History"", ""Economics"", ""English"", ""Tamil""]"
