@@ -1,13 +1,10 @@
 import { useMemo, useCallback } from 'react'
 import { useGroups } from './queries/useGroups'
-import { useStreams } from './queries/useStreams'
+import { useAdmissionBodies } from './queries/useAdmissionBodies'
 import { useCategories } from './queries/useCategories'
 import { useCourses } from './queries/useCourses'
-import {
-  calculateStreamCutoffs,
-  filterEligibleCourses,
-  validateMarks
-} from '../lib/calculator'
+import { useSubjectLists } from './queries/useSubjectLists'
+import { calculateCourseCutoffs, validateMarks } from '../lib/calculator'
 
 /**
  * Custom hook for cutoff calculator functionality
@@ -16,19 +13,27 @@ import {
 export function useCalculator() {
   // Fetch required data
   const { data: groups = [], isLoading: groupsLoading, error: groupsError } = useGroups()
-  const { data: streams = [], isLoading: streamsLoading, error: streamsError } = useStreams()
+  const { data: admissionBodies = [], isLoading: bodiesLoading, error: bodiesError } = useAdmissionBodies()
   const { data: categories = [], isLoading: categoriesLoading, error: categoriesError } = useCategories()
   const { data: courses = [], isLoading: coursesLoading, error: coursesError } = useCourses()
+  const { data: subjectLists = [], isLoading: listsLoading, error: listsError } = useSubjectLists()
 
   // Combined loading and error states
-  const isLoading = groupsLoading || streamsLoading || categoriesLoading || coursesLoading
-  const error = groupsError || streamsError || categoriesError || coursesError
+  const isLoading = groupsLoading || bodiesLoading || categoriesLoading || coursesLoading || listsLoading
+  const error = groupsError || bodiesError || categoriesError || coursesError || listsError
 
   /**
    * Get a group by its ID
    */
   const getGroupById = useCallback((groupId) => {
     return groups.find(g => g.id === groupId) || null
+  }, [groups])
+
+  /**
+   * Get a group by its code (e.g., "1", "2")
+   */
+  const getGroupByCode = useCallback((groupCode) => {
+    return groups.find(g => g.code === groupCode) || null
   }, [groups])
 
   /**
@@ -56,21 +61,23 @@ export function useCalculator() {
   }, [getGroupById])
 
   /**
-   * Calculate cutoffs for all eligible streams
+   * Calculate cutoffs for all eligible courses
    */
   const calculateCutoffs = useCallback((groupId, marks) => {
     const group = getGroupById(groupId)
     if (!group) return []
 
-    return calculateStreamCutoffs(streams, group, marks)
-  }, [getGroupById, streams])
+    return calculateCourseCutoffs(courses, admissionBodies, group, marks, subjectLists)
+  }, [getGroupById, courses, admissionBodies, subjectLists])
 
   /**
-   * Get eligible courses based on calculated stream cutoffs
+   * Get eligible courses based on calculated cutoffs
    */
-  const getEligibleCourses = useCallback((streamCutoffs) => {
-    const eligibleStreamIds = streamCutoffs.map(s => s.streamId)
-    return filterEligibleCourses(courses, eligibleStreamIds)
+  const getEligibleCourses = useCallback((cutoffResults) => {
+    const eligibleBodyIds = cutoffResults.map(r => r.admissionBodyId)
+    return courses.filter(course =>
+      eligibleBodyIds.includes(course.admission_body_id)
+    )
   }, [courses])
 
   /**
@@ -101,12 +108,36 @@ export function useCalculator() {
     }))
   }, [categories])
 
+  /**
+   * Group courses by admission body for display
+   */
+  const coursesByAdmissionBody = useMemo(() => {
+    const grouped = {}
+
+    courses.forEach(course => {
+      const bodyId = course.admission_body_id
+      if (!bodyId) return
+
+      if (!grouped[bodyId]) {
+        const body = admissionBodies.find(b => b.id === bodyId)
+        grouped[bodyId] = {
+          admissionBody: body,
+          courses: []
+        }
+      }
+      grouped[bodyId].courses.push(course)
+    })
+
+    return Object.values(grouped).filter(g => g.admissionBody)
+  }, [courses, admissionBodies])
+
   return {
     // Data
     groups,
-    streams,
+    admissionBodies,
     categories,
     courses,
+    subjectLists,
 
     // Loading and error states
     isLoading,
@@ -115,9 +146,11 @@ export function useCalculator() {
     // Formatted options for dropdowns
     groupOptions,
     categoryOptions,
+    coursesByAdmissionBody,
 
     // Utility functions
     getGroupById,
+    getGroupByCode,
     getSubjectsForGroup,
     getTranslatedSubjectsForGroup,
     calculateCutoffs,

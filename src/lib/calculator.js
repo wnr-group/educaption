@@ -1,40 +1,60 @@
 /**
+ * Tamil Nadu 12th Standard Cutoff Calculator
+ *
+ * Implements correct formulas for:
+ * - TNEA (Engineering): M + P/2 + C/2
+ * - TNDALU (Law): (S3 + S4 + S5 + S6) / 4
+ * - TANUVAS (Veterinary): B + P/2 + C/2 or B/2 + P/2 + C/2 + M/2
+ * - TNAU (Agriculture): Various formulas with subject lists
+ * - TNJFU (Fisheries): B + P/2 + C/2
+ * - Paramedical: B + P/2 + C/2
+ */
+
+/**
  * Subject code mapping for formula parsing
- * Maps formula variables to standard subject identifiers
  */
 const SUBJECT_CODE_MAP = {
-  'M': ['Mathematics', 'Maths', 'MATHEMATICS', 'MATHS'],
+  'M': ['Mathematics', 'Maths', 'MATHEMATICS', 'MATHS', 'Business Mathematics'],
   'P': ['Physics', 'PHYSICS'],
   'C': ['Chemistry', 'CHEMISTRY'],
-  'B': ['Biology', 'BIOLOGY', 'Botany', 'BOTANY', 'Zoology', 'ZOOLOGY'],
-  'CS': ['Computer Science', 'COMPUTER SCIENCE', 'ComputerScience'],
+  'B': ['Biology', 'BIOLOGY'],
+  'BOT': ['Botany', 'BOTANY'],
+  'ZOO': ['Zoology', 'ZOOLOGY'],
+  'CS': ['Computer Science', 'COMPUTER SCIENCE', 'Computer Applications'],
+  'IT': ['Information Technology', 'INFORMATION TECHNOLOGY'],
+  'IP': ['Informatics Practices', 'INFORMATICS PRACTICES'],
   'A': ['Accountancy', 'ACCOUNTANCY', 'Accounts'],
   'E': ['Economics', 'ECONOMICS'],
-  'CO': ['Commerce', 'COMMERCE']
+  'CO': ['Commerce', 'COMMERCE'],
+  'H': ['History', 'HISTORY'],
+  'G': ['Geography', 'GEOGRAPHY'],
+  'PS': ['Political Science', 'POLITICAL SCIENCE'],
+  'SO': ['Sociology', 'SOCIOLOGY']
 }
 
 /**
- * Finds the subject code (M, P, C, B, etc.) for a given subject name
+ * Gets subject code from subject name
  * @param {string} subjectName - The name of the subject
- * @returns {string|null} The subject code or null if not found
+ * @returns {string} The subject code
  */
 function getSubjectCode(subjectName) {
-  const normalizedName = subjectName.trim()
+  const normalized = subjectName.trim().toLowerCase()
 
   for (const [code, names] of Object.entries(SUBJECT_CODE_MAP)) {
-    if (names.some(name =>
-      name.toLowerCase() === normalizedName.toLowerCase()
-    )) {
+    if (names.some(name => name.toLowerCase() === normalized)) {
       return code
     }
   }
 
   // Return first letter as fallback
-  return normalizedName.charAt(0).toUpperCase()
+  return subjectName.charAt(0).toUpperCase()
 }
 
 /**
- * Creates a marks lookup object from subjects and their marks
+ * Creates marks lookup from subjects array and marks object
+ * Handles special cases like Botany+Zoology = Biology average
+ * Also creates positional codes (S1-S6) for TNDALU formula
+ *
  * @param {Array<string>} subjects - Array of subject names
  * @param {Object} marks - Object with subject names as keys and marks as values
  * @returns {Object} Object with subject codes as keys and marks as values
@@ -42,30 +62,102 @@ function getSubjectCode(subjectName) {
 function createMarksLookup(subjects, marks) {
   const lookup = {}
 
-  for (const subject of subjects) {
+  // Map each subject to its code
+  subjects.forEach((subject, index) => {
     const code = getSubjectCode(subject)
-    const mark = marks[subject] || 0
-    lookup[code] = parseFloat(mark) || 0
+    const mark = parseFloat(marks[subject]) || 0
+    lookup[code] = mark
+
+    // Also add positional codes for TNDALU formula (S1 through S6)
+    // S1 and S2 are language subjects, S3-S6 are the 4 main subjects
+    lookup[`S${index + 1}`] = mark
+  })
+
+  // Handle Biology = Botany + Zoology average if both present but B is not
+  if (lookup['BOT'] !== undefined && lookup['ZOO'] !== undefined && lookup['B'] === undefined) {
+    lookup['B'] = (lookup['BOT'] + lookup['ZOO']) / 2
+  }
+
+  // If Biology exists, also set BOT and ZOO to same value (for P/2 + C/2 + BOT/2 + ZOO/2 formulas)
+  if (lookup['B'] !== undefined && lookup['BOT'] === undefined) {
+    lookup['BOT'] = lookup['B']
+    lookup['ZOO'] = lookup['B']
   }
 
   return lookup
 }
 
 /**
- * Calculates cutoff using a formula string
- * @param {string} formula - Formula like "M/2 + P/4 + C/4"
- * @param {Object} marks - Object with subject codes as keys and marks as values
- * @returns {number} Calculated cutoff value rounded to 2 decimal places
+ * Resolves subject list placeholder in formula (LIST_A, LIST_B, etc.)
+ * Finds the matching subject from the list that the student has
+ *
+ * @param {string} formula - Formula with LIST_X placeholder
+ * @param {Object} marks - Marks lookup
+ * @param {Array<string>} subjectListSubjects - Subjects in the list
+ * @returns {string} Formula with LIST_X replaced by actual mark
  */
-export function calculateCutoff(formula, marks) {
-  if (!formula || typeof formula !== 'string') {
-    return 0
+function resolveSubjectList(formula, marks, subjectListSubjects) {
+  const listMatch = formula.match(/LIST_[A-E]/i)
+  if (!listMatch || !subjectListSubjects || subjectListSubjects.length === 0) {
+    return formula
   }
 
-  // Replace subject codes with their values
+  // Find which subject from the list the student has
+  let listSubjectMark = 0
+  for (const subject of subjectListSubjects) {
+    const code = getSubjectCode(subject)
+    if (marks[code] !== undefined && marks[code] > 0) {
+      listSubjectMark = marks[code]
+      break
+    }
+  }
+
+  return formula.replace(/LIST_[A-E]/gi, listSubjectMark.toString())
+}
+
+/**
+ * Handles special AVG formula (average of all subjects)
+ * Used for B.Voc courses
+ *
+ * @param {string} formula - Formula string
+ * @param {Object} marks - Marks lookup
+ * @returns {string|number} Modified formula or calculated average
+ */
+function handleAvgFormula(formula, marks) {
+  if (formula.trim().toUpperCase() === 'AVG') {
+    const values = Object.values(marks).filter(v => typeof v === 'number' && v > 0)
+    if (values.length === 0) return 0
+    return values.reduce((a, b) => a + b, 0) / values.length
+  }
+  return formula
+}
+
+/**
+ * Calculates cutoff using formula string
+ *
+ * @param {string} formula - Formula like "M + P/2 + C/2"
+ * @param {Object} marks - Marks lookup with subject codes as keys
+ * @param {Array<string>} subjectListSubjects - Optional subject list for TNAU courses
+ * @returns {number} Calculated cutoff rounded to 2 decimals
+ */
+export function calculateCutoff(formula, marks, subjectListSubjects = null) {
+  if (!formula || typeof formula !== 'string') return 0
+
+  // Handle AVG formula
+  const avgResult = handleAvgFormula(formula, marks)
+  if (typeof avgResult === 'number') {
+    return Math.round(avgResult * 100) / 100
+  }
+
   let expression = formula.toUpperCase()
 
+  // Resolve subject list if present
+  if (subjectListSubjects) {
+    expression = resolveSubjectList(expression, marks, subjectListSubjects)
+  }
+
   // Sort codes by length (longest first) to avoid partial replacements
+  // e.g., replace 'BOT' before 'B'
   const codes = Object.keys(marks).sort((a, b) => b.length - a.length)
 
   for (const code of codes) {
@@ -75,73 +167,131 @@ export function calculateCutoff(formula, marks) {
     expression = expression.replace(regex, value.toString())
   }
 
-  // Validate the expression only contains numbers and math operators
+  // Validate expression only contains numbers and math operators
   if (!/^[\d\s+\-*/().]+$/.test(expression)) {
-    console.warn('Invalid formula expression:', expression)
+    console.warn('Invalid formula expression:', expression, 'Original:', formula)
     return 0
   }
 
   try {
-    // Safe evaluation using Function constructor
     const result = new Function(`return ${expression}`)()
     return Math.round(result * 100) / 100
   } catch (error) {
-    console.error('Error calculating cutoff:', error)
+    console.error('Error calculating cutoff:', error, 'Expression:', expression)
     return 0
   }
 }
 
 /**
- * Calculates cutoff for all eligible streams based on the selected group
- * @param {Array<Object>} streams - Array of stream objects with formula and eligible_groups
- * @param {Object} group - The selected group object with id and subjects
- * @param {Object} marks - Object with subject names as keys and marks as values
- * @returns {Array<Object>} Array of objects with stream info and calculated cutoff
+ * Calculates cutoffs for all eligible courses based on group
+ *
+ * @param {Array<Object>} courses - Courses with admission body and formula
+ * @param {Array<Object>} admissionBodies - Admission bodies with default formulas
+ * @param {Object} group - Selected group with code and subjects
+ * @param {Object} marks - Subject marks (subject name as key)
+ * @param {Array<Object>} subjectLists - Subject lists for TNAU courses
+ * @returns {Array<Object>} Calculated cutoffs per admission body
  */
-export function calculateStreamCutoffs(streams, group, marks) {
-  if (!streams || !group || !marks) {
-    return []
-  }
+export function calculateCourseCutoffs(courses, admissionBodies, group, marks, subjectLists = []) {
+  if (!courses || !admissionBodies || !group || !marks) return []
 
   const marksLookup = createMarksLookup(group.subjects || [], marks)
-  const results = []
 
-  for (const stream of streams) {
-    // Check if the group is eligible for this stream
-    const eligibleGroups = stream.eligible_groups || []
-    const isEligible = eligibleGroups.includes(group.id)
+  // Create lookups for efficient access
+  const bodyLookup = {}
+  admissionBodies.forEach(body => {
+    bodyLookup[body.id] = body
+  })
 
-    if (isEligible && stream.formula) {
-      const cutoff = calculateCutoff(stream.formula, marksLookup)
+  const listLookup = {}
+  subjectLists.forEach(list => {
+    listLookup[list.id] = list.subjects
+  })
 
-      results.push({
-        streamId: stream.id,
-        streamName: stream.name,
-        streamNameTa: stream.name_ta,
-        formula: stream.formula,
+  // Group results by admission body
+  const resultsByBody = {}
+
+  for (const course of courses) {
+    // Check if group is eligible for this course
+    const isEligible = course.eligible_groups?.includes(group.code)
+    if (!isEligible) continue
+
+    const admissionBody = bodyLookup[course.admission_body_id]
+    if (!admissionBody) continue
+
+    // Use course formula override or admission body default
+    const formula = course.formula_override || admissionBody.default_formula
+    if (!formula) continue
+
+    // Get subject list if course uses one
+    const subjectListSubjects = course.subject_list_id
+      ? listLookup[course.subject_list_id]
+      : null
+
+    const cutoff = calculateCutoff(formula, marksLookup, subjectListSubjects)
+
+    // Group by admission body for cleaner display
+    if (!resultsByBody[admissionBody.id]) {
+      resultsByBody[admissionBody.id] = {
+        admissionBodyId: admissionBody.id,
+        admissionBodyName: admissionBody.name,
+        admissionBodyNameTa: admissionBody.name_ta,
+        formula: admissionBody.default_formula,
         cutoff,
-        maxCutoff: stream.max_cutoff || 200
-      })
+        maxCutoff: admissionBody.max_cutoff || 200,
+        courses: []
+      }
     }
+
+    resultsByBody[admissionBody.id].courses.push({
+      courseId: course.id,
+      courseName: course.name,
+      courseNameTa: course.name_ta,
+      formula: course.formula_override || null,
+      duration: course.duration
+    })
   }
 
-  // Sort by cutoff value (highest first)
-  return results.sort((a, b) => b.cutoff - a.cutoff)
+  // Convert to array and sort by cutoff (highest first)
+  return Object.values(resultsByBody).sort((a, b) => b.cutoff - a.cutoff)
 }
 
 /**
- * Filters courses based on eligible stream IDs
- * @param {Array<Object>} courses - Array of course objects with stream_id
- * @param {Array<string>} eligibleStreamIds - Array of eligible stream UUIDs
- * @returns {Array<Object>} Filtered array of eligible courses
+ * Legacy function for backwards compatibility
+ * Maps to calculateCourseCutoffs
  */
-export function filterEligibleCourses(courses, eligibleStreamIds) {
-  if (!courses || !eligibleStreamIds || eligibleStreamIds.length === 0) {
+export function calculateStreamCutoffs(streams, group, marks) {
+  // Convert streams to admission bodies format
+  const admissionBodies = streams.map(s => ({
+    id: s.id,
+    name: s.name,
+    name_ta: s.name_ta,
+    default_formula: s.formula,
+    max_cutoff: s.max_cutoff
+  }))
+
+  // Create dummy courses (one per stream)
+  const courses = streams.map(s => ({
+    id: s.id,
+    name: s.name,
+    name_ta: s.name_ta,
+    admission_body_id: s.id,
+    eligible_groups: s.eligible_groups?.map(g => g) || [group.code]
+  }))
+
+  return calculateCourseCutoffs(courses, admissionBodies, group, marks)
+}
+
+/**
+ * Filters courses based on eligible admission body IDs
+ */
+export function filterEligibleCourses(courses, eligibleBodyIds) {
+  if (!courses || !eligibleBodyIds || eligibleBodyIds.length === 0) {
     return []
   }
 
   return courses.filter(course =>
-    eligibleStreamIds.includes(course.stream_id)
+    eligibleBodyIds.includes(course.admission_body_id)
   )
 }
 
