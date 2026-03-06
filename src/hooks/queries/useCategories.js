@@ -1,43 +1,35 @@
 import { useQuery } from '@tanstack/react-query'
-import { supabase } from '../../lib/supabase'
+import { getCategories } from '../../lib/airtable'
 
 /**
- * Fetch all community categories
+ * Fetch all community categories (OC, BC, MBC, SC, ST, etc.)
  * @returns {import('@tanstack/react-query').UseQueryResult} Query result with categories data
  */
 export function useCategories() {
   return useQuery({
     queryKey: ['categories'],
-    queryFn: async () => {
-      const { data, error } = await supabase
-        .from('categories')
-        .select('*')
-        .order('code', { ascending: true })
-
-      if (error) throw error
-      return data
-    }
+    queryFn: getCategories,
+    staleTime: 1000 * 60 * 5, // 5 minutes
+    select: (data) => data.map(cat => ({
+      id: cat.id,
+      code: cat.Code,
+      name: cat.Name,
+      name_ta: cat.Name_Tamil
+    }))
   })
 }
 
 /**
  * Fetch a single category by ID
- * @param {string} categoryId - The UUID of the category
+ * @param {string} categoryId - The ID of the category
  * @returns {import('@tanstack/react-query').UseQueryResult} Query result with category data
  */
 export function useCategoryById(categoryId) {
-  return useQuery({
-    queryKey: ['categories', categoryId],
-    queryFn: async () => {
-      const { data, error } = await supabase
-        .from('categories')
-        .select('*')
-        .eq('id', categoryId)
-        .single()
+  const { data: categories = [], ...rest } = useCategories()
+  const category = categories.find(c => c.id === categoryId) || null
 
-      if (error) throw error
-      return data
-    },
-    enabled: !!categoryId
-  })
+  return {
+    ...rest,
+    data: category
+  }
 }

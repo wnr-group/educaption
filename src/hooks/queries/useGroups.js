@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { supabase } from '../../lib/supabase'
+import { getGroups } from '../../lib/airtable'
 
 /**
  * Fetch all subject groups
@@ -8,36 +8,29 @@ import { supabase } from '../../lib/supabase'
 export function useGroups() {
   return useQuery({
     queryKey: ['groups'],
-    queryFn: async () => {
-      const { data, error } = await supabase
-        .from('groups')
-        .select('*')
-        .order('code', { ascending: true })
-
-      if (error) throw error
-      return data
-    }
+    queryFn: getGroups,
+    staleTime: 1000 * 60 * 5, // 5 minutes
+    select: (data) => data.map(group => ({
+      id: group.id,
+      code: group.Code,
+      name: group.Name,
+      name_ta: group.Name_Tamil,
+      subjects: JSON.parse(group.Subjects || '[]')
+    }))
   })
 }
 
 /**
  * Fetch a single group by ID
- * @param {string} groupId - The UUID of the group
+ * @param {string} groupId - The ID of the group
  * @returns {import('@tanstack/react-query').UseQueryResult} Query result with group data
  */
 export function useGroupById(groupId) {
-  return useQuery({
-    queryKey: ['groups', groupId],
-    queryFn: async () => {
-      const { data, error } = await supabase
-        .from('groups')
-        .select('*')
-        .eq('id', groupId)
-        .single()
+  const { data: groups = [], ...rest } = useGroups()
+  const group = groups.find(g => g.id === groupId) || null
 
-      if (error) throw error
-      return data
-    },
-    enabled: !!groupId
-  })
+  return {
+    ...rest,
+    data: group
+  }
 }
