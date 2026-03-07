@@ -121,12 +121,17 @@ export default function Calculator() {
     }
   }
 
+  // Use wider container when showing results
+  const containerClass = results
+    ? 'max-w-6xl' // 1152px for results with 3-column layout
+    : 'max-w-2xl' // 672px for input steps
+
   return (
     <main className="min-h-screen bg-gradient-hero py-12 lg:py-16">
       {/* Background decoration */}
       <div className="fixed inset-0 pattern-kolam opacity-30 pointer-events-none" />
 
-      <div className="relative max-w-2xl mx-auto px-4 sm:px-6">
+      <div className={`relative ${containerClass} mx-auto px-4 sm:px-6 lg:px-8`}>
         {/* Page Header */}
         <div className="text-center mb-10">
           <h1 className="
