@@ -1,68 +1,106 @@
 import { useState } from 'react'
-import { ChevronDown } from 'lucide-react'
+import { ChevronDown, ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import CourseCard from './CourseCard'
 
 /**
- * Collapsible category section showing courses in a category
- * Shows first 3 courses by default with expand option
+ * Collapsible category section with courses grid
+ * Clean accordion-style with smooth animations
  */
 export default function CategorySection({ category, courses, cutoff, maxCutoff, defaultExpanded = true }) {
   const [isExpanded, setIsExpanded] = useState(defaultExpanded)
 
   const visibleCourses = courses.slice(0, 3)
   const hasMore = courses.length > 3
+  const percentage = ((cutoff || 0) / (maxCutoff || 200)) * 100
 
   return (
-    <div className="border border-navy-100 rounded-xl overflow-hidden">
-      {/* Header - clickable to expand/collapse */}
+    <div className="bg-white rounded-2xl border border-navy-100 overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
+      {/* Header */}
       <button
         onClick={() => setIsExpanded(!isExpanded)}
-        className="w-full flex items-center justify-between p-4 bg-gradient-to-r from-cream-50 to-white hover:from-cream-100 transition-colors"
+        className="w-full flex items-center justify-between p-5 hover:bg-cream-50/50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 focus-visible:ring-inset"
       >
-        <div className="flex items-center gap-3">
-          <ChevronDown
-            className={`w-5 h-5 text-navy-400 transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`}
-          />
+        <div className="flex items-center gap-4">
+          {/* Expand icon */}
+          <div className={`
+            flex items-center justify-center w-8 h-8 rounded-lg
+            ${isExpanded ? 'bg-saffron-100' : 'bg-navy-50'}
+            transition-colors duration-200
+          `}>
+            <ChevronDown
+              className={`
+                w-5 h-5 transition-transform duration-300 ease-out
+                ${isExpanded ? 'text-saffron-600 rotate-180' : 'text-navy-400'}
+              `}
+            />
+          </div>
+
+          {/* Category info */}
           <div className="text-left">
-            <h3 className="font-display font-bold text-navy-900">
+            <h3 className="font-display text-lg font-bold text-navy-900">
               {category}
             </h3>
-            <p className="font-body text-xs text-navy-500">
-              {courses.length} course{courses.length !== 1 ? 's' : ''}
+            <p className="font-body text-sm text-navy-500 mt-0.5">
+              {courses.length} course{courses.length !== 1 ? 's' : ''} available
             </p>
           </div>
         </div>
 
-        <div className="text-right">
-          <p className="font-display text-xl font-bold text-saffron-600">
-            {(cutoff || 0).toFixed(2)}
-          </p>
-          <p className="font-body text-xs text-navy-400">
-            / {maxCutoff}
-          </p>
+        {/* Cutoff score */}
+        <div className="flex items-center gap-4">
+          {/* Mini progress bar */}
+          <div className="hidden sm:block w-24">
+            <div className="h-1.5 bg-navy-100 rounded-full overflow-hidden">
+              <div
+                className="h-full bg-gradient-to-r from-saffron-400 to-saffron-500 rounded-full transition-all duration-500"
+                style={{ width: `${Math.min(percentage, 100)}%` }}
+              />
+            </div>
+          </div>
+
+          <div className="text-right min-w-[80px]">
+            <p className="font-display text-2xl font-bold text-saffron-600 leading-none">
+              {(cutoff || 0).toFixed(1)}
+            </p>
+            <p className="font-body text-xs text-navy-400 mt-0.5">
+              out of {maxCutoff}
+            </p>
+          </div>
         </div>
       </button>
 
-      {/* Content - courses grid */}
-      {isExpanded && (
-        <div className="p-4 pt-0">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-3">
-            {visibleCourses.map(course => (
-              <CourseCard key={course.id} course={course} />
-            ))}
-          </div>
+      {/* Expandable content */}
+      <div
+        className={`
+          grid transition-all duration-300 ease-out
+          ${isExpanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}
+        `}
+      >
+        <div className="overflow-hidden">
+          <div className="px-5 pb-5 pt-2 border-t border-navy-100">
+            {/* Courses grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              {visibleCourses.map((course) => (
+                <CourseCard key={course.id} course={course} />
+              ))}
+            </div>
 
-          {hasMore && (
-            <Link
-              to={`/courses?category=${encodeURIComponent(category)}`}
-              className="flex items-center justify-center gap-2 py-2 text-sm font-medium text-saffron-600 hover:text-saffron-700 transition-colors"
-            >
-              View all {courses.length} courses →
-            </Link>
-          )}
+            {/* View all link */}
+            {hasMore && (
+              <Link
+                to={`/courses?category=${encodeURIComponent(category)}`}
+                className="group mt-4 flex items-center justify-center gap-2 py-3 px-4 bg-cream-50 hover:bg-saffron-50 rounded-xl border border-cream-200 hover:border-saffron-200 transition-colors"
+              >
+                <span className="font-body text-sm font-semibold text-saffron-600 group-hover:text-saffron-700">
+                  View all {courses.length} courses
+                </span>
+                <ArrowRight className="w-4 h-4 text-saffron-500 group-hover:translate-x-0.5 transition-transform" />
+              </Link>
+            )}
+          </div>
         </div>
-      )}
+      </div>
     </div>
   )
 }
