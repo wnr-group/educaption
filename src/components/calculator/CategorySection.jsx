@@ -1,18 +1,57 @@
 import { useState } from 'react'
-import { ChevronDown, ArrowRight } from 'lucide-react'
+import { ChevronDown, ArrowRight, Calculator } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import CourseCard from './CourseCard'
+import { getFormulaBreakdown } from '../../lib/calculator'
+import { useCalculatorContext } from '../../context/CalculatorContext'
+import { useCalculator } from '../../hooks/useCalculator'
 
 /**
- * Collapsible category section with courses grid
- * Clean accordion-style with smooth animations
+ * Collapsible category section with courses grid and formula breakdown
  */
-export default function CategorySection({ category, courses, cutoff, maxCutoff, defaultExpanded = true }) {
+export default function CategorySection({ category, courses, cutoff, maxCutoff, formula, defaultExpanded = true }) {
   const [isExpanded, setIsExpanded] = useState(defaultExpanded)
+  const { marks, group } = useCalculatorContext()
+  const { getGroupById } = useCalculator()
 
   const visibleCourses = courses.slice(0, 3)
   const hasMore = courses.length > 3
   const percentage = ((cutoff || 0) / (maxCutoff || 200)) * 100
+
+  // Get formula breakdown
+  const selectedGroup = getGroupById(group)
+  const subjects = selectedGroup?.subjects || []
+
+  // Create marks lookup for formula breakdown
+  const marksLookup = {}
+  const SUBJECT_CODE_MAP = {
+    'M': ['Mathematics', 'Maths'],
+    'P': ['Physics'],
+    'C': ['Chemistry'],
+    'B': ['Biology'],
+    'BOT': ['Botany'],
+    'ZOO': ['Zoology'],
+    'CS': ['Computer Science']
+  }
+
+  subjects.forEach((subject, index) => {
+    // Find code for this subject
+    for (const [code, names] of Object.entries(SUBJECT_CODE_MAP)) {
+      if (names.some(n => n.toLowerCase() === subject.toLowerCase())) {
+        marksLookup[code] = parseFloat(marks[subject]) || 0
+        break
+      }
+    }
+    // Positional codes for Law formula
+    marksLookup[`S${index + 1}`] = parseFloat(marks[subject]) || 0
+  })
+
+  // Handle Biology = Botany + Zoology
+  if (marksLookup['BOT'] && marksLookup['ZOO'] && !marksLookup['B']) {
+    marksLookup['B'] = (marksLookup['BOT'] + marksLookup['ZOO']) / 2
+  }
+
+  const breakdown = formula ? getFormulaBreakdown(formula, marksLookup) : []
 
   return (
     <div className="bg-white rounded-2xl border border-navy-100 overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
@@ -22,7 +61,6 @@ export default function CategorySection({ category, courses, cutoff, maxCutoff, 
         className="w-full flex items-center justify-between p-5 hover:bg-cream-50/50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 focus-visible:ring-inset"
       >
         <div className="flex items-center gap-4">
-          {/* Expand icon */}
           <div className={`
             flex items-center justify-center w-8 h-8 rounded-lg
             ${isExpanded ? 'bg-saffron-100' : 'bg-navy-50'}
@@ -36,7 +74,6 @@ export default function CategorySection({ category, courses, cutoff, maxCutoff, 
             />
           </div>
 
-          {/* Category info */}
           <div className="text-left">
             <h3 className="font-display text-lg font-bold text-navy-900">
               {category}
@@ -47,9 +84,7 @@ export default function CategorySection({ category, courses, cutoff, maxCutoff, 
           </div>
         </div>
 
-        {/* Cutoff score */}
         <div className="flex items-center gap-4">
-          {/* Mini progress bar */}
           <div className="hidden sm:block w-24">
             <div className="h-1.5 bg-navy-100 rounded-full overflow-hidden">
               <div
@@ -78,7 +113,51 @@ export default function CategorySection({ category, courses, cutoff, maxCutoff, 
         `}
       >
         <div className="overflow-hidden">
-          <div className="px-5 pb-5 pt-2 border-t border-navy-100">
+          <div className="px-5 pb-5 border-t border-navy-100">
+
+            {/* Formula Breakdown */}
+            {breakdown.length > 0 && (
+              <div className="mt-4 mb-5 p-4 bg-gradient-to-br from-navy-50 to-cream-50 rounded-xl border border-navy-100">
+                <div className="flex items-center gap-2 mb-3">
+                  <Calculator className="w-4 h-4 text-navy-500" />
+                  <span className="font-body text-xs font-semibold text-navy-600 uppercase tracking-wider">
+                    How your cutoff is calculated
+                  </span>
+                </div>
+
+                <div className="flex flex-wrap items-center gap-2">
+                  {breakdown.map((item, index) => (
+                    <div key={index} className="flex items-center gap-1">
+                      {index > 0 && (
+                        <span className="text-navy-400 font-mono text-sm mx-1">+</span>
+                      )}
+                      <div className="flex items-center bg-white rounded-lg border border-navy-200 overflow-hidden">
+                        <div className="px-2.5 py-1.5 bg-navy-50 border-r border-navy-200">
+                          <span className="font-body text-xs text-navy-500">{item.label}</span>
+                        </div>
+                        <div className="px-2.5 py-1.5 flex items-center gap-1.5">
+                          <span className="font-display font-bold text-navy-800">{item.mark}</span>
+                          <span className="font-mono text-xs text-navy-400">{item.weight}</span>
+                          <span className="text-navy-300">=</span>
+                          <span className="font-display font-bold text-saffron-600">{item.contribution.toFixed(1)}</span>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                  <span className="text-navy-400 font-mono text-sm mx-2">=</span>
+                  <div className="px-3 py-1.5 bg-saffron-100 rounded-lg border border-saffron-200">
+                    <span className="font-display font-bold text-saffron-700">{(cutoff || 0).toFixed(2)}</span>
+                  </div>
+                </div>
+
+                {formula && (
+                  <p className="mt-3 font-mono text-xs text-navy-400">
+                    Formula: {formula}
+                  </p>
+                )}
+              </div>
+            )}
+
             {/* Courses grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
               {visibleCourses.map((course) => (

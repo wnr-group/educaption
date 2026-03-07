@@ -171,8 +171,10 @@ export function useCalculator() {
       }
     })
 
-    // Sort categories by cutoff (highest first) and return as array
-    return Object.values(categoryMap).sort((a, b) => b.cutoff - a.cutoff)
+    // Sort categories by cutoff (highest first) and filter out 0 cutoffs (formula couldn't be calculated)
+    return Object.values(categoryMap)
+      .filter(cat => cat.cutoff > 0)
+      .sort((a, b) => b.cutoff - a.cutoff)
   }, [admissionBodies])
 
   return {

@@ -304,6 +304,87 @@ export function filterEligibleCourses(courses, eligibleBodyIds) {
 }
 
 /**
+ * Parse formula and return breakdown of each component's contribution
+ * @param {string} formula - Formula like "M + P/2 + C/2"
+ * @param {Object} marks - Marks lookup with subject codes as keys
+ * @returns {Array} Array of { subject, mark, weight, contribution }
+ */
+export function getFormulaBreakdown(formula, marks) {
+  if (!formula || typeof formula !== 'string') return []
+
+  // Handle special formulas
+  if (formula.trim().toUpperCase() === 'AVG') {
+    const validMarks = Object.entries(marks).filter(([k, v]) =>
+      typeof v === 'number' && v > 0 && !k.startsWith('S')
+    )
+    const avg = validMarks.reduce((sum, [, v]) => sum + v, 0) / validMarks.length
+    return [{
+      label: 'Average of all subjects',
+      mark: avg.toFixed(1),
+      weight: '1',
+      contribution: avg
+    }]
+  }
+
+  const breakdown = []
+  const subjectNames = {
+    'M': 'Mathematics',
+    'P': 'Physics',
+    'C': 'Chemistry',
+    'B': 'Biology',
+    'BOT': 'Botany',
+    'ZOO': 'Zoology',
+    'CS': 'Computer Science',
+    'S3': 'Subject 3',
+    'S4': 'Subject 4',
+    'S5': 'Subject 5',
+    'S6': 'Subject 6'
+  }
+
+  // Parse formula components like "M + P/2 + C/2" or "(S3 + S4 + S5 + S6) / 4"
+  const upperFormula = formula.toUpperCase()
+
+  // Check for average formula pattern (S3 + S4 + S5 + S6) / 4
+  if (upperFormula.includes('S3') && upperFormula.includes('S4')) {
+    const subjects = ['S3', 'S4', 'S5', 'S6']
+    subjects.forEach(code => {
+      const mark = marks[code] || 0
+      breakdown.push({
+        label: subjectNames[code] || code,
+        mark: mark,
+        weight: '÷4',
+        contribution: mark / 4
+      })
+    })
+    return breakdown
+  }
+
+  // Parse individual terms like "M", "P/2", "C/2", "B/2"
+  const termRegex = /([A-Z]+)(?:\/(\d+))?/g
+  let match
+
+  while ((match = termRegex.exec(upperFormula)) !== null) {
+    const code = match[1]
+    const divisor = match[2] ? parseInt(match[2]) : 1
+
+    // Skip LIST_ placeholders and positional codes
+    if (code.startsWith('LIST') || (code.startsWith('S') && code.length === 2)) continue
+
+    const mark = marks[code] || 0
+    const contribution = mark / divisor
+
+    breakdown.push({
+      label: subjectNames[code] || code,
+      mark: mark,
+      weight: divisor > 1 ? `÷${divisor}` : '×1',
+      contribution: contribution
+    })
+  }
+
+  return breakdown
+}
+
+/**
  * Validates marks input
  * @param {Object} marks - Object with subject names as keys and marks as values
  * @param {Array<string>} subjects - Required subject names
