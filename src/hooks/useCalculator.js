@@ -148,12 +148,16 @@ export function useCalculator() {
 
       const category = body.category || 'Other'
       const cutoffResult = cutoffResults.find(r => r.admissionBodyName === body.name)
+      const courseCutoff = cutoffResult?.cutoff || 0
+
+      // Skip courses with 0 cutoff (formula couldn't be calculated for student's group)
+      if (courseCutoff === 0) return
 
       if (!categoryMap[category]) {
         categoryMap[category] = {
           category,
           courses: [],
-          cutoff: cutoffResult?.cutoff || 0,
+          cutoff: courseCutoff,
           maxCutoff: cutoffResult?.maxCutoff || 200,
           formula: cutoffResult?.formula || body.default_formula || null
         }
@@ -162,7 +166,7 @@ export function useCalculator() {
       categoryMap[category].courses.push({
         ...course,
         admissionBodyName: body.name,
-        cutoff: cutoffResult?.cutoff || 0
+        cutoff: courseCutoff
       })
 
       // Update category cutoff to highest among its courses
