@@ -72,11 +72,12 @@ export function useCalculator() {
 
   /**
    * Get eligible courses based on calculated cutoffs
+   * Note: course.admission_body_id is the name (e.g., "TNEA"), not the Airtable record ID
    */
   const getEligibleCourses = useCallback((cutoffResults) => {
-    const eligibleBodyIds = cutoffResults.map(r => r.admissionBodyId)
+    const eligibleBodyNames = cutoffResults.map(r => r.admissionBodyName)
     return courses.filter(course =>
-      eligibleBodyIds.includes(course.admission_body_id)
+      eligibleBodyNames.includes(course.admission_body_id)
     )
   }, [courses])
 
@@ -110,26 +111,69 @@ export function useCalculator() {
 
   /**
    * Group courses by admission body for display
+   * Note: course.admission_body_id is the name (e.g., "TNEA"), not the Airtable record ID
    */
   const coursesByAdmissionBody = useMemo(() => {
     const grouped = {}
 
     courses.forEach(course => {
-      const bodyId = course.admission_body_id
-      if (!bodyId) return
+      const bodyName = course.admission_body_id
+      if (!bodyName) return
 
-      if (!grouped[bodyId]) {
-        const body = admissionBodies.find(b => b.id === bodyId)
-        grouped[bodyId] = {
+      if (!grouped[bodyName]) {
+        const body = admissionBodies.find(b => b.name === bodyName)
+        grouped[bodyName] = {
           admissionBody: body,
           courses: []
         }
       }
-      grouped[bodyId].courses.push(course)
+      grouped[bodyName].courses.push(course)
     })
 
     return Object.values(grouped).filter(g => g.admissionBody)
   }, [courses, admissionBodies])
+
+  /**
+   * Group eligible courses by category for results display
+   * @param {Array} eligibleCourses - Courses the student is eligible for
+   * @param {Array} cutoffResults - Calculated cutoffs by admission body
+   * @returns {Array} Courses grouped by category with cutoff info
+   */
+  const groupCoursesByCategory = useCallback((eligibleCourses, cutoffResults) => {
+    const categoryMap = {}
+
+    eligibleCourses.forEach(course => {
+      const body = admissionBodies.find(b => b.name === course.admission_body_id)
+      if (!body) return
+
+      const category = body.category || 'Other'
+      const cutoffResult = cutoffResults.find(r => r.admissionBodyName === body.name)
+
+      if (!categoryMap[category]) {
+        categoryMap[category] = {
+          category,
+          courses: [],
+          cutoff: cutoffResult?.cutoff || 0,
+          maxCutoff: cutoffResult?.maxCutoff || 200
+        }
+      }
+
+      categoryMap[category].courses.push({
+        ...course,
+        admissionBodyName: body.name,
+        cutoff: cutoffResult?.cutoff || 0
+      })
+
+      // Update category cutoff to highest among its courses
+      if (cutoffResult && cutoffResult.cutoff > categoryMap[category].cutoff) {
+        categoryMap[category].cutoff = cutoffResult.cutoff
+        categoryMap[category].maxCutoff = cutoffResult.maxCutoff
+      }
+    })
+
+    // Sort categories by cutoff (highest first) and return as array
+    return Object.values(categoryMap).sort((a, b) => b.cutoff - a.cutoff)
+  }, [admissionBodies])
 
   return {
     // Data
@@ -155,6 +199,7 @@ export function useCalculator() {
     getTranslatedSubjectsForGroup,
     calculateCutoffs,
     getEligibleCourses,
-    validateGroupMarks
+    validateGroupMarks,
+    groupCoursesByCategory
   }
 }
