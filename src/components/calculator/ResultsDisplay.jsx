@@ -190,6 +190,7 @@ export default function ResultsDisplay() {
                 courses={cat.courses}
                 cutoff={cat.cutoff}
                 maxCutoff={cat.maxCutoff}
+                formula={cat.formula}
                 defaultExpanded={index === 0}
               />
             ))}

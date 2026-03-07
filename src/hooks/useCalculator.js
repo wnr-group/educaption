@@ -154,7 +154,8 @@ export function useCalculator() {
           category,
           courses: [],
           cutoff: cutoffResult?.cutoff || 0,
-          maxCutoff: cutoffResult?.maxCutoff || 200
+          maxCutoff: cutoffResult?.maxCutoff || 200,
+          formula: cutoffResult?.formula || body.default_formula || null
         }
       }
 
