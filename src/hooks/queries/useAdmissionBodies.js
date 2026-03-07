@@ -17,7 +17,8 @@ export function useAdmissionBodies() {
       description: body.Description,
       website: body.Website,
       max_cutoff: body.Max_Cutoff || 200,
-      default_formula: body.Default_Formula
+      default_formula: body.Default_Formula,
+      category: body.Category || 'Other'
     }))
   })
 }
