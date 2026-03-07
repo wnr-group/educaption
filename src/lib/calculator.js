@@ -197,27 +197,35 @@ export function calculateCourseCutoffs(courses, admissionBodies, group, marks, s
 
   const marksLookup = createMarksLookup(group.subjects || [], marks)
 
-  // Create lookups for efficient access
-  const bodyLookup = {}
+  // Create lookup by name (Admission_Body in Airtable is a text field with name like "TNDALU")
+  const bodyLookupByName = {}
   admissionBodies.forEach(body => {
-    bodyLookup[body.id] = body
+    bodyLookupByName[body.name] = body
   })
 
   const listLookup = {}
   subjectLists.forEach(list => {
     listLookup[list.id] = list.subjects
+    listLookup[list.name] = list.subjects
   })
 
   // Group results by admission body
   const resultsByBody = {}
 
   for (const course of courses) {
-    // Check if group is eligible for this course
-    const isEligible = course.eligible_groups?.includes(group.code)
+    // Eligible_Groups is text like "1, 2, 4" - match against group.code
+    const groupCode = String(group.code)
+    const isEligible = course.eligible_groups?.includes(groupCode)
+
     if (!isEligible) continue
 
-    const admissionBody = bodyLookup[course.admission_body_id]
-    if (!admissionBody) continue
+    // Admission_Body is a text field with the name (e.g., "TNDALU")
+    const admissionBody = bodyLookupByName[course.admission_body_id]
+
+    if (!admissionBody) {
+      console.log('No admission body match for:', course.admission_body_id)
+      continue
+    }
 
     // Use course formula override or admission body default
     const formula = course.formula_override || admissionBody.default_formula

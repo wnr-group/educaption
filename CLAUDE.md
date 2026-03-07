@@ -52,3 +52,29 @@
 - Do not stop after one screenshot pass
 - Do not use `transition-all`
 - Do not use default Tailwind blue/indigo as primary color
+
+## Data Entry from Source Documents
+
+### HARD RULES - NO EXCEPTIONS
+1. **NEVER guess or assume data** - If a source document exists, READ IT FIRST before creating any data files
+2. **NEVER paraphrase formulas** - Copy them EXACTLY as written in the source
+3. **ALWAYS verify against source** - After creating any data file, re-read the source and compare line-by-line
+4. **NEVER batch similar items** - Each row must be verified individually against the source
+5. **When in doubt, ASK** - If the source is ambiguous, stop and ask the user
+
+### Data Entry Process
+1. Read the entire source document first
+2. Create a mapping table showing: Source Row → Data File Row → Exact Values
+3. Show this mapping to the user BEFORE creating files
+4. After creating files, do a verification pass comparing source ↔ output
+5. Report any discrepancies
+
+### Formula Handling
+- Formulas must be EXACTLY as written in source (e.g., `Biology/2 + Physics/2` not `B/2 + P/2`)
+- If converting to code-friendly format, show BOTH versions for user approval
+- Never simplify, combine, or "improve" formulas without explicit approval
+
+### Red Flags - STOP IMMEDIATELY
+- "This looks similar to..." → STOP, verify each item individually
+- "I'll use the same formula for..." → STOP, check source for each course
+- "This probably means..." → STOP, ask user for clarification

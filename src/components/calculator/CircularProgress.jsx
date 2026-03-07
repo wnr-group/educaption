@@ -39,7 +39,7 @@ export default function CircularProgress({ value, label, subtitle }) {
             strokeLinecap="round"
             strokeDasharray={circumference}
             strokeDashoffset={strokeDashoffset}
-            className="transition-all duration-1000 ease-out"
+            style={{ transition: 'stroke-dashoffset 1s ease-out' }}
           />
           <defs>
             <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="0%">

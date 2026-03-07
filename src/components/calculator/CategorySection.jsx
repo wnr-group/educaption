@@ -36,7 +36,7 @@ export default function CategorySection({ category, courses, cutoff, maxCutoff, 
 
         <div className="text-right">
           <p className="font-display text-xl font-bold text-saffron-600">
-            {cutoff.toFixed(2)}
+            {(cutoff || 0).toFixed(2)}
           </p>
           <p className="font-body text-xs text-navy-400">
             / {maxCutoff}
