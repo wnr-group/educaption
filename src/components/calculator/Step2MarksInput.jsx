@@ -17,6 +17,17 @@ export default function Step2MarksInput() {
   const translatedSubjects = getTranslatedSubjectsForGroup(group, language)
   const validation = validateGroupMarks(group, marks)
 
+  // Language subjects are always required (fixed labels)
+  const languageSubjects = ['Language 1', 'Language 2']
+
+  // All subjects: 2 languages + 4 group subjects
+  const allSubjects = [...languageSubjects, ...subjects]
+  const allTranslatedSubjects = [
+    language === 'ta' ? 'மொழி 1' : 'Language 1',
+    language === 'ta' ? 'மொழி 2' : 'Language 2',
+    ...translatedSubjects
+  ]
+
   const handleMarkChange = (subject, value) => {
     if (value === '' || /^\d*\.?\d*$/.test(value)) {
       updateSingleMark(subject, value)
@@ -37,13 +48,13 @@ export default function Step2MarksInput() {
     })
   }
 
-  const allMarksFilled = subjects.every(subject => {
+  const allMarksFilled = allSubjects.every(subject => {
     const mark = marks[subject]
     return mark !== undefined && mark !== '' && mark !== null
   })
 
   const totalMarks = Object.values(marks).reduce((sum, mark) => sum + (parseFloat(mark) || 0), 0)
-  const maxMarks = subjects.length * 100
+  const maxMarks = allSubjects.length * 100
   const percentComplete = allMarksFilled ? (totalMarks / maxMarks) * 100 : 0
 
   return (
@@ -70,42 +81,41 @@ export default function Step2MarksInput() {
 
       {/* Marks Input Grid */}
       <div className="space-y-4 mb-8">
-        {subjects.map((subject, index) => (
+        {allSubjects.map((subject, index) => (
           <div
             key={index}
-            className="
+            className={`
               flex items-center gap-4
               p-4
-              bg-cream-50
-              border border-navy-100
+              ${index < 2 ? 'bg-saffron-50 border-saffron-200' : 'bg-cream-50 border-navy-100'}
+              border
               rounded-xl
               transition-all duration-200
               focus-within:border-saffron-300
               focus-within:shadow-soft
-            "
+            `}
           >
             {/* Subject Number */}
-            <span className="
+            <span className={`
               w-10 h-10 flex-shrink-0
-              bg-white
+              ${index < 2 ? 'bg-saffron-100 text-saffron-700' : 'bg-white text-navy-600'}
               rounded-xl
               flex items-center justify-center
               font-display font-bold text-sm
-              text-navy-600
               border border-navy-100
-            ">
-              {index + 1}
+            `}>
+              {index < 2 ? 'L' + (index + 1) : index - 1}
             </span>
 
             {/* Subject Name */}
             <div className="flex-1 min-w-0">
               <label className="font-body font-medium text-navy-800 block mb-1">
-                {translatedSubjects[index] || subject}
+                {allTranslatedSubjects[index] || subject}
               </label>
               <input
                 type="text"
                 inputMode="decimal"
-                placeholder="Enter marks (0-100)"
+                placeholder={t('calculator.step2.enterMarks') || "Enter marks (0-100)"}
                 value={marks[subject] || ''}
                 onChange={(e) => handleMarkChange(subject, e.target.value)}
                 className="
