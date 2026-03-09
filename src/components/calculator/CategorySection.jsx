@@ -25,15 +25,23 @@ export default function CategorySection({ category, courses, cutoff, maxCutoff, 
   // Create marks lookup for formula breakdown
   const marksLookup = {}
   const SUBJECT_CODE_MAP = {
-    'M': ['Mathematics', 'Maths'],
+    'M': ['Mathematics', 'Maths', 'Business Mathematics', 'Business Mathematics & Statistics'],
     'P': ['Physics'],
     'C': ['Chemistry'],
     'B': ['Biology'],
     'BOT': ['Botany'],
     'ZOO': ['Zoology'],
-    'CS': ['Computer Science']
+    'CS': ['Computer Science', 'Computer Applications'],
+    'E': ['Economics'],
+    'CO': ['Commerce'],
+    'A': ['Accountancy']
   }
 
+  // Add language subjects as S1 and S2
+  marksLookup['S1'] = parseFloat(marks['Language 1']) || 0
+  marksLookup['S2'] = parseFloat(marks['Language 2']) || 0
+
+  // Map group subjects to codes and S3-S6
   subjects.forEach((subject, index) => {
     // Find code for this subject
     for (const [code, names] of Object.entries(SUBJECT_CODE_MAP)) {
@@ -42,8 +50,8 @@ export default function CategorySection({ category, courses, cutoff, maxCutoff, 
         break
       }
     }
-    // Positional codes for Law formula
-    marksLookup[`S${index + 1}`] = parseFloat(marks[subject]) || 0
+    // Positional codes S3-S6 for the 4 group subjects
+    marksLookup[`S${index + 3}`] = parseFloat(marks[subject]) || 0
   })
 
   // Handle Biology = Botany + Zoology
@@ -51,7 +59,13 @@ export default function CategorySection({ category, courses, cutoff, maxCutoff, 
     marksLookup['B'] = (marksLookup['BOT'] + marksLookup['ZOO']) / 2
   }
 
-  const breakdown = formula ? getFormulaBreakdown(formula, marksLookup) : []
+  // Create subject name mapping for S3-S6
+  const subjectNameMap = {}
+  subjects.forEach((subject, index) => {
+    subjectNameMap[`S${index + 3}`] = subject
+  })
+
+  const breakdown = formula ? getFormulaBreakdown(formula, marksLookup, subjectNameMap) : []
 
   return (
     <div className="bg-white rounded-2xl border border-navy-100 overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">

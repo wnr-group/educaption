@@ -318,9 +318,10 @@ export function filterEligibleCourses(courses, eligibleBodyIds) {
  * Parse formula and return breakdown of each component's contribution
  * @param {string} formula - Formula like "M + P/2 + C/2"
  * @param {Object} marks - Marks lookup with subject codes as keys
+ * @param {Object} customSubjectNames - Optional mapping of codes to custom subject names
  * @returns {Array} Array of { subject, mark, weight, contribution }
  */
-export function getFormulaBreakdown(formula, marks) {
+export function getFormulaBreakdown(formula, marks, customSubjectNames = {}) {
   if (!formula || typeof formula !== 'string') return []
 
   // Handle special formulas
@@ -338,7 +339,7 @@ export function getFormulaBreakdown(formula, marks) {
   }
 
   const breakdown = []
-  const subjectNames = {
+  const defaultSubjectNames = {
     'M': 'Mathematics',
     'P': 'Physics',
     'C': 'Chemistry',
@@ -346,11 +347,17 @@ export function getFormulaBreakdown(formula, marks) {
     'BOT': 'Botany',
     'ZOO': 'Zoology',
     'CS': 'Computer Science',
+    'E': 'Economics',
+    'CO': 'Commerce',
+    'A': 'Accountancy',
     'S3': 'Subject 3',
     'S4': 'Subject 4',
     'S5': 'Subject 5',
     'S6': 'Subject 6'
   }
+
+  // Merge custom names with defaults
+  const subjectNames = { ...defaultSubjectNames, ...customSubjectNames }
 
   // Parse formula components like "M + P/2 + C/2" or "(S3 + S4 + S5 + S6) / 4"
   const upperFormula = formula.toUpperCase()
