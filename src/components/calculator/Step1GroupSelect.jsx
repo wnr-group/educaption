@@ -23,12 +23,17 @@ export default function Step1GroupSelect() {
     }
   }
 
-  const formattedOptions = groups.map(g => ({
-    value: g.id,
-    label: language === 'ta' && g.name_ta
-      ? `${g.code} - ${g.name_ta}`
-      : `${t('calculator.steps.group')} ${g.code} - ${g.name}`
-  }))
+  const formattedOptions = groups.map(g => {
+    const subjectList = (language === 'ta' && g.name_ta)
+      ? g.name_ta.split(',').slice(0, 2).join(',')
+      : (g.subjects || []).slice(0, 2).join(', ')
+    const streamLabel = g.stream || 'Group'
+    const groupNum = g.code.split('-')[1] || g.code
+    return {
+      value: g.id,
+      label: `${streamLabel} - Group ${groupNum} (${subjectList}...)`
+    }
+  })
 
   if (isLoading) {
     return (
