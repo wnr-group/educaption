@@ -55,28 +55,71 @@ VITE_AIRTABLE_API_KEY=patXXXXXXXXXXXXXX
 VITE_AIRTABLE_BASE_ID=appXXXXXXXXXXXXXX
 ```
 
+---
+
 ## Formula Reference
+
+### Admission Bodies & Formulas
 
 | Admission Body | Formula | Max Cutoff |
 |----------------|---------|------------|
-| TNEA | `M + P/2 + C/2` | 200 |
-| TNDALU | `(S3 + S4 + S5 + S6) / 4` | 100 |
-| TANUVAS - BVSC | `B + P/2 + C/2` | 200 |
-| TANUVAS - B.Tech | `B/2 + P/2 + C/2 + M/2` | 200 |
-| TNAU - Agriculture | `B/2 + P/2 + C/2 + LIST_A/2` | 200 |
-| TNAU - Agri Engineering | `M + P/2 + C/2` | 200 |
-| TNJFU - Fisheries | `B + P/2 + C/2` | 200 |
-| TN Paramedical | `B + P/2 + C/2` | 200 |
+| TNEA | Maths + Physics/2 + Chemistry/2 | 200 |
+| TNEA - Vocational | Maths + theory/2 + practical/2 | 200 |
+| TNDALU | (S3 + S4 + S5 + S6) / 4 | 100 |
+| TANUVAS - BVSC | Biology + Physics/2 + Chemistry/2 | 200 |
+| TANUVAS - BVSC - Vocational | Biology + theory/2 + practical/2 | 200 |
+| TANUVAS - B.Tech | Biology/2 + Physics/2 + Chemistry/2 + Maths/2 | 200 |
+| TNAU - Agriculture | Biology/2 + Physics/2 + Chemistry/2 + LIST_A/2 | 200 |
+| TNAU - Agriculture - BotZoo | Physics/2 + Chemistry/2 + Botany/2 + Zoology/2 | 200 |
+| TNAU - Agriculture - Vocational | Biology/2 + computer tech/2 + theory/2 + practical/2 | 200 |
+| TNAU - Food Nutrition | Biology/2 + Physics/2 + Chemistry/2 + LIST_B/2 | 200 |
+| TNAU - Food Nutrition - BotZoo | Physics/2 + Chemistry/2 + Botany/2 + Zoology/2 | 200 |
+| TNAU - Agri Engineering | Biology/2 + Physics/2 + Chemistry/2 + LIST_C/2 | 200 |
+| TNJFU - Fisheries | Biology/2 + Physics/2 + Chemistry/2 + LIST_D/2 | 200 |
+| TNJFU - Fisheries - BotZoo | Physics/2 + Chemistry/2 + Botany/2 + Zoology/2 | 200 |
+| TNJFU - Fisheries - Vocational | Biology/2 + computer tech/2 + theory/2 + practical/2 | 200 |
+| TNJFU - B.Tech | Maths/2 + Physics/2 + Chemistry/2 + LIST_E/2 | 200 |
+| TNJFU - B.Voc | AVG (average of all subjects) | 100 |
+| TN Paramedical - Pharmacy | Physics/2 + Chemistry/2 + LIST_F/2 | 200 |
+| TN Paramedical - Pharmacy - BotZoo | Physics/2 + Chemistry/2 + Botany/2 + Zoology/2 | 200 |
+| TN Paramedical - Nursing | Biology + Physics/2 + Chemistry/2 | 200 |
+| TN Paramedical - Nursing - BotZoo | Physics/2 + Chemistry/2 + Botany/2 + Zoology/2 | 200 |
+
+### Subject Lists
+
+| List | Subjects |
+|------|----------|
+| LIST_A | Mathematics, Microbiology, Biochemistry, Computer Science, Home Science |
+| LIST_B | Mathematics, Microbiology, Biochemistry, Computer Science, Home Science, Nutrition and Dietetics |
+| LIST_C | Mathematics, Computer Science |
+| LIST_D | Mathematics, Microbiology, Biochemistry, Computer Science, Home Science |
+| LIST_E | Biology, Computer Science |
+| LIST_F | Biology, Mathematics (Priority: Biology first, then Mathematics) |
 
 ### Formula Variables
 
 | Code | Subject |
 |------|---------|
-| M | Mathematics |
-| P | Physics |
-| C | Chemistry |
-| B | Biology |
-| BOT | Botany |
-| ZOO | Zoology |
+| Maths / M | Mathematics |
+| Physics / P | Physics |
+| Chemistry / C | Chemistry |
+| Biology / B | Biology |
+| Botany / BOT | Botany |
+| Zoology / ZOO | Zoology |
 | S3-S6 | 3rd to 6th subjects (for Law) |
-| LIST_A-E | Optional subject from list |
+| theory | Vocational theory subject |
+| practical | Vocational practical subject |
+| computer tech | Computer Technology (Vocational) |
+| LIST_A-F | Best matching subject from list |
+
+---
+
+## Key Rules
+
+1. **Vocational students** use different formulas with theory/practical subjects
+2. **Paramedical courses** do NOT accept vocational stream students
+3. **BotZoo formula** is only for SCI-14 (Botany+Zoology) group
+4. **Law courses** accept ALL groups
+5. **LIST_F priority**: Use Biology first; only use Mathematics if Biology not available
+
+See `MAPPING-LOGIC.md` for detailed group eligibility mapping.

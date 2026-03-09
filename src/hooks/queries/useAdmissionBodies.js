@@ -2,6 +2,24 @@ import { useQuery } from '@tanstack/react-query'
 import { getAdmissionBodies } from '../../lib/airtable'
 
 /**
+ * Parse text field - returns string value or null
+ */
+function parseTextField(value) {
+  if (!value) return null
+  if (typeof value === 'string') return value.trim()
+  return String(value)
+}
+
+/**
+ * Parse number field - returns number or default
+ */
+function parseNumberField(value, defaultValue = 0) {
+  if (value === null || value === undefined) return defaultValue
+  const num = Number(value)
+  return isNaN(num) ? defaultValue : num
+}
+
+/**
  * Fetch all admission bodies (TNEA, TNDALU, TNAU, etc.)
  * @returns {import('@tanstack/react-query').UseQueryResult} Query result with admission bodies data
  */
@@ -12,13 +30,13 @@ export function useAdmissionBodies() {
     staleTime: 1000 * 60 * 5, // 5 minutes
     select: (data) => data.map(body => ({
       id: body.id,
-      name: body.Name,
-      name_ta: body.Name_Tamil,
-      description: body.Description,
-      website: body.Website,
-      max_cutoff: body.Max_Cutoff || 200,
-      default_formula: body.Default_Formula,
-      category: body.Category || 'Other'
+      name: parseTextField(body.Name),
+      name_ta: parseTextField(body.Name_Tamil),
+      description: parseTextField(body.Description),
+      website: parseTextField(body.Website),
+      max_cutoff: parseNumberField(body.Max_Cutoff, 200),
+      default_formula: parseTextField(body.Default_Formula),
+      category: parseTextField(body.Category) || 'Other'
     }))
   })
 }
@@ -31,6 +49,21 @@ export function useAdmissionBodies() {
 export function useAdmissionBodyById(bodyId) {
   const { data: bodies = [], ...rest } = useAdmissionBodies()
   const body = bodies.find(b => b.id === bodyId) || null
+
+  return {
+    ...rest,
+    data: body
+  }
+}
+
+/**
+ * Fetch a single admission body by name (e.g., "TNEA", "TNDALU")
+ * @param {string} bodyName - The name of the admission body
+ * @returns {import('@tanstack/react-query').UseQueryResult} Query result with admission body data
+ */
+export function useAdmissionBodyByName(bodyName) {
+  const { data: bodies = [], ...rest } = useAdmissionBodies()
+  const body = bodies.find(b => b.name === bodyName) || null
 
   return {
     ...rest,

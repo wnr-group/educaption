@@ -12,6 +12,7 @@
 
 /**
  * Subject code mapping for formula parsing
+ * Maps short codes to possible subject names
  */
 const SUBJECT_CODE_MAP = {
   'M': ['Mathematics', 'Maths', 'MATHEMATICS', 'MATHS', 'Business Mathematics', 'Business Mathematics & Statistics'],
@@ -33,7 +34,25 @@ const SUBJECT_CODE_MAP = {
   'HS': ['Home Science', 'HOME SCIENCE'],
   'BC': ['Bio-Chemistry', 'BIO-CHEMISTRY', 'Biochemistry'],
   'MB': ['Micro-Biology', 'MICRO-BIOLOGY', 'Microbiology'],
-  'ST': ['Statistics', 'STATISTICS']
+  'ST': ['Statistics', 'STATISTICS'],
+  'ND': ['Nutrition and Dietetics', 'Nutrition & Dietetics', 'NUTRITION AND DIETETICS']
+}
+
+/**
+ * Maps full subject names in formulas to codes
+ * Used to parse formulas like "Biology/2 + Physics/2 + Chemistry/2"
+ */
+const FORMULA_SUBJECT_MAP = {
+  'MATHS': 'M',
+  'MATHEMATICS': 'M',
+  'PHYSICS': 'P',
+  'CHEMISTRY': 'C',
+  'BIOLOGY': 'B',
+  'BOTANY': 'BOT',
+  'ZOOLOGY': 'ZOO',
+  'COMPUTER TECH': 'CS',
+  'THEORY': 'THEORY',
+  'PRACTICAL': 'PRACTICAL'
 }
 
 /**
@@ -82,6 +101,18 @@ function createMarksLookup(subjects, marks) {
 
     // S3 through S6 for the 4 group subjects
     lookup[`S${index + 3}`] = mark
+
+    // Handle vocational subjects - detect theory/practical
+    const subjectLower = subject.toLowerCase()
+    if (subjectLower.includes('theory')) {
+      lookup['THEORY'] = mark
+    }
+    if (subjectLower.includes('practical')) {
+      lookup['PRACTICAL'] = mark
+    }
+    if (subjectLower.includes('computer tech') || subjectLower.includes('computer technology')) {
+      lookup['CS'] = mark
+    }
   })
 
   // Handle Biology = Botany + Zoology average if both present but B is not
@@ -101,20 +132,22 @@ function createMarksLookup(subjects, marks) {
 /**
  * Resolves subject list placeholder in formula (LIST_A, LIST_B, etc.)
  * Finds the matching subject from the list that the student has
+ * For LIST_F: Priority is Biology first, then Mathematics
  *
  * @param {string} formula - Formula with LIST_X placeholder
  * @param {Object} marks - Marks lookup
  * @param {Array<string>} subjectListSubjects - Subjects in the list
- * @returns {string} Formula with LIST_X replaced by actual mark
+ * @returns {string|null} Formula with LIST_X replaced by actual mark, or null if student has no subject from the list
  */
 function resolveSubjectList(formula, marks, subjectListSubjects) {
-  const listMatch = formula.match(/LIST_[A-E]/i)
+  const listMatch = formula.match(/LIST_[A-F]/i)
   if (!listMatch || !subjectListSubjects || subjectListSubjects.length === 0) {
     return formula
   }
 
   // Find which subject from the list the student has
-  let listSubjectMark = 0
+  // LIST_F has priority: Biology first, then Mathematics
+  let listSubjectMark = null
   for (const subject of subjectListSubjects) {
     const code = getSubjectCode(subject)
     if (marks[code] !== undefined && marks[code] > 0) {
@@ -123,7 +156,12 @@ function resolveSubjectList(formula, marks, subjectListSubjects) {
     }
   }
 
-  return formula.replace(/LIST_[A-E]/gi, listSubjectMark.toString())
+  // If student has no subject from the required list, return null to signal ineligibility
+  if (listSubjectMark === null) {
+    return null
+  }
+
+  return formula.replace(/LIST_[A-F]/gi, listSubjectMark.toString())
 }
 
 /**
@@ -144,12 +182,32 @@ function handleAvgFormula(formula, marks) {
 }
 
 /**
+ * Normalizes formula by replacing full subject names with codes
+ * e.g., "Biology/2 + Physics/2" -> "B/2 + P/2"
+ *
+ * @param {string} formula - Formula string
+ * @returns {string} Normalized formula with subject codes
+ */
+function normalizeFormula(formula) {
+  let normalized = formula.toUpperCase()
+
+  // Replace full subject names with codes (longest first to avoid partial matches)
+  const sortedSubjects = Object.keys(FORMULA_SUBJECT_MAP).sort((a, b) => b.length - a.length)
+  for (const subject of sortedSubjects) {
+    const code = FORMULA_SUBJECT_MAP[subject]
+    normalized = normalized.replace(new RegExp(subject, 'g'), code)
+  }
+
+  return normalized
+}
+
+/**
  * Calculates cutoff using formula string
  *
- * @param {string} formula - Formula like "M + P/2 + C/2"
+ * @param {string} formula - Formula like "M + P/2 + C/2" or "Biology/2 + Physics/2 + Chemistry/2"
  * @param {Object} marks - Marks lookup with subject codes as keys
  * @param {Array<string>} subjectListSubjects - Optional subject list for TNAU courses
- * @returns {number} Calculated cutoff rounded to 2 decimals
+ * @returns {number|null} Calculated cutoff rounded to 2 decimals, or null if ineligible (missing required subject)
  */
 export function calculateCutoff(formula, marks, subjectListSubjects = null) {
   if (!formula || typeof formula !== 'string') return 0
@@ -160,11 +218,16 @@ export function calculateCutoff(formula, marks, subjectListSubjects = null) {
     return Math.round(avgResult * 100) / 100
   }
 
-  let expression = formula.toUpperCase()
+  // Normalize formula (convert full subject names to codes)
+  let expression = normalizeFormula(formula)
 
   // Resolve subject list if present
   if (subjectListSubjects) {
     expression = resolveSubjectList(expression, marks, subjectListSubjects)
+    // If student has no subject from the required list, they're ineligible
+    if (expression === null) {
+      return null
+    }
   }
 
   // Sort codes by length (longest first) to avoid partial replacements
@@ -224,9 +287,16 @@ export function calculateCourseCutoffs(courses, admissionBodies, group, marks, s
   const resultsByBody = {}
 
   for (const course of courses) {
-    // Eligible_Groups is text like "1, 2, 4" - match against group.code
+    // Eligible_Groups can be array (from hook) or text "SCI-1, SCI-2, VOC-7" - match against group.code
     const groupCode = String(group.code)
-    const isEligible = course.eligible_groups?.includes(groupCode)
+    // Handle both array and string formats
+    let eligibleGroupsArray = []
+    if (Array.isArray(course.eligible_groups)) {
+      eligibleGroupsArray = course.eligible_groups
+    } else if (typeof course.eligible_groups === 'string') {
+      eligibleGroupsArray = course.eligible_groups.split(',').map(g => g.trim())
+    }
+    const isEligible = eligibleGroupsArray.includes(groupCode)
 
     if (!isEligible) continue
 
@@ -248,6 +318,9 @@ export function calculateCourseCutoffs(courses, admissionBodies, group, marks, s
       : null
 
     const cutoff = calculateCutoff(formula, marksLookup, subjectListSubjects)
+
+    // If cutoff is null, student is ineligible (missing required subject from list)
+    if (cutoff === null) continue
 
     // Group by admission body for cleaner display
     if (!resultsByBody[admissionBody.id]) {
@@ -316,7 +389,7 @@ export function filterEligibleCourses(courses, eligibleBodyIds) {
 
 /**
  * Parse formula and return breakdown of each component's contribution
- * @param {string} formula - Formula like "M + P/2 + C/2"
+ * @param {string} formula - Formula like "M + P/2 + C/2" or "Biology/2 + Physics/2"
  * @param {Object} marks - Marks lookup with subject codes as keys
  * @param {Object} customSubjectNames - Optional mapping of codes to custom subject names
  * @returns {Array} Array of { subject, mark, weight, contribution }
@@ -353,17 +426,19 @@ export function getFormulaBreakdown(formula, marks, customSubjectNames = {}) {
     'S3': 'Subject 3',
     'S4': 'Subject 4',
     'S5': 'Subject 5',
-    'S6': 'Subject 6'
+    'S6': 'Subject 6',
+    'THEORY': 'Theory',
+    'PRACTICAL': 'Practical'
   }
 
   // Merge custom names with defaults
   const subjectNames = { ...defaultSubjectNames, ...customSubjectNames }
 
-  // Parse formula components like "M + P/2 + C/2" or "(S3 + S4 + S5 + S6) / 4"
-  const upperFormula = formula.toUpperCase()
+  // Normalize formula first (convert full names to codes)
+  const normalizedFormula = normalizeFormula(formula)
 
   // Check for average formula pattern (S3 + S4 + S5 + S6) / 4
-  if (upperFormula.includes('S3') && upperFormula.includes('S4')) {
+  if (normalizedFormula.includes('S3') && normalizedFormula.includes('S4')) {
     const subjects = ['S3', 'S4', 'S5', 'S6']
     subjects.forEach(code => {
       const mark = marks[code] || 0
@@ -381,7 +456,7 @@ export function getFormulaBreakdown(formula, marks, customSubjectNames = {}) {
   const termRegex = /([A-Z]+)(?:\/(\d+))?/g
   let match
 
-  while ((match = termRegex.exec(upperFormula)) !== null) {
+  while ((match = termRegex.exec(normalizedFormula)) !== null) {
     const code = match[1]
     const divisor = match[2] ? parseInt(match[2]) : 1
 

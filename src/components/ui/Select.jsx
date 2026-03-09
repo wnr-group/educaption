@@ -2,8 +2,29 @@ import { forwardRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { ChevronDown } from 'lucide-react'
 
-const Select = forwardRef(({ label, error, options = [], className = '', ...props }, ref) => {
+const Select = forwardRef(({ label, error, options = [], grouped = false, className = '', ...props }, ref) => {
   const { t } = useTranslation()
+
+  const renderOptions = () => {
+    if (grouped && options.length > 0 && options[0].options) {
+      // Render grouped options with optgroup
+      return options.map(group => (
+        <optgroup key={group.label} label={group.label}>
+          {group.options.map(opt => (
+            <option key={opt.value} value={opt.value}>
+              {opt.label}
+            </option>
+          ))}
+        </optgroup>
+      ))
+    }
+    // Render flat options
+    return options.map(opt => (
+      <option key={opt.value} value={opt.value}>
+        {opt.label}
+      </option>
+    ))
+  }
 
   return (
     <div className="w-full">
@@ -40,11 +61,7 @@ const Select = forwardRef(({ label, error, options = [], className = '', ...prop
           {...props}
         >
           <option value="" className="text-navy-400">{t('common.select')}</option>
-          {options.map(opt => (
-            <option key={opt.value} value={opt.value}>
-              {opt.label}
-            </option>
-          ))}
+          {renderOptions()}
         </select>
         <div className="
           absolute right-4 top-1/2 -translate-y-1/2

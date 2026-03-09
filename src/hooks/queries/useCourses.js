@@ -14,13 +14,13 @@ function parseEligibleGroups(value) {
 }
 
 /**
- * Parse admission body - handles both linked record (array) and text field
+ * Parse text field - returns string value or null
+ * All Airtable fields are now text columns
  */
-function parseAdmissionBody(value) {
+function parseTextField(value) {
   if (!value) return null
-  if (Array.isArray(value)) return value[0] || null  // Linked record returns array
-  if (typeof value === 'string') return value        // Text field returns string
-  return null
+  if (typeof value === 'string') return value.trim()
+  return String(value)
 }
 
 /**
@@ -39,12 +39,11 @@ export function useCourses({ admissionBodyId } = {}) {
         id: course.id,
         name: course.Name,
         name_ta: course.Name_Tamil,
-        // Admission_Body is a text field containing the name (e.g., "TNDALU")
-        admission_body_id: course.Admission_Body,
-        formula_override: course.Formula_Override || null,
-        duration: course.Duration,
+        admission_body_id: parseTextField(course.Admission_Body),
+        formula_override: parseTextField(course.Formula_Override),
+        duration: parseTextField(course.Duration),
         eligible_groups: parseEligibleGroups(course.Eligible_Groups),
-        subject_list_id: course.Subject_List?.[0] || null
+        subject_list_id: parseTextField(course.Subject_List)
       }))
 
       // Filter by admission body if specified

@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import { ChevronDown, ArrowRight, Calculator } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { ChevronDown, Calculator } from 'lucide-react'
 import CourseCard from './CourseCard'
 import { getFormulaBreakdown } from '../../lib/calculator'
 import { useCalculatorContext } from '../../context/CalculatorContext'
@@ -11,11 +10,12 @@ import { useCalculator } from '../../hooks/useCalculator'
  */
 export default function CategorySection({ category, courses, cutoff, maxCutoff, formula, defaultExpanded = true }) {
   const [isExpanded, setIsExpanded] = useState(defaultExpanded)
+  const [showAllCourses, setShowAllCourses] = useState(false)
   const { marks, group } = useCalculatorContext()
   const { getGroupById } = useCalculator()
 
-  const visibleCourses = courses.slice(0, 3)
-  const hasMore = courses.length > 3
+  const visibleCourses = showAllCourses ? courses : courses.slice(0, 6)
+  const hasMore = courses.length > 6
   const percentage = ((cutoff || 0) / (maxCutoff || 200)) * 100
 
   // Get formula breakdown
@@ -179,17 +179,17 @@ export default function CategorySection({ category, courses, cutoff, maxCutoff, 
               ))}
             </div>
 
-            {/* View all link */}
+            {/* Show more/less toggle */}
             {hasMore && (
-              <Link
-                to={`/courses?category=${encodeURIComponent(category)}`}
-                className="group mt-4 flex items-center justify-center gap-2 py-3 px-4 bg-cream-50 hover:bg-saffron-50 rounded-xl border border-cream-200 hover:border-saffron-200 transition-colors"
+              <button
+                onClick={() => setShowAllCourses(!showAllCourses)}
+                className="group mt-4 w-full flex items-center justify-center gap-2 py-3 px-4 bg-cream-50 hover:bg-saffron-50 rounded-xl border border-cream-200 hover:border-saffron-200 transition-colors"
               >
                 <span className="font-body text-sm font-semibold text-saffron-600 group-hover:text-saffron-700">
-                  View all {courses.length} courses
+                  {showAllCourses ? 'Show fewer courses' : `Show all ${courses.length} courses`}
                 </span>
-                <ArrowRight className="w-4 h-4 text-saffron-500 group-hover:translate-x-0.5 transition-transform" />
-              </Link>
+                <ChevronDown className={`w-4 h-4 text-saffron-500 transition-transform ${showAllCourses ? 'rotate-180' : ''}`} />
+              </button>
             )}
           </div>
         </div>

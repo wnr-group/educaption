@@ -1,9 +1,9 @@
 // React Query hooks for data fetching (Airtable backend)
-export { useGroups, useGroupById } from './useGroups'
-export { useAdmissionBodies, useAdmissionBodyById } from './useAdmissionBodies'
+export { useGroups, useGroupById, useGroupByCode } from './useGroups'
+export { useAdmissionBodies, useAdmissionBodyById, useAdmissionBodyByName } from './useAdmissionBodies'
 export { useCourses, useCourseById } from './useCourses'
-export { useCategories, useCategoryById } from './useCategories'
-export { useSubjectLists, useSubjectListById } from './useSubjectLists'
+export { useCategories, useCategoryById, useCategoryByCode } from './useCategories'
+export { useSubjectLists, useSubjectListByName } from './useSubjectLists'
 export { useColleges } from './useColleges'
 export { useCounselling } from './useCounselling'
 

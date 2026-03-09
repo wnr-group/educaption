@@ -1,6 +1,7 @@
 Name,Subjects
-LIST_A,"Biotechnology, Microbiology, Biochemistry, Computer Science, Information Technology, Informatics Practices, Home Science, Agriculture, Horticulture, Environmental Science"
-LIST_B,"Biotechnology, Microbiology, Biochemistry, Computer Science, Information Technology, Informatics Practices, Home Science, Nutrition and Dietetics, Agriculture, Horticulture, Environmental Science"
-LIST_C,"Computer Science, Information Technology, Informatics Practices"
-LIST_D,"Biotechnology, Microbiology, Biochemistry, Computer Science, Home Science, Agriculture, Horticulture, Informatics Practices, Environmental Science"
-LIST_E,"Computer Science, Informatics Practices"
+LIST_A,"Mathematics, Microbiology, Biochemistry, Computer Science, Home Science"
+LIST_B,"Mathematics, Microbiology, Biochemistry, Computer Science, Home Science, Nutrition and Dietetics"
+LIST_C,"Mathematics, Computer Science"
+LIST_D,"Mathematics, Microbiology, Biochemistry, Computer Science, Home Science"
+LIST_E,"Biology, Computer Science"
+LIST_F,"Biology, Mathematics"

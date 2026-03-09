@@ -1,88 +1,80 @@
 Name,Name_Tamil,Admission_Body,Duration,Eligible_Groups,Formula_Override,Subject_List
-B.E. Computer Science and Engineering,கணினி அறிவியல் மற்றும் பொறியியல்,TNEA,4 years,"1, 2, 4",,
-B.E. Electronics and Communication Engineering,மின்னணு மற்றும் தகவல் தொடர்பு பொறியியல்,TNEA,4 years,"1, 2, 4",,
-B.E. Mechanical Engineering,இயந்திர பொறியியல்,TNEA,4 years,"1, 2, 4",,
-B.E. Civil Engineering,குடிசார் பொறியியல்,TNEA,4 years,"1, 2, 4",,
-B.E. Electrical and Electronics Engineering,மின் மற்றும் மின்னணு பொறியியல்,TNEA,4 years,"1, 2, 4",,
-B.E. Information Technology,தகவல் தொழில்நுட்பம்,TNEA,4 years,"1, 2, 4",,
-B.E. Artificial Intelligence and Data Science,செயற்கை நுண்ணறிவு மற்றும் தரவு அறிவியல்,TNEA,4 years,"1, 2, 4",,
-BA LLB (Hons),பி.ஏ எல்.எல்.பி (ஹானர்ஸ்),TNDALU,5 years,"1, 2, 3, 4, 5, 6, 7, 8, 9, 10",,
-BBA LLB (Hons),பி.பி.ஏ எல்.எல்.பி (ஹானர்ஸ்),TNDALU,5 years,"1, 2, 3, 4, 5, 6, 7, 8, 9, 10",,
-B.Com LLB (Hons),பி.காம் எல்.எல்.பி (ஹானர்ஸ்),TNDALU,5 years,"1, 2, 3, 4, 5, 6, 7, 8, 9, 10",,
-LLB (3 Year),எல்.எல்.பி (3 வருடம்),TNDALU,3 years,"1, 2, 3, 4, 5, 6, 7, 8, 9, 10",,
-B.V.Sc & A.H.,கால்நடை மருத்துவம் மற்றும் விலங்கு பண்ணை,TANUVAS - BVSC,5.5 years,"1, 3, 5",,
-B.Tech Food Technology (TANUVAS),உணவு தொழில்நுட்பம் (TANUVAS),TANUVAS - B.Tech,4 years,"1",,
-B.Tech Poultry Technology,கோழி வளர்ப்பு தொழில்நுட்பம்,TANUVAS - B.Tech,4 years,"1",,
-B.Tech Dairy Technology,பால் பண்ணை தொழில்நுட்பம்,TANUVAS - B.Tech,4 years,"1",,
-B.Sc (Hons.) Agriculture,பி.எஸ்சி (ஹானர்ஸ்) வேளாண்மை,TNAU - Agriculture,4 years,"1, 3",,LIST_A
-B.Sc (Hons.) Horticulture,பி.எஸ்சி (ஹானர்ஸ்) தோட்டக்கலை,TNAU - Agriculture,4 years,"1, 3",,LIST_A
-B.Sc (Hons.) Forestry,பி.எஸ்சி (ஹானர்ஸ்) வனவியல்,TNAU - Agriculture,4 years,"1, 3",,LIST_A
-B.Sc (Hons.) Sericulture,பி.எஸ்சி (ஹானர்ஸ்) பட்டு வளர்ப்பு,TNAU - Agriculture,4 years,"1, 3",,LIST_A
-B.Tech Biotechnology,பி.டெக் உயிரி தொழில்நுட்பம்,TNAU - Agriculture,4 years,"1, 3",,LIST_A
-B.Tech Bioinformatics,பி.டெக் உயிர் தகவலியல்,TNAU - Agriculture,4 years,"1, 3",,LIST_A
-B.Sc (Hons.) Agribusiness Management,பி.எஸ்சி (ஹானர்ஸ்) வேளாண் வணிக மேலாண்மை,TNAU - Agriculture,4 years,"1, 3",,LIST_A
-B.Sc (Hons.) Agriculture (BotZoo),பி.எஸ்சி (ஹானர்ஸ்) வேளாண்மை,TNAU - BotZoo,4 years,"5",,
-B.Sc (Hons.) Horticulture (BotZoo),பி.எஸ்சி (ஹானர்ஸ்) தோட்டக்கலை,TNAU - BotZoo,4 years,"5",,
-B.Sc (Hons.) Forestry (BotZoo),பி.எஸ்சி (ஹானர்ஸ்) வனவியல்,TNAU - BotZoo,4 years,"5",,
-B.Sc (Hons.) Sericulture (BotZoo),பி.எஸ்சி (ஹானர்ஸ்) பட்டு வளர்ப்பு,TNAU - BotZoo,4 years,"5",,
-B.Tech Biotechnology (BotZoo),பி.டெக் உயிரி தொழில்நுட்பம்,TNAU - BotZoo,4 years,"5",,
-B.Tech Bioinformatics (BotZoo),பி.டெக் உயிர் தகவலியல்,TNAU - BotZoo,4 years,"5",,
-B.Sc (Hons.) Agribusiness Management (BotZoo),பி.எஸ்சி (ஹானர்ஸ்) வேளாண் வணிக மேலாண்மை,TNAU - BotZoo,4 years,"5",,
-B.Sc (Hons.) Food Nutrition and Dietetics,பி.எஸ்சி (ஹானர்ஸ்) உணவு ஊட்டச்சத்து,TNAU - Food Nutrition,4 years,"1, 3",,LIST_B
-B.Sc (Hons.) Food Nutrition and Dietetics (BotZoo),பி.எஸ்சி (ஹானர்ஸ்) உணவு ஊட்டச்சத்து,TNAU - BotZoo,4 years,"5",,
-B.Tech Agricultural Engineering,பி.டெக் வேளாண் பொறியியல்,TNAU - Agri Engineering,4 years,"1",,LIST_C
-B.Tech Food Technology (TNAU),பி.டெக் உணவு தொழில்நுட்பம் (TNAU),TNAU - Agri Engineering,4 years,"1",,LIST_C
-B.Tech Energy and Environmental Engineering,பி.டெக் ஆற்றல் மற்றும் சுற்றுச்சூழல் பொறியியல்,TNAU - Agri Engineering,4 years,"1",,LIST_C
-B.Tech Agricultural Information Technology,பி.டெக் வேளாண் தகவல் தொழில்நுட்பம்,TNAU - Agri Engineering,4 years,"1",,LIST_C
-B.F.Sc (Bachelor of Fisheries Science),பி.எஃப்.எஸ்சி (மீன்வள அறிவியல்),TNJFU - Fisheries,4 years,"1, 3",,LIST_D
-B.F.Sc (Bachelor of Fisheries Science) (BotZoo),பி.எஃப்.எஸ்சி (மீன்வள அறிவியல்),TNJFU - BotZoo,4 years,"5",,
-B.Tech Fisheries Engineering,பி.டெக் மீன்வளப் பொறியியல்,TNJFU - B.Tech,4 years,"1, 3",,LIST_E
-B.Tech Food Technology (TNJFU),பி.டெக் உணவு தொழில்நுட்பம் (TNJFU),TNJFU - B.Tech,4 years,"1, 3",,LIST_E
-B.Tech Energy and Environmental Engineering (TNJFU),பி.டெக் ஆற்றல் மற்றும் சுற்றுச்சூழல் பொறியியல் (TNJFU),TNJFU - B.Tech,4 years,"1, 3",,LIST_E
-B.Tech Fisheries Engineering (BotZoo),பி.டெக் மீன்வளப் பொறியியல்,TNJFU - BotZoo,4 years,"5",,
-B.Tech Food Technology (TNJFU) (BotZoo),பி.டெக் உணவு தொழில்நுட்பம் (TNJFU),TNJFU - BotZoo,4 years,"5",,
-B.Tech Energy and Environmental Engineering (TNJFU) (BotZoo),பி.டெக் ஆற்றல் மற்றும் சுற்றுச்சூழல் பொறியியல் (TNJFU),TNJFU - BotZoo,4 years,"5",,
-B.Voc Industrial Fish Processing Technology,பி.வோக் தொழில்துறை மீன் பதப்படுத்துதல்,TNJFU - B.Voc,3 years,"1, 2, 3, 4, 5, 6, 7, 8, 9, 10",,
-B.Voc Industrial Aquaculture,பி.வோக் தொழில்துறை நீர்வாழ் வளர்ப்பு,TNJFU - B.Voc,3 years,"1, 2, 3, 4, 5, 6, 7, 8, 9, 10",,
-B.Voc Industrial Fishing Technology,பி.வோக் தொழில்துறை மீன்பிடி தொழில்நுட்பம்,TNJFU - B.Voc,3 years,"1, 2, 3, 4, 5, 6, 7, 8, 9, 10",,
-B.Sc Nursing,பி.எஸ்சி நர்சிங்,TN Paramedical - Bio,4 years,"1, 3",,
-B.P.T (Physiotherapy),பி.பி.டி (இயன்முறை மருத்துவம்),TN Paramedical - Bio,4.5 years,"1, 3",,
-B.Sc Radiography and Imaging Technology,பி.எஸ்சி கதிரியக்க தொழில்நுட்பம்,TN Paramedical - Bio,3 years,"1, 3",,
-B.Sc Radio Therapy Technology,பி.எஸ்சி கதிர் சிகிச்சை தொழில்நுட்பம்,TN Paramedical - Bio,3 years,"1, 3",,
-B.Sc Cardio-Pulmonary Perfusion Technology,பி.எஸ்சி இதய-நுரையீரல் பெர்ஃபியூஷன் தொழில்நுட்பம்,TN Paramedical - Bio,3 years,"1, 3",,
-B.Sc Medical Laboratory Technology,பி.எஸ்சி மருத்துவ ஆய்வக தொழில்நுட்பம்,TN Paramedical - Bio,3 years,"1, 3",,
-B.Sc Operation Theatre and Anaesthesia Technology,பி.எஸ்சி அறுவை சிகிச்சை அரங்க தொழில்நுட்பம்,TN Paramedical - Bio,3 years,"1, 3",,
-B.Sc Cardiac Technology,பி.எஸ்சி இதய தொழில்நுட்பம்,TN Paramedical - Bio,3 years,"1, 3",,
-B.Sc Critical Care Technology,பி.எஸ்சி தீவிர சிகிச்சை தொழில்நுட்பம்,TN Paramedical - Bio,3 years,"1, 3",,
-B.Sc Dialysis Technology,பி.எஸ்சி சிறுநீரக சுத்திகரிப்பு தொழில்நுட்பம்,TN Paramedical - Bio,3 years,"1, 3",,
-B.Sc Physician Assistant,பி.எஸ்சி மருத்துவர் உதவியாளர்,TN Paramedical - Bio,3 years,"1, 3",,
-B.Sc Accident and Emergency Care Technology,பி.எஸ்சி விபத்து மற்றும் அவசர சிகிச்சை தொழில்நுட்பம்,TN Paramedical - Bio,3 years,"1, 3",,
-B.Sc Respiratory Therapy,பி.எஸ்சி சுவாச சிகிச்சை,TN Paramedical - Bio,3 years,"1, 3",,
-B.O.T (Occupational Therapy),பி.ஓ.டி (தொழில் சிகிச்சை),TN Paramedical - Bio,4.5 years,"1, 3",,
-B.Sc Neuro Electro Physiology,பி.எஸ்சி நரம்பு மின் இயற்பியல்,TN Paramedical - Bio,3 years,"1, 3",,
-B.Sc Clinical Nutrition,பி.எஸ்சி மருத்துவ ஊட்டச்சத்து,TN Paramedical - Bio,3 years,"1, 3",,
-B.Sc Nursing (BotZoo),பி.எஸ்சி நர்சிங்,TN Paramedical - BotZoo,4 years,"5",,
-B.P.T (Physiotherapy) (BotZoo),பி.பி.டி (இயன்முறை மருத்துவம்),TN Paramedical - BotZoo,4.5 years,"5",,
-B.Sc Radiography and Imaging Technology (BotZoo),பி.எஸ்சி கதிரியக்க தொழில்நுட்பம்,TN Paramedical - BotZoo,3 years,"5",,
-B.Sc Radio Therapy Technology (BotZoo),பி.எஸ்சி கதிர் சிகிச்சை தொழில்நுட்பம்,TN Paramedical - BotZoo,3 years,"5",,
-B.Sc Cardio-Pulmonary Perfusion Technology (BotZoo),பி.எஸ்சி இதய-நுரையீரல் பெர்ஃபியூஷன் தொழில்நுட்பம்,TN Paramedical - BotZoo,3 years,"5",,
-B.Sc Medical Laboratory Technology (BotZoo),பி.எஸ்சி மருத்துவ ஆய்வக தொழில்நுட்பம்,TN Paramedical - BotZoo,3 years,"5",,
-B.Sc Operation Theatre and Anaesthesia Technology (BotZoo),பி.எஸ்சி அறுவை சிகிச்சை அரங்க தொழில்நுட்பம்,TN Paramedical - BotZoo,3 years,"5",,
-B.Sc Cardiac Technology (BotZoo),பி.எஸ்சி இதய தொழில்நுட்பம்,TN Paramedical - BotZoo,3 years,"5",,
-B.Sc Critical Care Technology (BotZoo),பி.எஸ்சி தீவிர சிகிச்சை தொழில்நுட்பம்,TN Paramedical - BotZoo,3 years,"5",,
-B.Sc Dialysis Technology (BotZoo),பி.எஸ்சி சிறுநீரக சுத்திகரிப்பு தொழில்நுட்பம்,TN Paramedical - BotZoo,3 years,"5",,
-B.Sc Physician Assistant (BotZoo),பி.எஸ்சி மருத்துவர் உதவியாளர்,TN Paramedical - BotZoo,3 years,"5",,
-B.Sc Accident and Emergency Care Technology (BotZoo),பி.எஸ்சி விபத்து மற்றும் அவசர சிகிச்சை தொழில்நுட்பம்,TN Paramedical - BotZoo,3 years,"5",,
-B.Sc Respiratory Therapy (BotZoo),பி.எஸ்சி சுவாச சிகிச்சை,TN Paramedical - BotZoo,3 years,"5",,
-B.O.T (Occupational Therapy) (BotZoo),பி.ஓ.டி (தொழில் சிகிச்சை),TN Paramedical - BotZoo,4.5 years,"5",,
-B.Sc Neuro Electro Physiology (BotZoo),பி.எஸ்சி நரம்பு மின் இயற்பியல்,TN Paramedical - BotZoo,3 years,"5",,
-B.Sc Clinical Nutrition (BotZoo),பி.எஸ்சி மருத்துவ ஊட்டச்சத்து,TN Paramedical - BotZoo,3 years,"5",,
-B.Sc Optometry,பி.எஸ்சி ஒளியியல்,TN Paramedical - Bio,4 years,"1, 3",,
-B.Sc Optometry (BotZoo),பி.எஸ்சி ஒளியியல்,TN Paramedical - BotZoo,4 years,"5",,
-B.Sc Optometry (Maths),பி.எஸ்சி ஒளியியல்,TN Paramedical - Maths,4 years,"1, 2, 4",,
-BASLP (Audiology Speech Language Pathology),BASLP (செவித்திறன் பேச்சு மொழி நோயியல்),TN Paramedical - Bio,4 years,"1, 3",,
-BASLP (Audiology Speech Language Pathology) (BotZoo),BASLP (செவித்திறன் பேச்சு மொழி நோயியல்),TN Paramedical - BotZoo,4 years,"5",,
-BASLP (Audiology Speech Language Pathology) (Maths),BASLP (செவித்திறன் பேச்சு மொழி நோயியல்),TN Paramedical - Maths,4 years,"1, 2, 4",,
-B.Pharm (Bachelor of Pharmacy),பி.பார்ம் (மருந்தியல் இளங்கலை),TN Paramedical - Bio,4 years,"1, 3",,
-B.Pharm (Bachelor of Pharmacy) (BotZoo),பி.பார்ம் (மருந்தியல் இளங்கலை),TN Paramedical - BotZoo,4 years,"5",,
-B.Pharm (Bachelor of Pharmacy) (Maths),பி.பார்ம் (மருந்தியல் இளங்கலை),TN Paramedical - Maths,4 years,"1, 2, 4",,
+B.E. / B.Tech (All Engineering Courses),அனைத்து பொறியியல் படிப்புகள்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,
+B.E. / B.Tech (All Engineering Courses) - Vocational,அனைத்து பொறியியல் படிப்புகள் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,
+LLB (All Law Courses),அனைத்து சட்டப் படிப்புகள்,TNDALU,3-5 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13, SCI-14, ART-1, ART-2, ART-3, ART-4, ART-5, ART-6, ART-7, ART-8, ART-9, ART-10, ART-11, ART-12, ART-13, ART-14, VOC-1, VOC-2, VOC-3, VOC-4, VOC-5, VOC-6, VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,
+B.V.Sc & A.H.,கால்நடை மருத்துவம் மற்றும் விலங்கு பண்ணை,TANUVAS - BVSC,5.5 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13, SCI-14",,
+B.V.Sc & A.H. - Vocational,கால்நடை மருத்துவம் - தொழிற்கல்வி,TANUVAS - BVSC - Vocational,5.5 years,VOC-1,,
+B.Tech Food Technology (TANUVAS),உணவு தொழில்நுட்பம் (TANUVAS),TANUVAS - B.Tech,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,
+B.Tech Poultry Technology,கோழி வளர்ப்பு தொழில்நுட்பம்,TANUVAS - B.Tech,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,
+B.Tech Dairy Technology,பால் பண்ணை தொழில்நுட்பம்,TANUVAS - B.Tech,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,
+B.Sc (Hons.) Agriculture,பி.எஸ்சி (ஹானர்ஸ்) வேளாண்மை,TNAU - Agriculture,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_A
+B.Sc (Hons.) Agriculture - BotZoo,பி.எஸ்சி (ஹானர்ஸ்) வேளாண்மை,TNAU - Agriculture - BotZoo,4 years,SCI-14,,
+B.Sc (Hons.) Agriculture - Vocational,பி.எஸ்சி (ஹானர்ஸ்) வேளாண்மை - தொழிற்கல்வி,TNAU - Agriculture - Vocational,4 years,VOC-1,,
+B.Sc (Hons.) Horticulture,பி.எஸ்சி (ஹானர்ஸ்) தோட்டக்கலை,TNAU - Agriculture,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_A
+B.Sc (Hons.) Horticulture - BotZoo,பி.எஸ்சி (ஹானர்ஸ்) தோட்டக்கலை,TNAU - Agriculture - BotZoo,4 years,SCI-14,,
+B.Sc (Hons.) Horticulture - Vocational,பி.எஸ்சி (ஹானர்ஸ்) தோட்டக்கலை - தொழிற்கல்வி,TNAU - Agriculture - Vocational,4 years,VOC-1,,
+B.Sc (Hons.) Forestry,பி.எஸ்சி (ஹானர்ஸ்) வனவியல்,TNAU - Agriculture,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_A
+B.Sc (Hons.) Forestry - BotZoo,பி.எஸ்சி (ஹானர்ஸ்) வனவியல்,TNAU - Agriculture - BotZoo,4 years,SCI-14,,
+B.Sc (Hons.) Forestry - Vocational,பி.எஸ்சி (ஹானர்ஸ்) வனவியல் - தொழிற்கல்வி,TNAU - Agriculture - Vocational,4 years,VOC-1,,
+B.Sc (Hons.) Sericulture,பி.எஸ்சி (ஹானர்ஸ்) பட்டு வளர்ப்பு,TNAU - Agriculture,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_A
+B.Sc (Hons.) Sericulture - BotZoo,பி.எஸ்சி (ஹானர்ஸ்) பட்டு வளர்ப்பு,TNAU - Agriculture - BotZoo,4 years,SCI-14,,
+B.Tech Biotechnology,பி.டெக் உயிரி தொழில்நுட்பம்,TNAU - Agriculture,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_A
+B.Tech Biotechnology - BotZoo,பி.டெக் உயிரி தொழில்நுட்பம்,TNAU - Agriculture - BotZoo,4 years,SCI-14,,
+B.Sc (Hons.) Agribusiness Management,பி.எஸ்சி (ஹானர்ஸ்) வேளாண் வணிக மேலாண்மை,TNAU - Agriculture,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_A
+B.Sc (Hons.) Agribusiness Management - BotZoo,பி.எஸ்சி (ஹானர்ஸ்) வேளாண் வணிக மேலாண்மை,TNAU - Agriculture - BotZoo,4 years,SCI-14,,
+B.Tech Bioinformatics,பி.டெக் உயிர் தகவலியல்,TNAU - Agriculture,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_A
+B.Tech Bioinformatics - BotZoo,பி.டெக் உயிர் தகவலியல்,TNAU - Agriculture - BotZoo,4 years,SCI-14,,
+B.Sc (Hons.) Food Nutrition and Dietetics,பி.எஸ்சி (ஹானர்ஸ்) உணவு ஊட்டச்சத்து,TNAU - Food Nutrition,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_B
+B.Sc (Hons.) Food Nutrition and Dietetics - BotZoo,பி.எஸ்சி (ஹானர்ஸ்) உணவு ஊட்டச்சத்து,TNAU - Food Nutrition - BotZoo,4 years,SCI-14,,
+B.Tech Agricultural Engineering,பி.டெக் வேளாண் பொறியியல்,TNAU - Agri Engineering,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_C
+B.Tech Agricultural Engineering - Vocational,பி.டெக் வேளாண் பொறியியல் - தொழிற்கல்வி,TNAU - Agriculture - Vocational,4 years,VOC-1,,
+B.Tech Food Technology (TNAU),பி.டெக் உணவு தொழில்நுட்பம் (TNAU),TNAU - Agri Engineering,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_C
+B.Tech Energy and Environmental Engineering,பி.டெக் ஆற்றல் மற்றும் சுற்றுச்சூழல் பொறியியல்,TNAU - Agri Engineering,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_C
+B.Tech Agricultural Information Technology,பி.டெக் வேளாண் தகவல் தொழில்நுட்பம்,TNAU - Agri Engineering,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_C
+B.F.Sc (Bachelor of Fisheries Science),பி.எஃப்.எஸ்சி (மீன்வள அறிவியல்),TNJFU - Fisheries,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_D
+B.F.Sc (Bachelor of Fisheries Science) - BotZoo,பி.எஃப்.எஸ்சி (மீன்வள அறிவியல்),TNJFU - Fisheries - BotZoo,4 years,SCI-14,,
+B.F.Sc (Bachelor of Fisheries Science) - Vocational,பி.எஃப்.எஸ்சி (மீன்வள அறிவியல்) - தொழிற்கல்வி,TNJFU - Fisheries - Vocational,4 years,VOC-1,,
+B.Tech Fisheries Engineering,பி.டெக் மீன்வளப் பொறியியல்,TNJFU - B.Tech,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,LIST_E
+B.Tech Food Technology (TNJFU),பி.டெக் உணவு தொழில்நுட்பம் (TNJFU),TNJFU - B.Tech,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,LIST_E
+B.Tech Energy and Environmental Engineering (TNJFU),பி.டெக் ஆற்றல் மற்றும் சுற்றுச்சூழல் பொறியியல் (TNJFU),TNJFU - B.Tech,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,LIST_E
+B.Voc Industrial Fish Processing Technology,பி.வோக் தொழில்துறை மீன் பதப்படுத்துதல்,TNJFU - B.Voc,3 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13, SCI-14, ART-1, ART-2, ART-3, ART-4, ART-5, ART-6, ART-7, ART-8, ART-9, ART-10, ART-11, ART-12, ART-13, ART-14, VOC-1, VOC-2, VOC-3, VOC-4, VOC-5, VOC-6, VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,
+B.Voc Industrial Aquaculture,பி.வோக் தொழில்துறை நீர்வாழ் வளர்ப்பு,TNJFU - B.Voc,3 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13, SCI-14, ART-1, ART-2, ART-3, ART-4, ART-5, ART-6, ART-7, ART-8, ART-9, ART-10, ART-11, ART-12, ART-13, ART-14, VOC-1, VOC-2, VOC-3, VOC-4, VOC-5, VOC-6, VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,
+B.Voc Industrial Fishing Technology,பி.வோக் தொழில்துறை மீன்பிடி தொழில்நுட்பம்,TNJFU - B.Voc,3 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13, SCI-14, ART-1, ART-2, ART-3, ART-4, ART-5, ART-6, ART-7, ART-8, ART-9, ART-10, ART-11, ART-12, ART-13, ART-14, VOC-1, VOC-2, VOC-3, VOC-4, VOC-5, VOC-6, VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,
+B.Pharm (Bachelor of Pharmacy),பி.பார்ம் (மருந்தியல் இளங்கலை),TN Paramedical - Pharmacy,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_F
+B.Pharm (Bachelor of Pharmacy) - BotZoo,பி.பார்ம் (மருந்தியல் இளங்கலை),TN Paramedical - Pharmacy - BotZoo,4 years,SCI-14,,
+BASLP (Audiology Speech Language Pathology),BASLP (செவித்திறன் பேச்சு மொழி நோயியல்),TN Paramedical - Pharmacy,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_F
+BASLP (Audiology Speech Language Pathology) - BotZoo,BASLP (செவித்திறன் பேச்சு மொழி நோயியல்),TN Paramedical - Pharmacy - BotZoo,4 years,SCI-14,,
+B.Optom (Bachelor of Optometry),பி.ஆப்டம் (ஒளியியல் இளங்கலை),TN Paramedical - Pharmacy,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_F
+B.Optom (Bachelor of Optometry) - BotZoo,பி.ஆப்டம் (ஒளியியல் இளங்கலை),TN Paramedical - Pharmacy - BotZoo,4 years,SCI-14,,
+B.Sc Nursing,பி.எஸ்சி நர்சிங்,TN Paramedical - Nursing,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,
+B.Sc Nursing - BotZoo,பி.எஸ்சி நர்சிங்,TN Paramedical - Nursing - BotZoo,4 years,SCI-14,,
+B.P.T (Physiotherapy),பி.பி.டி (இயன்முறை மருத்துவம்),TN Paramedical - Nursing,4.5 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,
+B.P.T (Physiotherapy) - BotZoo,பி.பி.டி (இயன்முறை மருத்துவம்),TN Paramedical - Nursing - BotZoo,4.5 years,SCI-14,,
+B.Sc Radiography and Imaging Technology,பி.எஸ்சி கதிரியக்க தொழில்நுட்பம்,TN Paramedical - Nursing,3 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,
+B.Sc Radiography and Imaging Technology - BotZoo,பி.எஸ்சி கதிரியக்க தொழில்நுட்பம்,TN Paramedical - Nursing - BotZoo,3 years,SCI-14,,
+B.Sc Radio Therapy Technology,பி.எஸ்சி கதிர் சிகிச்சை தொழில்நுட்பம்,TN Paramedical - Nursing,3 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,
+B.Sc Radio Therapy Technology - BotZoo,பி.எஸ்சி கதிர் சிகிச்சை தொழில்நுட்பம்,TN Paramedical - Nursing - BotZoo,3 years,SCI-14,,
+B.Sc Cardio-Pulmonary Perfusion Technology,பி.எஸ்சி இதய-நுரையீரல் பெர்ஃபியூஷன் தொழில்நுட்பம்,TN Paramedical - Nursing,3 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,
+B.Sc Cardio-Pulmonary Perfusion Technology - BotZoo,பி.எஸ்சி இதய-நுரையீரல் பெர்ஃபியூஷன் தொழில்நுட்பம்,TN Paramedical - Nursing - BotZoo,3 years,SCI-14,,
+B.Sc Medical Laboratory Technology,பி.எஸ்சி மருத்துவ ஆய்வக தொழில்நுட்பம்,TN Paramedical - Nursing,3 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,
+B.Sc Medical Laboratory Technology - BotZoo,பி.எஸ்சி மருத்துவ ஆய்வக தொழில்நுட்பம்,TN Paramedical - Nursing - BotZoo,3 years,SCI-14,,
+B.Sc Operation Theatre and Anaesthesia Technology,பி.எஸ்சி அறுவை சிகிச்சை அரங்க தொழில்நுட்பம்,TN Paramedical - Nursing,3 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,
+B.Sc Operation Theatre and Anaesthesia Technology - BotZoo,பி.எஸ்சி அறுவை சிகிச்சை அரங்க தொழில்நுட்பம்,TN Paramedical - Nursing - BotZoo,3 years,SCI-14,,
+B.Sc Cardiac Technology,பி.எஸ்சி இதய தொழில்நுட்பம்,TN Paramedical - Nursing,3 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,
+B.Sc Cardiac Technology - BotZoo,பி.எஸ்சி இதய தொழில்நுட்பம்,TN Paramedical - Nursing - BotZoo,3 years,SCI-14,,
+B.Sc Critical Care Technology,பி.எஸ்சி தீவிர சிகிச்சை தொழில்நுட்பம்,TN Paramedical - Nursing,3 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,
+B.Sc Critical Care Technology - BotZoo,பி.எஸ்சி தீவிர சிகிச்சை தொழில்நுட்பம்,TN Paramedical - Nursing - BotZoo,3 years,SCI-14,,
+B.Sc Dialysis Technology,பி.எஸ்சி சிறுநீரக சுத்திகரிப்பு தொழில்நுட்பம்,TN Paramedical - Nursing,3 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,
+B.Sc Dialysis Technology - BotZoo,பி.எஸ்சி சிறுநீரக சுத்திகரிப்பு தொழில்நுட்பம்,TN Paramedical - Nursing - BotZoo,3 years,SCI-14,,
+B.Sc Physician Assistant,பி.எஸ்சி மருத்துவர் உதவியாளர்,TN Paramedical - Nursing,3 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,
+B.Sc Physician Assistant - BotZoo,பி.எஸ்சி மருத்துவர் உதவியாளர்,TN Paramedical - Nursing - BotZoo,3 years,SCI-14,,
+B.Sc Accident and Emergency Care Technology,பி.எஸ்சி விபத்து மற்றும் அவசர சிகிச்சை தொழில்நுட்பம்,TN Paramedical - Nursing,3 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,
+B.Sc Accident and Emergency Care Technology - BotZoo,பி.எஸ்சி விபத்து மற்றும் அவசர சிகிச்சை தொழில்நுட்பம்,TN Paramedical - Nursing - BotZoo,3 years,SCI-14,,
+B.Sc Respiratory Therapy,பி.எஸ்சி சுவாச சிகிச்சை,TN Paramedical - Nursing,3 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,
+B.Sc Respiratory Therapy - BotZoo,பி.எஸ்சி சுவாச சிகிச்சை,TN Paramedical - Nursing - BotZoo,3 years,SCI-14,,
+B.O.T (Occupational Therapy),பி.ஓ.டி (தொழில் சிகிச்சை),TN Paramedical - Nursing,4.5 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,
+B.O.T (Occupational Therapy) - BotZoo,பி.ஓ.டி (தொழில் சிகிச்சை),TN Paramedical - Nursing - BotZoo,4.5 years,SCI-14,,
+B.Sc Neuro Electro Physiology,பி.எஸ்சி நரம்பு மின் இயற்பியல்,TN Paramedical - Nursing,3 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,
+B.Sc Neuro Electro Physiology - BotZoo,பி.எஸ்சி நரம்பு மின் இயற்பியல்,TN Paramedical - Nursing - BotZoo,3 years,SCI-14,,
+B.Sc Clinical Nutrition,பி.எஸ்சி மருத்துவ ஊட்டச்சத்து,TN Paramedical - Nursing,3 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,
+B.Sc Clinical Nutrition - BotZoo,பி.எஸ்சி மருத்துவ ஊட்டச்சத்து,TN Paramedical - Nursing - BotZoo,3 years,SCI-14,,

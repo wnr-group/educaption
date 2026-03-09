@@ -23,17 +23,32 @@ export default function Step1GroupSelect() {
     }
   }
 
-  const formattedOptions = groups.map(g => {
-    const subjectList = (language === 'ta' && g.name_ta)
-      ? g.name_ta.split(',').slice(0, 2).join(',')
-      : (g.subjects || []).slice(0, 2).join(', ')
-    const streamLabel = g.stream || 'Group'
-    const groupNum = g.code.split('-')[1] || g.code
-    return {
-      value: g.id,
-      label: `${streamLabel} - Group ${groupNum} (${subjectList}...)`
+  // Group options by stream (Science, Arts, Vocational)
+  const groupedOptions = (() => {
+    const streams = {
+      Science: { label: language === 'ta' ? 'அறிவியல் (Science)' : 'Science', options: [] },
+      Arts: { label: language === 'ta' ? 'கலை (Arts)' : 'Arts', options: [] },
+      Vocational: { label: language === 'ta' ? 'தொழிற்கல்வி (Vocational)' : 'Vocational', options: [] }
     }
-  })
+
+    groups.forEach(g => {
+      // Get full subject list for display
+      const subjectList = (language === 'ta' && g.name_ta)
+        ? g.name_ta
+        : (g.subjects || []).join(', ')
+
+      const stream = g.stream || 'Science'
+      if (streams[stream]) {
+        streams[stream].options.push({
+          value: g.id,
+          label: subjectList
+        })
+      }
+    })
+
+    // Return only streams that have options
+    return Object.values(streams).filter(s => s.options.length > 0)
+  })()
 
   if (isLoading) {
     return (
@@ -93,7 +108,8 @@ export default function Step1GroupSelect() {
           label={t('calculator.step1.selectGroup')}
           value={group || ''}
           onChange={handleGroupChange}
-          options={formattedOptions}
+          options={groupedOptions}
+          grouped={true}
         />
       </div>
 
