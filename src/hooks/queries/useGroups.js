@@ -13,6 +13,7 @@ export function useGroups() {
     select: (data) => data.map(group => ({
       id: group.id,
       code: group.Code,
+      stream: group.Stream,
       name: group.Name,
       name_ta: group.Name_Tamil,
       subjects: JSON.parse(group.Subjects || '[]')
