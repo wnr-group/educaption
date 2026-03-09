@@ -14,22 +14,26 @@
  * Subject code mapping for formula parsing
  */
 const SUBJECT_CODE_MAP = {
-  'M': ['Mathematics', 'Maths', 'MATHEMATICS', 'MATHS', 'Business Mathematics'],
+  'M': ['Mathematics', 'Maths', 'MATHEMATICS', 'MATHS', 'Business Mathematics', 'Business Mathematics & Statistics'],
   'P': ['Physics', 'PHYSICS'],
   'C': ['Chemistry', 'CHEMISTRY'],
   'B': ['Biology', 'BIOLOGY'],
   'BOT': ['Botany', 'BOTANY'],
   'ZOO': ['Zoology', 'ZOOLOGY'],
-  'CS': ['Computer Science', 'COMPUTER SCIENCE', 'Computer Applications'],
+  'CS': ['Computer Science', 'COMPUTER SCIENCE', 'Computer Applications', 'Computer Technology', 'Computer Application'],
   'IT': ['Information Technology', 'INFORMATION TECHNOLOGY'],
   'IP': ['Informatics Practices', 'INFORMATICS PRACTICES'],
-  'A': ['Accountancy', 'ACCOUNTANCY', 'Accounts'],
+  'A': ['Accountancy', 'ACCOUNTANCY', 'Accounts', 'Accountancy - Theory'],
   'E': ['Economics', 'ECONOMICS'],
   'CO': ['Commerce', 'COMMERCE'],
   'H': ['History', 'HISTORY'],
   'G': ['Geography', 'GEOGRAPHY'],
   'PS': ['Political Science', 'POLITICAL SCIENCE'],
-  'SO': ['Sociology', 'SOCIOLOGY']
+  'SO': ['Sociology', 'SOCIOLOGY'],
+  'HS': ['Home Science', 'HOME SCIENCE'],
+  'BC': ['Bio-Chemistry', 'BIO-CHEMISTRY', 'Biochemistry'],
+  'MB': ['Micro-Biology', 'MICRO-BIOLOGY', 'Microbiology'],
+  'ST': ['Statistics', 'STATISTICS']
 }
 
 /**
@@ -53,24 +57,31 @@ function getSubjectCode(subjectName) {
 /**
  * Creates marks lookup from subjects array and marks object
  * Handles special cases like Botany+Zoology = Biology average
- * Also creates positional codes (S1-S6) for TNDALU formula
+ * Also creates positional codes (S1-S6) for formulas
+ * S1, S2 = Language subjects
+ * S3-S6 = Group subjects
  *
- * @param {Array<string>} subjects - Array of subject names
+ * @param {Array<string>} subjects - Array of group subject names (4 subjects)
  * @param {Object} marks - Object with subject names as keys and marks as values
  * @returns {Object} Object with subject codes as keys and marks as values
  */
 function createMarksLookup(subjects, marks) {
   const lookup = {}
 
-  // Map each subject to its code
+  // Language subjects are always S1 and S2
+  const lang1Mark = parseFloat(marks['Language 1']) || 0
+  const lang2Mark = parseFloat(marks['Language 2']) || 0
+  lookup['S1'] = lang1Mark
+  lookup['S2'] = lang2Mark
+
+  // Map each group subject to its code and positional code (S3-S6)
   subjects.forEach((subject, index) => {
     const code = getSubjectCode(subject)
     const mark = parseFloat(marks[subject]) || 0
     lookup[code] = mark
 
-    // Also add positional codes for TNDALU formula (S1 through S6)
-    // S1 and S2 are language subjects, S3-S6 are the 4 main subjects
-    lookup[`S${index + 1}`] = mark
+    // S3 through S6 for the 4 group subjects
+    lookup[`S${index + 3}`] = mark
   })
 
   // Handle Biology = Botany + Zoology average if both present but B is not
@@ -78,7 +89,7 @@ function createMarksLookup(subjects, marks) {
     lookup['B'] = (lookup['BOT'] + lookup['ZOO']) / 2
   }
 
-  // If Biology exists, also set BOT and ZOO to same value (for P/2 + C/2 + BOT/2 + ZOO/2 formulas)
+  // If Biology exists, also set BOT and ZOO to same value (for formulas using both)
   if (lookup['B'] !== undefined && lookup['BOT'] === undefined) {
     lookup['BOT'] = lookup['B']
     lookup['ZOO'] = lookup['B']
@@ -387,13 +398,16 @@ export function getFormulaBreakdown(formula, marks) {
 /**
  * Validates marks input
  * @param {Object} marks - Object with subject names as keys and marks as values
- * @param {Array<string>} subjects - Required subject names
+ * @param {Array<string>} subjects - Required group subject names
  * @returns {Object} Validation result with isValid and errors
  */
 export function validateMarks(marks, subjects) {
   const errors = {}
 
-  for (const subject of subjects) {
+  // All subjects to validate: 2 languages + group subjects
+  const allSubjects = ['Language 1', 'Language 2', ...subjects]
+
+  for (const subject of allSubjects) {
     const mark = marks[subject]
 
     if (mark === undefined || mark === '' || mark === null) {
