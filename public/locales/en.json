@@ -101,7 +101,8 @@
     "step2": {
       "title": "Enter Your Marks",
       "description": "Enter marks for each subject (0-100)",
-      "totalMarks": "Total Marks"
+      "totalMarks": "Total Marks",
+      "enterMarks": "Enter marks (0-100)"
     },
     "step3": {
       "title": "Select Category",
