@@ -15,7 +15,6 @@ function parseEligibleGroups(value) {
 
 /**
  * Parse text field - returns string value or null
- * All Airtable fields are now text columns
  */
 function parseTextField(value) {
   if (!value) return null
@@ -26,12 +25,12 @@ function parseTextField(value) {
 /**
  * Fetch courses with optional admission body filter
  * @param {Object} options - Query options
- * @param {string} [options.admissionBodyId] - Optional admission body ID to filter courses
+ * @param {string} [options.admissionBody] - Optional admission body name to filter courses
  * @returns {import('@tanstack/react-query').UseQueryResult} Query result with courses data
  */
-export function useCourses({ admissionBodyId } = {}) {
+export function useCourses({ admissionBody } = {}) {
   return useQuery({
-    queryKey: admissionBodyId ? ['courses', { admissionBodyId }] : ['courses'],
+    queryKey: admissionBody ? ['courses', { admissionBody }] : ['courses'],
     queryFn: getCourses,
     staleTime: 1000 * 60 * 5, // 5 minutes
     select: (data) => {
@@ -39,16 +38,17 @@ export function useCourses({ admissionBodyId } = {}) {
         id: course.id,
         name: course.Name,
         name_ta: course.Name_Tamil,
-        admission_body_id: parseTextField(course.Admission_Body),
+        // Admission_Body is a text field, not a linked record
+        admission_body: parseTextField(course.Admission_Body),
         formula_override: parseTextField(course.Formula_Override),
         duration: parseTextField(course.Duration),
         eligible_groups: parseEligibleGroups(course.Eligible_Groups),
-        subject_list_id: parseTextField(course.Subject_List)
+        subject_list: parseTextField(course.Subject_List)
       }))
 
-      // Filter by admission body if specified
-      if (admissionBodyId) {
-        return mapped.filter(c => c.admission_body_id === admissionBodyId)
+      // Filter by admission body name if specified
+      if (admissionBody) {
+        return mapped.filter(c => c.admission_body === admissionBody)
       }
       return mapped
     }

@@ -1,9 +1,9 @@
 import { Link, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useState } from 'react'
-import { Menu, X, GraduationCap } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 
-export default function Navigation() {
+export default function Navigation({ isTransparent }) {
   const { t } = useTranslation()
   const location = useLocation()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -12,7 +12,6 @@ export default function Navigation() {
     { path: '/', label: t('nav.home') },
     { path: '/calculator', label: t('nav.calculator') },
     { path: '/courses', label: t('nav.courses') },
-    { path: '/colleges', label: t('nav.colleges') },
     { path: '/counselling', label: t('nav.counselling') },
     { path: '/about', label: t('nav.about') },
   ]
@@ -22,30 +21,23 @@ export default function Navigation() {
   return (
     <nav className="relative z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16 sm:h-18">
           {/* Logo */}
           <Link
             to="/"
-            className="flex items-center gap-3 group"
+            className="flex items-center gap-2.5 group"
           >
-            <div className="
-              w-11 h-11
-              bg-gradient-to-br from-saffron-500 to-saffron-600
-              rounded-xl
-              flex items-center justify-center
-              shadow-soft
-              group-hover:shadow-lifted
-              group-hover:-translate-y-0.5
-              transition-all duration-200
-            ">
-              <GraduationCap className="w-6 h-6 text-white" />
-            </div>
-            <span className="
-              font-display font-bold text-2xl
-              text-gradient
-              tracking-tight
-            ">
-              {t('common.appName')}
+            <img
+              src="/logo.png"
+              alt="Educaption Logo"
+              className="w-10 h-10 sm:w-11 sm:h-11 object-contain transition-transform duration-200 group-hover:scale-105"
+            />
+            <span className={`
+              font-black text-xl tracking-tight
+              transition-colors duration-300
+              ${isTransparent ? 'text-white' : 'text-[#1A1A2E]'}
+            `}>
+              Educaption
             </span>
           </Link>
 
@@ -57,23 +49,20 @@ export default function Navigation() {
                 to={path}
                 className={`
                   relative px-4 py-2
-                  font-body font-medium text-sm
+                  font-semibold text-sm
                   rounded-lg
-                  transition-all duration-200
-                  ${isActive(path)
-                    ? 'text-saffron-600 bg-saffron-50'
-                    : 'text-navy-600 hover:text-saffron-600 hover:bg-saffron-50/50'
+                  transition-all duration-300
+                  ${isTransparent
+                    ? isActive(path)
+                      ? 'text-white bg-white/[0.1]'
+                      : 'text-white/60 hover:text-white hover:bg-white/[0.05]'
+                    : isActive(path)
+                      ? 'text-[#FF6B35] bg-[#FF6B35]/[0.08]'
+                      : 'text-[#1A1A2E]/60 hover:text-[#1A1A2E] hover:bg-[#1A1A2E]/[0.04]'
                   }
                 `}
               >
                 {label}
-                {isActive(path) && (
-                  <span className="
-                    absolute bottom-0 left-1/2 -translate-x-1/2
-                    w-1 h-1 rounded-full
-                    bg-saffron-500
-                  " />
-                )}
               </Link>
             ))}
           </div>
@@ -81,14 +70,16 @@ export default function Navigation() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="
+            className={`
               md:hidden
               p-2
               rounded-lg
-              text-navy-600
-              hover:bg-saffron-50
-              transition-colors duration-200
-            "
+              transition-colors duration-300
+              ${isTransparent
+                ? 'text-white/80 hover:bg-white/[0.1]'
+                : 'text-[#1A1A2E] hover:bg-[#1A1A2E]/[0.05]'
+              }
+            `}
             aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
           >
             {mobileMenuOpen ? (
@@ -102,14 +93,15 @@ export default function Navigation() {
 
       {/* Mobile Navigation */}
       {mobileMenuOpen && (
-        <div className="
+        <div className={`
           md:hidden
           absolute top-full left-0 right-0
-          bg-white/95 backdrop-blur-lg
-          border-b border-navy-100
-          shadow-lifted
-          animate-slide-up
-        ">
+          border-b shadow-lg
+          ${isTransparent
+            ? 'bg-[#0A0A0F]/95 backdrop-blur-xl border-white/[0.05]'
+            : 'bg-white/95 backdrop-blur-xl border-[#1A1A2E]/[0.06]'
+          }
+        `}>
           <div className="px-4 py-4 space-y-1">
             {navLinks.map(({ path, label }) => (
               <Link
@@ -118,12 +110,16 @@ export default function Navigation() {
                 onClick={() => setMobileMenuOpen(false)}
                 className={`
                   block px-4 py-3
-                  font-body font-medium
+                  font-semibold
                   rounded-xl
                   transition-all duration-200
-                  ${isActive(path)
-                    ? 'text-saffron-600 bg-saffron-50'
-                    : 'text-navy-600 hover:text-saffron-600 hover:bg-saffron-50/50'
+                  ${isTransparent
+                    ? isActive(path)
+                      ? 'text-white bg-white/[0.1]'
+                      : 'text-white/60 hover:text-white hover:bg-white/[0.05]'
+                    : isActive(path)
+                      ? 'text-[#FF6B35] bg-[#FF6B35]/[0.08]'
+                      : 'text-[#1A1A2E]/70 hover:text-[#1A1A2E] hover:bg-[#1A1A2E]/[0.04]'
                   }
                 `}
               >

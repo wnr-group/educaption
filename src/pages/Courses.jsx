@@ -3,10 +3,12 @@ import { useTranslation } from 'react-i18next'
 import { BookOpen, Search, X, Clock, GraduationCap, ChevronDown, Users } from 'lucide-react'
 import { useCourses } from '../hooks/queries'
 import { useLanguage } from '../context/LanguageContext'
+import { useHeaderOffset } from '../hooks/useHeaderOffset'
 
 export default function Courses() {
   const { t } = useTranslation()
   const { language } = useLanguage()
+  const { headerPaddingClass } = useHeaderOffset()
   const [selectedAdmissionBody, setSelectedAdmissionBody] = useState('')
   const [searchQuery, setSearchQuery] = useState('')
 
@@ -68,7 +70,7 @@ export default function Courses() {
   }, [filteredCourses])
 
   return (
-    <main className="min-h-screen bg-[#FAFAFA] pt-40 sm:pt-44 pb-12 lg:pb-16">
+    <main className={`min-h-screen bg-[#FAFAFA] ${headerPaddingClass} pb-12 lg:pb-16`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Page Header */}
         <div className="text-center mb-10">

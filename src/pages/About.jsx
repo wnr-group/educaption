@@ -1,9 +1,11 @@
 import { useTranslation } from 'react-i18next'
 import { Target, CheckCircle, Mail, MapPin, Users, Heart, Sparkles } from 'lucide-react'
 import Card from '../components/ui/Card'
+import { useHeaderOffset } from '../hooks/useHeaderOffset'
 
 export default function About() {
   const { t } = useTranslation()
+  const { headerPaddingClass } = useHeaderOffset()
 
   const missionItems = [
     t('about.mission1'),
@@ -13,7 +15,7 @@ export default function About() {
   ]
 
   return (
-    <main className="min-h-screen bg-gradient-hero pt-40 sm:pt-44 pb-12 lg:pb-16">
+    <main className={`min-h-screen bg-gradient-hero ${headerPaddingClass} pb-12 lg:pb-16`}>
       {/* Background decoration */}
       <div className="fixed inset-0 pattern-kolam opacity-30 pointer-events-none" />
 

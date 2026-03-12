@@ -1,99 +1,86 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight, Sparkles } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
-import Button from '../ui/Button'
 
 export default function CTASection() {
   const { t } = useTranslation()
 
   return (
-    <section className="relative py-24 lg:py-32 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900" />
+    <section className="relative py-20 sm:py-28 bg-white overflow-hidden">
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#FAFAFA] to-white" />
 
-      {/* Decorative Elements */}
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-saffron-500/30 to-transparent" />
-      <div className="absolute top-20 left-10 w-64 h-64 bg-saffron-500/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-10 right-10 w-80 h-80 bg-navy-600/20 rounded-full blur-3xl" />
+      {/* Decorative elements */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px]">
+        <div className="absolute inset-0 bg-gradient-to-r from-[#FF6B35]/5 via-[#7B4AE2]/5 to-[#00D4AA]/5 rounded-full blur-3xl" />
+      </div>
 
-      {/* Kolam Pattern */}
-      <div className="absolute inset-0 pattern-kolam opacity-5" />
-
-      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* Badge */}
+      <div className="relative z-10 max-w-4xl mx-auto px-5 sm:px-8 text-center">
+        {/* Main content card */}
         <div className="
-          inline-flex items-center gap-2
-          px-4 py-2 mb-8
-          bg-white/10 backdrop-blur-sm
-          border border-white/10
-          rounded-full
+          relative
+          bg-gradient-to-br from-[#1A1A2E] to-[#0A0A0F]
+          rounded-[2rem] sm:rounded-[2.5rem]
+          p-8 sm:p-12 md:p-16
+          overflow-hidden
         ">
-          <Sparkles className="w-4 h-4 text-saffron-400" />
-          <span className="font-body text-sm font-medium text-white/80">
-            {t('home.ctaSection.badge')}
-          </span>
-        </div>
+          {/* Background pattern */}
+          <div
+            className="absolute inset-0 opacity-[0.03]"
+            style={{
+              backgroundImage: `radial-gradient(#fff 1px, transparent 1px)`,
+              backgroundSize: '24px 24px'
+            }}
+          />
 
-        {/* Heading */}
-        <h2 className="
-          font-display text-4xl sm:text-5xl lg:text-6xl
-          font-bold
-          text-white
-          tracking-tighter
-          mb-6
-        ">
-          {t('home.ctaSection.title')}{' '}
-          <span className="
-            bg-gradient-to-r from-saffron-400 via-saffron-300 to-saffron-400
-            bg-clip-text text-transparent
-          ">
-            {t('home.ctaSection.titleHighlight')}
-          </span>
-        </h2>
+          {/* Glow effects */}
+          <div className="absolute -top-20 -left-20 w-40 h-40 bg-[#FF6B35] rounded-full blur-[100px] opacity-20" />
+          <div className="absolute -bottom-20 -right-20 w-40 h-40 bg-[#7B4AE2] rounded-full blur-[100px] opacity-20" />
 
-        {/* Subtitle */}
-        <p className="
-          font-body text-lg sm:text-xl
-          text-navy-200
-          max-w-2xl mx-auto
-          mb-10
-        ">
-          {t('home.ctaSection.subtitle')}
-        </p>
+          <div className="relative z-10">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/[0.08] border border-white/[0.1] rounded-full mb-8">
+              <Sparkles className="w-4 h-4 text-[#FFB347]" />
+              <span className="text-sm font-semibold text-white/70">
+                Free Forever
+              </span>
+            </div>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link to="/calculator">
-            <Button
-              size="xl"
-              variant="primary"
-              className="group shadow-glow-saffron"
-            >
-              {t('home.cta')}
-              <ArrowRight className="
-                w-5 h-5 ml-1
-                group-hover:translate-x-1
-                transition-transform duration-200
-              " />
-            </Button>
-          </Link>
+            {/* Headline */}
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight mb-6 leading-tight">
+              Your future is one click away
+            </h2>
 
-          <Link to="/counselling">
-            <Button
-              size="xl"
-              variant="ghost"
-              className="text-white hover:bg-white/10"
-            >
-              {t('home.ctaSection.viewCounselling')}
-            </Button>
-          </Link>
-        </div>
+            {/* Subtitle */}
+            <p className="text-lg sm:text-xl text-white/50 max-w-lg mx-auto mb-10">
+              Stop searching randomly. Start with what you know — your 12th subjects.
+            </p>
 
-        {/* Trust indicators */}
-        <div className="mt-12 pt-8 border-t border-white/10">
-          <p className="font-body text-sm text-navy-400">
-            {t('home.ctaSection.trustText')}
-          </p>
+            {/* CTA Button */}
+            <Link to="/calculator">
+              <button className="
+                group
+                inline-flex items-center justify-center gap-3
+                px-10 py-5
+                bg-gradient-to-r from-[#FF6B35] to-[#FF8F5A]
+                text-white font-bold text-lg
+                rounded-2xl
+                shadow-[0_0_40px_rgba(255,107,53,0.4)]
+                hover:shadow-[0_0_60px_rgba(255,107,53,0.6)]
+                hover:scale-[1.02]
+                active:scale-[0.98]
+                transition-all duration-300
+              ">
+                <span>Find My Courses Now</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
+              </button>
+            </Link>
+
+            {/* Reassurance */}
+            <p className="mt-6 text-sm text-white/30">
+              No signup • No ads • Built for Tamil Nadu students
+            </p>
+          </div>
         </div>
       </div>
     </section>

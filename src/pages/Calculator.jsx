@@ -6,6 +6,7 @@ import {
   Step2MarksInput,
   ResultsDisplay
 } from '../components/calculator'
+import { useHeaderOffset } from '../hooks/useHeaderOffset'
 
 function ProgressBar({ currentStep, hasResults }) {
   const { t } = useTranslation()
@@ -105,6 +106,7 @@ function ProgressBar({ currentStep, hasResults }) {
 export default function Calculator() {
   const { t } = useTranslation()
   const { step, results } = useCalculatorContext()
+  const { headerPaddingClass } = useHeaderOffset()
 
   const renderStep = () => {
     if (results) {
@@ -127,7 +129,7 @@ export default function Calculator() {
     : 'max-w-2xl' // 672px for input steps
 
   return (
-    <main className="min-h-screen bg-gradient-hero pt-40 sm:pt-44 pb-12 lg:pb-16">
+    <main className={`min-h-screen bg-gradient-hero ${headerPaddingClass} pb-12 lg:pb-16`}>
       {/* Background decoration */}
       <div className="fixed inset-0 pattern-kolam opacity-30 pointer-events-none" />
 

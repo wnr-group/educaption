@@ -33,7 +33,7 @@ export default function Colleges() {
   }, [colleges, searchQuery])
 
   return (
-    <main className="min-h-screen bg-gradient-hero py-12 lg:py-16">
+    <main className="min-h-screen bg-gradient-hero pt-28 sm:pt-32 pb-12 lg:pb-16">
       {/* Background decoration */}
       <div className="fixed inset-0 pattern-kolam opacity-30 pointer-events-none" />
 

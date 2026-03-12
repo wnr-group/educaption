@@ -5,10 +5,12 @@ import Card from '../components/ui/Card'
 import Button from '../components/ui/Button'
 import EligibleCoursesCard from '../components/results/EligibleCoursesCard'
 import CollegeRecommendations from '../components/results/CollegeRecommendations'
+import { useHeaderOffset } from '../hooks/useHeaderOffset'
 
 export default function Results() {
   const { t, i18n } = useTranslation()
   const location = useLocation()
+  const { headerPaddingClass } = useHeaderOffset()
   const results = location.state?.results
 
   // Redirect to calculator if no results
@@ -22,7 +24,7 @@ export default function Results() {
   const primaryCutoff = Object.values(cutoffScores)[0] || 0
 
   return (
-    <main className="min-h-screen bg-gradient-hero pt-40 sm:pt-44 pb-12 lg:pb-16">
+    <main className={`min-h-screen bg-gradient-hero ${headerPaddingClass} pb-12 lg:pb-16`}>
       {/* Background decoration */}
       <div className="fixed inset-0 pattern-kolam opacity-30 pointer-events-none" />
 

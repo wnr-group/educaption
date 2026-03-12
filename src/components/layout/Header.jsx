@@ -3,11 +3,15 @@ import { useLocation } from 'react-router-dom'
 import Navigation from './Navigation'
 import LanguageToggle from './LanguageToggle'
 import AnnouncementTicker from './AnnouncementTicker'
+import { useAnnouncements } from '../../hooks/queries/useAnnouncements'
 
 export default function Header() {
   const location = useLocation()
   const isHome = location.pathname === '/'
   const [scrolled, setScrolled] = useState(false)
+  const { data: announcements = [] } = useAnnouncements()
+
+  const hasAnnouncements = announcements.length > 0
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,13 +30,16 @@ export default function Header() {
   return (
     <>
       {/* Announcement Ticker - fixed at very top */}
-      <div className="fixed top-0 left-0 right-0 z-[60]">
-        <AnnouncementTicker />
-      </div>
+      {hasAnnouncements && (
+        <div className="fixed top-0 left-0 right-0 z-[60]">
+          <AnnouncementTicker />
+        </div>
+      )}
 
       <header className={`
-        fixed top-10 sm:top-11 left-0 right-0 z-50
+        fixed left-0 right-0 z-50
         transition-all duration-300
+        ${hasAnnouncements ? 'top-10 sm:top-11' : 'top-0'}
         ${isTransparent
           ? 'bg-transparent'
           : 'bg-white/95 backdrop-blur-lg border-b border-[#1A1A2E]/[0.06] shadow-sm'
