@@ -158,6 +158,17 @@ export async function getCounselling() {
   })
 }
 
+/**
+ * Fetch active announcements
+ * @returns {Promise<Array>} Array of announcement records
+ */
+export async function getAnnouncements() {
+  return fetchTable('Announcements', {
+    filterByFormula: '{Active} = TRUE()',
+    sort: [{ field: 'Order', direction: 'asc' }]
+  })
+}
+
 // Export configuration status for debugging
 export const isConfigured = !!(AIRTABLE_API_KEY && AIRTABLE_BASE_ID)
 
@@ -171,5 +182,6 @@ export const airtable = {
   getCategories,
   getColleges,
   getCounselling,
+  getAnnouncements,
   isConfigured
 }
