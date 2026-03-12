@@ -27,59 +27,98 @@
     "appName": "Educaption"
   },
   "home": {
-    "title": "Find Your Path",
-    "titleFind": "Find",
-    "titleYourPath": "Your Path",
-    "subtitle": "Calculate your cutoff and discover your future",
-    "cta": "Calculate My Cutoff",
-    "exploreCourses": "Explore Courses",
-    "badge": "TNEA 2026 Admissions Open",
-    "stats": {
-      "courses": "Courses",
-      "colleges": "Colleges",
-      "students": "Students"
+    "hero": {
+      "badge": "TNEA 2026 Admissions Open",
+      "title1": "You studied it.",
+      "title2": "We'll show what's next.",
+      "subtitle": "Enter your 12th subjects. Get every course you're eligible for.",
+      "subtitleExtra": "No confusion. No missed opportunities.",
+      "cta": "Find My Courses",
+      "ctaSecondary": "Browse All Courses",
+      "stats": {
+        "courses": "Courses",
+        "colleges": "Colleges",
+        "groups": "Subject Groups"
+      },
+      "scrollHint": "How it works"
+    },
+    "howItWorks": {
+      "badge": "Simple 3-Step Process",
+      "title": "From confusion to clarity",
+      "subtitle": "Other sites show courses. We show your courses.",
+      "step1": {
+        "title": "Tell us what you studied",
+        "description": "Select your 12th group and enter your marks. Takes 30 seconds.",
+        "highlight1": "40 subject groups",
+        "highlight2": "All TN boards supported"
+      },
+      "step2": {
+        "title": "See every eligible course",
+        "description": "Get a complete list of courses you qualify for — filtered by your cutoff and category.",
+        "highlight1": "Personalized results",
+        "highlight2": "Cutoff-based filtering"
+      },
+      "step3": {
+        "title": "Never miss a deadline",
+        "description": "Get notified at every counselling stage. Documents, dates, everything — on time.",
+        "highlight1": "Important dates",
+        "highlight2": "Step-by-step guidance"
+      },
+      "cta": "Start Now — It's Free",
+      "ctaSubtext": "No signup required. Get results in under 2 minutes."
     },
     "features": {
-      "title": "How It Works",
-      "subtitle": "Everything you need to navigate Tamil Nadu engineering admissions, all in one place",
-      "learnMore": "Learn more",
-      "calculate": {
-        "title": "Calculate Cutoff",
-        "description": "Enter your marks and instantly see your cutoff scores"
+      "badge": "Everything You Need",
+      "title": "Tools that actually help",
+      "subtitle": "Built specifically for Tamil Nadu students navigating higher education.",
+      "calculator": {
+        "title": "Cutoff Calculator",
+        "description": "Accurate cutoff scores using official TNEA formulas"
       },
       "courses": {
-        "title": "Discover Courses",
-        "description": "Explore all eligible courses based on your stream"
+        "title": "Course Explorer",
+        "description": "Browse 500+ courses across all engineering streams"
       },
       "colleges": {
-        "title": "Find Colleges",
-        "description": "Browse government and private colleges near you"
+        "title": "College Directory",
+        "description": "400+ government and private colleges across Tamil Nadu"
       },
       "counselling": {
         "title": "Counselling Guide",
-        "description": "Complete step-by-step guidance for TNEA counselling"
+        "description": "Step-by-step guidance for TNEA counselling process"
       }
     },
     "testimonials": {
-      "title": "Trusted by",
-      "titleHighlight": "Students",
-      "subtitle": "Join thousands of Tamil Nadu students who found their path with Educaption",
-      "roles": {
-        "parent": "Parent"
+      "badge": "Real Stories",
+      "title": "Students who found their path",
+      "subtitle": "Join thousands of Tamil Nadu students who discovered their future",
+      "quote1": {
+        "text": "I had no idea which courses I was eligible for. Educaption showed me 12 options I never knew existed. Now I'm studying my dream subject!",
+        "name": "Priya Lakshmi",
+        "role": "B.E Computer Science",
+        "college": "Anna University"
       },
-      "quotes": {
-        "quote1": "Educaption helped me understand my options when I was confused about which engineering branch to choose. The cutoff calculator was accurate!",
-        "quote2": "The counselling guide was a lifesaver during TNEA. I could track all important dates and documents in one place.",
-        "quote3": "As a parent, I found this website very helpful to understand the admission process and guide my daughter."
-      }
+      "quote2": {
+        "text": "The counselling reminders saved me. I almost missed the document submission deadline. Got a WhatsApp alert just in time.",
+        "name": "Karthik Raja",
+        "role": "B.Tech IT",
+        "college": "PSG College"
+      },
+      "quote3": {
+        "text": "As a first-generation college parent, I was lost. This website explained everything in Tamil. My son got into a government college!",
+        "name": "Meenakshi S",
+        "role": "Parent",
+        "college": ""
+      },
+      "trustMetric": "10,000+ students",
+      "trustMetricSub": "found their path this year"
     },
-    "ctaSection": {
-      "badge": "Start Your Journey Today",
-      "title": "Ready to Find Your",
-      "titleHighlight": "Perfect College?",
-      "subtitle": "Calculate your cutoff score, explore courses, and get personalized college recommendations in minutes",
-      "viewCounselling": "View Counselling Guide",
-      "trustText": "Trusted by 100,000+ students across Tamil Nadu"
+    "cta": {
+      "badge": "Free Forever",
+      "title": "Your future is one click away",
+      "subtitle": "Stop searching randomly. Start with what you know — your 12th subjects.",
+      "button": "Find My Courses Now",
+      "reassurance": "No signup • No ads • Built for Tamil Nadu students"
     }
   },
   "calculator": {

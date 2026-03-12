@@ -42,18 +42,18 @@ export default function CTASection() {
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/[0.08] border border-white/[0.1] rounded-full mb-8">
               <Sparkles className="w-4 h-4 text-[#FFB347]" />
               <span className="text-sm font-semibold text-white/70">
-                Free Forever
+                {t('home.cta.badge')}
               </span>
             </div>
 
             {/* Headline */}
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight mb-6 leading-tight">
-              Your future is one click away
+              {t('home.cta.title')}
             </h2>
 
             {/* Subtitle */}
             <p className="text-lg sm:text-xl text-white/50 max-w-lg mx-auto mb-10">
-              Stop searching randomly. Start with what you know — your 12th subjects.
+              {t('home.cta.subtitle')}
             </p>
 
             {/* CTA Button */}
@@ -71,14 +71,14 @@ export default function CTASection() {
                 active:scale-[0.98]
                 transition-all duration-300
               ">
-                <span>Find My Courses Now</span>
+                <span>{t('home.cta.button')}</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
               </button>
             </Link>
 
             {/* Reassurance */}
             <p className="mt-6 text-sm text-white/30">
-              No signup • No ads • Built for Tamil Nadu students
+              {t('home.cta.reassurance')}
             </p>
           </div>
         </div>

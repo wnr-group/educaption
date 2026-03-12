@@ -9,43 +9,43 @@ import {
   Zap
 } from 'lucide-react'
 
-const features = [
-  {
-    icon: Calculator,
-    title: 'Cutoff Calculator',
-    description: 'Accurate cutoff scores using official TNEA formulas',
-    link: '/calculator',
-    gradient: 'from-[#FF6B35] to-[#FF8F5A]',
-    bgGlow: 'rgba(255,107,53,0.1)'
-  },
-  {
-    icon: BookOpen,
-    title: 'Course Explorer',
-    description: 'Browse 500+ courses across all engineering streams',
-    link: '/courses',
-    gradient: 'from-[#7B4AE2] to-[#9D6FF2]',
-    bgGlow: 'rgba(123,74,226,0.1)'
-  },
-  {
-    icon: Building2,
-    title: 'College Directory',
-    description: '400+ government and private colleges across Tamil Nadu',
-    link: '/colleges',
-    gradient: 'from-[#00D4AA] to-[#00E6BB]',
-    bgGlow: 'rgba(0,212,170,0.1)'
-  },
-  {
-    icon: FileText,
-    title: 'Counselling Guide',
-    description: 'Step-by-step guidance for TNEA counselling process',
-    link: '/counselling',
-    gradient: 'from-[#3B82F6] to-[#60A5FA]',
-    bgGlow: 'rgba(59,130,246,0.1)'
-  }
-]
-
 export default function FeaturesSection() {
   const { t } = useTranslation()
+
+  const features = [
+    {
+      icon: Calculator,
+      titleKey: 'home.features.calculator.title',
+      descriptionKey: 'home.features.calculator.description',
+      link: '/calculator',
+      gradient: 'from-[#FF6B35] to-[#FF8F5A]',
+      bgGlow: 'rgba(255,107,53,0.1)'
+    },
+    {
+      icon: BookOpen,
+      titleKey: 'home.features.courses.title',
+      descriptionKey: 'home.features.courses.description',
+      link: '/courses',
+      gradient: 'from-[#7B4AE2] to-[#9D6FF2]',
+      bgGlow: 'rgba(123,74,226,0.1)'
+    },
+    {
+      icon: Building2,
+      titleKey: 'home.features.colleges.title',
+      descriptionKey: 'home.features.colleges.description',
+      link: '/about',
+      gradient: 'from-[#00D4AA] to-[#00E6BB]',
+      bgGlow: 'rgba(0,212,170,0.1)'
+    },
+    {
+      icon: FileText,
+      titleKey: 'home.features.counselling.title',
+      descriptionKey: 'home.features.counselling.description',
+      link: '/about',
+      gradient: 'from-[#3B82F6] to-[#60A5FA]',
+      bgGlow: 'rgba(59,130,246,0.1)'
+    }
+  ]
 
   return (
     <section className="relative py-20 sm:py-28 bg-white overflow-hidden">
@@ -58,14 +58,14 @@ export default function FeaturesSection() {
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-[#1A1A2E]/5 rounded-full mb-4">
               <Zap className="w-4 h-4 text-[#FF6B35]" />
-              <span className="text-sm font-semibold text-[#1A1A2E]/70">Everything You Need</span>
+              <span className="text-sm font-semibold text-[#1A1A2E]/70">{t('home.features.badge')}</span>
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#1A1A2E] tracking-tight">
-              Tools that actually help
+              {t('home.features.title')}
             </h2>
           </div>
           <p className="text-[#1A1A2E]/50 max-w-sm sm:text-right">
-            Built specifically for Tamil Nadu students navigating higher education.
+            {t('home.features.subtitle')}
           </p>
         </div>
 
@@ -124,10 +124,10 @@ export default function FeaturesSection() {
 
                     {/* Content */}
                     <h3 className="text-xl sm:text-2xl font-bold text-[#1A1A2E] mb-2 tracking-tight">
-                      {feature.title}
+                      {t(feature.titleKey)}
                     </h3>
                     <p className="text-[#1A1A2E]/50 leading-relaxed">
-                      {feature.description}
+                      {t(feature.descriptionKey)}
                     </p>
                   </div>
 

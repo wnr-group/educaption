@@ -1,34 +1,37 @@
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { ClipboardList, GraduationCap, Bell, ArrowRight, CheckCircle2 } from 'lucide-react'
 
-const steps = [
-  {
-    number: '01',
-    icon: ClipboardList,
-    title: 'Tell us what you studied',
-    description: 'Select your 12th group and enter your marks. Takes 30 seconds.',
-    color: '#FF6B35',
-    highlights: ['40 subject groups', 'All TN boards supported']
-  },
-  {
-    number: '02',
-    icon: GraduationCap,
-    title: 'See every eligible course',
-    description: 'Get a complete list of courses you qualify for — filtered by your cutoff and category.',
-    color: '#7B4AE2',
-    highlights: ['Personalized results', 'Cutoff-based filtering']
-  },
-  {
-    number: '03',
-    icon: Bell,
-    title: 'Never miss a deadline',
-    description: 'Get notified at every counselling stage. Documents, dates, everything — on time.',
-    color: '#00D4AA',
-    highlights: ['Important dates', 'Step-by-step guidance']
-  }
-]
-
 export default function HowItWorksSection() {
+  const { t } = useTranslation()
+
+  const steps = [
+    {
+      number: '01',
+      icon: ClipboardList,
+      titleKey: 'home.howItWorks.step1.title',
+      descriptionKey: 'home.howItWorks.step1.description',
+      color: '#FF6B35',
+      highlightKeys: ['home.howItWorks.step1.highlight1', 'home.howItWorks.step1.highlight2']
+    },
+    {
+      number: '02',
+      icon: GraduationCap,
+      titleKey: 'home.howItWorks.step2.title',
+      descriptionKey: 'home.howItWorks.step2.description',
+      color: '#7B4AE2',
+      highlightKeys: ['home.howItWorks.step2.highlight1', 'home.howItWorks.step2.highlight2']
+    },
+    {
+      number: '03',
+      icon: Bell,
+      titleKey: 'home.howItWorks.step3.title',
+      descriptionKey: 'home.howItWorks.step3.description',
+      color: '#00D4AA',
+      highlightKeys: ['home.howItWorks.step3.highlight1', 'home.howItWorks.step3.highlight2']
+    }
+  ]
+
   return (
     <section className="relative py-20 sm:py-28 bg-[#FAFAFA] overflow-hidden">
       {/* Subtle background pattern */}
@@ -45,14 +48,14 @@ export default function HowItWorksSection() {
         <div className="text-center mb-16 sm:mb-20">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#FF6B35]/10 rounded-full mb-6">
             <span className="text-sm font-bold text-[#FF6B35] uppercase tracking-wider">
-              Simple 3-Step Process
+              {t('home.howItWorks.badge')}
             </span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#1A1A2E] tracking-tight mb-4">
-            From confusion to clarity
+            {t('home.howItWorks.title')}
           </h2>
           <p className="text-lg sm:text-xl text-[#1A1A2E]/50 max-w-xl mx-auto">
-            Other sites show courses. We show <span className="font-semibold text-[#1A1A2E]/70">your</span> courses.
+            {t('home.howItWorks.subtitle')}
           </p>
         </div>
 
@@ -108,15 +111,15 @@ export default function HowItWorksSection() {
 
               {/* Content */}
               <h3 className="text-xl sm:text-2xl font-bold text-[#1A1A2E] mb-3 tracking-tight">
-                {step.title}
+                {t(step.titleKey)}
               </h3>
               <p className="text-[#1A1A2E]/50 leading-relaxed mb-5">
-                {step.description}
+                {t(step.descriptionKey)}
               </p>
 
               {/* Highlights */}
               <div className="flex flex-wrap gap-2">
-                {step.highlights.map((highlight, j) => (
+                {step.highlightKeys.map((highlightKey, j) => (
                   <span
                     key={j}
                     className="
@@ -128,7 +131,7 @@ export default function HowItWorksSection() {
                     "
                   >
                     <CheckCircle2 className="w-3 h-3" style={{ color: step.color }} />
-                    {highlight}
+                    {t(highlightKey)}
                   </span>
                 ))}
               </div>
@@ -157,12 +160,12 @@ export default function HowItWorksSection() {
               active:scale-[0.98]
               transition-all duration-300
             ">
-              <span>Start Now — It's Free</span>
+              <span>{t('home.howItWorks.cta')}</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
             </button>
           </Link>
           <p className="mt-4 text-sm text-[#1A1A2E]/40">
-            No signup required. Get results in under 2 minutes.
+            {t('home.howItWorks.ctaSubtext')}
           </p>
         </div>
       </div>

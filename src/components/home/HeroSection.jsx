@@ -5,6 +5,12 @@ import { ArrowRight, Sparkles } from 'lucide-react'
 export default function HeroSection() {
   const { t } = useTranslation()
 
+  const stats = [
+    { value: '500+', labelKey: 'home.hero.stats.courses' },
+    { value: '400+', labelKey: 'home.hero.stats.colleges' },
+    { value: '40', labelKey: 'home.hero.stats.groups' },
+  ]
+
   return (
     <section className="relative min-h-[100svh] w-full flex flex-col justify-center overflow-hidden bg-[#0A0A0F]">
       {/* Animated gradient orbs */}
@@ -37,7 +43,7 @@ export default function HeroSection() {
               <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00D4AA]"></span>
             </span>
             <span className="text-sm text-white/70 font-medium tracking-wide">
-              TNEA 2026 Admissions Open
+              {t('home.hero.badge')}
             </span>
           </div>
         </div>
@@ -46,10 +52,10 @@ export default function HeroSection() {
         <div className="text-center mb-6 sm:mb-8">
           <h1 className="text-[2.5rem] sm:text-6xl md:text-7xl lg:text-8xl font-black leading-[1.05] tracking-tight">
             <span className="block text-white/90 mb-2">
-              You studied it.
+              {t('home.hero.title1')}
             </span>
             <span className="block bg-gradient-to-r from-[#FF6B35] via-[#FF8F5A] to-[#FFB347] bg-clip-text text-transparent">
-              We'll show what's next.
+              {t('home.hero.title2')}
             </span>
           </h1>
         </div>
@@ -64,8 +70,8 @@ export default function HeroSection() {
           leading-relaxed
           font-light
         ">
-          Enter your 12th subjects. Get every course you're eligible for.
-          <span className="hidden sm:inline"> No confusion. No missed opportunities.</span>
+          {t('home.hero.subtitle')}
+          <span className="hidden sm:inline"> {t('home.hero.subtitleExtra')}</span>
         </p>
 
         {/* CTA Buttons */}
@@ -85,7 +91,7 @@ export default function HeroSection() {
               active:scale-[0.98]
               transition-all duration-300
             ">
-              <span>Find My Courses</span>
+              <span>{t('home.hero.cta')}</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
             </button>
           </Link>
@@ -103,24 +109,20 @@ export default function HeroSection() {
               hover:border-white/[0.25]
               transition-all duration-300
             ">
-              Browse All Courses
+              {t('home.hero.ctaSecondary')}
             </button>
           </Link>
         </div>
 
         {/* Quick stats - social proof */}
         <div className="flex items-center justify-center gap-8 sm:gap-12">
-          {[
-            { value: '500+', label: 'Courses' },
-            { value: '400+', label: 'Colleges' },
-            { value: '40', label: 'Subject Groups' },
-          ].map((stat, i) => (
+          {stats.map((stat, i) => (
             <div key={i} className="text-center">
               <div className="text-2xl sm:text-3xl font-black text-white/90 mb-1">
                 {stat.value}
               </div>
               <div className="text-xs sm:text-sm text-white/40 uppercase tracking-wider">
-                {stat.label}
+                {t(stat.labelKey)}
               </div>
             </div>
           ))}
@@ -129,7 +131,7 @@ export default function HeroSection() {
 
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-        <span className="text-xs text-white/30 uppercase tracking-widest">How it works</span>
+        <span className="text-xs text-white/30 uppercase tracking-widest">{t('home.hero.scrollHint')}</span>
         <div className="w-6 h-10 border-2 border-white/20 rounded-full flex justify-center pt-2">
           <div className="w-1.5 h-1.5 bg-white/40 rounded-full animate-bounce" />
         </div>
