@@ -12,7 +12,6 @@ export default function Navigation({ isTransparent }) {
     { path: '/', label: t('nav.home') },
     { path: '/calculator', label: t('nav.calculator') },
     { path: '/courses', label: t('nav.courses') },
-    { path: '/counselling', label: t('nav.counselling') },
     { path: '/about', label: t('nav.about') },
   ]
 

@@ -10,7 +10,6 @@ import Home from './pages/Home'
 import Calculator from './pages/Calculator'
 import Results from './pages/Results'
 import Courses from './pages/Courses'
-import Counselling from './pages/Counselling'
 import About from './pages/About'
 import NotFound from './pages/NotFound'
 
@@ -29,7 +28,6 @@ export default function App() {
                 <Route path="/calculator" element={<Calculator />} />
                 <Route path="/results" element={<Results />} />
                 <Route path="/courses" element={<Courses />} />
-                <Route path="/counselling" element={<Counselling />} />
                 <Route path="/about" element={<About />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
