@@ -164,7 +164,7 @@ export async function getCounselling() {
  */
 export async function getAnnouncements() {
   return fetchTable('Announcements', {
-    filterByFormula: '{Active} = TRUE()',
+    filterByFormula: "OR({Active} = TRUE(), {Active} = 'true')",
     sort: [{ field: 'Order', direction: 'asc' }]
   })
 }
