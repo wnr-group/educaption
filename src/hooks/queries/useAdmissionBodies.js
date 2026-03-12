@@ -36,7 +36,8 @@ export function useAdmissionBodies() {
       website: parseTextField(body.Website),
       max_cutoff: parseNumberField(body.Max_Cutoff, 200),
       default_formula: parseTextField(body.Default_Formula),
-      category: parseTextField(body.Category) || 'Other'
+      category: parseTextField(body.Category) || 'Other',
+      category_ta: parseTextField(body.Category_Tamil)
     }))
   })
 }

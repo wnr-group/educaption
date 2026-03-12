@@ -301,10 +301,10 @@ export function calculateCourseCutoffs(courses, admissionBodies, group, marks, s
     if (!isEligible) continue
 
     // Admission_Body is a text field with the name (e.g., "TNDALU")
-    const admissionBody = bodyLookupByName[course.admission_body_id]
+    const admissionBody = bodyLookupByName[course.admission_body]
 
     if (!admissionBody) {
-      console.log('No admission body match for:', course.admission_body_id)
+      console.log('No admission body match for:', course.admission_body)
       continue
     }
 
@@ -312,9 +312,9 @@ export function calculateCourseCutoffs(courses, admissionBodies, group, marks, s
     const formula = course.formula_override || admissionBody.default_formula
     if (!formula) continue
 
-    // Get subject list if course uses one
-    const subjectListSubjects = course.subject_list_id
-      ? listLookup[course.subject_list_id]
+    // Get subject list if course uses one (subject_list contains the list name like "LIST_F")
+    const subjectListSubjects = course.subject_list
+      ? listLookup[course.subject_list]
       : null
 
     const cutoff = calculateCutoff(formula, marksLookup, subjectListSubjects)
@@ -383,7 +383,7 @@ export function filterEligibleCourses(courses, eligibleBodyIds) {
   }
 
   return courses.filter(course =>
-    eligibleBodyIds.includes(course.admission_body_id)
+    eligibleBodyIds.includes(course.admission_body)
   )
 }
 

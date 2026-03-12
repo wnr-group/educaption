@@ -37,7 +37,8 @@ export function useGroups() {
       stream: parseTextField(group.Stream),
       name: parseTextField(group.Name),
       name_ta: parseTextField(group.Name_Tamil),
-      subjects: parseJsonField(group.Subjects, [])
+      subjects: parseJsonField(group.Subjects, []),
+      subjects_ta: parseJsonField(group.Subjects_Tamil, [])
     }))
   })
 }

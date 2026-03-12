@@ -1,18 +1,25 @@
 import { useState } from 'react'
 import { ChevronDown, Calculator } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import CourseCard from './CourseCard'
 import { getFormulaBreakdown } from '../../lib/calculator'
 import { useCalculatorContext } from '../../context/CalculatorContext'
 import { useCalculator } from '../../hooks/useCalculator'
+import { useLanguage } from '../../context/LanguageContext'
 
 /**
  * Collapsible category section with courses grid and formula breakdown
  */
-export default function CategorySection({ category, courses, cutoff, maxCutoff, formula, defaultExpanded = true }) {
+export default function CategorySection({ category, category_ta, courses, cutoff, maxCutoff, formula, defaultExpanded = true }) {
+  const { t } = useTranslation()
+  const { language } = useLanguage()
   const [isExpanded, setIsExpanded] = useState(defaultExpanded)
   const [showAllCourses, setShowAllCourses] = useState(false)
   const { marks, group } = useCalculatorContext()
   const { getGroupById } = useCalculator()
+
+  // Use Tamil category name if available and language is Tamil
+  const displayCategory = (language === 'ta' && category_ta) ? category_ta : category
 
   const visibleCourses = showAllCourses ? courses : courses.slice(0, 6)
   const hasMore = courses.length > 6
@@ -90,10 +97,10 @@ export default function CategorySection({ category, courses, cutoff, maxCutoff, 
 
           <div className="text-left">
             <h3 className="font-display text-lg font-bold text-navy-900">
-              {category}
+              {displayCategory}
             </h3>
             <p className="font-body text-sm text-navy-500 mt-0.5">
-              {courses.length} course{courses.length !== 1 ? 's' : ''} available
+              {courses.length} {courses.length !== 1 ? t('calculator.results.coursesAvailable') : t('calculator.results.courseAvailable')}
             </p>
           </div>
         </div>
@@ -113,7 +120,7 @@ export default function CategorySection({ category, courses, cutoff, maxCutoff, 
               {(cutoff || 0).toFixed(1)}
             </p>
             <p className="font-body text-xs text-navy-400 mt-0.5">
-              out of {maxCutoff}
+              {t('calculator.results.outOf')} {maxCutoff}
             </p>
           </div>
         </div>
@@ -135,7 +142,7 @@ export default function CategorySection({ category, courses, cutoff, maxCutoff, 
                 <div className="flex items-center gap-2 mb-3">
                   <Calculator className="w-4 h-4 text-navy-500" />
                   <span className="font-body text-xs font-semibold text-navy-600 uppercase tracking-wider">
-                    How your cutoff is calculated
+                    {t('calculator.results.howCutoffCalculated')}
                   </span>
                 </div>
 
@@ -166,7 +173,7 @@ export default function CategorySection({ category, courses, cutoff, maxCutoff, 
 
                 {formula && (
                   <p className="mt-3 font-mono text-xs text-navy-400">
-                    Formula: {formula}
+                    {t('calculator.results.formula')}: {formula}
                   </p>
                 )}
               </div>
@@ -186,7 +193,7 @@ export default function CategorySection({ category, courses, cutoff, maxCutoff, 
                 className="group mt-4 w-full flex items-center justify-center gap-2 py-3 px-4 bg-cream-50 hover:bg-saffron-50 rounded-xl border border-cream-200 hover:border-saffron-200 transition-colors"
               >
                 <span className="font-body text-sm font-semibold text-saffron-600 group-hover:text-saffron-700">
-                  {showAllCourses ? 'Show fewer courses' : `Show all ${courses.length} courses`}
+                  {showAllCourses ? t('calculator.results.showFewerCourses') : t('calculator.results.showAllCourses', { count: courses.length })}
                 </span>
                 <ChevronDown className={`w-4 h-4 text-saffron-500 transition-transform ${showAllCourses ? 'rotate-180' : ''}`} />
               </button>

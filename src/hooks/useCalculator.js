@@ -72,12 +72,12 @@ export function useCalculator() {
 
   /**
    * Get eligible courses based on calculated cutoffs
-   * Note: course.admission_body_id is the name (e.g., "TNEA"), not the Airtable record ID
+   * Note: course.admission_body is the name (e.g., "TNEA"), not the Airtable record ID
    */
   const getEligibleCourses = useCallback((cutoffResults) => {
     const eligibleBodyNames = cutoffResults.map(r => r.admissionBodyName)
     return courses.filter(course =>
-      eligibleBodyNames.includes(course.admission_body_id)
+      eligibleBodyNames.includes(course.admission_body)
     )
   }, [courses])
 
@@ -111,13 +111,13 @@ export function useCalculator() {
 
   /**
    * Group courses by admission body for display
-   * Note: course.admission_body_id is the name (e.g., "TNEA"), not the Airtable record ID
+   * Note: course.admission_body is the name (e.g., "TNEA"), not the Airtable record ID
    */
   const coursesByAdmissionBody = useMemo(() => {
     const grouped = {}
 
     courses.forEach(course => {
-      const bodyName = course.admission_body_id
+      const bodyName = course.admission_body
       if (!bodyName) return
 
       if (!grouped[bodyName]) {
@@ -143,10 +143,11 @@ export function useCalculator() {
     const categoryMap = {}
 
     eligibleCourses.forEach(course => {
-      const body = admissionBodies.find(b => b.name === course.admission_body_id)
+      const body = admissionBodies.find(b => b.name === course.admission_body)
       if (!body) return
 
       const category = body.category || 'Other'
+      const category_ta = body.category_ta || category
       const cutoffResult = cutoffResults.find(r => r.admissionBodyName === body.name)
       const courseCutoff = cutoffResult?.cutoff || 0
 
@@ -156,6 +157,7 @@ export function useCalculator() {
       if (!categoryMap[category]) {
         categoryMap[category] = {
           category,
+          category_ta,
           courses: [],
           cutoff: courseCutoff,
           maxCutoff: cutoffResult?.maxCutoff || 200,

@@ -40,11 +40,14 @@ export default function Step2MarksInput() {
     const streamCutoffs = calculateCutoffs(group, marks)
     const eligibleCourses = getEligibleCourses(streamCutoffs)
 
+    // Calculate total marks for group subjects only (to match ResultsDisplay which shows group subjects)
+    const groupSubjectMarks = subjects.reduce((sum, subject) => sum + (parseFloat(marks[subject]) || 0), 0)
+
     setResults({
       streamCutoffs,
       eligibleCourses,
       marks,
-      totalMarks: Object.values(marks).reduce((sum, m) => sum + (parseFloat(m) || 0), 0)
+      totalMarks: groupSubjectMarks
     })
   }
 
