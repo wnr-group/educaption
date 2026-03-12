@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { ChevronDown, Calculator } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import CourseCard from './CourseCard'
@@ -9,14 +9,31 @@ import { useLanguage } from '../../context/LanguageContext'
 
 /**
  * Collapsible category section with courses grid and formula breakdown
+ *
+ * Debug mode: Run `window.EDUCAPTION_DEBUG = true` in console to show formula breakdown
  */
 export default function CategorySection({ category, category_ta, courses, cutoff, maxCutoff, formula, defaultExpanded = true }) {
   const { t } = useTranslation()
   const { language } = useLanguage()
   const [isExpanded, setIsExpanded] = useState(defaultExpanded)
   const [showAllCourses, setShowAllCourses] = useState(false)
+  const [debugMode, setDebugMode] = useState(false)
   const { marks, group } = useCalculatorContext()
   const { getGroupById } = useCalculator()
+
+  // Check for debug mode on mount and when window variable changes
+  useEffect(() => {
+    const checkDebugMode = () => setDebugMode(!!window.EDUCAPTION_DEBUG)
+    checkDebugMode()
+
+    // Allow toggling debug mode from console
+    window.enableEducaptionDebug = () => { window.EDUCAPTION_DEBUG = true; checkDebugMode() }
+    window.disableEducaptionDebug = () => { window.EDUCAPTION_DEBUG = false; checkDebugMode() }
+
+    // Check periodically in case user sets it manually
+    const interval = setInterval(checkDebugMode, 1000)
+    return () => clearInterval(interval)
+  }, [])
 
   // Use Tamil category name if available and language is Tamil
   const displayCategory = (language === 'ta' && category_ta) ? category_ta : category
@@ -136,13 +153,14 @@ export default function CategorySection({ category, category_ta, courses, cutoff
         <div className="overflow-hidden">
           <div className="px-5 pb-5 border-t border-navy-100">
 
-            {/* Formula Breakdown */}
-            {breakdown.length > 0 && (
+            {/* Formula Breakdown - Only visible in debug mode */}
+            {debugMode && breakdown.length > 0 && (
               <div className="mt-4 mb-5 p-4 bg-gradient-to-br from-navy-50 to-cream-50 rounded-xl border border-navy-100">
                 <div className="flex items-center gap-2 mb-3">
                   <Calculator className="w-4 h-4 text-navy-500" />
                   <span className="font-body text-xs font-semibold text-navy-600 uppercase tracking-wider">
                     {t('calculator.results.howCutoffCalculated')}
+                    <span className="ml-2 text-amber-600">(Debug Mode)</span>
                   </span>
                 </div>
 
