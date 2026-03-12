@@ -5,11 +5,13 @@ import { useState } from 'react'
 import Button from '../ui/Button'
 import { useCalculatorContext } from '../../context/CalculatorContext'
 import { useCalculator } from '../../hooks/useCalculator'
+import { useLanguage } from '../../context/LanguageContext'
 import CircularProgress from './CircularProgress'
 import CategorySection from './CategorySection'
 
 export default function ResultsDisplay() {
   const { t } = useTranslation()
+  const { language } = useLanguage()
   const { results, marks, group, reset } = useCalculatorContext()
   const { getGroupById, groupCoursesByCategory } = useCalculator()
   const [showAllCategories, setShowAllCategories] = useState(false)
@@ -57,7 +59,7 @@ export default function ResultsDisplay() {
               <Sparkles className="w-5 h-5 text-saffron-400" />
             </div>
             <h2 className="font-display text-xl md:text-2xl font-bold text-white tracking-tight">
-              Your Admission Analysis
+              {t('calculator.results.admissionAnalysis')}
             </h2>
           </div>
 
@@ -98,8 +100,8 @@ export default function ResultsDisplay() {
             <div className="lg:col-span-4 order-1 lg:order-2 flex justify-center">
               <CircularProgress
                 value={eligibleCourses.length}
-                label="Courses"
-                subtitle="You're eligible for"
+                label={t('calculator.results.courses')}
+                subtitle={t('calculator.results.youreEligibleFor')}
                 total={subjects.length * 100}
                 currentTotal={totalMarks}
               />
@@ -115,7 +117,7 @@ export default function ResultsDisplay() {
                       <GraduationCap className="w-5 h-5 text-saffron-400" />
                     </div>
                     <div>
-                      <p className="font-body text-xs text-white/50 uppercase tracking-wider">Total Score</p>
+                      <p className="font-body text-xs text-white/50 uppercase tracking-wider">{t('calculator.results.totalScore')}</p>
                       <p className="font-display text-2xl font-bold text-white">
                         {totalMarks.toFixed(0)}
                         <span className="text-white/40 text-lg font-normal"> / {subjects.length * 100}</span>
@@ -134,20 +136,20 @@ export default function ResultsDisplay() {
 
               {/* Categories Summary */}
               <div className="bg-white/[0.05] backdrop-blur-sm rounded-xl p-4">
-                <p className="font-body text-xs text-white/50 uppercase tracking-wider mb-3">Eligible Categories</p>
+                <p className="font-body text-xs text-white/50 uppercase tracking-wider mb-3">{t('calculator.results.eligibleCategories')}</p>
                 <div className="flex flex-wrap gap-2">
                   {coursesByCategory.slice(0, 4).map((cat) => (
                     <span
                       key={cat.category}
                       className="inline-flex items-center px-3 py-1.5 bg-white/10 hover:bg-white/15 rounded-lg text-xs font-medium text-white/80 transition-colors cursor-default"
                     >
-                      {cat.category}
+                      {(language === 'ta' && cat.category_ta) ? cat.category_ta : cat.category}
                       <span className="ml-1.5 text-saffron-400">{cat.courses.length}</span>
                     </span>
                   ))}
                   {coursesByCategory.length > 4 && (
                     <span className="inline-flex items-center px-3 py-1.5 text-xs font-medium text-white/40">
-                      +{coursesByCategory.length - 4} more
+                      {t('calculator.results.more', { count: coursesByCategory.length - 4 })}
                     </span>
                   )}
                 </div>
@@ -162,11 +164,11 @@ export default function ResultsDisplay() {
         <div className="flex items-center justify-between mb-5">
           <div className="flex items-center gap-3">
             <h3 className="font-display text-xl md:text-2xl font-bold text-navy-900">
-              Eligible Courses
+              {t('calculator.results.eligibleCourses')}
             </h3>
             <span className="inline-flex items-center px-3 py-1 bg-saffron-100 rounded-full">
               <span className="font-display text-sm font-semibold text-saffron-700">
-                {eligibleCourses.length} total
+                {eligibleCourses.length} {t('calculator.results.total')}
               </span>
             </span>
           </div>
@@ -187,6 +189,7 @@ export default function ResultsDisplay() {
               <CategorySection
                 key={cat.category}
                 category={cat.category}
+                category_ta={cat.category_ta}
                 courses={cat.courses}
                 cutoff={cat.cutoff}
                 maxCutoff={cat.maxCutoff}
@@ -201,10 +204,10 @@ export default function ResultsDisplay() {
                 className="group w-full py-4 text-sm font-semibold text-saffron-600 hover:text-saffron-700 bg-gradient-to-r from-cream-50 to-saffron-50/50 hover:from-cream-100 hover:to-saffron-100/50 rounded-xl border border-cream-200 hover:border-saffron-200 transition-colors flex items-center justify-center gap-2"
               >
                 {showAllCategories ? (
-                  'Show Less'
+                  t('calculator.results.showLess')
                 ) : (
                   <>
-                    Show {coursesByCategory.length - 3} More Categories
+                    {t('calculator.results.showMore', { count: coursesByCategory.length - 3 })}
                     <ChevronRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                   </>
                 )}
@@ -214,39 +217,18 @@ export default function ResultsDisplay() {
         )}
       </div>
 
-      {/* Path Forward Section */}
-      <div className="bg-gradient-to-br from-cream-50 via-white to-saffron-50/30 rounded-2xl border border-cream-200 p-6 md:p-8">
-        <div className="flex items-center gap-3 mb-6">
-          <div className="p-2 bg-navy-100 rounded-xl">
-            <Sparkles className="w-5 h-5 text-navy-600" />
-          </div>
-          <h3 className="font-display text-lg md:text-xl font-bold text-navy-900">
-            Your Path Forward
-          </h3>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-          <Link to="/colleges" className="block">
-            <Button variant="primary" className="w-full" size="lg" icon={School} iconPosition="left">
-              Explore Colleges
-            </Button>
-          </Link>
-          <Link to="/counselling" className="block">
-            <Button variant="secondary" className="w-full" size="lg" icon={FileText} iconPosition="left">
-              Counselling Guide
-            </Button>
-          </Link>
-          <Button
-            variant="ghost"
-            onClick={handleStartOver}
-            className="w-full border border-navy-200 hover:border-navy-300 hover:bg-navy-50"
-            size="lg"
-            icon={RotateCcw}
-            iconPosition="left"
-          >
-            Calculate Again
-          </Button>
-        </div>
+      {/* Calculate Again */}
+      <div className="flex justify-center">
+        <Button
+          variant="ghost"
+          onClick={handleStartOver}
+          className="border border-navy-200 hover:border-navy-300 hover:bg-navy-50"
+          size="lg"
+          icon={RotateCcw}
+          iconPosition="left"
+        >
+          {t('calculator.results.calculateAgain')}
+        </Button>
       </div>
     </div>
   )

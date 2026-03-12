@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next'
 import { Target, CheckCircle, Mail, MapPin, Users, Heart, Sparkles } from 'lucide-react'
 import Card from '../components/ui/Card'
 import { useHeaderOffset } from '../hooks/useHeaderOffset'
+import SEO, { schemas } from '../components/SEO'
 
 export default function About() {
   const { t } = useTranslation()
@@ -14,8 +15,31 @@ export default function About() {
     t('about.mission4')
   ]
 
+  const aboutSchema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'AboutPage',
+        name: 'About Educaption',
+        description: 'Learn about Educaption and our mission to help Tamil Nadu students with engineering admissions.',
+        url: 'https://educaption.org/about'
+      },
+      schemas.organization,
+      schemas.breadcrumb([
+        { name: 'Home', path: '/' },
+        { name: 'About', path: '/about' }
+      ])
+    ]
+  }
+
   return (
-    <main className={`min-h-screen bg-gradient-hero ${headerPaddingClass} pb-12 lg:pb-16`}>
+    <>
+      <SEO
+        title="About Us - TN Admissions Guide"
+        description="Educaption helps Tamil Nadu students navigate admissions. Free cutoff calculator, course explorer, and counselling guidance."
+        schema={aboutSchema}
+      />
+      <main className={`min-h-screen bg-gradient-hero ${headerPaddingClass} pb-12 lg:pb-16`}>
       {/* Background decoration */}
       <div className="fixed inset-0 pattern-kolam opacity-30 pointer-events-none" />
 
@@ -206,5 +230,6 @@ export default function About() {
         </Card>
       </div>
     </main>
+    </>
   )
 }

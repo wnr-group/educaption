@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { I18nextProvider } from 'react-i18next'
+import { HelmetProvider } from 'react-helmet-async'
 import i18n from './lib/i18n'
 import { LanguageProvider } from './context/LanguageContext'
 import { CalculatorProvider } from './context/CalculatorContext'
@@ -17,25 +18,27 @@ const queryClient = new QueryClient()
 
 export default function App() {
   return (
-    <I18nextProvider i18n={i18n}>
-      <QueryClientProvider client={queryClient}>
-        <LanguageProvider>
-          <CalculatorProvider>
-            <Router>
-              <Header />
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/calculator" element={<Calculator />} />
-                <Route path="/results" element={<Results />} />
-                <Route path="/courses" element={<Courses />} />
-                <Route path="/about" element={<About />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-              <Footer />
-            </Router>
-          </CalculatorProvider>
-        </LanguageProvider>
-      </QueryClientProvider>
-    </I18nextProvider>
+    <HelmetProvider>
+      <I18nextProvider i18n={i18n}>
+        <QueryClientProvider client={queryClient}>
+          <LanguageProvider>
+            <CalculatorProvider>
+              <Router>
+                <Header />
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/calculator" element={<Calculator />} />
+                  <Route path="/results" element={<Results />} />
+                  <Route path="/courses" element={<Courses />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+                <Footer />
+              </Router>
+            </CalculatorProvider>
+          </LanguageProvider>
+        </QueryClientProvider>
+      </I18nextProvider>
+    </HelmetProvider>
   )
 }

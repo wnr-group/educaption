@@ -6,6 +6,7 @@ import Button from '../components/ui/Button'
 import EligibleCoursesCard from '../components/results/EligibleCoursesCard'
 import CollegeRecommendations from '../components/results/CollegeRecommendations'
 import { useHeaderOffset } from '../hooks/useHeaderOffset'
+import SEO, { schemas } from '../components/SEO'
 
 export default function Results() {
   const { t, i18n } = useTranslation()
@@ -23,8 +24,21 @@ export default function Results() {
   // Get the primary cutoff score for display
   const primaryCutoff = Object.values(cutoffScores)[0] || 0
 
+  const resultsSchema = schemas.breadcrumb([
+    { name: 'Home', path: '/' },
+    { name: 'Calculator', path: '/calculator' },
+    { name: 'Results', path: '/results' }
+  ])
+
   return (
-    <main className={`min-h-screen bg-gradient-hero ${headerPaddingClass} pb-12 lg:pb-16`}>
+    <>
+      <SEO
+        title="Your Cutoff Results"
+        description="View your calculated TNEA engineering cutoff scores and eligible courses."
+        noindex={true}
+        schema={resultsSchema}
+      />
+      <main className={`min-h-screen bg-gradient-hero ${headerPaddingClass} pb-12 lg:pb-16`}>
       {/* Background decoration */}
       <div className="fixed inset-0 pattern-kolam opacity-30 pointer-events-none" />
 
@@ -167,5 +181,6 @@ export default function Results() {
         </Card>
       </div>
     </main>
+    </>
   )
 }

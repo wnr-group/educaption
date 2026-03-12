@@ -4,6 +4,7 @@ import { BookOpen, Search, X, Clock, GraduationCap, ChevronDown, Users } from 'l
 import { useCourses } from '../hooks/queries'
 import { useLanguage } from '../context/LanguageContext'
 import { useHeaderOffset } from '../hooks/useHeaderOffset'
+import SEO, { schemas } from '../components/SEO'
 
 export default function Courses() {
   const { t } = useTranslation()
@@ -69,16 +70,38 @@ export default function Courses() {
     return sortedGrouped
   }, [filteredCourses])
 
+  const coursesSchema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'CollectionPage',
+        name: 'Courses in Tamil Nadu',
+        description: 'Browse 500+ courses available in Tamil Nadu colleges.',
+        url: 'https://educaption.org/courses'
+      },
+      schemas.breadcrumb([
+        { name: 'Home', path: '/' },
+        { name: 'Courses', path: '/courses' }
+      ])
+    ]
+  }
+
   return (
-    <main className={`min-h-screen bg-[#FAFAFA] ${headerPaddingClass} pb-12 lg:pb-16`}>
+    <>
+      <SEO
+        title="Courses in Tamil Nadu"
+        description="Browse 500+ courses in Tamil Nadu. Find programs with eligibility, duration, and admission details."
+        schema={coursesSchema}
+      />
+      <main className={`min-h-screen bg-[#FAFAFA] ${headerPaddingClass} pb-12 lg:pb-16`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Page Header */}
         <div className="text-center mb-10">
           <h1 className="text-4xl sm:text-5xl font-black text-[#1A1A2E] tracking-tight mb-4">
-            Explore Courses
+            {t('courses.title')}
           </h1>
           <p className="text-lg text-[#1A1A2E]/50 max-w-2xl mx-auto">
-            Discover all the courses you can pursue after 12th standard in Tamil Nadu
+            {t('courses.subtitle')}
           </p>
         </div>
 
@@ -90,7 +113,7 @@ export default function Courses() {
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#1A1A2E]/30" />
               <input
                 type="text"
-                placeholder="Search courses..."
+                placeholder={t('courses.searchPlaceholder')}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="
@@ -124,7 +147,7 @@ export default function Courses() {
                   transition-all duration-200
                 "
               >
-                <option value="">All Admission Bodies</option>
+                <option value="">{t('courses.allAdmissionBodies')}</option>
                 {admissionBodies.map(body => (
                   <option key={body} value={body}>
                     {body}
@@ -151,7 +174,7 @@ export default function Courses() {
                 "
               >
                 <X className="w-4 h-4" />
-                Clear
+                {t('courses.clear')}
               </button>
             )}
           </div>
@@ -159,9 +182,9 @@ export default function Courses() {
           {/* Results count */}
           <div className="mt-4 pt-4 border-t border-[#1A1A2E]/[0.06]">
             <p className="text-sm text-[#1A1A2E]/50">
-              Showing <span className="font-semibold text-[#1A1A2E]">{filteredCourses.length}</span> courses
+              {t('courses.showing')} <span className="font-semibold text-[#1A1A2E]">{filteredCourses.length}</span> {filteredCourses.length === 1 ? t('courses.courseCount') : t('courses.coursesCount')}
               {selectedAdmissionBody && (
-                <> in <span className="font-semibold text-[#FF6B35]">{selectedAdmissionBody}</span></>
+                <> {t('courses.in')} <span className="font-semibold text-[#FF6B35]">{selectedAdmissionBody}</span></>
               )}
             </p>
           </div>
@@ -171,7 +194,7 @@ export default function Courses() {
         {isLoading && (
           <div className="flex flex-col items-center justify-center py-20">
             <div className="w-12 h-12 border-4 border-[#FF6B35]/20 border-t-[#FF6B35] rounded-full animate-spin mb-4" />
-            <p className="text-[#1A1A2E]/50">Loading courses...</p>
+            <p className="text-[#1A1A2E]/50">{t('courses.loading')}</p>
           </div>
         )}
 
@@ -181,8 +204,8 @@ export default function Courses() {
             <div className="w-20 h-20 mx-auto mb-6 bg-[#1A1A2E]/5 rounded-2xl flex items-center justify-center">
               <BookOpen className="w-10 h-10 text-[#1A1A2E]/20" />
             </div>
-            <h3 className="text-xl font-bold text-[#1A1A2E] mb-2">No courses found</h3>
-            <p className="text-[#1A1A2E]/50">Try adjusting your filters or search query</p>
+            <h3 className="text-xl font-bold text-[#1A1A2E] mb-2">{t('courses.noCourses')}</h3>
+            <p className="text-[#1A1A2E]/50">{t('courses.noCoursesSubtitle')}</p>
           </div>
         )}
 
@@ -198,7 +221,7 @@ export default function Courses() {
                       {bodyName}
                     </h2>
                     <p className="text-sm text-[#FF6B35] font-medium mt-1">
-                      {bodyCourses.length} course{bodyCourses.length !== 1 ? 's' : ''}
+                      {bodyCourses.length} {bodyCourses.length === 1 ? t('courses.courseCount') : t('courses.coursesCount')}
                     </p>
                   </div>
                   {!selectedAdmissionBody && (
@@ -206,7 +229,7 @@ export default function Courses() {
                       onClick={() => setSelectedAdmissionBody(bodyName)}
                       className="text-sm text-[#1A1A2E]/50 hover:text-[#FF6B35] transition-colors"
                     >
-                      View all →
+                      {t('courses.viewAll')} →
                     </button>
                   )}
                 </div>
@@ -277,7 +300,7 @@ export default function Courses() {
                               text-xs font-medium text-[#7B4AE2]
                             ">
                               <Users className="w-3.5 h-3.5" />
-                              {course.eligible_groups.length} groups
+                              {course.eligible_groups.length} {t('courses.groups')}
                             </span>
                           )}
                         </div>
@@ -291,5 +314,6 @@ export default function Courses() {
         )}
       </div>
     </main>
+    </>
   )
 }

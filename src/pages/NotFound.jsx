@@ -2,12 +2,19 @@ import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Home, ArrowLeft } from 'lucide-react'
 import Button from '../components/ui/Button'
+import SEO from '../components/SEO'
 
 export default function NotFound() {
   const { t } = useTranslation()
 
   return (
-    <main className="min-h-screen bg-gradient-hero flex items-center justify-center py-12 px-4">
+    <>
+      <SEO
+        title="Page Not Found"
+        description="The page you're looking for doesn't exist or has been moved."
+        noindex={true}
+      />
+      <main className="min-h-screen bg-gradient-hero flex items-center justify-center py-12 px-4">
       {/* Background decoration */}
       <div className="fixed inset-0 pattern-kolam opacity-30 pointer-events-none" />
 
@@ -69,5 +76,6 @@ export default function NotFound() {
         </div>
       </div>
     </main>
+    </>
   )
 }

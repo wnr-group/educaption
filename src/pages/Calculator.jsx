@@ -7,6 +7,7 @@ import {
   ResultsDisplay
 } from '../components/calculator'
 import { useHeaderOffset } from '../hooks/useHeaderOffset'
+import SEO, { schemas } from '../components/SEO'
 
 function ProgressBar({ currentStep, hasResults }) {
   const { t } = useTranslation()
@@ -128,8 +129,25 @@ export default function Calculator() {
     ? 'max-w-6xl' // 1152px for results with 3-column layout
     : 'max-w-2xl' // 672px for input steps
 
+  const calculatorSchema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      schemas.educationalTool,
+      schemas.breadcrumb([
+        { name: 'Home', path: '/' },
+        { name: 'Calculator', path: '/calculator' }
+      ])
+    ]
+  }
+
   return (
-    <main className={`min-h-screen bg-gradient-hero ${headerPaddingClass} pb-12 lg:pb-16`}>
+    <>
+      <SEO
+        title="Cutoff Calculator 2026"
+        description="Calculate your cutoff marks instantly. Enter your 12th marks and get accurate cutoff scores using official formulas."
+        schema={calculatorSchema}
+      />
+      <main className={`min-h-screen bg-gradient-hero ${headerPaddingClass} pb-12 lg:pb-16`}>
       {/* Background decoration */}
       <div className="fixed inset-0 pattern-kolam opacity-30 pointer-events-none" />
 
@@ -161,5 +179,6 @@ export default function Calculator() {
         </div>
       </div>
     </main>
+    </>
   )
 }
