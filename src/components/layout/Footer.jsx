@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
-import { Mail, Phone, MapPin, ExternalLink, Heart } from 'lucide-react'
+import { Mail, MapPin, ExternalLink, Heart } from 'lucide-react'
 
 export default function Footer() {
   const { t } = useTranslation()
@@ -104,7 +104,7 @@ export default function Footer() {
             <ul className="space-y-4">
               <li>
                 <a
-                  href="mailto:info@educaption.org"
+                  href="mailto:ramdeep43@gmail.com"
                   className="
                     text-white/50
                     hover:text-[#FF6B35]
@@ -113,21 +113,7 @@ export default function Footer() {
                   "
                 >
                   <Mail className="w-5 h-5 text-[#FF6B35] mt-0.5 flex-shrink-0" />
-                  <span>info@educaption.org</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="tel:+919876543210"
-                  className="
-                    text-white/50
-                    hover:text-[#FF6B35]
-                    transition-colors duration-200
-                    flex items-start gap-3
-                  "
-                >
-                  <Phone className="w-5 h-5 text-[#FF6B35] mt-0.5 flex-shrink-0" />
-                  <span>+91 98765 43210</span>
+                  <span>ramdeep43@gmail.com</span>
                 </a>
               </li>
               <li className="flex items-start gap-3">

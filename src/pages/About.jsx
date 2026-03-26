@@ -174,7 +174,7 @@ export default function About() {
 
           <div className="grid sm:grid-cols-2 gap-4 mt-8">
             <a
-              href="mailto:support@educaption.com"
+              href="mailto:ramdeep43@gmail.com"
               className="
                 flex items-center gap-4
                 p-5
@@ -199,7 +199,7 @@ export default function About() {
               <div>
                 <p className="font-body text-sm text-navy-400 mb-1">{t('about.email')}</p>
                 <p className="font-body font-medium text-navy-900">
-                  support@educaption.com
+                  ramdeep43@gmail.com
                 </p>
               </div>
             </a>

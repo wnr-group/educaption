@@ -8,3 +8,4 @@ build/
 .worktrees/
 temporary screenshots/
 *.cjs
+.vercel

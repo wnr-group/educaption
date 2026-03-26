@@ -74,7 +74,7 @@ export const schemas = {
     },
     contactPoint: {
       '@type': 'ContactPoint',
-      email: 'info@educaption.org',
+      email: 'ramdeep43@gmail.com',
       contactType: 'customer service'
     }
   },
