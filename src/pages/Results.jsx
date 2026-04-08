@@ -34,7 +34,7 @@ export default function Results() {
     <>
       <SEO
         title="Your Cutoff Results"
-        description="View your calculated TNEA engineering cutoff scores and eligible courses."
+        description="View your calculated cutoff scores and eligible courses for all admission bodies."
         noindex={true}
         schema={resultsSchema}
       />

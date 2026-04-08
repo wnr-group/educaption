@@ -109,31 +109,6 @@ export default function ResultsDisplay() {
 
             {/* Right: Summary Stats */}
             <div className="lg:col-span-4 order-3 space-y-3">
-              {/* Total Score */}
-              <div className="bg-gradient-to-r from-saffron-500/20 to-saffron-600/10 backdrop-blur-sm rounded-xl p-4 border border-saffron-500/20">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 bg-saffron-500/20 rounded-lg">
-                      <GraduationCap className="w-5 h-5 text-saffron-400" />
-                    </div>
-                    <div>
-                      <p className="font-body text-xs text-white/50 uppercase tracking-wider">{t('calculator.results.totalScore')}</p>
-                      <p className="font-display text-2xl font-bold text-white">
-                        {totalMarks.toFixed(0)}
-                        <span className="text-white/40 text-lg font-normal"> / {subjects.length * 100}</span>
-                      </p>
-                    </div>
-                  </div>
-                  <div className="text-right">
-                    <span className="inline-flex items-center px-2.5 py-1 bg-saffron-500/20 rounded-full">
-                      <span className="font-display text-sm font-semibold text-saffron-400">
-                        {((totalMarks / (subjects.length * 100)) * 100).toFixed(0)}%
-                      </span>
-                    </span>
-                  </div>
-                </div>
-              </div>
-
               {/* Categories Summary */}
               <div className="bg-white/[0.05] backdrop-blur-sm rounded-xl p-4">
                 <p className="font-body text-xs text-white/50 uppercase tracking-wider mb-3">{t('calculator.results.eligibleCategories')}</p>

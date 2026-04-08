@@ -23,6 +23,16 @@ function parseJsonField(value, defaultValue = []) {
 }
 
 /**
+ * Frontend display rename: "Computer Technology" → "Employability Skills"
+ */
+const SUBJECT_RENAMES = {
+  'Computer Technology': 'Employability Skills'
+}
+function renameSubjects(subjects) {
+  return subjects.map(s => SUBJECT_RENAMES[s] || s)
+}
+
+/**
  * Fetch all subject groups
  * @returns {import('@tanstack/react-query').UseQueryResult} Query result with groups data
  */
@@ -37,7 +47,7 @@ export function useGroups() {
       stream: parseTextField(group.Stream),
       name: parseTextField(group.Name),
       name_ta: parseTextField(group.Name_Tamil),
-      subjects: parseJsonField(group.Subjects, []),
+      subjects: renameSubjects(parseJsonField(group.Subjects, [])),
       subjects_ta: parseJsonField(group.Subjects_Tamil, [])
     }))
   })

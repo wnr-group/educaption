@@ -134,7 +134,7 @@ export default function CategorySection({ category, category_ta, courses, cutoff
 
           <div className="text-right min-w-[80px]">
             <p className="font-display text-2xl font-bold text-saffron-600 leading-none">
-              {(cutoff || 0).toFixed(1)}
+              {(cutoff || 0).toFixed(2)}
             </p>
             <p className="font-body text-xs text-navy-400 mt-0.5">
               {t('calculator.results.outOf')} {maxCutoff}
@@ -178,7 +178,7 @@ export default function CategorySection({ category, category_ta, courses, cutoff
                           <span className="font-display font-bold text-navy-800">{item.mark}</span>
                           <span className="font-mono text-xs text-navy-400">{item.weight}</span>
                           <span className="text-navy-300">=</span>
-                          <span className="font-display font-bold text-saffron-600">{item.contribution.toFixed(1)}</span>
+                          <span className="font-display font-bold text-saffron-600">{item.contribution.toFixed(2)}</span>
                         </div>
                       </div>
                     </div>

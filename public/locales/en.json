@@ -123,7 +123,7 @@
   },
   "calculator": {
     "title": "Cutoff Calculator",
-    "subtitle": "Calculate your engineering cutoff marks",
+    "subtitle": "Calculate your cutoff marks for all courses",
     "steps": {
       "group": "Group",
       "marks": "Marks",
@@ -135,13 +135,16 @@
       "title": "Select Your Group",
       "description": "Choose your 12th standard subject group to get started",
       "selectGroup": "Choose a subject group...",
-      "selectedSubjects": "Subjects in this group"
+      "selectedSubjects": "Major Subjects in this group"
     },
     "step2": {
       "title": "Enter Your Marks",
       "description": "Enter marks for each subject (0-100)",
       "totalMarks": "Total Marks",
-      "enterMarks": "Enter marks (0-100)"
+      "enterMarks": "Enter marks (0-100)",
+      "failTitle": "Cutoff cannot be calculated",
+      "failMessage": "A minimum of 35 marks in each subject is required to be eligible for cutoff calculation. Please check your marks and try again.",
+      "failEncouragement": "Don't worry — you can explore other opportunities and prepare for supplementary exams."
     },
     "step3": {
       "title": "Select Category",
@@ -166,7 +169,7 @@
       "exploreColleges": "Explore Colleges",
       "viewCounselling": "View Counselling Guide",
       "startOver": "Calculate Again",
-      "admissionAnalysis": "Your Admission Analysis",
+      "admissionAnalysis": "Your Cutoff Results",
       "totalScore": "Total Score",
       "eligibleCategories": "Eligible Categories",
       "courses": "Courses",

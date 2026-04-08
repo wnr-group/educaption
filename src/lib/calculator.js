@@ -21,7 +21,7 @@ const SUBJECT_CODE_MAP = {
   'B': ['Biology', 'BIOLOGY'],
   'BOT': ['Botany', 'BOTANY'],
   'ZOO': ['Zoology', 'ZOOLOGY'],
-  'CS': ['Computer Science', 'COMPUTER SCIENCE', 'Computer Applications', 'Computer Technology', 'Computer Application'],
+  'CS': ['Computer Science', 'COMPUTER SCIENCE', 'Computer Applications', 'Computer Technology', 'Computer Application', 'Employability Skills'],
   'IT': ['Information Technology', 'INFORMATION TECHNOLOGY'],
   'IP': ['Informatics Practices', 'INFORMATICS PRACTICES'],
   'A': ['Accountancy', 'ACCOUNTANCY', 'Accounts', 'Accountancy - Theory'],
@@ -174,7 +174,11 @@ function resolveSubjectList(formula, marks, subjectListSubjects) {
  */
 function handleAvgFormula(formula, marks) {
   if (formula.trim().toUpperCase() === 'AVG') {
-    const values = Object.values(marks).filter(v => typeof v === 'number' && v > 0)
+    // Average of all 6 subjects (2 languages + 4 group subjects)
+    const groupKeys = ['S1', 'S2', 'S3', 'S4', 'S5', 'S6']
+    const values = groupKeys
+      .map(k => marks[k])
+      .filter(v => typeof v === 'number' && v > 0)
     if (values.length === 0) return 0
     return values.reduce((a, b) => a + b, 0) / values.length
   }
@@ -328,6 +332,8 @@ export function calculateCourseCutoffs(courses, admissionBodies, group, marks, s
         admissionBodyId: admissionBody.id,
         admissionBodyName: admissionBody.name,
         admissionBodyNameTa: admissionBody.name_ta,
+        admissionBodyDisplayName: admissionBody.display_name || admissionBody.name,
+        admissionBodyDisplayNameTa: admissionBody.display_name_ta || admissionBody.name_ta,
         formula: admissionBody.default_formula,
         cutoff,
         maxCutoff: admissionBody.max_cutoff || 200,
@@ -399,15 +405,29 @@ export function getFormulaBreakdown(formula, marks, customSubjectNames = {}) {
 
   // Handle special formulas
   if (formula.trim().toUpperCase() === 'AVG') {
-    const validMarks = Object.entries(marks).filter(([k, v]) =>
-      typeof v === 'number' && v > 0 && !k.startsWith('S')
-    )
-    const avg = validMarks.reduce((sum, [, v]) => sum + v, 0) / validMarks.length
-    return [{
+    // Match handleAvgFormula: average of all 6 subjects (S1-S6)
+    const allKeys = ['S1', 'S2', 'S3', 'S4', 'S5', 'S6']
+    const breakdown = []
+    let total = 0
+    let count = 0
+    for (const key of allKeys) {
+      const mark = marks[key]
+      if (typeof mark === 'number' && mark > 0) {
+        breakdown.push({
+          label: customSubjectNames[key] || (key === 'S1' ? 'Language 1' : key === 'S2' ? 'Language 2' : `Subject ${parseInt(key[1]) - 2}`),
+          mark: mark,
+          weight: '÷6',
+          contribution: mark / 6
+        })
+        total += mark
+        count++
+      }
+    }
+    return breakdown.length > 0 ? breakdown : [{
       label: 'Average of all subjects',
-      mark: avg.toFixed(1),
+      mark: 0,
       weight: '1',
-      contribution: avg
+      contribution: 0
     }]
   }
 

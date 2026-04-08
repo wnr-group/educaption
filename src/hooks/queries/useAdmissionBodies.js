@@ -20,6 +20,19 @@ function parseNumberField(value, defaultValue = 0) {
 }
 
 /**
+ * Strip formula-variant suffixes (- Vocational, - BotZoo) from display names
+ */
+function stripVariantSuffix(name) {
+  if (!name) return name
+  return name
+    .replace(/\s*-\s*Vocational/i, '')
+    .replace(/\s*-\s*தொழிற்கல்வி/g, '')
+    .replace(/\s*-\s*BotZoo/i, '')
+    .replace(/\s*-\s*தாவர விலங்கியல்/g, '')
+    .trim()
+}
+
+/**
  * Fetch all admission bodies (TNEA, TNDALU, TNAU, etc.)
  * @returns {import('@tanstack/react-query').UseQueryResult} Query result with admission bodies data
  */
@@ -28,17 +41,23 @@ export function useAdmissionBodies() {
     queryKey: ['admissionBodies'],
     queryFn: getAdmissionBodies,
     staleTime: 1000 * 60 * 5, // 5 minutes
-    select: (data) => data.map(body => ({
-      id: body.id,
-      name: parseTextField(body.Name),
-      name_ta: parseTextField(body.Name_Tamil),
-      description: parseTextField(body.Description),
-      website: parseTextField(body.Website),
-      max_cutoff: parseNumberField(body.Max_Cutoff, 200),
-      default_formula: parseTextField(body.Default_Formula),
-      category: parseTextField(body.Category) || 'Other',
-      category_ta: parseTextField(body.Category_Tamil)
-    }))
+    select: (data) => data.map(body => {
+      const name = parseTextField(body.Name)
+      const name_ta = parseTextField(body.Name_Tamil)
+      return {
+        id: body.id,
+        name,
+        name_ta,
+        display_name: stripVariantSuffix(name),
+        display_name_ta: stripVariantSuffix(name_ta),
+        description: parseTextField(body.Description),
+        website: parseTextField(body.Website),
+        max_cutoff: parseNumberField(body.Max_Cutoff, 200),
+        default_formula: parseTextField(body.Default_Formula),
+        category: parseTextField(body.Category) || 'Other',
+        category_ta: parseTextField(body.Category_Tamil)
+      }
+    })
   })
 }
 

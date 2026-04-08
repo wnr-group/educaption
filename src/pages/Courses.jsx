@@ -15,24 +15,24 @@ export default function Courses() {
 
   const { data: courses = [], isLoading } = useCourses()
 
-  // Get unique admission bodies from courses
+  // Get unique display groups from courses (merges formula variants)
   const admissionBodies = useMemo(() => {
     const bodies = new Set()
     courses.forEach(course => {
-      if (course.admission_body) {
-        bodies.add(course.admission_body)
+      if (course.display_group) {
+        bodies.add(course.display_group)
       }
     })
     return Array.from(bodies).sort()
   }, [courses])
 
-  // Filter courses by admission body and search query
+  // Filter courses by display group and search query, then deduplicate by name
   const filteredCourses = useMemo(() => {
     let result = courses
 
-    // Filter by admission body
+    // Filter by display group
     if (selectedAdmissionBody) {
-      result = result.filter(course => course.admission_body === selectedAdmissionBody)
+      result = result.filter(course => course.display_group === selectedAdmissionBody)
     }
 
     // Filter by search query
@@ -41,19 +41,29 @@ export default function Courses() {
       result = result.filter(course => {
         const name = course.name?.toLowerCase() || ''
         const nameTa = course.name_ta?.toLowerCase() || ''
-        const body = course.admission_body?.toLowerCase() || ''
+        const body = course.display_group?.toLowerCase() || ''
         return name.includes(query) || nameTa.includes(query) || body.includes(query)
       })
     }
 
+    // Deduplicate courses with the same name (formula variants like BotZoo)
+    const seen = new Set()
+    result = result.filter(course => {
+      const key = course.name
+      if (seen.has(key)) return false
+      seen.add(key)
+      return true
+    })
+
     return result
   }, [courses, selectedAdmissionBody, searchQuery])
 
-  // Group courses by admission body for display
+  // Group courses by display group for display
   const coursesByAdmissionBody = useMemo(() => {
     const grouped = {}
     filteredCourses.forEach(course => {
-      const body = course.admission_body || 'Other'
+      if (!course.display_group) return
+      const body = course.display_group
       if (!grouped[body]) {
         grouped[body] = []
       }

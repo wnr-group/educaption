@@ -59,7 +59,7 @@ export default function Header() {
                 hidden sm:block font-medium
                 ${isTransparent ? 'text-white/40' : 'text-white/60'}
               `}>
-                Tamil Nadu Engineering Admissions Guide
+                Tamil Nadu Government Undergraduate Counselling Admission Guide
               </p>
               <LanguageToggle isTransparent={isTransparent} />
             </div>

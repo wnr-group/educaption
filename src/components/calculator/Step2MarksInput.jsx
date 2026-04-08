@@ -34,8 +34,15 @@ export default function Step2MarksInput() {
     }
   }
 
+  // Check if any subject has marks below 35 (fail)
+  const failedSubjects = allSubjects.filter(subject => {
+    const mark = parseFloat(marks[subject])
+    return !isNaN(mark) && mark < 35
+  })
+  const hasFailed = failedSubjects.length > 0
+
   const handleCalculate = () => {
-    if (!validation.isValid) return
+    if (!validation.isValid || hasFailed) return
 
     const streamCutoffs = calculateCutoffs(group, marks)
     const eligibleCourses = getEligibleCourses(streamCutoffs)
@@ -107,7 +114,7 @@ export default function Step2MarksInput() {
               font-display font-bold text-sm
               border border-navy-100
             `}>
-              {index < 2 ? 'L' + (index + 1) : index - 1}
+              {index + 1}
             </span>
 
             {/* Subject Name */}
@@ -145,8 +152,40 @@ export default function Step2MarksInput() {
         ))}
       </div>
 
+      {/* Fail Warning */}
+      {allMarksFilled && hasFailed && (
+        <div className="
+          bg-gradient-to-br from-amber-50 to-orange-50
+          border border-amber-200
+          p-6 rounded-2xl mb-8
+          animate-fade-in
+        ">
+          <div className="flex items-start gap-4">
+            <div className="
+              w-12 h-12 flex-shrink-0
+              bg-amber-100
+              rounded-2xl
+              flex items-center justify-center
+            ">
+              <span className="text-2xl">📚</span>
+            </div>
+            <div>
+              <h3 className="font-display font-bold text-lg text-navy-900 mb-2">
+                {t('calculator.step2.failTitle')}
+              </h3>
+              <p className="font-body text-navy-600 mb-3">
+                {t('calculator.step2.failMessage')}
+              </p>
+              <p className="font-body text-sm text-navy-500">
+                {t('calculator.step2.failEncouragement')}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Total Marks Preview */}
-      {allMarksFilled && validation.isValid && (
+      {allMarksFilled && validation.isValid && !hasFailed && (
         <div className="
           bg-gradient-to-br from-emerald-50 to-green-50
           border border-emerald-100
@@ -203,7 +242,7 @@ export default function Step2MarksInput() {
         </Button>
         <Button
           onClick={handleCalculate}
-          disabled={!allMarksFilled || !validation.isValid || isLoading}
+          disabled={!allMarksFilled || !validation.isValid || hasFailed || isLoading}
           variant="primary"
           size="lg"
           icon={Calculator}

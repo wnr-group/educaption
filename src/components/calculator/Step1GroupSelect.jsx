@@ -46,6 +46,18 @@ export default function Step1GroupSelect() {
       }
     })
 
+    // Sort Science options: Biology groups first, then Botany, then others
+    streams.Science.options.sort((a, b) => {
+      const label = l => l.toLowerCase()
+      const rank = (opt) => {
+        const l = label(opt.label)
+        if (l.includes('biology') || opt.label.includes('உயிரியல்')) return 0
+        if (l.includes('botany') || opt.label.includes('தாவரவியல்')) return 1
+        return 2
+      }
+      return rank(a) - rank(b)
+    })
+
     // Return only streams that have options
     return Object.values(streams).filter(s => s.options.length > 0)
   })()

@@ -167,7 +167,7 @@ export function useCalculator() {
 
       categoryMap[category].courses.push({
         ...course,
-        admissionBodyName: body.name,
+        admissionBodyName: body.display_name || body.name,
         cutoff: courseCutoff
       })
 

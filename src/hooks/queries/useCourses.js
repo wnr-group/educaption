@@ -23,6 +23,19 @@ function parseTextField(value) {
 }
 
 /**
+ * Strip formula-variant suffixes (- Vocational, - BotZoo) from display names
+ */
+function stripVariantSuffix(name) {
+  if (!name) return name
+  return name
+    .replace(/\s*-\s*Vocational/i, '')
+    .replace(/\s*-\s*தொழிற்கல்வி/g, '')
+    .replace(/\s*-\s*BotZoo/i, '')
+    .replace(/\s*-\s*தாவர விலங்கியல்/g, '')
+    .trim()
+}
+
+/**
  * Fetch courses with optional admission body filter
  * @param {Object} options - Query options
  * @param {string} [options.admissionBody] - Optional admission body name to filter courses
@@ -34,17 +47,22 @@ export function useCourses({ admissionBody } = {}) {
     queryFn: getCourses,
     staleTime: 1000 * 60 * 5, // 5 minutes
     select: (data) => {
-      const mapped = data.map(course => ({
-        id: course.id,
-        name: course.Name,
-        name_ta: course.Name_Tamil,
-        // Admission_Body is a text field, not a linked record
-        admission_body: parseTextField(course.Admission_Body),
-        formula_override: parseTextField(course.Formula_Override),
-        duration: parseTextField(course.Duration),
-        eligible_groups: parseEligibleGroups(course.Eligible_Groups),
-        subject_list: parseTextField(course.Subject_List)
-      }))
+      const mapped = data.map(course => {
+        const admissionBody = parseTextField(course.Admission_Body)
+        return {
+          id: course.id,
+          name: stripVariantSuffix(course.Name),
+          name_ta: stripVariantSuffix(course.Name_Tamil),
+          // Raw admission_body for formula/matching logic
+          admission_body: admissionBody,
+          // Display group strips formula variants so all variants merge under one heading
+          display_group: stripVariantSuffix(admissionBody),
+          formula_override: parseTextField(course.Formula_Override),
+          duration: parseTextField(course.Duration),
+          eligible_groups: parseEligibleGroups(course.Eligible_Groups),
+          subject_list: parseTextField(course.Subject_List)
+        }
+      })
 
       // Filter by admission body name if specified
       if (admissionBody) {
