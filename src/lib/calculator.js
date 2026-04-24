@@ -287,7 +287,7 @@ export function calculateCourseCutoffs(courses, admissionBodies, group, marks, s
     listLookup[list.name] = list.subjects
   })
 
-  // Group results by admission body
+  // Group results by admission body, then by cutoff value within each body
   const resultsByBody = {}
 
   for (const course of courses) {
@@ -326,7 +326,9 @@ export function calculateCourseCutoffs(courses, admissionBodies, group, marks, s
     // If cutoff is null, student is ineligible (missing required subject from list)
     if (cutoff === null) continue
 
-    // Group by admission body for cleaner display
+    const bodyMaxCutoff = admissionBody.max_cutoff || 200
+
+    // Initialize admission body entry if not present
     if (!resultsByBody[admissionBody.id]) {
       resultsByBody[admissionBody.id] = {
         admissionBodyId: admissionBody.id,
@@ -335,23 +337,45 @@ export function calculateCourseCutoffs(courses, admissionBodies, group, marks, s
         admissionBodyDisplayName: admissionBody.display_name || admissionBody.name,
         admissionBodyDisplayNameTa: admissionBody.display_name_ta || admissionBody.name_ta,
         formula: admissionBody.default_formula,
+        maxCutoff: bodyMaxCutoff,
+        cutoffGroupsMap: {}  // temporary map keyed by cutoff value
+      }
+    }
+
+    // Group courses by cutoff value within each admission body
+    const cutoffKey = cutoff.toString()
+    if (!resultsByBody[admissionBody.id].cutoffGroupsMap[cutoffKey]) {
+      resultsByBody[admissionBody.id].cutoffGroupsMap[cutoffKey] = {
         cutoff,
-        maxCutoff: admissionBody.max_cutoff || 200,
+        maxCutoff: bodyMaxCutoff,
         courses: []
       }
     }
 
-    resultsByBody[admissionBody.id].courses.push({
+    resultsByBody[admissionBody.id].cutoffGroupsMap[cutoffKey].courses.push({
       courseId: course.id,
       courseName: course.name,
       courseNameTa: course.name_ta,
+      courseCategory: course.course_category || null,
       formula: course.formula_override || null,
       duration: course.duration
     })
   }
 
-  // Convert to array and sort by cutoff (highest first)
-  return Object.values(resultsByBody).sort((a, b) => b.cutoff - a.cutoff)
+  // Convert cutoffGroupsMap to sorted array for each body, then sort bodies by highest cutoff
+  return Object.values(resultsByBody)
+    .map(body => {
+      const cutoffGroups = Object.values(body.cutoffGroupsMap)
+        .sort((a, b) => b.cutoff - a.cutoff)
+      // Remove the temporary map
+      const { cutoffGroupsMap, ...rest } = body
+      return { ...rest, cutoffGroups }
+    })
+    .sort((a, b) => {
+      const aCutoff = a.cutoffGroups.length > 0 ? a.cutoffGroups[0].cutoff : 0
+      const bCutoff = b.cutoffGroups.length > 0 ? b.cutoffGroups[0].cutoff : 0
+      return bCutoff - aCutoff
+    })
 }
 
 /**
