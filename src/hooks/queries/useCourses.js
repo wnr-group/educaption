@@ -60,7 +60,8 @@ export function useCourses({ admissionBody } = {}) {
           formula_override: parseTextField(course.Formula_Override),
           duration: parseTextField(course.Duration),
           eligible_groups: parseEligibleGroups(course.Eligible_Groups),
-          subject_list: parseTextField(course.Subject_List)
+          subject_list: parseTextField(course.Subject_List),
+          course_category: parseTextField(course.Course_Category) || null,
         }
       })
 
