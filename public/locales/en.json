@@ -240,7 +240,9 @@
       "goodMatch": "Good Match",
       "reach": "Reach",
       "ambitious": "Ambitious"
-    }
+    },
+    "enterName": "Enter your name (optional)",
+    "downloadReport": "Download Report"
   },
   "courses": {
     "title": "Explore Courses",

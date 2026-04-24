@@ -5,6 +5,7 @@ import Card from '../components/ui/Card'
 import Button from '../components/ui/Button'
 import EligibleCoursesCard from '../components/results/EligibleCoursesCard'
 import CollegeRecommendations from '../components/results/CollegeRecommendations'
+import DownloadReport from '../components/results/DownloadReport'
 import { useHeaderOffset } from '../hooks/useHeaderOffset'
 import SEO, { schemas } from '../components/SEO'
 
@@ -176,6 +177,15 @@ export default function Results() {
           <CollegeRecommendations
             colleges={recommendedColleges}
             userCutoff={primaryCutoff}
+          />
+        </div>
+
+        {/* Download Report */}
+        <div className="mb-6">
+          <DownloadReport
+            group={results.group || group}
+            marks={results.marks || marks}
+            cutoffResults={results.cutoffResults || results.streamCutoffs || []}
           />
         </div>
 
