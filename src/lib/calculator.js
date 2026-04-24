@@ -140,7 +140,7 @@ function createMarksLookup(subjects, marks) {
  * @returns {string|null} Formula with LIST_X replaced by actual mark, or null if student has no subject from the list
  */
 function resolveSubjectList(formula, marks, subjectListSubjects) {
-  const listMatch = formula.match(/LIST_[A-F]/i)
+  const listMatch = formula.match(/LIST_[A-I]/i)
   if (!listMatch || !subjectListSubjects || subjectListSubjects.length === 0) {
     return formula
   }
@@ -161,7 +161,7 @@ function resolveSubjectList(formula, marks, subjectListSubjects) {
     return null
   }
 
-  return formula.replace(/LIST_[A-F]/gi, listSubjectMark.toString())
+  return formula.replace(/LIST_[A-I]/gi, listSubjectMark.toString())
 }
 
 /**
