@@ -19,7 +19,30 @@ export default function Results() {
     return <Navigate to="/calculator" replace />
   }
 
-  const { cutoffScores = {}, group, marks = {}, eligibleCourses = [], recommendedColleges = [] } = results
+  const { group, marks = {}, recommendedColleges = [] } = results
+
+  // Support both new cutoffGroups structure and legacy cutoffScores
+  const cutoffResults = results.cutoffResults || results.streamCutoffs || []
+
+  // Build cutoffScores map from new structure for display
+  const cutoffScores = results.cutoffScores || {}
+  if (Object.keys(cutoffScores).length === 0 && cutoffResults.length > 0) {
+    cutoffResults.forEach(body => {
+      const displayName = body.admissionBodyDisplayName || body.admissionBodyName
+      cutoffScores[displayName] = body.cutoffGroups?.[0]?.cutoff || 0
+    })
+  }
+
+  // Flatten courses from cutoffGroups for display
+  const eligibleCourses = results.eligibleCourses || cutoffResults.flatMap(body =>
+    (body.cutoffGroups || []).flatMap(g => g.courses.map(c => ({
+      id: c.courseId,
+      name: c.courseName,
+      name_ta: c.courseNameTa,
+      courseCategory: c.courseCategory,
+      duration: c.duration
+    })))
+  )
 
   // Get the primary cutoff score for display
   const primaryCutoff = Object.values(cutoffScores)[0] || 0
@@ -103,9 +126,9 @@ export default function Results() {
             </h2>
 
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {Object.entries(cutoffScores).map(([streamId, score]) => (
+              {Object.entries(cutoffScores).map(([bodyName, score]) => (
                 <div
-                  key={streamId}
+                  key={bodyName}
                   className="
                     bg-white/10 backdrop-blur-sm
                     rounded-xl p-5
@@ -115,7 +138,7 @@ export default function Results() {
                   <div className="font-display text-4xl font-bold text-white mb-1">
                     {typeof score === 'number' ? score.toFixed(2) : score}
                   </div>
-                  <p className="font-body text-sm text-navy-300">{t('results.cutoffScore')}</p>
+                  <p className="font-body text-sm text-navy-300">{bodyName}</p>
                 </div>
               ))}
             </div>

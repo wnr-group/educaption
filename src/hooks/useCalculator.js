@@ -134,55 +134,23 @@ export function useCalculator() {
   }, [courses, admissionBodies])
 
   /**
-   * Group eligible courses by category for results display
-   * @param {Array} eligibleCourses - Courses the student is eligible for
-   * @param {Array} cutoffResults - Calculated cutoffs by admission body
-   * @returns {Array} Courses grouped by category with cutoff info
+   * Group courses by category for results display
+   * Works with the new cutoffGroups structure from calculateCourseCutoffs
+   * @param {Array} cutoffResults - Calculated cutoffs by admission body (with cutoffGroups)
+   * @returns {Array} Courses grouped by category with cutoff group info
    */
-  const groupCoursesByCategory = useCallback((eligibleCourses, cutoffResults) => {
-    const categoryMap = {}
+  const groupCoursesByCategory = useCallback((cutoffResults) => {
+    if (!cutoffResults || cutoffResults.length === 0) return []
 
-    eligibleCourses.forEach(course => {
-      const body = admissionBodies.find(b => b.name === course.admission_body)
-      if (!body) return
-
-      const category = body.category || 'Other'
-      const category_ta = body.category_ta || category
-      const cutoffResult = cutoffResults.find(r => r.admissionBodyName === body.name)
-      const courseCutoff = cutoffResult?.cutoff || 0
-
-      // Skip courses with 0 cutoff (formula couldn't be calculated for student's group)
-      if (courseCutoff === 0) return
-
-      if (!categoryMap[category]) {
-        categoryMap[category] = {
-          category,
-          category_ta,
-          courses: [],
-          cutoff: courseCutoff,
-          maxCutoff: cutoffResult?.maxCutoff || 200,
-          formula: cutoffResult?.formula || body.default_formula || null
-        }
-      }
-
-      categoryMap[category].courses.push({
-        ...course,
-        admissionBodyName: body.display_name || body.name,
-        cutoff: courseCutoff
-      })
-
-      // Update category cutoff to highest among its courses
-      if (cutoffResult && cutoffResult.cutoff > categoryMap[category].cutoff) {
-        categoryMap[category].cutoff = cutoffResult.cutoff
-        categoryMap[category].maxCutoff = cutoffResult.maxCutoff
-      }
-    })
-
-    // Sort categories by cutoff (highest first) and filter out 0 cutoffs (formula couldn't be calculated)
-    return Object.values(categoryMap)
-      .filter(cat => cat.cutoff > 0)
-      .sort((a, b) => b.cutoff - a.cutoff)
-  }, [admissionBodies])
+    return cutoffResults.map(body => ({
+      category: body.admissionBodyDisplayName || body.admissionBodyName,
+      category_ta: body.admissionBodyDisplayNameTa || body.admissionBodyNameTa,
+      maxCutoff: body.maxCutoff,
+      cutoffGroups: body.cutoffGroups,
+      cutoff: body.cutoffGroups[0]?.cutoff || 0,
+      courses: body.cutoffGroups.flatMap(g => g.courses)
+    }))
+  }, [])
 
   return {
     // Data

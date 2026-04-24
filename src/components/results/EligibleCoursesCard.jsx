@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
-import { BookOpen, CheckCircle, AlertCircle, ArrowRight } from 'lucide-react'
+import { BookOpen, CheckCircle, ArrowRight } from 'lucide-react'
 import Card from '../ui/Card'
 
 export default function EligibleCoursesCard({ courses = [], cutoffScores = {} }) {
@@ -43,11 +43,10 @@ export default function EligibleCoursesCard({ courses = [], cutoffScores = {} })
         <div className="space-y-3">
           {courses.slice(0, 5).map((course) => {
             const courseName = i18n.language === 'ta' && course.name_ta ? course.name_ta : course.name
-            const streamName = course.stream
-              ? (i18n.language === 'ta' && course.stream.name_ta ? course.stream.name_ta : course.stream.name)
-              : null
-            const userCutoff = cutoffScores[course.stream_id] || cutoffScores.default || 0
-            const isEligible = !course.min_cutoff || userCutoff >= course.min_cutoff
+            const subtitle = course.courseCategory
+              || (course.stream
+                ? (i18n.language === 'ta' && course.stream.name_ta ? course.stream.name_ta : course.stream.name)
+                : null)
 
             return (
               <div
@@ -66,38 +65,24 @@ export default function EligibleCoursesCard({ courses = [], cutoffScores = {} })
                   <h4 className="font-body font-medium text-navy-900 truncate">
                     {courseName}
                   </h4>
-                  {streamName && (
+                  {subtitle && (
                     <p className="font-body text-sm text-navy-400 truncate">
-                      {streamName}
+                      {subtitle}
                     </p>
                   )}
                 </div>
                 <div className="flex items-center gap-2">
-                  {isEligible ? (
-                    <span className="
-                      inline-flex items-center gap-1
-                      px-2 py-1
-                      bg-emerald-100
-                      text-emerald-700
-                      rounded-lg
-                      font-body font-semibold text-xs
-                    ">
-                      <CheckCircle className="w-3 h-3" />
-                      {t('results.eligible')}
-                    </span>
-                  ) : (
-                    <span className="
-                      inline-flex items-center gap-1
-                      px-2 py-1
-                      bg-saffron-100
-                      text-saffron-700
-                      rounded-lg
-                      font-body font-semibold text-xs
-                    ">
-                      <AlertCircle className="w-3 h-3" />
-                      {t('results.belowCutoff')}
-                    </span>
-                  )}
+                  <span className="
+                    inline-flex items-center gap-1
+                    px-2 py-1
+                    bg-emerald-100
+                    text-emerald-700
+                    rounded-lg
+                    font-body font-semibold text-xs
+                  ">
+                    <CheckCircle className="w-3 h-3" />
+                    {t('results.eligible')}
+                  </span>
                 </div>
               </div>
             )

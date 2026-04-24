@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { Link } from 'react-router-dom'
-import { School, FileText, RotateCcw, Sparkles, GraduationCap, ChevronRight } from 'lucide-react'
+import { RotateCcw, Sparkles, GraduationCap, ChevronRight } from 'lucide-react'
 import { useState } from 'react'
 import Button from '../ui/Button'
 import { useCalculatorContext } from '../../context/CalculatorContext'
@@ -19,12 +18,14 @@ export default function ResultsDisplay() {
   if (!results) return null
 
   const cutoffResults = results.cutoffResults || results.streamCutoffs || []
-  const eligibleCourses = results.eligibleCourses || []
   const totalMarks = results.totalMarks || 0
 
   const selectedGroup = getGroupById(group)
   const subjects = selectedGroup?.subjects || []
-  const coursesByCategory = groupCoursesByCategory(eligibleCourses, cutoffResults)
+  const coursesByCategory = groupCoursesByCategory(cutoffResults)
+
+  // Flatten all courses from cutoff groups for total count
+  const eligibleCourses = coursesByCategory.flatMap(cat => cat.courses)
 
   const visibleCategories = showAllCategories ? coursesByCategory : coursesByCategory.slice(0, 3)
   const hasMoreCategories = coursesByCategory.length > 3
@@ -168,7 +169,7 @@ export default function ResultsDisplay() {
                 courses={cat.courses}
                 cutoff={cat.cutoff}
                 maxCutoff={cat.maxCutoff}
-                formula={cat.formula}
+                cutoffGroups={cat.cutoffGroups}
                 defaultExpanded={index === 0}
               />
             ))}
