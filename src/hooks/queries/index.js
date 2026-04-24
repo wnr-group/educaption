@@ -6,6 +6,7 @@ export { useCategories, useCategoryById, useCategoryByCode } from './useCategori
 export { useSubjectLists, useSubjectListByName } from './useSubjectLists'
 export { useColleges } from './useColleges'
 export { useCounselling } from './useCounselling'
+export { useEvents } from './useEvents'
 
 // Legacy export for backwards compatibility (streams -> admission bodies)
 export { useAdmissionBodies as useStreams } from './useAdmissionBodies'

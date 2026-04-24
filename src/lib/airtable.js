@@ -169,6 +169,16 @@ export async function getAnnouncements() {
   })
 }
 
+/**
+ * Fetch all events (admission counselling dates)
+ * @returns {Promise<Array>} Array of event records
+ */
+export async function getEvents() {
+  return fetchTable('Events', {
+    sort: [{ field: 'Date', direction: 'asc' }]
+  })
+}
+
 // Export configuration status for debugging
 export const isConfigured = !!(AIRTABLE_API_KEY && AIRTABLE_BASE_ID)
 
@@ -183,5 +193,6 @@ export const airtable = {
   getColleges,
   getCounselling,
   getAnnouncements,
+  getEvents,
   isConfigured
 }

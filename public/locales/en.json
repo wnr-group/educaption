@@ -3,6 +3,7 @@
     "home": "Home",
     "calculator": "Calculator",
     "courses": "Courses",
+    "events": "Events",
     "colleges": "Colleges",
     "counselling": "Counselling",
     "about": "About"
@@ -323,6 +324,17 @@
     "copyright": "© 2026 Educaption. All rights reserved.",
     "madeWith": "Made with",
     "forStudents": "for Tamil Nadu Students"
+  },
+  "events": {
+    "title": "Important Events & Dates",
+    "subtitle": "Stay updated with admission counselling dates and deadlines",
+    "searchPlaceholder": "Search events...",
+    "allCounselling": "All Counselling Bodies",
+    "date": "Date",
+    "event": "Event",
+    "counselling": "Counselling",
+    "noEvents": "No events found",
+    "showingCount": "Showing {{count}} of {{total}} events"
   },
   "errors": {
     "pageNotFound": "Page not found",
