@@ -1,80 +1,242 @@
-Name,Name_Tamil,Admission_Body,Duration,Eligible_Groups,Formula_Override,Subject_List
-B.E. / B.Tech (All Engineering Courses),அனைத்து பொறியியல் படிப்புகள்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,
-B.E. / B.Tech (All Engineering Courses) - Vocational,அனைத்து பொறியியல் படிப்புகள் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,
-LLB (All Law Courses),அனைத்து சட்டப் படிப்புகள்,TNDALU,3-5 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13, SCI-14, ART-1, ART-2, ART-3, ART-4, ART-5, ART-6, ART-7, ART-8, ART-9, ART-10, ART-11, ART-12, ART-13, ART-14, VOC-1, VOC-2, VOC-3, VOC-4, VOC-5, VOC-6, VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,
-B.V.Sc & A.H.,கால்நடை மருத்துவம் மற்றும் விலங்கு பண்ணை,TANUVAS - BVSC,5.5 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13, SCI-14",,
-B.V.Sc & A.H. - Vocational,கால்நடை மருத்துவம் - தொழிற்கல்வி,TANUVAS - BVSC - Vocational,5.5 years,VOC-1,,
-B.Tech Food Technology (TANUVAS),உணவு தொழில்நுட்பம் (TANUVAS),TANUVAS - B.Tech,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,
-B.Tech Poultry Technology,கோழி வளர்ப்பு தொழில்நுட்பம்,TANUVAS - B.Tech,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,
-B.Tech Dairy Technology,பால் பண்ணை தொழில்நுட்பம்,TANUVAS - B.Tech,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,
-B.Sc (Hons.) Agriculture,பி.எஸ்சி (ஹானர்ஸ்) வேளாண்மை,TNAU - Agriculture,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_A
-B.Sc (Hons.) Agriculture - BotZoo,பி.எஸ்சி (ஹானர்ஸ்) வேளாண்மை,TNAU - Agriculture - BotZoo,4 years,SCI-14,,
-B.Sc (Hons.) Agriculture - Vocational,பி.எஸ்சி (ஹானர்ஸ்) வேளாண்மை - தொழிற்கல்வி,TNAU - Agriculture - Vocational,4 years,VOC-1,,
-B.Sc (Hons.) Horticulture,பி.எஸ்சி (ஹானர்ஸ்) தோட்டக்கலை,TNAU - Agriculture,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_A
-B.Sc (Hons.) Horticulture - BotZoo,பி.எஸ்சி (ஹானர்ஸ்) தோட்டக்கலை,TNAU - Agriculture - BotZoo,4 years,SCI-14,,
-B.Sc (Hons.) Horticulture - Vocational,பி.எஸ்சி (ஹானர்ஸ்) தோட்டக்கலை - தொழிற்கல்வி,TNAU - Agriculture - Vocational,4 years,VOC-1,,
-B.Sc (Hons.) Forestry,பி.எஸ்சி (ஹானர்ஸ்) வனவியல்,TNAU - Agriculture,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_A
-B.Sc (Hons.) Forestry - BotZoo,பி.எஸ்சி (ஹானர்ஸ்) வனவியல்,TNAU - Agriculture - BotZoo,4 years,SCI-14,,
-B.Sc (Hons.) Forestry - Vocational,பி.எஸ்சி (ஹானர்ஸ்) வனவியல் - தொழிற்கல்வி,TNAU - Agriculture - Vocational,4 years,VOC-1,,
-B.Sc (Hons.) Sericulture,பி.எஸ்சி (ஹானர்ஸ்) பட்டு வளர்ப்பு,TNAU - Agriculture,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_A
-B.Sc (Hons.) Sericulture - BotZoo,பி.எஸ்சி (ஹானர்ஸ்) பட்டு வளர்ப்பு,TNAU - Agriculture - BotZoo,4 years,SCI-14,,
-B.Tech Biotechnology,பி.டெக் உயிரி தொழில்நுட்பம்,TNAU - Agriculture,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_A
-B.Tech Biotechnology - BotZoo,பி.டெக் உயிரி தொழில்நுட்பம்,TNAU - Agriculture - BotZoo,4 years,SCI-14,,
-B.Sc (Hons.) Agribusiness Management,பி.எஸ்சி (ஹானர்ஸ்) வேளாண் வணிக மேலாண்மை,TNAU - Agriculture,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_A
-B.Sc (Hons.) Agribusiness Management - BotZoo,பி.எஸ்சி (ஹானர்ஸ்) வேளாண் வணிக மேலாண்மை,TNAU - Agriculture - BotZoo,4 years,SCI-14,,
-B.Tech Bioinformatics,பி.டெக் உயிர் தகவலியல்,TNAU - Agriculture,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_A
-B.Tech Bioinformatics - BotZoo,பி.டெக் உயிர் தகவலியல்,TNAU - Agriculture - BotZoo,4 years,SCI-14,,
-B.Sc (Hons.) Food Nutrition and Dietetics,பி.எஸ்சி (ஹானர்ஸ்) உணவு ஊட்டச்சத்து,TNAU - Food Nutrition,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_B
-B.Sc (Hons.) Food Nutrition and Dietetics - BotZoo,பி.எஸ்சி (ஹானர்ஸ்) உணவு ஊட்டச்சத்து,TNAU - Food Nutrition - BotZoo,4 years,SCI-14,,
-B.Tech Agricultural Engineering,பி.டெக் வேளாண் பொறியியல்,TNAU - Agri Engineering,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_C
-B.Tech Agricultural Engineering - Vocational,பி.டெக் வேளாண் பொறியியல் - தொழிற்கல்வி,TNAU - Agriculture - Vocational,4 years,VOC-1,,
-B.Tech Food Technology (TNAU),பி.டெக் உணவு தொழில்நுட்பம் (TNAU),TNAU - Agri Engineering,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_C
-B.Tech Energy and Environmental Engineering,பி.டெக் ஆற்றல் மற்றும் சுற்றுச்சூழல் பொறியியல்,TNAU - Agri Engineering,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_C
-B.Tech Agricultural Information Technology,பி.டெக் வேளாண் தகவல் தொழில்நுட்பம்,TNAU - Agri Engineering,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_C
-B.F.Sc (Bachelor of Fisheries Science),பி.எஃப்.எஸ்சி (மீன்வள அறிவியல்),TNJFU - Fisheries,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_D
-B.F.Sc (Bachelor of Fisheries Science) - BotZoo,பி.எஃப்.எஸ்சி (மீன்வள அறிவியல்),TNJFU - Fisheries - BotZoo,4 years,SCI-14,,
-B.F.Sc (Bachelor of Fisheries Science) - Vocational,பி.எஃப்.எஸ்சி (மீன்வள அறிவியல்) - தொழிற்கல்வி,TNJFU - Fisheries - Vocational,4 years,VOC-1,,
-B.Tech Fisheries Engineering,பி.டெக் மீன்வளப் பொறியியல்,TNJFU - B.Tech,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,LIST_E
-B.Tech Food Technology (TNJFU),பி.டெக் உணவு தொழில்நுட்பம் (TNJFU),TNJFU - B.Tech,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,LIST_E
-B.Tech Energy and Environmental Engineering (TNJFU),பி.டெக் ஆற்றல் மற்றும் சுற்றுச்சூழல் பொறியியல் (TNJFU),TNJFU - B.Tech,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,LIST_E
-B.Voc Industrial Fish Processing Technology,பி.வோக் தொழில்துறை மீன் பதப்படுத்துதல்,TNJFU - B.Voc,3 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13, SCI-14, ART-1, ART-2, ART-3, ART-4, ART-5, ART-6, ART-7, ART-8, ART-9, ART-10, ART-11, ART-12, ART-13, ART-14, VOC-1, VOC-2, VOC-3, VOC-4, VOC-5, VOC-6, VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,
-B.Voc Industrial Aquaculture,பி.வோக் தொழில்துறை நீர்வாழ் வளர்ப்பு,TNJFU - B.Voc,3 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13, SCI-14, ART-1, ART-2, ART-3, ART-4, ART-5, ART-6, ART-7, ART-8, ART-9, ART-10, ART-11, ART-12, ART-13, ART-14, VOC-1, VOC-2, VOC-3, VOC-4, VOC-5, VOC-6, VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,
-B.Voc Industrial Fishing Technology,பி.வோக் தொழில்துறை மீன்பிடி தொழில்நுட்பம்,TNJFU - B.Voc,3 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13, SCI-14, ART-1, ART-2, ART-3, ART-4, ART-5, ART-6, ART-7, ART-8, ART-9, ART-10, ART-11, ART-12, ART-13, ART-14, VOC-1, VOC-2, VOC-3, VOC-4, VOC-5, VOC-6, VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,
-B.Pharm (Bachelor of Pharmacy),பி.பார்ம் (மருந்தியல் இளங்கலை),TN Paramedical - Pharmacy,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_F
-B.Pharm (Bachelor of Pharmacy) - BotZoo,பி.பார்ம் (மருந்தியல் இளங்கலை),TN Paramedical - Pharmacy - BotZoo,4 years,SCI-14,,
-BASLP (Audiology Speech Language Pathology),BASLP (செவித்திறன் பேச்சு மொழி நோயியல்),TN Paramedical - Pharmacy,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_F
-BASLP (Audiology Speech Language Pathology) - BotZoo,BASLP (செவித்திறன் பேச்சு மொழி நோயியல்),TN Paramedical - Pharmacy - BotZoo,4 years,SCI-14,,
-B.Optom (Bachelor of Optometry),பி.ஆப்டம் (ஒளியியல் இளங்கலை),TN Paramedical - Pharmacy,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_F
-B.Optom (Bachelor of Optometry) - BotZoo,பி.ஆப்டம் (ஒளியியல் இளங்கலை),TN Paramedical - Pharmacy - BotZoo,4 years,SCI-14,,
-B.Sc Nursing,பி.எஸ்சி நர்சிங்,TN Paramedical - Nursing,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,
-B.Sc Nursing - BotZoo,பி.எஸ்சி நர்சிங்,TN Paramedical - Nursing - BotZoo,4 years,SCI-14,,
-B.P.T (Physiotherapy),பி.பி.டி (இயன்முறை மருத்துவம்),TN Paramedical - Nursing,4.5 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,
-B.P.T (Physiotherapy) - BotZoo,பி.பி.டி (இயன்முறை மருத்துவம்),TN Paramedical - Nursing - BotZoo,4.5 years,SCI-14,,
-B.Sc Radiography and Imaging Technology,பி.எஸ்சி கதிரியக்க தொழில்நுட்பம்,TN Paramedical - Nursing,3 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,
-B.Sc Radiography and Imaging Technology - BotZoo,பி.எஸ்சி கதிரியக்க தொழில்நுட்பம்,TN Paramedical - Nursing - BotZoo,3 years,SCI-14,,
-B.Sc Radio Therapy Technology,பி.எஸ்சி கதிர் சிகிச்சை தொழில்நுட்பம்,TN Paramedical - Nursing,3 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,
-B.Sc Radio Therapy Technology - BotZoo,பி.எஸ்சி கதிர் சிகிச்சை தொழில்நுட்பம்,TN Paramedical - Nursing - BotZoo,3 years,SCI-14,,
-B.Sc Cardio-Pulmonary Perfusion Technology,பி.எஸ்சி இதய-நுரையீரல் பெர்ஃபியூஷன் தொழில்நுட்பம்,TN Paramedical - Nursing,3 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,
-B.Sc Cardio-Pulmonary Perfusion Technology - BotZoo,பி.எஸ்சி இதய-நுரையீரல் பெர்ஃபியூஷன் தொழில்நுட்பம்,TN Paramedical - Nursing - BotZoo,3 years,SCI-14,,
-B.Sc Medical Laboratory Technology,பி.எஸ்சி மருத்துவ ஆய்வக தொழில்நுட்பம்,TN Paramedical - Nursing,3 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,
-B.Sc Medical Laboratory Technology - BotZoo,பி.எஸ்சி மருத்துவ ஆய்வக தொழில்நுட்பம்,TN Paramedical - Nursing - BotZoo,3 years,SCI-14,,
-B.Sc Operation Theatre and Anaesthesia Technology,பி.எஸ்சி அறுவை சிகிச்சை அரங்க தொழில்நுட்பம்,TN Paramedical - Nursing,3 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,
-B.Sc Operation Theatre and Anaesthesia Technology - BotZoo,பி.எஸ்சி அறுவை சிகிச்சை அரங்க தொழில்நுட்பம்,TN Paramedical - Nursing - BotZoo,3 years,SCI-14,,
-B.Sc Cardiac Technology,பி.எஸ்சி இதய தொழில்நுட்பம்,TN Paramedical - Nursing,3 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,
-B.Sc Cardiac Technology - BotZoo,பி.எஸ்சி இதய தொழில்நுட்பம்,TN Paramedical - Nursing - BotZoo,3 years,SCI-14,,
-B.Sc Critical Care Technology,பி.எஸ்சி தீவிர சிகிச்சை தொழில்நுட்பம்,TN Paramedical - Nursing,3 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,
-B.Sc Critical Care Technology - BotZoo,பி.எஸ்சி தீவிர சிகிச்சை தொழில்நுட்பம்,TN Paramedical - Nursing - BotZoo,3 years,SCI-14,,
-B.Sc Dialysis Technology,பி.எஸ்சி சிறுநீரக சுத்திகரிப்பு தொழில்நுட்பம்,TN Paramedical - Nursing,3 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,
-B.Sc Dialysis Technology - BotZoo,பி.எஸ்சி சிறுநீரக சுத்திகரிப்பு தொழில்நுட்பம்,TN Paramedical - Nursing - BotZoo,3 years,SCI-14,,
-B.Sc Physician Assistant,பி.எஸ்சி மருத்துவர் உதவியாளர்,TN Paramedical - Nursing,3 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,
-B.Sc Physician Assistant - BotZoo,பி.எஸ்சி மருத்துவர் உதவியாளர்,TN Paramedical - Nursing - BotZoo,3 years,SCI-14,,
-B.Sc Accident and Emergency Care Technology,பி.எஸ்சி விபத்து மற்றும் அவசர சிகிச்சை தொழில்நுட்பம்,TN Paramedical - Nursing,3 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,
-B.Sc Accident and Emergency Care Technology - BotZoo,பி.எஸ்சி விபத்து மற்றும் அவசர சிகிச்சை தொழில்நுட்பம்,TN Paramedical - Nursing - BotZoo,3 years,SCI-14,,
-B.Sc Respiratory Therapy,பி.எஸ்சி சுவாச சிகிச்சை,TN Paramedical - Nursing,3 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,
-B.Sc Respiratory Therapy - BotZoo,பி.எஸ்சி சுவாச சிகிச்சை,TN Paramedical - Nursing - BotZoo,3 years,SCI-14,,
-B.O.T (Occupational Therapy),பி.ஓ.டி (தொழில் சிகிச்சை),TN Paramedical - Nursing,4.5 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,
-B.O.T (Occupational Therapy) - BotZoo,பி.ஓ.டி (தொழில் சிகிச்சை),TN Paramedical - Nursing - BotZoo,4.5 years,SCI-14,,
-B.Sc Neuro Electro Physiology,பி.எஸ்சி நரம்பு மின் இயற்பியல்,TN Paramedical - Nursing,3 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,
-B.Sc Neuro Electro Physiology - BotZoo,பி.எஸ்சி நரம்பு மின் இயற்பியல்,TN Paramedical - Nursing - BotZoo,3 years,SCI-14,,
-B.Sc Clinical Nutrition,பி.எஸ்சி மருத்துவ ஊட்டச்சத்து,TN Paramedical - Nursing,3 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,
-B.Sc Clinical Nutrition - BotZoo,பி.எஸ்சி மருத்துவ ஊட்டச்சத்து,TN Paramedical - Nursing - BotZoo,3 years,SCI-14,,
+Name,Name_Tamil,Admission_Body,Duration,Eligible_Groups,Formula_Override,Subject_List,Course_Category
+Artificial Intelligence and Data Science,செயற்கை நுண்ணறிவு மற்றும் தரவு அறிவியல்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Computer / IT & Data Science
+Artificial Intelligence and Data Science - Vocational,செயற்கை நுண்ணறிவு மற்றும் தரவு அறிவியல் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Computer / IT & Data Science
+Computer and Communication Engineering,கணினி மற்றும் தகவல் தொடர்பு பொறியியல்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Computer / IT & Data Science
+Computer and Communication Engineering - Vocational,கணினி மற்றும் தகவல் தொடர்பு பொறியியல் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Computer / IT & Data Science
+Computer Science and Business System,கணினி அறிவியல் மற்றும் வணிக அமைப்பு,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Computer / IT & Data Science
+Computer Science and Business System - Vocational,கணினி அறிவியல் மற்றும் வணிக அமைப்பு - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Computer / IT & Data Science
+Computer Science and Engineering,கணினி அறிவியல் மற்றும் பொறியியல்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Computer / IT & Data Science
+Computer Science and Engineering - Vocational,கணினி அறிவியல் மற்றும் பொறியியல் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Computer / IT & Data Science
+Computer Science and Engineering (Tamil Medium),கணினி அறிவியல் மற்றும் பொறியியல் (தமிழ் வழி),TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Computer / IT & Data Science
+Computer Science and Engineering (Tamil Medium) - Vocational,கணினி அறிவியல் மற்றும் பொறியியல் (தமிழ் வழி) - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Computer / IT & Data Science
+Computer Science and Engineering (AI and Machine Learning),கணினி அறிவியல் மற்றும் பொறியியல் (AI மற்றும் இயந்திர கற்றல்),TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Computer / IT & Data Science
+Computer Science and Engineering (AI and Machine Learning) - Vocational,கணினி அறிவியல் மற்றும் பொறியியல் (AI மற்றும் இயந்திர கற்றல்) - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Computer / IT & Data Science
+Computer Science and Engineering (Big Data Analytics),கணினி அறிவியல் மற்றும் பொறியியல் (பெரிய தரவு பகுப்பாய்வு),TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Computer / IT & Data Science
+Computer Science and Engineering (Big Data Analytics) - Vocational,கணினி அறிவியல் மற்றும் பொறியியல் (பெரிய தரவு பகுப்பாய்வு) - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Computer / IT & Data Science
+"Computer Science and Engineering (IoT & Cyber Security including Blockchain)","கணினி அறிவியல் மற்றும் பொறியியல் (IoT & சைபர் பாதுகாப்பு)",TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Computer / IT & Data Science
+"Computer Science and Engineering (IoT & Cyber Security including Blockchain) - Vocational","கணினி அறிவியல் மற்றும் பொறியியல் (IoT & சைபர் பாதுகாப்பு) - தொழிற்கல்வி",TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Computer / IT & Data Science
+Computer Science and Technology,கணினி அறிவியல் மற்றும் தொழில்நுட்பம்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Computer / IT & Data Science
+Computer Science and Technology - Vocational,கணினி அறிவியல் மற்றும் தொழில்நுட்பம் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Computer / IT & Data Science
+Cyber Security,சைபர் பாதுகாப்பு,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Computer / IT & Data Science
+Cyber Security - Vocational,சைபர் பாதுகாப்பு - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Computer / IT & Data Science
+Information Science and Engineering,தகவல் அறிவியல் மற்றும் பொறியியல்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Computer / IT & Data Science
+Information Science and Engineering - Vocational,தகவல் அறிவியல் மற்றும் பொறியியல் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Computer / IT & Data Science
+Information Technology,தகவல் தொழில்நுட்பம்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Computer / IT & Data Science
+Information Technology - Vocational,தகவல் தொழில்நுட்பம் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Computer / IT & Data Science
+Automobile Engineering,வாகனப் பொறியியல்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Mechanical & Production
+Automobile Engineering - Vocational,வாகனப் பொறியியல் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Mechanical & Production
+Manufacturing Engineering,உற்பத்தி பொறியியல்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Mechanical & Production
+Manufacturing Engineering - Vocational,உற்பத்தி பொறியியல் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Mechanical & Production
+Marine Engineering,கடல் பொறியியல்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Mechanical & Production
+Marine Engineering - Vocational,கடல் பொறியியல் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Mechanical & Production
+Mechanical (Manufacturing),இயந்திர (உற்பத்தி),TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Mechanical & Production
+Mechanical (Manufacturing) - Vocational,இயந்திர (உற்பத்தி) - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Mechanical & Production
+Mechanical and Automation Engineering,இயந்திர மற்றும் தானியங்கி பொறியியல்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Mechanical & Production
+Mechanical and Automation Engineering - Vocational,இயந்திர மற்றும் தானியங்கி பொறியியல் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Mechanical & Production
+Mechanical and Mechatronics Engineering (Additive Manufacturing),இயந்திர மற்றும் மெக்காட்ரானிக்ஸ் பொறியியல்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Mechanical & Production
+Mechanical and Mechatronics Engineering (Additive Manufacturing) - Vocational,இயந்திர மற்றும் மெக்காட்ரானிக்ஸ் பொறியியல் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Mechanical & Production
+Mechanical Engineering,இயந்திரப் பொறியியல்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Mechanical & Production
+Mechanical Engineering - Vocational,இயந்திரப் பொறியியல் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Mechanical & Production
+Mechanical Engineering (Tamil Medium),இயந்திரப் பொறியியல் (தமிழ் வழி),TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Mechanical & Production
+Mechanical Engineering (Tamil Medium) - Vocational,இயந்திரப் பொறியியல் (தமிழ் வழி) - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Mechanical & Production
+Mechanical Engineering (Sandwich),இயந்திரப் பொறியியல் (சாண்ட்விச்),TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Mechanical & Production
+Mechanical Engineering (Sandwich) - Vocational,இயந்திரப் பொறியியல் (சாண்ட்விச்) - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Mechanical & Production
+Mechatronics,மெக்காட்ரானிக்ஸ்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Mechanical & Production
+Mechatronics - Vocational,மெக்காட்ரானிக்ஸ் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Mechanical & Production
+Mining Engineering,சுரங்கப் பொறியியல்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Mechanical & Production
+Mining Engineering - Vocational,சுரங்கப் பொறியியல் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Mechanical & Production
+Production Engineering,உற்பத்திப் பொறியியல்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Mechanical & Production
+Production Engineering - Vocational,உற்பத்திப் பொறியியல் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Mechanical & Production
+Production Engineering (Sandwich),உற்பத்திப் பொறியியல் (சாண்ட்விச்),TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Mechanical & Production
+Production Engineering (Sandwich) - Vocational,உற்பத்திப் பொறியியல் (சாண்ட்விச்) - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Mechanical & Production
+Architecture,கட்டிடக்கலை,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Civil & Infrastructure
+Architecture - Vocational,கட்டிடக்கலை - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Civil & Infrastructure
+Civil Engineering,சிவில் பொறியியல்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Civil & Infrastructure
+Civil Engineering - Vocational,சிவில் பொறியியல் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Civil & Infrastructure
+Civil Engineering (Tamil Medium),சிவில் பொறியியல் (தமிழ் வழி),TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Civil & Infrastructure
+Civil Engineering (Tamil Medium) - Vocational,சிவில் பொறியியல் (தமிழ் வழி) - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Civil & Infrastructure
+Civil Engineering and Planning,சிவில் பொறியியல் மற்றும் திட்டமிடல்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Civil & Infrastructure
+Civil Engineering and Planning - Vocational,சிவில் பொறியியல் மற்றும் திட்டமிடல் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Civil & Infrastructure
+Civil and Structural Engineering,சிவில் மற்றும் கட்டமைப்பு பொறியியல்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Civil & Infrastructure
+Civil and Structural Engineering - Vocational,சிவில் மற்றும் கட்டமைப்பு பொறியியல் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Civil & Infrastructure
+Environmental Engineering,சுற்றுச்சூழல் பொறியியல்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Civil & Infrastructure
+Environmental Engineering - Vocational,சுற்றுச்சூழல் பொறியியல் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Civil & Infrastructure
+Electrical and Electronics,மின் மற்றும் மின்னணு,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Electrical & Electronics
+Electrical and Electronics - Vocational,மின் மற்றும் மின்னணு - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Electrical & Electronics
+Electrical and Electronics Engineering,மின் மற்றும் மின்னணு பொறியியல்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Electrical & Electronics
+Electrical and Electronics Engineering - Vocational,மின் மற்றும் மின்னணு பொறியியல் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Electrical & Electronics
+Electronics and Communication Engineering,மின்னணு மற்றும் தகவல் தொடர்பு பொறியியல்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Electrical & Electronics
+Electronics and Communication Engineering - Vocational,மின்னணு மற்றும் தகவல் தொடர்பு பொறியியல் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Electrical & Electronics
+Electronics and Instrumentation Engineering,மின்னணு மற்றும் கருவியமைப்பு பொறியியல்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Electrical & Electronics
+Electronics and Instrumentation Engineering - Vocational,மின்னணு மற்றும் கருவியமைப்பு பொறியியல் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Electrical & Electronics
+Electronics and Telecommunication Engineering,மின்னணு மற்றும் தொலைத்தொடர்பு பொறியியல்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Electrical & Electronics
+Electronics and Telecommunication Engineering - Vocational,மின்னணு மற்றும் தொலைத்தொடர்பு பொறியியல் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Electrical & Electronics
+Instrumentation and Control Engineering,கருவியமைப்பு மற்றும் கட்டுப்பாட்டு பொறியியல்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Electrical & Electronics
+Instrumentation and Control Engineering - Vocational,கருவியமைப்பு மற்றும் கட்டுப்பாட்டு பொறியியல் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Electrical & Electronics
+Medical Electronics Engineering,மருத்துவ மின்னணு பொறியியல்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Electrical & Electronics
+Medical Electronics Engineering - Vocational,மருத்துவ மின்னணு பொறியியல் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Electrical & Electronics
+Aeronautical Engineering,வான்வழிப் பொறியியல்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Aerospace
+Aeronautical Engineering - Vocational,வான்வழிப் பொறியியல் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Aerospace
+Aerospace Engineering,விண்வெளிப் பொறியியல்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Aerospace
+Aerospace Engineering - Vocational,விண்வெளிப் பொறியியல் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Aerospace
+Ceramic Technology,பீங்கான் தொழில்நுட்பம்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Chemical & Materials
+Ceramic Technology - Vocational,பீங்கான் தொழில்நுட்பம் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Chemical & Materials
+Chemical Engineering,வேதியியல் பொறியியல்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Chemical & Materials
+Chemical Engineering - Vocational,வேதியியல் பொறியியல் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Chemical & Materials
+Chemical and Electro Chemical Engineering,வேதியியல் மற்றும் மின்வேதியியல் பொறியியல்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Chemical & Materials
+Chemical and Electro Chemical Engineering - Vocational,வேதியியல் மற்றும் மின்வேதியியல் பொறியியல் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Chemical & Materials
+Material Science and Engineering,பொருள் அறிவியல் மற்றும் பொறியியல்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Chemical & Materials
+Material Science and Engineering - Vocational,பொருள் அறிவியல் மற்றும் பொறியியல் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Chemical & Materials
+Metallurgical Engineering,உலோகவியல் பொறியியல்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Chemical & Materials
+Metallurgical Engineering - Vocational,உலோகவியல் பொறியியல் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Chemical & Materials
+Petro Chemical Technology,பெட்ரோ வேதியியல் தொழில்நுட்பம்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Chemical & Materials
+Petro Chemical Technology - Vocational,பெட்ரோ வேதியியல் தொழில்நுட்பம் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Chemical & Materials
+Petrochemical Engineering,பெட்ரோ வேதியியல் பொறியியல்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Chemical & Materials
+Petrochemical Engineering - Vocational,பெட்ரோ வேதியியல் பொறியியல் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Chemical & Materials
+Petroleum Engineering,பெட்ரோலிய பொறியியல்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Chemical & Materials
+Petroleum Engineering - Vocational,பெட்ரோலிய பொறியியல் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Chemical & Materials
+Petroleum Engineering and Technology,பெட்ரோலிய பொறியியல் மற்றும் தொழில்நுட்பம்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Chemical & Materials
+Petroleum Engineering and Technology - Vocational,பெட்ரோலிய பொறியியல் மற்றும் தொழில்நுட்பம் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Chemical & Materials
+Polymer Technology,பாலிமர் தொழில்நுட்பம்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Chemical & Materials
+Polymer Technology - Vocational,பாலிமர் தொழில்நுட்பம் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Chemical & Materials
+Plastic Technology,பிளாஸ்டிக் தொழில்நுட்பம்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Chemical & Materials
+Plastic Technology - Vocational,பிளாஸ்டிக் தொழில்நுட்பம் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Chemical & Materials
+Rubber and Plastic Technology,ரப்பர் மற்றும் பிளாஸ்டிக் தொழில்நுட்பம்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Chemical & Materials
+Rubber and Plastic Technology - Vocational,ரப்பர் மற்றும் பிளாஸ்டிக் தொழில்நுட்பம் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Chemical & Materials
+Bio Technology,உயிரி தொழில்நுட்பம்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Bio / Medical
+Bio Technology - Vocational,உயிரி தொழில்நுட்பம் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Bio / Medical
+BioMedical Engineering,உயிர் மருத்துவ பொறியியல்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Bio / Medical
+BioMedical Engineering - Vocational,உயிர் மருத்துவ பொறியியல் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Bio / Medical
+Industrial BioTechnology,தொழில்துறை உயிரி தொழில்நுட்பம்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Bio / Medical
+Industrial BioTechnology - Vocational,தொழில்துறை உயிரி தொழில்நுட்பம் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Bio / Medical
+Nano Science and Technology,நானோ அறிவியல் மற்றும் தொழில்நுட்பம்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Bio / Medical
+Nano Science and Technology - Vocational,நானோ அறிவியல் மற்றும் தொழில்நுட்பம் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Bio / Medical
+Agriculture Engineering,வேளாண் பொறியியல்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Agriculture
+Agriculture Engineering - Vocational,வேளாண் பொறியியல் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Agriculture
+Agricultural and Irrigation Engineering,வேளாண் மற்றும் நீர்ப்பாசன பொறியியல்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Agriculture
+Agricultural and Irrigation Engineering - Vocational,வேளாண் மற்றும் நீர்ப்பாசன பொறியியல் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Agriculture
+Apparel Technology,ஆடை தொழில்நுட்பம்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Textile / Fashion
+Apparel Technology - Vocational,ஆடை தொழில்நுட்பம் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Textile / Fashion
+Fashion Technology,நவீன ஆடை தொழில்நுட்பம்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Textile / Fashion
+Fashion Technology - Vocational,நவீன ஆடை தொழில்நுட்பம் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Textile / Fashion
+Handloom and Textile Technology,கைத்தறி மற்றும் ஜவுளி தொழில்நுட்பம்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Textile / Fashion
+Handloom and Textile Technology - Vocational,கைத்தறி மற்றும் ஜவுளி தொழில்நுட்பம் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Textile / Fashion
+Leather Technology,தோல் தொழில்நுட்பம்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Textile / Fashion
+Leather Technology - Vocational,தோல் தொழில்நுட்பம் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Textile / Fashion
+Textile Chemistry,ஜவுளி வேதியியல்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Textile / Fashion
+Textile Chemistry - Vocational,ஜவுளி வேதியியல் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Textile / Fashion
+Textile Technology,ஜவுளி தொழில்நுட்பம்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Textile / Fashion
+Textile Technology - Vocational,ஜவுளி தொழில்நுட்பம் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Textile / Fashion
+Food Technology,உணவு தொழில்நுட்பம்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Food & Packaging
+Food Technology - Vocational,உணவு தொழில்நுட்பம் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Food & Packaging
+Printing and Packaging Technology,அச்சிடுதல் மற்றும் பேக்கேஜிங் தொழில்நுட்பம்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Food & Packaging
+Printing and Packaging Technology - Vocational,அச்சிடுதல் மற்றும் பேக்கேஜிங் தொழில்நுட்பம் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Food & Packaging
+Robotics and Automation,ரோபோட்டிக்ஸ் மற்றும் தானியங்கி,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Robotics
+Robotics and Automation - Vocational,ரோபோட்டிக்ஸ் மற்றும் தானியங்கி - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Robotics
+Industrial Engineering,தொழில்துறை பொறியியல்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Industrial
+Industrial Engineering - Vocational,தொழில்துறை பொறியியல் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Industrial
+Industrial Engineering and Management,தொழில்துறை பொறியியல் மற்றும் மேலாண்மை,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Industrial
+Industrial Engineering and Management - Vocational,தொழில்துறை பொறியியல் மற்றும் மேலாண்மை - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Industrial
+Geoinformatics,புவித்தகவலியல்,TNEA,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,Geo
+Geoinformatics - Vocational,புவித்தகவலியல் - தொழிற்கல்வி,TNEA - Vocational,4 years,"VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,Geo
+B.A. LL.B. (Hons.),பி.ஏ. எல்.எல்.பி. (ஹானர்ஸ்),TNDALU,5 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13, SCI-14, ART-1, ART-2, ART-3, ART-4, ART-5, ART-6, ART-7, ART-8, ART-9, ART-10, ART-11, ART-12, ART-13, ART-14, VOC-1, VOC-2, VOC-3, VOC-4, VOC-5, VOC-6, VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,
+B.B.A. LL.B. (Hons.),பி.பி.ஏ. எல்.எல்.பி. (ஹானர்ஸ்),TNDALU,5 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13, SCI-14, ART-1, ART-2, ART-3, ART-4, ART-5, ART-6, ART-7, ART-8, ART-9, ART-10, ART-11, ART-12, ART-13, ART-14, VOC-1, VOC-2, VOC-3, VOC-4, VOC-5, VOC-6, VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,
+B.A. LL.B.,பி.ஏ. எல்.எல்.பி.,TNDALU,3 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13, SCI-14, ART-1, ART-2, ART-3, ART-4, ART-5, ART-6, ART-7, ART-8, ART-9, ART-10, ART-11, ART-12, ART-13, ART-14, VOC-1, VOC-2, VOC-3, VOC-4, VOC-5, VOC-6, VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,
+B.Com. LL.B. (Hons.),பி.காம். எல்.எல்.பி. (ஹானர்ஸ்),TNDALU,5 years,"ART-1, ART-2, ART-3, ART-4, ART-5, ART-6, ART-7, ART-8, VOC-3, VOC-4",(S3 + LIST_G + S5 + S6) / 4,LIST_G,
+B.C.A. LL.B. (Hons.),பி.சி.ஏ. எல்.எல்.பி. (ஹானர்ஸ்),TNDALU,5 years,"SCI-1, SCI-7, ART-1, ART-10, VOC-4",(S3 + S4 + S5 + LIST_H) / 4,LIST_H,
+B.V.Sc & A.H.,கால்நடை மருத்துவம் மற்றும் விலங்கு பண்ணை,TANUVAS - BVSC,5.5 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13, SCI-14",,,
+B.V.Sc & A.H. - Vocational,கால்நடை மருத்துவம் - தொழிற்கல்வி,TANUVAS - BVSC - Vocational,5.5 years,VOC-1,,,
+B.Tech Food Technology (TANUVAS),உணவு தொழில்நுட்பம் (TANUVAS),TANUVAS - B.Tech,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,,
+B.Tech Poultry Technology,கோழி வளர்ப்பு தொழில்நுட்பம்,TANUVAS - B.Tech,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,,
+B.Tech Dairy Technology,பால் பண்ணை தொழில்நுட்பம்,TANUVAS - B.Tech,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,,
+B.Sc (Hons.) Agriculture,பி.எஸ்சி (ஹானர்ஸ்) வேளாண்மை,TNAU - Agriculture,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_A,
+B.Sc (Hons.) Agriculture - BotZoo,பி.எஸ்சி (ஹானர்ஸ்) வேளாண்மை,TNAU - Agriculture - BotZoo,4 years,SCI-14,,,
+B.Sc (Hons.) Agriculture - Vocational,பி.எஸ்சி (ஹானர்ஸ்) வேளாண்மை - தொழிற்கல்வி,TNAU - Agriculture - Vocational,4 years,"VOC-1, VOC-2",,,
+B.Sc (Hons.) Horticulture,பி.எஸ்சி (ஹானர்ஸ்) தோட்டக்கலை,TNAU - Agriculture,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_A,
+B.Sc (Hons.) Horticulture - BotZoo,பி.எஸ்சி (ஹானர்ஸ்) தோட்டக்கலை,TNAU - Agriculture - BotZoo,4 years,SCI-14,,,
+B.Sc (Hons.) Horticulture - Vocational,பி.எஸ்சி (ஹானர்ஸ்) தோட்டக்கலை - தொழிற்கல்வி,TNAU - Agriculture - Vocational,4 years,"VOC-1, VOC-2",,,
+B.Sc (Hons.) Forestry,பி.எஸ்சி (ஹானர்ஸ்) வனவியல்,TNAU - Agriculture,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_A,
+B.Sc (Hons.) Forestry - BotZoo,பி.எஸ்சி (ஹானர்ஸ்) வனவியல்,TNAU - Agriculture - BotZoo,4 years,SCI-14,,,
+B.Sc (Hons.) Forestry - Vocational,பி.எஸ்சி (ஹானர்ஸ்) வனவியல் - தொழிற்கல்வி,TNAU - Agriculture - Vocational,4 years,"VOC-1, VOC-2",,,
+B.Sc (Hons.) Sericulture,பி.எஸ்சி (ஹானர்ஸ்) பட்டு வளர்ப்பு,TNAU - Agriculture,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_A,
+B.Sc (Hons.) Sericulture - BotZoo,பி.எஸ்சி (ஹானர்ஸ்) பட்டு வளர்ப்பு,TNAU - Agriculture - BotZoo,4 years,SCI-14,,,
+B.Tech Biotechnology,பி.டெக் உயிரி தொழில்நுட்பம்,TNAU - Agriculture,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_A,
+B.Tech Biotechnology - BotZoo,பி.டெக் உயிரி தொழில்நுட்பம்,TNAU - Agriculture - BotZoo,4 years,SCI-14,,,
+B.Sc (Hons.) Agribusiness Management,பி.எஸ்சி (ஹானர்ஸ்) வேளாண் வணிக மேலாண்மை,TNAU - Agriculture,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_A,
+B.Sc (Hons.) Agribusiness Management - BotZoo,பி.எஸ்சி (ஹானர்ஸ்) வேளாண் வணிக மேலாண்மை,TNAU - Agriculture - BotZoo,4 years,SCI-14,,,
+B.Tech Bioinformatics,பி.டெக் உயிர் தகவலியல்,TNAU - Agriculture,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_A,
+B.Tech Bioinformatics - BotZoo,பி.டெக் உயிர் தகவலியல்,TNAU - Agriculture - BotZoo,4 years,SCI-14,,,
+B.Sc (Hons.) Food Nutrition and Dietetics,பி.எஸ்சி (ஹானர்ஸ்) உணவு ஊட்டச்சத்து,TNAU - Food Nutrition,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_B,
+B.Sc (Hons.) Food Nutrition and Dietetics - BotZoo,பி.எஸ்சி (ஹானர்ஸ்) உணவு ஊட்டச்சத்து,TNAU - Food Nutrition - BotZoo,4 years,SCI-14,,,
+B.Tech Agricultural Engineering,பி.டெக் வேளாண் பொறியியல்,TNAU - Agri Engineering,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_C,
+B.Tech Agricultural Engineering - Vocational,பி.டெக் வேளாண் பொறியியல் - தொழிற்கல்வி,TNAU - Agriculture - Vocational,4 years,"VOC-1, VOC-2",,,
+B.Tech Food Technology (TNAU),பி.டெக் உணவு தொழில்நுட்பம் (TNAU),TNAU - Agri Engineering,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_C,
+B.Tech Energy and Environmental Engineering,பி.டெக் ஆற்றல் மற்றும் சுற்றுச்சூழல் பொறியியல்,TNAU - Agri Engineering,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_C,
+B.Tech Agricultural Information Technology,பி.டெக் வேளாண் தகவல் தொழில்நுட்பம்,TNAU - Agri Engineering,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_C,
+B.Sc. (Hons.) Agriculture (Tamil Medium),பி.எஸ்சி (ஹானர்ஸ்) வேளாண்மை (தமிழ் வழி),TNAU - Agriculture,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_A,
+B.Sc. (Hons.) Agriculture (Tamil Medium) - BotZoo,பி.எஸ்சி (ஹானர்ஸ்) வேளாண்மை (தமிழ் வழி),TNAU - Agriculture - BotZoo,4 years,SCI-14,,,
+B.Sc. (Hons.) Horticulture (Tamil Medium),பி.எஸ்சி (ஹானர்ஸ்) தோட்டக்கலை (தமிழ் வழி),TNAU - Agriculture,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_A,
+B.Sc. (Hons.) Horticulture (Tamil Medium) - BotZoo,பி.எஸ்சி (ஹானர்ஸ்) தோட்டக்கலை (தமிழ் வழி),TNAU - Agriculture - BotZoo,4 years,SCI-14,,,
+Diploma in Agriculture,வேளாண்மையில் டிப்ளோமா,TNAU Diploma (Bio),3 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13, SCI-14",,,
+Diploma in Agriculture (Tamil Medium),வேளாண்மையில் டிப்ளோமா (தமிழ் வழி),TNAU Diploma (Bio),3 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13, SCI-14",,,
+Diploma in Horticulture,தோட்டக்கலையில் டிப்ளோமா,TNAU Diploma (Bio),3 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13, SCI-14",,,
+Diploma in Agricultural Engineering,வேளாண் பொறியியலில் டிப்ளோமா,TNAU Diploma (Maths),4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,
+B.F.Sc (Bachelor of Fisheries Science),பி.எஃப்.எஸ்சி (மீன்வள அறிவியல்),TNJFU - Fisheries,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_D,
+B.F.Sc (Bachelor of Fisheries Science) - BotZoo,பி.எஃப்.எஸ்சி (மீன்வள அறிவியல்),TNJFU - Fisheries - BotZoo,4 years,SCI-14,,,
+B.F.Sc (Bachelor of Fisheries Science) - Vocational,பி.எஃப்.எஸ்சி (மீன்வள அறிவியல்) - தொழிற்கல்வி,TNJFU - Fisheries - Vocational,4 years,"VOC-1, VOC-2",,,
+B.Tech Fisheries Engineering,பி.டெக் மீன்வளப் பொறியியல்,TNJFU - B.Tech,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,LIST_E,
+B.Tech Food Technology (TNJFU),பி.டெக் உணவு தொழில்நுட்பம் (TNJFU),TNJFU - B.Tech,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,LIST_E,
+B.Tech Energy and Environmental Engineering (TNJFU),பி.டெக் ஆற்றல் மற்றும் சுற்றுச்சூழல் பொறியியல் (TNJFU),TNJFU - B.Tech,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,LIST_E,
+B.Voc Industrial Fish Processing Technology,பி.வோக் தொழில்துறை மீன் பதப்படுத்துதல்,TNJFU - B.Voc,3 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13, SCI-14, ART-1, ART-2, ART-3, ART-4, ART-5, ART-6, ART-7, ART-8, ART-9, ART-10, ART-11, ART-12, ART-13, ART-14, VOC-1, VOC-2, VOC-3, VOC-4, VOC-5, VOC-6, VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,
+B.Voc Industrial Aquaculture,பி.வோக் தொழில்துறை நீர்வாழ் வளர்ப்பு,TNJFU - B.Voc,3 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13, SCI-14, ART-1, ART-2, ART-3, ART-4, ART-5, ART-6, ART-7, ART-8, ART-9, ART-10, ART-11, ART-12, ART-13, ART-14, VOC-1, VOC-2, VOC-3, VOC-4, VOC-5, VOC-6, VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,
+B.Voc Industrial Fishing Technology,பி.வோக் தொழில்துறை மீன்பிடி தொழில்நுட்பம்,TNJFU - B.Voc,3 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13, SCI-14, ART-1, ART-2, ART-3, ART-4, ART-5, ART-6, ART-7, ART-8, ART-9, ART-10, ART-11, ART-12, ART-13, ART-14, VOC-1, VOC-2, VOC-3, VOC-4, VOC-5, VOC-6, VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12",,,
+B.Pharm (Bachelor of Pharmacy),பி.பார்ம் (மருந்தியல் இளங்கலை),TN Paramedical - Pharmacy,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_F,
+B.Pharm (Bachelor of Pharmacy) - BotZoo,பி.பார்ம் (மருந்தியல் இளங்கலை),TN Paramedical - Pharmacy - BotZoo,4 years,SCI-14,,,
+BASLP (Audiology Speech Language Pathology),BASLP (செவித்திறன் பேச்சு மொழி நோயியல்),TN Paramedical - Pharmacy,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_F,
+BASLP (Audiology Speech Language Pathology) - BotZoo,BASLP (செவித்திறன் பேச்சு மொழி நோயியல்),TN Paramedical - Pharmacy - BotZoo,4 years,SCI-14,,,
+B.Optom (Bachelor of Optometry),பி.ஆப்டம் (ஒளியியல் இளங்கலை),TN Paramedical - Pharmacy,4 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,LIST_F,
+B.Optom (Bachelor of Optometry) - BotZoo,பி.ஆப்டம் (ஒளியியல் இளங்கலை),TN Paramedical - Pharmacy - BotZoo,4 years,SCI-14,,,
+B.Sc Nursing,பி.எஸ்சி நர்சிங்,TN Paramedical - Nursing,4 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,,
+B.Sc Nursing - BotZoo,பி.எஸ்சி நர்சிங்,TN Paramedical - Nursing - BotZoo,4 years,SCI-14,,,
+B.P.T (Physiotherapy),பி.பி.டி (இயன்முறை மருத்துவம்),TN Paramedical - Nursing,4.5 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,,
+B.P.T (Physiotherapy) - BotZoo,பி.பி.டி (இயன்முறை மருத்துவம்),TN Paramedical - Nursing - BotZoo,4.5 years,SCI-14,,,
+B.Sc Radiography and Imaging Technology,பி.எஸ்சி கதிரியக்க தொழில்நுட்பம்,TN Paramedical - Nursing,3 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,,
+B.Sc Radiography and Imaging Technology - BotZoo,பி.எஸ்சி கதிரியக்க தொழில்நுட்பம்,TN Paramedical - Nursing - BotZoo,3 years,SCI-14,,,
+B.Sc Radio Therapy Technology,பி.எஸ்சி கதிர் சிகிச்சை தொழில்நுட்பம்,TN Paramedical - Nursing,3 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,,
+B.Sc Radio Therapy Technology - BotZoo,பி.எஸ்சி கதிர் சிகிச்சை தொழில்நுட்பம்,TN Paramedical - Nursing - BotZoo,3 years,SCI-14,,,
+B.Sc Cardio-Pulmonary Perfusion Technology,பி.எஸ்சி இதய-நுரையீரல் பெர்ஃபியூஷன் தொழில்நுட்பம்,TN Paramedical - Nursing,3 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,,
+B.Sc Cardio-Pulmonary Perfusion Technology - BotZoo,பி.எஸ்சி இதய-நுரையீரல் பெர்ஃபியூஷன் தொழில்நுட்பம்,TN Paramedical - Nursing - BotZoo,3 years,SCI-14,,,
+B.Sc Medical Laboratory Technology,பி.எஸ்சி மருத்துவ ஆய்வக தொழில்நுட்பம்,TN Paramedical - Nursing,3 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,,
+B.Sc Medical Laboratory Technology - BotZoo,பி.எஸ்சி மருத்துவ ஆய்வக தொழில்நுட்பம்,TN Paramedical - Nursing - BotZoo,3 years,SCI-14,,,
+B.Sc Operation Theatre and Anaesthesia Technology,பி.எஸ்சி அறுவை சிகிச்சை அரங்க தொழில்நுட்பம்,TN Paramedical - Nursing,3 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,,
+B.Sc Operation Theatre and Anaesthesia Technology - BotZoo,பி.எஸ்சி அறுவை சிகிச்சை அரங்க தொழில்நுட்பம்,TN Paramedical - Nursing - BotZoo,3 years,SCI-14,,,
+B.Sc Cardiac Technology,பி.எஸ்சி இதய தொழில்நுட்பம்,TN Paramedical - Nursing,3 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,,
+B.Sc Cardiac Technology - BotZoo,பி.எஸ்சி இதய தொழில்நுட்பம்,TN Paramedical - Nursing - BotZoo,3 years,SCI-14,,,
+B.Sc Critical Care Technology,பி.எஸ்சி தீவிர சிகிச்சை தொழில்நுட்பம்,TN Paramedical - Nursing,3 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,,
+B.Sc Critical Care Technology - BotZoo,பி.எஸ்சி தீவிர சிகிச்சை தொழில்நுட்பம்,TN Paramedical - Nursing - BotZoo,3 years,SCI-14,,,
+B.Sc Dialysis Technology,பி.எஸ்சி சிறுநீரக சுத்திகரிப்பு தொழில்நுட்பம்,TN Paramedical - Nursing,3 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,,
+B.Sc Dialysis Technology - BotZoo,பி.எஸ்சி சிறுநீரக சுத்திகரிப்பு தொழில்நுட்பம்,TN Paramedical - Nursing - BotZoo,3 years,SCI-14,,,
+B.Sc Physician Assistant,பி.எஸ்சி மருத்துவர் உதவியாளர்,TN Paramedical - Nursing,3 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,,
+B.Sc Physician Assistant - BotZoo,பி.எஸ்சி மருத்துவர் உதவியாளர்,TN Paramedical - Nursing - BotZoo,3 years,SCI-14,,,
+B.Sc Accident and Emergency Care Technology,பி.எஸ்சி விபத்து மற்றும் அவசர சிகிச்சை தொழில்நுட்பம்,TN Paramedical - Nursing,3 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,,
+B.Sc Accident and Emergency Care Technology - BotZoo,பி.எஸ்சி விபத்து மற்றும் அவசர சிகிச்சை தொழில்நுட்பம்,TN Paramedical - Nursing - BotZoo,3 years,SCI-14,,,
+B.Sc Respiratory Therapy,பி.எஸ்சி சுவாச சிகிச்சை,TN Paramedical - Nursing,3 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,,
+B.Sc Respiratory Therapy - BotZoo,பி.எஸ்சி சுவாச சிகிச்சை,TN Paramedical - Nursing - BotZoo,3 years,SCI-14,,,
+B.O.T (Occupational Therapy),பி.ஓ.டி (தொழில் சிகிச்சை),TN Paramedical - Nursing,4.5 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,,
+B.O.T (Occupational Therapy) - BotZoo,பி.ஓ.டி (தொழில் சிகிச்சை),TN Paramedical - Nursing - BotZoo,4.5 years,SCI-14,,,
+B.Sc Neuro Electro Physiology,பி.எஸ்சி நரம்பு மின் இயற்பியல்,TN Paramedical - Nursing,3 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,,
+B.Sc Neuro Electro Physiology - BotZoo,பி.எஸ்சி நரம்பு மின் இயற்பியல்,TN Paramedical - Nursing - BotZoo,3 years,SCI-14,,,
+B.Sc Clinical Nutrition,பி.எஸ்சி மருத்துவ ஊட்டச்சத்து,TN Paramedical - Nursing,3 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13",,,
+B.Sc Clinical Nutrition - BotZoo,பி.எஸ்சி மருத்துவ ஊட்டச்சத்து,TN Paramedical - Nursing - BotZoo,3 years,SCI-14,,,
+Diploma in Dental Mechanic,பல் தொழில்நுட்ப டிப்ளோமா,Paramedical Diploma (Bio),2 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13, SCI-14",,,
+Diploma in Dental Hygienist,பல் சுகாதார டிப்ளோமா,Paramedical Diploma (Bio),2 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13, SCI-14",,,
+Diploma in Medical Laboratory Technology,மருத்துவ ஆய்வக தொழில்நுட்ப டிப்ளோமா,Paramedical Diploma (Bio),2 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13, SCI-14",,,
+Diploma in Radio Diagnosis Technology,கதிர் கண்டறிதல் தொழில்நுட்ப டிப்ளோமா,Paramedical Diploma (Bio),2 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13, SCI-14",,,
+Diploma in Radio Therapy Technology,கதிர் சிகிச்சை தொழில்நுட்ப டிப்ளோமா,Paramedical Diploma (Bio),2 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13, SCI-14",,,
+Diploma in Home Health Care,இல்ல சுகாதார பராமரிப்பு டிப்ளோமா,Paramedical Diploma (Bio),1 year,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13, SCI-14",,,
+Diploma in Opthalmic Nursing Assistant,கண் நர்சிங் உதவியாளர் டிப்ளோமா,Paramedical Diploma (Bio),2 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13, SCI-14",,,
+Diploma in Nursing (Women),நர்சிங் டிப்ளோமா (பெண்கள்),Paramedical Diploma (Bio),3 years,"SCI-6, SCI-7, SCI-8, SCI-9, SCI-10, SCI-11, SCI-12, SCI-13, SCI-14",,,
+Diploma in Optometry,ஒளியியல் டிப்ளோமா,Paramedical Diploma (Maths),2 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,
+Diploma in Pharmacy,மருந்தியல் டிப்ளோமா,Paramedical Diploma (Maths),2 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,
+Diploma in Nursing (Women),நர்சிங் டிப்ளோமா (பெண்கள்),Paramedical Diploma (Maths),3 years,"SCI-1, SCI-2, SCI-3, SCI-4, SCI-5, SCI-10",,,
+Diploma in Nursing (Women),நர்சிங் டிப்ளோமா (பெண்கள்),Paramedical Diploma (Voc),3 years,"VOC-1, VOC-2, VOC-3, VOC-4, VOC-5, VOC-6, VOC-7, VOC-8, VOC-9, VOC-10, VOC-11, VOC-12, ART-1, ART-2, ART-3, ART-4, ART-5, ART-6, ART-7, ART-8, ART-9, ART-10, ART-11, ART-12, ART-13, ART-14",,LIST_I,
