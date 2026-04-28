@@ -18,7 +18,7 @@ export default function Footer() {
   ]
 
   return (
-    <footer className="relative bg-[#0A0A0F] text-white overflow-hidden">
+    <footer className="relative bg-[#0A0A0F] text-white overflow-hidden pb-4">
       {/* Decorative Elements */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#FF6B35]/30 to-transparent" />
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#FF6B35]/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
@@ -140,6 +140,20 @@ export default function Footer() {
           </div>
         </div>
       </div>
+      
+<div className="mt-6 pt-4 border-t border-white/10 text-center">
+  <p className="text-xs text-gray-400">
+    Powered by{' '}
+    <a
+      href="https://www.wnradvisory.com/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="hover:underline hover:text-gray-300 transition-colors"
+    >
+      WnR Group
+    </a>
+  </p>
+</div>
     </footer>
   )
 }
