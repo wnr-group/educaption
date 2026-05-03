@@ -58,14 +58,22 @@ const STREAM_COLORS = {
   },
 }
 
-/**
- * Extracts the "distinguishing" subjects from a group —
- * the ones that make it different from other groups in the same stream.
- */
 function getDistinguishingSubjects(subjects, commonSubjects) {
   if (!subjects || subjects.length === 0) return []
   const commonSet = new Set(commonSubjects.map(s => s.toLowerCase()))
   return subjects.filter(s => !commonSet.has(s.toLowerCase()))
+}
+
+function mergeTheoryPractical(subjects) {
+  const seen = new Set()
+  return subjects.reduce((acc, s) => {
+    const base = s.replace(/[-–]\s*(Theory|Practical)\s*$/i, '').trim()
+    if (!seen.has(base.toLowerCase())) {
+      seen.add(base.toLowerCase())
+      acc.push(base)
+    }
+    return acc
+  }, [])
 }
 
 export default function Step1GroupSelect() {
@@ -221,9 +229,9 @@ export default function Step1GroupSelect() {
       `}>
         {currentGroups.map((g) => {
           const isSelected = group === g.id
-          const displaySubjects = (language === 'ta' && g.name_ta)
-            ? g.name_ta.split(', ')
-            : g.subjects || []
+          const displaySubjects = mergeTheoryPractical(
+            (language === 'ta' && g.name_ta) ? g.name_ta.split(', ') : g.subjects || []
+          )
 
           return (
             <button
@@ -287,9 +295,11 @@ export default function Step1GroupSelect() {
           </h3>
           <div className="grid grid-cols-2 gap-2">
             {(() => {
-              const subjects = language === 'ta' && selectedGroup.subjects_ta?.length
-                ? selectedGroup.subjects_ta
-                : selectedGroup.subjects || []
+              const subjects = mergeTheoryPractical(
+                language === 'ta' && selectedGroup.subjects_ta?.length
+                  ? selectedGroup.subjects_ta
+                  : selectedGroup.subjects || []
+              )
               return subjects.map((subject, index) => (
                 <div
                   key={index}
