@@ -93,6 +93,9 @@ function createMarksLookup(subjects, marks) {
   lookup['S1'] = lang1Mark
   lookup['S2'] = lang2Mark
 
+  // Store full subject names for exact matching in resolveSubjectList
+  lookup._subjectNames = []
+
   // Map each group subject to its code and positional code (S3-S6)
   subjects.forEach((subject, index) => {
     const code = getSubjectCode(subject)
@@ -101,6 +104,9 @@ function createMarksLookup(subjects, marks) {
 
     // S3 through S6 for the 4 group subjects
     lookup[`S${index + 3}`] = mark
+
+    // Store full name → mark mapping for LIST resolution
+    lookup._subjectNames.push({ name: subject, mark })
 
     // Handle vocational subjects - detect theory/practical
     const subjectLower = subject.toLowerCase()
@@ -145,11 +151,29 @@ function resolveSubjectList(formula, marks, subjectListSubjects) {
     return formula
   }
 
+  // Build a set of the student's subject names (lowercase) for exact matching
+  const studentSubjects = (marks._subjectNames || []).map(s => ({
+    name: s.name.toLowerCase().trim(),
+    mark: s.mark
+  }))
+
   // Find which subject from the list the student has
+  // Priority: try exact name match first, then fall back to code match
   // LIST_F has priority: Biology first, then Mathematics
   let listSubjectMark = null
-  for (const subject of subjectListSubjects) {
-    const code = getSubjectCode(subject)
+
+  for (const listSubject of subjectListSubjects) {
+    const listNameLower = listSubject.toLowerCase().trim()
+
+    // 1. Exact name match against student's subjects
+    const exactMatch = studentSubjects.find(s => s.name === listNameLower)
+    if (exactMatch && exactMatch.mark > 0) {
+      listSubjectMark = exactMatch.mark
+      break
+    }
+
+    // 2. Fall back to code-based match
+    const code = getSubjectCode(listSubject)
     if (marks[code] !== undefined && marks[code] > 0) {
       listSubjectMark = marks[code]
       break
@@ -205,6 +229,28 @@ function normalizeFormula(formula) {
   return normalized
 }
 
+const DISTINGUISHING_PRIORITY = ['B', 'BOT', 'ZOO', 'M', 'HS', 'CO', 'E', 'A']
+const CODE_TO_SUBJECT_NAME = {
+  'B': 'Biology', 'BOT': 'Botany', 'ZOO': 'Zoology',
+  'M': 'Mathematics', 'HS': 'Home Science', 'CO': 'Commerce',
+  'E': 'Economics', 'A': 'Accountancy', 'P': 'Physics', 'C': 'Chemistry',
+  'THEORY': 'Theory', 'PRACTICAL': 'Practical'
+}
+
+function getDistinguishingSubjectLabel(formula, marksLookup) {
+  if (!formula) return null
+  const normalized = normalizeFormula(formula)
+  for (const code of DISTINGUISHING_PRIORITY) {
+    if (new RegExp(`\\b${code}\\b`).test(normalized) && marksLookup[code] !== undefined) {
+      return CODE_TO_SUBJECT_NAME[code] || code
+    }
+  }
+  if (normalized.includes('THEORY') && marksLookup['THEORY'] !== undefined) {
+    return CODE_TO_SUBJECT_NAME['THEORY']
+  }
+  return null
+}
+
 /**
  * Calculates cutoff using formula string
  *
@@ -244,6 +290,10 @@ export function calculateCutoff(formula, marks, subjectListSubjects = null) {
     const regex = new RegExp(`\\b${code}\\b`, 'g')
     expression = expression.replace(regex, value.toString())
   }
+
+  // Replace any remaining unresolved subject codes with 0
+  // (e.g., M for Mathematics when the student's group doesn't include it)
+  expression = expression.replace(/\b[A-Z]+\b/g, '0')
 
   // Validate expression only contains numbers and math operators
   if (!/^[\d\s+\-*/().]+$/.test(expression)) {
@@ -348,6 +398,7 @@ export function calculateCourseCutoffs(courses, admissionBodies, group, marks, s
       resultsByBody[admissionBody.id].cutoffGroupsMap[cutoffKey] = {
         cutoff,
         maxCutoff: bodyMaxCutoff,
+        distinguishingSubject: getDistinguishingSubjectLabel(formula, marksLookup),
         courses: []
       }
     }

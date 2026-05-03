@@ -92,6 +92,11 @@ export default function CategorySection({ category, category_ta, courses, cutoff
                   {/* Sub-header for cutoff group (only when multiple groups) */}
                   {group && (
                     <div className="flex items-center gap-3 mb-3 mt-4">
+                      {group.distinguishingSubject && (
+                        <span className="font-body text-sm font-semibold text-navy-700 bg-navy-50 px-3 py-1 rounded-lg border border-navy-100">
+                          {group.distinguishingSubject}
+                        </span>
+                      )}
                       <div className="flex items-center gap-2 px-3 py-1.5 bg-navy-50 rounded-lg border border-navy-100">
                         <span className="font-display text-sm font-bold text-saffron-600">
                           {group.cutoff.toFixed(2)}
