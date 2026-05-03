@@ -285,7 +285,7 @@ export default function Step1GroupSelect() {
           <h3 className="font-display font-bold text-base text-navy-900 mb-3">
             {t('calculator.step1.selectedSubjects')}
           </h3>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+          <div className="grid grid-cols-2 gap-2">
             {(() => {
               const subjects = language === 'ta' && selectedGroup.subjects_ta?.length
                 ? selectedGroup.subjects_ta
@@ -294,7 +294,7 @@ export default function Step1GroupSelect() {
                 <div
                   key={index}
                   className="
-                    flex items-center gap-2 min-w-0
+                    flex items-center gap-2
                     bg-white px-3 py-2 rounded-xl
                     border border-saffron-100 shadow-soft
                   "
@@ -306,7 +306,7 @@ export default function Step1GroupSelect() {
                   ">
                     {index + 1}
                   </span>
-                  <span className="font-body text-navy-700 font-medium text-sm min-w-0 break-words">
+                  <span className="font-body text-navy-700 font-medium text-sm">
                     {subject}
                   </span>
                 </div>
