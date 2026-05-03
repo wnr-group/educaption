@@ -1,29 +1,25 @@
 import { useState, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Search, Filter, Calendar, ChevronDown, X } from 'lucide-react'
+import { Search, Filter, Calendar, ChevronDown, X, ExternalLink } from 'lucide-react'
 import { useEvents } from '../hooks/queries/useEvents'
 import { useLanguage } from '../context/LanguageContext'
 import { useHeaderOffset } from '../hooks/useHeaderOffset'
 import SEO, { schemas } from '../components/SEO'
 
-const COUNSELLING_COLORS = {
-  'Engineering - TNEA': 'bg-amber-50 border-amber-200',
-  'Agri - TNAU': 'bg-blue-50 border-blue-200',
-  'Fisheries - TNJFU': 'bg-cyan-50 border-cyan-200',
-  'Veterinary - TANUVAS': 'bg-green-50 border-green-200',
-  'Law - TNDALU': 'bg-purple-50 border-purple-200',
-  'Paramedical': 'bg-rose-50 border-rose-200'
+const COLOR_MAP = {
+  blue:   { row: 'bg-blue-50 border-blue-300',   badge: 'bg-blue-100 border-blue-200 text-blue-700' },
+  green:  { row: 'bg-emerald-50 border-emerald-300', badge: 'bg-emerald-100 border-emerald-200 text-emerald-700' },
+  red:    { row: 'bg-rose-50 border-rose-300',    badge: 'bg-rose-100 border-rose-200 text-rose-700' },
+  orange: { row: 'bg-amber-50 border-amber-300',  badge: 'bg-amber-100 border-amber-200 text-amber-700' },
+  purple: { row: 'bg-purple-50 border-purple-300', badge: 'bg-purple-100 border-purple-200 text-purple-700' },
+  yellow: { row: 'bg-yellow-50 border-yellow-300', badge: 'bg-yellow-100 border-yellow-200 text-yellow-700' },
 }
 
-function getRowColor(counselling_body) {
-  if (!counselling_body) return ''
-  for (const [key, value] of Object.entries(COUNSELLING_COLORS)) {
-    const prefix = key.split(' - ')[0]
-    if (counselling_body.includes(prefix) || counselling_body.includes(key)) {
-      return value
-    }
-  }
-  return ''
+const DEFAULT_COLOR = { row: 'bg-gray-50 border-gray-200', badge: 'bg-gray-100 border-gray-200 text-gray-600' }
+
+function getEventColors(color) {
+  if (!color) return DEFAULT_COLOR
+  return COLOR_MAP[color.toLowerCase()] || DEFAULT_COLOR
 }
 
 export default function Events() {
@@ -225,7 +221,7 @@ export default function Events() {
           {!isLoading && !isError && filteredEvents.length > 0 && (
             <div className="bg-white rounded-2xl border border-[#1A1A2E]/[0.06] shadow-sm overflow-hidden">
               {/* Table Header */}
-              <div className="hidden sm:grid grid-cols-[160px_1fr_200px] gap-4 px-6 py-4 bg-[#1A1A2E]/[0.03] border-b border-[#1A1A2E]/[0.06]">
+              <div className="hidden sm:grid grid-cols-[160px_1fr_200px_auto] gap-4 px-6 py-4 bg-[#1A1A2E]/[0.03] border-b border-[#1A1A2E]/[0.06]">
                 <div className="text-xs font-bold text-[#1A1A2E]/50 uppercase tracking-wider">
                   {t('events.date')}
                 </div>
@@ -235,12 +231,13 @@ export default function Events() {
                 <div className="text-xs font-bold text-[#1A1A2E]/50 uppercase tracking-wider">
                   {t('events.counselling')}
                 </div>
+                <div />
               </div>
 
               {/* Table Rows */}
               <div className="divide-y divide-[#1A1A2E]/[0.04]">
                 {filteredEvents.map((ev) => {
-                  const rowColor = getRowColor(ev.counselling_body)
+                  const colors = getEventColors(ev.color)
                   const eventName = language === 'ta' && ev.event_ta ? ev.event_ta : ev.event
                   const bodyName = language === 'ta' && ev.counselling_body_ta ? ev.counselling_body_ta : ev.counselling_body
 
@@ -248,13 +245,13 @@ export default function Events() {
                     <div
                       key={ev.id}
                       className={`
-                        sm:grid sm:grid-cols-[160px_1fr_200px] gap-4
+                        sm:grid sm:grid-cols-[160px_1fr_200px_auto] gap-4
                         px-4 sm:px-6 py-4
                         flex flex-col
                         border-l-4
                         transition-colors duration-150
-                        hover:brightness-[0.98]
-                        ${rowColor || 'border-transparent'}
+                        hover:brightness-[0.97]
+                        ${colors.row}
                       `}
                     >
                       {/* Date */}
@@ -281,10 +278,26 @@ export default function Events() {
                       <div>
                         <span className={`
                           inline-block text-xs font-semibold px-3 py-1 rounded-full border
-                          ${rowColor || 'bg-[#1A1A2E]/5 border-[#1A1A2E]/10 text-[#1A1A2E]/60'}
+                          ${colors.badge}
                         `}>
                           {bodyName || '—'}
                         </span>
+                      </div>
+
+                      {/* Link column */}
+                      <div className="flex items-center">
+                        {ev.link_url ? (
+                          <a
+                            href={ev.link_url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-[#FF6B35] bg-[#FF6B35]/10 hover:bg-[#FF6B35]/20 rounded-lg transition-colors duration-150"
+                          >
+                            <ExternalLink className="w-3.5 h-3.5" />
+                            {language === 'ta' ? 'இணைப்பு' : 'Link'}
+                          </a>
+                        ) : null}
                       </div>
                     </div>
                   )
@@ -296,14 +309,18 @@ export default function Events() {
           {/* Color Legend */}
           {!isLoading && !isError && events.length > 0 && (
             <div className="mt-8 flex flex-wrap gap-3">
-              {Object.entries(COUNSELLING_COLORS).map(([key, colorClass]) => (
-                <span
-                  key={key}
-                  className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-medium text-[#1A1A2E]/70 ${colorClass}`}
-                >
-                  {key}
-                </span>
-              ))}
+              {[...new Set(events.map(ev => ev.counselling_body).filter(Boolean))].sort().map(body => {
+                const ev = events.find(e => e.counselling_body === body)
+                const colors = getEventColors(ev?.color)
+                return (
+                  <span
+                    key={body}
+                    className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-medium ${colors.badge}`}
+                  >
+                    {body}
+                  </span>
+                )
+              })}
             </div>
           )}
 

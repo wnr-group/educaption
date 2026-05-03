@@ -20,7 +20,8 @@ export function useEvents() {
       counselling_body: parseTextField(record.Counselling_Body),
       counselling_body_ta: parseTextField(record.Counselling_Body_Tamil) || parseTextField(record.Counselling_Body),
       description: parseTextField(record.Description),
-      color: parseTextField(record.Color) || null
+      color: parseTextField(record.Color) || null,
+      link_url: parseTextField(record.Link_URL) || null
     }))
   })
 }
