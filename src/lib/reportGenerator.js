@@ -1,5 +1,5 @@
 import jsPDF from 'jspdf'
-import 'jspdf-autotable'
+import autoTable from 'jspdf-autotable'
 
 export function generateCutoffReport({ studentName, group, marks, cutoffResults, language = 'en' }) {
   const doc = new jsPDF()
@@ -43,7 +43,7 @@ export function generateCutoffReport({ studentName, group, marks, cutoffResults,
     studentInfoRows.push([subject, String(mark)])
   }
 
-  doc.autoTable({
+  autoTable(doc, {
     startY: y,
     head: [['Field', 'Value']],
     body: studentInfoRows,
@@ -74,7 +74,7 @@ export function generateCutoffReport({ studentName, group, marks, cutoffResults,
     ])
   })
 
-  doc.autoTable({
+  autoTable(doc, {
     startY: y,
     head: [['Admission Body', 'Cutoff', 'Max', 'Courses']],
     body: cutoffRows,
@@ -113,7 +113,7 @@ export function generateCutoffReport({ studentName, group, marks, cutoffResults,
         return [name, c.courseCategory || '', c.duration || '']
       })
 
-      doc.autoTable({
+      autoTable(doc, {
         startY: y,
         head: [[`Cutoff: ${cutoffGroup.cutoff}/${cutoffGroup.maxCutoff}`, 'Category', 'Duration']],
         body: courseRows,
@@ -135,7 +135,7 @@ export function generateCutoffReport({ studentName, group, marks, cutoffResults,
     doc.setPage(i)
     doc.setFontSize(8)
     doc.setTextColor(150, 150, 150)
-    doc.text('educaption.org', pageWidth / 2, doc.internal.pageSize.getHeight() - 10, { align: 'center' })
+    doc.text('https://www.educaption.in/', pageWidth / 2, doc.internal.pageSize.getHeight() - 10, { align: 'center' })
     doc.text(`Page ${i} of ${pageCount}`, pageWidth - 14, doc.internal.pageSize.getHeight() - 10, { align: 'right' })
   }
 
