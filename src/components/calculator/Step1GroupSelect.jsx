@@ -306,7 +306,7 @@ export default function Step1GroupSelect() {
                   ">
                     {index + 1}
                   </span>
-                  <span className="font-body text-navy-700 font-medium text-sm truncate">
+                  <span className="font-body text-navy-700 font-medium text-sm">
                     {subject}
                   </span>
                 </div>
