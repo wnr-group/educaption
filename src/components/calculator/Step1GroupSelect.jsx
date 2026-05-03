@@ -294,7 +294,7 @@ export default function Step1GroupSelect() {
                 <div
                   key={index}
                   className="
-                    flex items-center gap-2
+                    flex items-center gap-2 min-w-0
                     bg-white px-3 py-2 rounded-xl
                     border border-saffron-100 shadow-soft
                   "
@@ -306,7 +306,7 @@ export default function Step1GroupSelect() {
                   ">
                     {index + 1}
                   </span>
-                  <span className="font-body text-navy-700 font-medium text-sm">
+                  <span className="font-body text-navy-700 font-medium text-sm min-w-0 break-words">
                     {subject}
                   </span>
                 </div>
