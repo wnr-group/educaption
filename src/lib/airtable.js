@@ -60,28 +60,37 @@ export async function fetchTable(tableName, options = {}) {
     }
 
     // Make the API request
-    const response = await fetch(url.toString(), {
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${AIRTABLE_API_KEY}`,
-        'Content-Type': 'application/json'
+    const allRecords = []
+    let offset = null
+
+    do {
+      if (offset) url.searchParams.set('offset', offset)
+
+      const response = await fetch(url.toString(), {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${AIRTABLE_API_KEY}`,
+          'Content-Type': 'application/json'
+        }
+      })
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}))
+        throw new Error(
+          `Airtable API error (${response.status}): ${errorData.error?.message || response.statusText}`
+        )
       }
-    })
 
-    if (!response.ok) {
-      const errorData = await response.json().catch(() => ({}))
-      throw new Error(
-        `Airtable API error (${response.status}): ${errorData.error?.message || response.statusText}`
-      )
-    }
+      const data = await response.json()
+      const records = (data.records || []).map(record => ({
+        id: record.id,
+        ...record.fields
+      }))
+      allRecords.push(...records)
+      offset = data.offset || null
+    } while (offset)
 
-    const data = await response.json()
-
-    // Flatten records: merge id with fields
-    return (data.records || []).map(record => ({
-      id: record.id,
-      ...record.fields
-    }))
+    return allRecords
   } catch (error) {
     console.error(`Error fetching ${tableName} from Airtable:`, error.message)
     return []
