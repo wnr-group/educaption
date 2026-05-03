@@ -24,18 +24,18 @@ export default function DownloadReport({ group, marks, cutoffResults }) {
   }
 
   return (
-    <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 p-4 bg-gray-50 rounded-lg border border-gray-200">
+    <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 p-4 bg-saffron-50 rounded-2xl border border-saffron-100">
       <input
         type="text"
         placeholder={t('results.enterName')}
         value={studentName}
         onChange={(e) => setStudentName(e.target.value)}
-        className="flex-1 px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500"
+        className="flex-1 px-4 py-2.5 border border-navy-200 rounded-xl text-sm font-body text-navy-800 placeholder:text-navy-400 focus:outline-none focus:ring-2 focus:ring-saffron-400 focus:border-saffron-400"
       />
       <button
         onClick={handleDownload}
         disabled={generating}
-        className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-primary-600 text-white rounded-lg text-sm font-medium hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 disabled:opacity-50 transition-colors"
+        className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-saffron-500 text-white rounded-xl text-sm font-body font-semibold hover:bg-saffron-600 focus:outline-none focus:ring-2 focus:ring-saffron-400 focus:ring-offset-2 disabled:opacity-50 transition-colors whitespace-nowrap"
       >
         {generating ? (
           <Loader2 className="h-4 w-4 animate-spin" />

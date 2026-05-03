@@ -7,6 +7,7 @@ import { useCalculator } from '../../hooks/useCalculator'
 import { useLanguage } from '../../context/LanguageContext'
 import CircularProgress from './CircularProgress'
 import CategorySection from './CategorySection'
+import DownloadReport from '../results/DownloadReport'
 
 export default function ResultsDisplay() {
   const { t } = useTranslation()
@@ -192,6 +193,13 @@ export default function ResultsDisplay() {
           </div>
         )}
       </div>
+
+      {/* Download Report */}
+      <DownloadReport
+        group={selectedGroup}
+        marks={marks}
+        cutoffResults={cutoffResults}
+      />
 
       {/* Calculate Again */}
       <div className="flex justify-center">
