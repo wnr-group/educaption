@@ -8,10 +8,10 @@ export default function DownloadReport({ group, marks, cutoffResults }) {
   const [studentName, setStudentName] = useState('')
   const [generating, setGenerating] = useState(false)
 
-  const handleDownload = () => {
+  const handleDownload = async () => {
     setGenerating(true)
     try {
-      generateCutoffReport({
+      await generateCutoffReport({
         studentName,
         group,
         marks,

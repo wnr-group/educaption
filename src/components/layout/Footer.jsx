@@ -15,6 +15,11 @@ export default function Footer() {
     { label: 'TNEA Official', url: 'https://tneaonline.org', external: true },
     { label: 'Anna University', url: 'https://annauniv.edu', external: true },
     { label: 'DoTE Tamil Nadu', url: 'https://tndte.gov.in', external: true },
+    { label: 'TNAU Admissions', url: 'https://tnau.ac.in/ugadmission/', external: true },
+    { label: 'TNDALU', url: 'https://www.tndalu.ac.in/', external: true },
+    { label: 'TNJFU Admissions', url: 'https://www.tnjfu.ac.in/ugadmissions', external: true },
+    { label: 'TANUVAS Admissions', url: 'https://www.tanuvas.ac.in/ce_ugad.php', external: true },
+    { label: 'TN Paramedical Counselling', url: 'https://tnmedicalselection.net/Notification.aspx', external: true },
   ]
 
   return (

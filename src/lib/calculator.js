@@ -413,19 +413,53 @@ export function calculateCourseCutoffs(courses, admissionBodies, group, marks, s
     })
   }
 
-  // Convert cutoffGroupsMap to sorted array for each body, then sort bodies by highest cutoff
+  // PDF S.No order: 1=TNEA, 2=TNDALU, 3=TANUVAS BVSC, 4=TANUVAS B.Tech,
+  // 5=TNAU UG, 6=TNAU Diploma Bio, 7=TNAU Diploma Maths,
+  // 8=TNJFU Fisheries, 9=TNJFU B.Tech, 11=TNJFU B.Voc,
+  // 12=Paramedical Degree, 13-15=Paramedical Diploma
+  const BODY_ORDER = [
+    'TNEA',
+    'TNEA - Vocational',
+    'TNDALU',
+    'TANUVAS - BVSC',
+    'TANUVAS - BVSC - Vocational',
+    'TANUVAS - B.Tech',
+    'TNAU - Agriculture',
+    'TNAU - Agriculture - BotZoo',
+    'TNAU - Agriculture - Vocational',
+    'TNAU - Food Nutrition',
+    'TNAU - Food Nutrition - BotZoo',
+    'TNAU - Agri Engineering',
+    'TNAU Diploma (Bio)',
+    'TNAU Diploma (Maths)',
+    'TNJFU - Fisheries',
+    'TNJFU - Fisheries - BotZoo',
+    'TNJFU - Fisheries - Vocational',
+    'TNJFU - B.Tech',
+    'TNJFU - B.Voc',
+    'TN Paramedical - Pharmacy',
+    'TN Paramedical - Pharmacy - BotZoo',
+    'TN Paramedical - Nursing',
+    'TN Paramedical - Nursing - BotZoo',
+    'Paramedical Diploma (Bio)',
+    'Paramedical Diploma (Maths)',
+    'Paramedical Diploma (Voc)',
+  ]
+
+  // Convert cutoffGroupsMap to sorted array for each body, then sort bodies by PDF order
   return Object.values(resultsByBody)
     .map(body => {
       const cutoffGroups = Object.values(body.cutoffGroupsMap)
         .sort((a, b) => b.cutoff - a.cutoff)
-      // Remove the temporary map
       const { cutoffGroupsMap, ...rest } = body
       return { ...rest, cutoffGroups }
     })
     .sort((a, b) => {
-      const aCutoff = a.cutoffGroups.length > 0 ? a.cutoffGroups[0].cutoff : 0
-      const bCutoff = b.cutoffGroups.length > 0 ? b.cutoffGroups[0].cutoff : 0
-      return bCutoff - aCutoff
+      const aIdx = BODY_ORDER.indexOf(a.admissionBodyName)
+      const bIdx = BODY_ORDER.indexOf(b.admissionBodyName)
+      const aOrder = aIdx === -1 ? 999 : aIdx
+      const bOrder = bIdx === -1 ? 999 : bIdx
+      return aOrder - bOrder
     })
 }
 

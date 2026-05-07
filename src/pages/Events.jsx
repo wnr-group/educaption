@@ -288,7 +288,7 @@ export default function Events() {
                       <div className="flex items-center">
                         {ev.link_url ? (
                           <a
-                            href={ev.link_url}
+                            href={ev.link_url.startsWith('http') ? ev.link_url : `https://${ev.link_url}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={(e) => e.stopPropagation()}

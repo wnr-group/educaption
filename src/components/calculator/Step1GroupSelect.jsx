@@ -96,14 +96,15 @@ export default function Step1GroupSelect() {
       if (result[stream]) result[stream].push(g)
     })
 
-    // Sort Science: Biology groups first, then Botany+Zoology, then Maths groups
+    // Sort Science: PCBMaths first, then PCMaths+CS, then Botany/Zoology, then remaining Biology groups, then remaining Maths groups
     result.Science.sort((a, b) => {
       const rank = (g) => {
         const subs = (g.subjects || []).map(s => s.toLowerCase())
-        if (subs.includes('biology') && subs.includes('mathematics')) return 1
-        if (subs.includes('biology')) return 0
+        if (subs.includes('biology') && subs.includes('mathematics')) return 0
+        if (subs.includes('mathematics') && subs.includes('computer science')) return 1
         if (subs.includes('botany')) return 2
-        return 3
+        if (subs.includes('biology')) return 3
+        return 4
       }
       return rank(a) - rank(b)
     })
@@ -229,9 +230,13 @@ export default function Step1GroupSelect() {
       `}>
         {currentGroups.map((g) => {
           const isSelected = group === g.id
-          const displaySubjects = mergeTheoryPractical(
-            (language === 'ta' && g.name_ta) ? g.name_ta.split(', ') : g.subjects || []
-          )
+          const vocName = language === 'ta' && g.name_ta ? g.name_ta : g.name
+          const isSimpleVocName = g.stream === 'Vocational' && vocName && !vocName.includes(',')
+          const displaySubjects = isSimpleVocName
+            ? [vocName]
+            : mergeTheoryPractical(
+                (language === 'ta' && g.name_ta) ? g.name_ta.split(', ') : g.subjects || []
+              )
 
           return (
             <button

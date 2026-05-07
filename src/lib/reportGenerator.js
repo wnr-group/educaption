@@ -1,25 +1,45 @@
 import jsPDF from 'jspdf'
 import autoTable from 'jspdf-autotable'
 
-export function generateCutoffReport({ studentName, group, marks, cutoffResults, language = 'en' }) {
+async function getLogoDataUrl() {
+  try {
+    const response = await fetch('/logo.png')
+    const blob = await response.blob()
+    return await new Promise((resolve, reject) => {
+      const reader = new FileReader()
+      reader.onload = () => resolve(reader.result)
+      reader.onerror = reject
+      reader.readAsDataURL(blob)
+    })
+  } catch {
+    return null
+  }
+}
+
+export async function generateCutoffReport({ studentName, group, marks, cutoffResults, language = 'en' }) {
   const doc = new jsPDF()
   const pageWidth = doc.internal.pageSize.getWidth()
-  let y = 20
+  let y = 14
 
-  // Header
+  // Header — logo left, title centred
+  const logoDataUrl = await getLogoDataUrl()
+  const logoSize = 18
+  if (logoDataUrl) {
+    doc.addImage(logoDataUrl, 'PNG', 14, y - 4, logoSize, logoSize)
+  }
+
   doc.setFontSize(20)
   doc.setTextColor(30, 64, 120)
-  doc.text('Educaption', pageWidth / 2, y, { align: 'center' })
-  y += 8
+  doc.text('Educaption', pageWidth / 2, y + 4, { align: 'center' })
 
   doc.setFontSize(12)
   doc.setTextColor(100, 100, 100)
-  doc.text('Cutoff Score Report', pageWidth / 2, y, { align: 'center' })
-  y += 6
+  doc.text('Cutoff Score Report', pageWidth / 2, y + 12, { align: 'center' })
 
   doc.setFontSize(9)
-  doc.text(`Generated: ${new Date().toLocaleDateString('en-IN')}`, pageWidth / 2, y, { align: 'center' })
-  y += 10
+  doc.text(`Generated: ${new Date().toLocaleDateString('en-IN')}`, pageWidth / 2, y + 18, { align: 'center' })
+
+  y += 26
 
   doc.setDrawColor(30, 64, 120)
   doc.setLineWidth(0.5)
@@ -45,7 +65,7 @@ export function generateCutoffReport({ studentName, group, marks, cutoffResults,
 
   autoTable(doc, {
     startY: y,
-    head: [['Field', 'Value']],
+    head: [['Particulars', 'Value']],
     body: studentInfoRows,
     theme: 'grid',
     headStyles: { fillColor: [30, 64, 120], fontSize: 10 },
@@ -69,14 +89,13 @@ export function generateCutoffReport({ studentName, group, marks, cutoffResults,
     return body.cutoffGroups.map(g => [
       bodyName,
       `${g.cutoff}`,
-      `${g.maxCutoff}`,
-      `${g.courses.length}`
+      `${g.maxCutoff}`
     ])
   })
 
   autoTable(doc, {
     startY: y,
-    head: [['Admission Body', 'Cutoff', 'Max', 'Courses']],
+    head: [['Admission Body', 'Cutoff', 'Max']],
     body: cutoffRows,
     theme: 'grid',
     headStyles: { fillColor: [30, 64, 120], fontSize: 10 },
@@ -87,6 +106,11 @@ export function generateCutoffReport({ studentName, group, marks, cutoffResults,
   y = doc.lastAutoTable.finalY + 12
 
   // Eligible Courses by body
+  doc.setFontSize(13)
+  doc.setTextColor(30, 30, 30)
+  doc.text('Eligible Courses', 14, y)
+  y += 8
+
   for (const body of cutoffResults) {
     if (y > 250) {
       doc.addPage()
@@ -120,7 +144,8 @@ export function generateCutoffReport({ studentName, group, marks, cutoffResults,
         theme: 'striped',
         headStyles: { fillColor: [60, 120, 80], fontSize: 9 },
         bodyStyles: { fontSize: 8 },
-        margin: { left: 14, right: 14 }
+        margin: { left: 14, right: 14 },
+        columnStyles: { 1: { halign: 'left' } }
       })
 
       y = doc.lastAutoTable.finalY + 6
@@ -129,14 +154,57 @@ export function generateCutoffReport({ studentName, group, marks, cutoffResults,
     y += 4
   }
 
+  // Useful Links section
+  const bodyUrlMap = {
+    'TNAU':        'https://tnau.ac.in/ugadmission/',
+    'TNDALU':      'https://www.tndalu.ac.in/',
+    'TNJFU':       'https://www.tnjfu.ac.in/ugadmissions',
+    'TANUVAS':     'https://www.tanuvas.ac.in/ce_ugad.php',
+    'PARAMEDICAL': 'https://tnmedicalselection.net/Notification.aspx'
+  }
+
+  const seenLinks = new Map()
+  for (const body of cutoffResults) {
+    const name = body.admissionBodyName || ''
+    for (const [key, url] of Object.entries(bodyUrlMap)) {
+      if (name.toUpperCase().includes(key) && !seenLinks.has(key)) {
+        const label = key === 'PARAMEDICAL' ? 'TN Paramedical Counselling' : key
+        seenLinks.set(key, { label, url })
+      }
+    }
+  }
+
+  if (seenLinks.size > 0) {
+    if (y > 240) {
+      doc.addPage()
+      y = 20
+    }
+    doc.setFontSize(13)
+    doc.setTextColor(30, 30, 30)
+    doc.text('Useful Links', 14, y)
+    y += 8
+
+    for (const { label, url } of seenLinks.values()) {
+      doc.setFontSize(9)
+      doc.setTextColor(80, 80, 80)
+      doc.text(`${label}:`, 14, y)
+      doc.setTextColor(30, 64, 120)
+      doc.textWithLink(url, 50, y, { url })
+      y += 7
+    }
+  }
+
   // Footer on all pages
   const pageCount = doc.internal.getNumberOfPages()
+  const siteUrl = 'https://www.educaption.in/'
   for (let i = 1; i <= pageCount; i++) {
     doc.setPage(i)
+    const footerY = doc.internal.pageSize.getHeight() - 10
     doc.setFontSize(8)
+    doc.setTextColor(30, 64, 120)
+    doc.textWithLink(siteUrl, pageWidth / 2, footerY, { align: 'center', url: siteUrl })
     doc.setTextColor(150, 150, 150)
-    doc.text('https://www.educaption.in/', pageWidth / 2, doc.internal.pageSize.getHeight() - 10, { align: 'center' })
-    doc.text(`Page ${i} of ${pageCount}`, pageWidth - 14, doc.internal.pageSize.getHeight() - 10, { align: 'right' })
+    doc.text(`Page ${i} of ${pageCount}`, pageWidth - 14, footerY, { align: 'right' })
   }
 
   doc.save(`educaption-cutoff-report-${Date.now()}.pdf`)
