@@ -8,6 +8,7 @@ const DEFAULT_IMAGE = '/logo.png'
 export default function SEO({
   title,
   description,
+  keywords,
   image = DEFAULT_IMAGE,
   type = 'website',
   noindex = false,
@@ -25,6 +26,7 @@ export default function SEO({
       <title>{fullTitle}</title>
       <meta name="title" content={fullTitle} />
       {description && <meta name="description" content={description} />}
+      {keywords && <meta name="keywords" content={keywords} />}
       <link rel="canonical" href={canonicalUrl} />
 
       {/* Robots */}

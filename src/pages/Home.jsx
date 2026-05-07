@@ -20,8 +20,9 @@ export default function Home() {
   return (
     <>
       <SEO
-        title="Cutoff Calculator & Course Explorer"
-        description="Calculate your Tamil Nadu cutoff, explore 500+ courses, and find your path. Free admission guide for TN students."
+        title="Tamil Nadu Cutoff Calculator & Admission Guide 2026"
+        description="Free Tamil Nadu cutoff calculator for TNEA, TNAU, TANUVAS, TNJFU, TNDALU & Paramedical 2026. Check eligible courses after 12th, counselling guide for TN students."
+        keywords="Tamil Nadu counselling website, TN students admission guide, Tamil medium students counselling guide, 12th ku apram enna course, cutoff mark la enna course kidaikum, TNEA counselling eppadi apply panrathu, educaption counselling guide, educaption cutoff checker, educaption TN admission website, Tamil Nadu college admission 2026, TN 12th counselling guide, best courses after 12th Tamil Nadu, TN government college admission process, after 12th what are options Tamil Nadu counselling"
         schema={homeSchema}
       />
       <main className="min-h-screen">

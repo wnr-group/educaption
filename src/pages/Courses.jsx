@@ -99,8 +99,9 @@ export default function Courses() {
   return (
     <>
       <SEO
-        title="Courses in Tamil Nadu"
-        description="Browse 500+ courses in Tamil Nadu. Find programs with eligibility, duration, and admission details."
+        title="Courses After 12th in Tamil Nadu 2026 — Engineering, Agriculture, Law, Medical"
+        description="Browse 500+ courses available after 12th in Tamil Nadu. Find engineering, agriculture, veterinary, fisheries, law, paramedical and allied health science courses with cutoff marks and eligibility details."
+        keywords="college courses after 12th Tamil Nadu, government college courses list with cutoff TN, BSc agriculture eligibility marks TN, agri college admission TN, allied health science courses Tamil Nadu, BSc nursing admission TN government, paramedical cutoff marks Tamil Nadu, LLB 5 year course eligibility TN, B.F.Sc admission Tamil Nadu, engineering vs agriculture which is best TN students, what course can I study after 12th biology Tamil Nadu, best course for low cutoff marks Tamil Nadu"
         schema={coursesSchema}
       />
       <main className={`min-h-screen bg-[#FAFAFA] ${headerPaddingClass} pb-12 lg:pb-16`}>

@@ -35,8 +35,9 @@ export default function About() {
   return (
     <>
       <SEO
-        title="About Us - TN Admissions Guide"
-        description="Educaption helps Tamil Nadu students navigate admissions. Free cutoff calculator, course explorer, and counselling guidance."
+        title="About Educaption — Tamil Nadu Student Admission Guide"
+        description="Educaption is a free Tamil Nadu student admission guide. We help TN 12th students calculate cutoffs, explore courses and navigate TNEA, TNAU, TANUVAS, TNJFU, TNDALU and paramedical counselling."
+        keywords="educaption counselling guide, educaption TN admission website, Tamil Nadu counselling website, TN students admission guide, Tamil medium students counselling guide, TN 12th counselling guide"
         schema={aboutSchema}
       />
       <main className={`min-h-screen bg-gradient-hero ${headerPaddingClass} pb-12 lg:pb-16`}>

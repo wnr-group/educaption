@@ -143,8 +143,9 @@ export default function Calculator() {
   return (
     <>
       <SEO
-        title="Cutoff Calculator 2026"
-        description="Calculate your cutoff marks instantly. Enter your 12th marks and get accurate cutoff scores using official formulas."
+        title="TN Cutoff Calculator 2026 — TNEA, TNAU, TANUVAS, TNJFU, Paramedical"
+        description="Calculate your Tamil Nadu cutoff marks instantly for TNEA engineering, TNAU agriculture, TANUVAS veterinary, TNJFU fisheries, TNDALU law and paramedical courses. Free eligibility checker for TN 12th students 2026."
+        keywords="TNEA 2026 counselling, TNEA cutoff marks college wise, engineering cutoff calculator Tamil Nadu, Anna University counselling guide, TNEA rank vs cutoff, TNAU counselling 2026, agriculture courses cutoff Tamil Nadu, BSc agriculture eligibility marks TN, TANUVAS counselling 2026, veterinary course cutoff marks TN, BVSc admission Tamil Nadu, TN paramedical counselling 2026, TNDALU counselling 2026, law admission after 12th Tamil Nadu, TNJFU counselling 2026, fisheries courses after 12th TN, TN counselling eligibility checker, cutoff marks for engineering Tamil Nadu, what course can I study after 12th biology Tamil Nadu, best course for low cutoff marks Tamil Nadu"
         schema={calculatorSchema}
       />
       <main className={`min-h-screen bg-gradient-hero ${headerPaddingClass} pb-12 lg:pb-16`}>
