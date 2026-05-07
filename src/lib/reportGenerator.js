@@ -188,8 +188,9 @@ export async function generateCutoffReport({ studentName, group, marks, cutoffRe
       doc.setFontSize(9)
       doc.setTextColor(80, 80, 80)
       doc.text(`${label}:`, 14, y)
+      y += 5
       doc.setTextColor(30, 64, 120)
-      doc.textWithLink(url, 50, y, { url })
+      doc.textWithLink(url, 20, y, { url })
       y += 7
     }
   }
