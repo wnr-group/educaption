@@ -204,22 +204,6 @@ export default function Step1GroupSelect() {
         })}
       </div>
 
-      {/* Common subjects hint */}
-      {streamConfig.commonSubjects.length > 0 && (
-        <p className="font-body text-xs text-navy-400 mb-3 px-1">
-          {language === 'ta' ? 'அனைத்து குழுக்களிலும் பொதுவானவை: ' : 'Common to all groups: '}
-          <span className="font-medium text-navy-500">
-            {streamConfig.commonSubjects.join(', ')}
-          </span>
-          {activeStream === 'Science' && (
-            <span className="text-navy-400">
-              {language === 'ta'
-                ? ' — கீழே உள்ள வேறுபடும் பாடங்களைத் தேர்ந்தெடுக்கவும்'
-                : ' — select by the subjects that differ below'}
-            </span>
-          )}
-        </p>
-      )}
 
       {/* Group Cards Grid */}
       <div className={`
