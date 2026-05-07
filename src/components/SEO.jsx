@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet-async'
 import { useLocation } from 'react-router-dom'
 
 const SITE_NAME = 'Educaption'
-const SITE_URL = 'https://educaption.org'
+const SITE_URL = 'https://www.educaption.in'
 const DEFAULT_IMAGE = '/logo.png'
 
 export default function SEO({
