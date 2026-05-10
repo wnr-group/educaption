@@ -145,7 +145,11 @@ export async function generateCutoffReport({ studentName, group, marks, cutoffRe
         headStyles: { fillColor: [60, 120, 80], fontSize: 9 },
         bodyStyles: { fontSize: 8 },
         margin: { left: 14, right: 14 },
-        columnStyles: { 1: { halign: 'left' } }
+        columnStyles: {
+          0: { cellWidth: 112 },
+          1: { cellWidth: 40, halign: 'left' },
+          2: { cellWidth: 30, halign: 'left' }
+        }
       })
 
       y = doc.lastAutoTable.finalY + 6
